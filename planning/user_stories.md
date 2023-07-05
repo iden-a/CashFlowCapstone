@@ -43,7 +43,7 @@ Include at least 10 user stories.
 GIVEN {I am a low income individual that scores a (1-5)} WHEN I take the signup placement quiz, THEN I will be redirected to beginner-level resources on saving money.
 
 2. As a first-time account holder, I want to learn how to manage money, so that I am making good financial decisions.
-GIVEN {I score a (1-5)} WHEN I take the signup placement quiz, THEN I will be redirected to beginner-level resources on saving money.
+GIVEN {I am a X-income individual that scores a (1-5)} WHEN I take the signup placement quiz, THEN I will be redirected to beginner-level resources on saving money.
 
 3. As a person in my early career, I want to start building a 401k, so that I can retire comfortably.
 GIVEN {I am a stable-income individual that scores a (6-10)} WHEN I take the signup placement quiz, THEN I will be redirected to intermediate-level resources on investing money.
