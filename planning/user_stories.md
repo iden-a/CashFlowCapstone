@@ -1,6 +1,6 @@
 # Project Proposal
 
-Pod Members: **Add Pod Members Names**
+Pod Members: Marley, Pelumi, Iden
 
 ## Problem Statement
 
@@ -9,6 +9,7 @@ Insert your groups problem statement and target audience.
 ## User Roles
 
 Include at least at least 1, but no more than 3, user roles
+College students, young adults, individuals in their early career.
 
 ## User Personas
 
@@ -19,6 +20,12 @@ Include at least 2 personas per User Role
 Include at least 10 user stories.
 
 1. **As a [user role], I want to [what], so that [why]**
+
+1. As a college student, I want an app with resources to build financial literacy, so that I can save money for school.
+2. As a first-time account holder, I want to learn how to manage money, so that I am making good financial decisions.
+3. As a person in my early career, I want to start building a 401k, so that I can retire comfortably.
+4. As a person with some financial experience, I want to begin to invest, so that I can have money for retirement.
+5. As a unemployed uneducated young person, I want to learn how to save money, so that I won't be living in poverty.
 
 ## Wireframe (Bonus)
 
