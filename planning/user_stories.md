@@ -4,15 +4,13 @@ Pod Members: Marley, Pelumi, Iden
 
 ## Problem Statement
 
-Insert your groups problem statement and target audience.
+People from lower income communities and young adults, specifically college students, have very little experience and knowledge on savings and the best ways to save. 
 
 ## User Roles
 
 College students, young adults, individuals in their early career.
 
 ## User Personas
-
-Include at least 2 personas per User Role
 
 OLUWAKEMI (KEMI) (F)
     - college student
@@ -35,9 +33,6 @@ JESSICA BROOKS (F)
 
 ## User Stories
 
-Include at least 10 user stories.
-
-1. **As a [user role], I want to [what], so that [why]**
 
 1. As a college student, I want an app with resources to build financial literacy, so that I can save money for school.
 GIVEN {I am a low income individual that scores a (1-5)} WHEN I take the signup placement quiz, THEN I will be redirected to beginner-level resources on saving money.
