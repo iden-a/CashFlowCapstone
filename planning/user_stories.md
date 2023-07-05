@@ -8,12 +8,30 @@ Insert your groups problem statement and target audience.
 
 ## User Roles
 
-Include at least at least 1, but no more than 3, user roles
 College students, young adults, individuals in their early career.
 
 ## User Personas
 
 Include at least 2 personas per User Role
+
+OLUWAKEMI (KEMI) (F)
+    - college student
+    - Seattle, WA
+    - 19 years old, low income financial aid student
+    - access to technology is decent
+
+JEROME JABRÉ (M)
+    - new grad, early career
+    - Atlanta, GA
+    - 23 years old, just got a high-paying job
+    - has no idea what a 401k is. NEEDS HELP
+
+JESSICA BROOKS (F)
+    - college dropout
+    - Green River, WY
+    - 21 years old, new minimum wage job
+    - wants to increase financial stability
+
 
 ## User Stories
 
