@@ -39,14 +39,23 @@ As a unemployed uneducated young person, I want to learn how to save money, so t
 ## Pages/Screens
 
 Home Page
+
 Register Page
+
 Navbar 
+
 Register Page
+
 Login Page
+
 About Us Page
+
 Register Page
+
 Dashboard (Beginner/Intermediate)
+
 Learning Module 
+
 Module Quiz 
 
 ## Data Model
@@ -56,10 +65,15 @@ Module Quiz
 ## Endpoints
 
 /register
+
 /login
+
 /moduleinfo
+
 /modulequiz
-/registrationqiz
+
+/registrationquiz
+
 /goals
 
 ***Don't forget to set up your Issues, Milestones, and Project Board!***
