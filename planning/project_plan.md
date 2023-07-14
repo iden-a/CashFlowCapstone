@@ -4,10 +4,12 @@ Pod Members: Marley, Iden, Pelumi
 
 ## Problem Statement and Description
 
-Problem Statement
+Problem Statement: 
+
 People from lower income communities and young adults, specifically college students, have very little experience and knowledge on savings and the best ways to save.
 
-Description
+Description:
+
 CashFlow Academy is a comprehensive financial literacy site designed to empower individuals of all levels of expertise to master their cash flow management skills. With personalized learning paths, interactive quizzes, and practical tools, the app educates users on budgeting, saving, investing, debt management, and more. By equipping users with the knowledge and skills to optimize their cash flow, CashFlow Academy empowers them to achieve financial stability, make informed decisions, and pave the way for long-term financial success.
 
 ## User Roles and Personas
