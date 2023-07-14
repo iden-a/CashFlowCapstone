@@ -1,6 +1,6 @@
 # Project Plan
 
-Pod Members: **Add Pod Members Names**
+Pod Members: Marley, Iden, Pelumi
 
 ## Problem Statement and Description
 
