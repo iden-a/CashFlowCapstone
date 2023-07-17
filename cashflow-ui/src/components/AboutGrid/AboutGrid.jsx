@@ -12,7 +12,7 @@ export default function AboutGrid() {
     {
       name: "XXX",
       school: "XXX",
-      aspiration: "Aspiring XXX",
+      aspiration: "XXX",
       bio: "XXX",
       image: "XXX"
     },
