@@ -9,7 +9,9 @@ import {
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
 
-const API_KEY = "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";
+// const API_KEY = process.env.REACT_APP_API_KEY 
+// const {REACT_APP_API_KEY } = process.env
+const API_KEY = import.meta.env.VITE_API_KEY
 
 export default function CashBot() {
   const [typing, setTyping] = useState(false);
