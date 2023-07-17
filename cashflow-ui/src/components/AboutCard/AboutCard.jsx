@@ -25,17 +25,20 @@ export default function AboutCard({ name, school, aspiration, bio, image, animat
         p={6}
         maxW={'330px'}
         w={'full'}
-        h={'500px'}
+        h={'550px'}
         boxShadow={'2xl'}
         rounded={'lg'}
         pos={'relative'}
         zIndex={1}
+        borderWidth="1px"
+        borderRadius="lg"
+        overflow= "hidden"
       >
         <Box
           rounded={'lg'}
-          mt={-12}
           pos={'relative'}
           height={'230px'}
+          
           _after={{
             transition: 'all .3s ease',
             content: '""',
@@ -56,23 +59,23 @@ export default function AboutCard({ name, school, aspiration, bio, image, animat
           <Image rounded={'lg'} height={230} width={282} objectFit={'cover'} src={isExpanded ? animatedImage : image} />
         </Box>
         <Stack pt={10} align={'center'}>
-          <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
+          <Heading color={'white'} fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
             {name}
           </Heading>
-          <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'} mt={2}>
+          <Text color={'white'} fontSize={'sm'} textTransform={'uppercase'} mt={2}>
                 {aspiration}
               </Text>
           {isExpanded ? (
             <>
               <IconButton aria-label="Collapse info" onClick={handleExpand} icon={<MinusIcon />} />
-              <Text color={'gray.500'} fontSize={'sm'} mt={2}>
+              <Text color={'white'} fontSize={'sm'} mt={2}>
                 {bio}
               </Text>
             </>
           ) : (
             <>
               <IconButton aria-label="Expand info" onClick={handleExpand} icon={<AddIcon />} />
-              <Text fontWeight={800} fontSize={'xl'} mt={2}>
+              <Text color={'white'} fontWeight={800} fontSize={'xl'} mt={2}>
                 {school}
               </Text>
             </>

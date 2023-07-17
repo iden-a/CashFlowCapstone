@@ -5,3 +5,7 @@
   --blue: #2c666e;
   --darkblue: #07393c;
 }
+
+body{
+  background-color: var(--midnight);
+}

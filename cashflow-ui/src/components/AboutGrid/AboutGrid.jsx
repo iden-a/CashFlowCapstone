@@ -1,6 +1,6 @@
 import AboutCard from "../AboutCard/AboutCard";
 import "./AboutGrid.css"
-import { Flex, Spacer } from "@chakra-ui/react";
+import { Flex, Spacer, Center, Image } from "@chakra-ui/react";
 
 
 export default function AboutGrid() {
@@ -25,7 +25,7 @@ export default function AboutGrid() {
     },
     {
       name: "Iden Amoako",
-      school: "Macaulay Honors College/Baruch College",
+      school: "Baruch College",
       aspiration: "Aspiring Software Engineer, Product Manager",
       bio: "Coming in from New York City, Iden enjoys all things health and fitness, photography, and fashion!",
       image: "/iden.jpg",
@@ -36,6 +36,10 @@ export default function AboutGrid() {
 
 
   return (
+    <>
+    <Center h="250px">
+    <Image src="/meet.png" />
+    </Center>
     <Flex>
       {aboutInfo.map((creator) => (
         <>
@@ -53,5 +57,6 @@ export default function AboutGrid() {
         </>
       ))}
     </Flex>
+    </>
   );
 }
