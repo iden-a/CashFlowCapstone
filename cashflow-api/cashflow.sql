@@ -1,4 +1,4 @@
-\echo 'Delete and recreate lifetracker db?'
+\echo 'Delete and recreate cashflow db?'
 \prompt 'Return for yes or control-C to cancel > ' answer
 
 DROP DATABASE cashflow;
