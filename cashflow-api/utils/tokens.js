@@ -13,7 +13,7 @@ const verifyAuthToken = (token) => {
 const generateUserToken = (user) => {
   const generateToken = (data) =>
     jwt.sign(data, SECRET_KEY, { expiresIn: "1h" });
-    
+
   const payload = {
     email: user.email,
     firstname: user.first_name,

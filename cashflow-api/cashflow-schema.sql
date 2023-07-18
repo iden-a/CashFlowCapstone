@@ -10,7 +10,6 @@ CREATE TABLE users (
   total_points  INTEGER NOT NULL
 );
 
-
 CREATE TABLE goals (
   id                SERIAL PRIMARY KEY,
   category          VARCHAR(255) NOT NULL,

@@ -3,11 +3,11 @@ const bcrypt = require("bcrypt");
 const { BCRYPT_WORK_FACTOR } = require("../config");
 const DbQuery = require("../utils/dbQuery");
 
+//creates a complete profile of the user that is stored in the database.
 class User {
   static async _createPublicUser(user) {
-
     const goals = await DbQuery.goals(user.id);
-
+    const quizzes = await DbQuery.quizzes(user.id);
 
     const userInfo = {
       id: user.id,
@@ -16,15 +16,18 @@ class User {
       username: user.username,
       email: user.email,
       image_url: user.image_url,
-      total_points: user.total_points
+      total_points: user.total_points,
     };
 
     return {
       user: userInfo,
-      goals: goals
+      goals: goals,
+      quizzes: quizzes,
     };
   }
 
+  // Takes in the user's email, first_name, last_name, and password, hashes said
+  // password and inputs the user's information into the database.
   static async register(creds) {
     const { email, username, first_name, last_name, password } = creds;
 
@@ -51,11 +54,15 @@ class User {
     return user;
   }
 
+  // Fetches the user's information in the database by the user's email,
+  // and returns said information to the fron end.
   static async fetchUserByEmail(email) {
     const user = await DbQuery.fetchUser(email);
     return user;
   }
 
+  //Takes in the users email and provides to validate the user's credentials,
+  // if valid, the user's profile is sent back, if not, there is an error thrown.
   static async authenticate(creds) {
     const { email, password } = creds;
 
@@ -66,14 +73,16 @@ class User {
         // compare hashed password to a new hash from password
         const isValid = await bcrypt.compare(password, userInfo.password);
         if (isValid === true) {
-          const { user, goals} =
-            await User._createPublicUser(userInfo);
+          const { user, goals, quizzes } = await User._createPublicUser(
+            userInfo
+          );
           return {
             user: user,
-            goals: goals
+            goals: goals,
+            quizzes: quizzes,
           };
         }
-      }s
+      }
 
       throw new UnauthorizedError("Invalid username/password");
     } catch (error) {
@@ -82,12 +91,38 @@ class User {
     }
   }
 
+  //Inserts the goal a user inputs into the goal table in our database
   static async insertGoal(data) {
     const { id, start_date, end_date, category, description } = data;
 
-    const goal = await DbQuery.insertGoal(id, start_date, end_date, category, description)
-    
+    const goal = await DbQuery.insertGoal(
+      id,
+      start_date,
+      end_date,
+      category,
+      description
+    );
+
     return goal;
+  }
+
+  //Inserts the quiz a user inputs into the goal table in our database
+  static async insertQuiz(data) {
+    const { id, topic, points } = data;
+
+    const quiz = await DbQuery.insertQuiz(id, topic, points);
+
+    return quiz;
+  }
+
+  //Updates the total points field in the users table in our database.
+  //adds updateValue to the existing value in the table.
+  static async updateTotalPoints(data) {
+    const { updateValue, id } = data;
+
+    const point = await DbQuery.updatePoints(updateValue, id);
+
+    return point;
   }
 }
 
