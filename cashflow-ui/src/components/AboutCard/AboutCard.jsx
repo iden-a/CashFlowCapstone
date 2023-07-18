@@ -1,30 +1,48 @@
 import {
-    Box,
-    Center,
-    useColorModeValue,
-    Heading,
-    Text,
-    Stack,
-    Image,
-  } from '@chakra-ui/react';
-  
+  Box,
+  Center,
+  useColorModeValue,
+  Heading,
+  Text,
+  Stack,
+  Image,
+  ScaleFade,
+  IconButton,
+  useDisclosure,
+} from '@chakra-ui/react';
+import { AddIcon, MinusIcon } from '@chakra-ui/icons';
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
-  export default function AboutCard({name, school, aspiration, bio, image}) {
-    return (
-      <Center py={12}>
-        <Box
-          role={'group'}
-          p={6}
-          maxW={'330px'}
-          w={'full'}
-          bg={useColorModeValue('white', 'gray.800')}
-          boxShadow={'2xl'}
-          rounded={'lg'}
-          pos={'relative'}
-          zIndex={1}>
+export default function AboutCard({ name, school, aspiration, bio, image, animatedImage, isUnlocked }) {
+  const [isExpanded, setIsExpanded] = useState(isUnlocked);
+  const { isOpen, onToggle } = useDisclosure();
+
+  function handleExpand() {
+    setIsExpanded(!isExpanded);
+    onToggle();
+  }
+
+  return (
+    <Center py={12}>
+      <Box
+        role={'group'}
+        p={6}
+        maxW={'330px'}
+        w={'full'}
+        h={'550px'}
+        boxShadow={'2xl'}
+        rounded={'lg'}
+        pos={'relative'}
+        zIndex={1}
+        borderWidth="1px"
+        borderRadius="lg"
+        overflow="hidden"
+      >
+        <AnimatePresence>
+          {/* Container for the image */}
           <Box
             rounded={'lg'}
-            mt={-12}
             pos={'relative'}
             height={'230px'}
             _after={{
@@ -35,39 +53,85 @@ import {
               pos: 'absolute',
               top: 5,
               left: 0,
-              backgroundImage: `url(${image})`,
               filter: 'blur(15px)',
               zIndex: -1,
+              opacity: isExpanded ? 0 : 1,
             }}
             _groupHover={{
               _after: {
                 filter: 'blur(20px)',
               },
-            }}>
-            <Image
-              rounded={'lg'}
-              height={230}
-              width={282}
-              objectFit={'cover'}
-              src={image}
-            />
+            }}
+          >
+            {/* Conditionally render the image or animated image */}
+            {isExpanded ? (
+              <motion.img
+                src={animatedImage}
+                alt="Animated Image"
+                key={animatedImage}
+                rounded={'lg'}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                }}
+              />
+            ) : (
+              <motion.img
+                src={image}
+                rounded={'lg'}
+                alt="Image"
+                key={image}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                }}
+              />
+            )}
           </Box>
-          <Stack pt={10} align={'center'}>
-          
-            <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
-              {aspiration}
+        </AnimatePresence>
+
+        <Stack pt={10} align={'center'}>
+          {/* Display name and aspiration */}
+          <Heading color={'white'} fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
+            {name}
+          </Heading>
+          <Text color={'white'} fontSize={'sm'} textTransform={'uppercase'} mt={2}>
+            {aspiration}
+          </Text>
+          {/* Expand/Collapse button */}
+          <IconButton
+            aria-label={isExpanded ? 'Collapse info' : 'Expand info'}
+            onClick={handleExpand}
+            icon={isExpanded ? <MinusIcon /> : <AddIcon />}
+          />
+          {/* Conditionally display bio or school */}
+          {isExpanded ? (
+            <Text color={'white'} fontSize={'sm'} mt={2}>
+              {bio}
             </Text>
-            <Heading fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
-              {name}
-            </Heading>
-    
-            <Stack direction={'row'} align={'center'}>
-              <Text fontWeight={800} fontSize={'xl'}>
-                {school}
-              </Text>
-            </Stack>
-          </Stack>
-        </Box>
-      </Center>
-    );
-  }
+          ) : (
+            <Text color={'white'} fontWeight={800} fontSize={'xl'} mt={2}>
+              {school}
+            </Text>
+          )}
+        </Stack>
+      </Box>
+    </Center>
+  );
+}

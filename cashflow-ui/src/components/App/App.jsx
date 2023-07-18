@@ -7,11 +7,11 @@ import CashBot from '../Cashbot/Cashbot'
 function App() {
  
   return (
-    <>
+    <div className='app'>
     <AboutGrid />
     <CashBot />
 
-    </>
+    </div>
   )
 }
 
