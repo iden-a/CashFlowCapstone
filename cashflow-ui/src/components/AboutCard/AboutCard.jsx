@@ -38,6 +38,7 @@ export default function AboutCard({ name, school, aspiration, bio, image, animat
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"
+        bg={useColorModeValue('var(--grey)', 'var(--midnight)')}
       >
         <AnimatePresence>
           {/* Container for the image */}
@@ -106,12 +107,12 @@ export default function AboutCard({ name, school, aspiration, bio, image, animat
           </Box>
         </AnimatePresence>
 
-        <Stack pt={10} align={'center'}>
+        <Stack pt={10} align={'center'} bg={useColorModeValue('var(--grey)', 'var(--midnight)')}>
           {/* Display name and aspiration */}
-          <Heading color={'white'} fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
+          <Heading color={useColorModeValue('var(--midnight)', 'var(--grey)')} fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
             {name}
           </Heading>
-          <Text color={'white'} fontSize={'sm'} textTransform={'uppercase'} mt={2}>
+          <Text color={useColorModeValue('var(--midnight)', 'var(--grey)')} fontSize={'sm'} textTransform={'uppercase'} mt={2}>
             {aspiration}
           </Text>
           {/* Expand/Collapse button */}
@@ -122,11 +123,11 @@ export default function AboutCard({ name, school, aspiration, bio, image, animat
           />
           {/* Conditionally display bio or school */}
           {isExpanded ? (
-            <Text color={'white'} fontSize={'sm'} mt={2}>
+            <Text color={useColorModeValue('var(--midnight)', 'var(--grey)')} fontSize={'sm'} mt={2}>
               {bio}
             </Text>
           ) : (
-            <Text color={'white'} fontWeight={800} fontSize={'xl'} mt={2}>
+            <Text color={useColorModeValue('var(--midnight)', 'var(--grey)')} fontWeight={800} fontSize={'xl'} mt={2}>
               {school}
             </Text>
           )}
