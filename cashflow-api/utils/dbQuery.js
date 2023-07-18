@@ -80,6 +80,24 @@ class DbQuery {
     return goal.rows[0];
   }
 
+  static async insertQuiz(id, topic, points) {
+    const quiz = await db.query(
+      `INSERT INTO quiz (
+        user_id, 
+        topic, 
+        points
+        )
+        VALUES ($1, $2, $3)
+        RETURNING             
+            topic,
+            points
+
+    `,
+      [id, topic, points]
+    );
+    return quiz.rows[0];
+  }
+
   static async goals(id) {
     const goals = await db.query(
       `SELECT 
@@ -93,6 +111,30 @@ class DbQuery {
       [id]
     );
     return goals.rows;
+  }
+
+  static async quizzes(id) {
+    const quizzes = await db.query(
+      `SELECT 
+      topic, 
+      points
+            FROM quiz
+            WHERE user_id = $1
+            ORDER BY created_at DESC`,
+      [id]
+    );
+    return quizzes.rows;
+  }
+
+  static async updatePoints(updateValue, id) {
+    const points = await db.query(
+      `UPDATE users
+      SET total_points = total_points + $1
+      WHERE id = $2
+      RETURNING total_points`,
+      [updateValue, id]
+    );
+    return points.rows[0];
   }
 }
 
