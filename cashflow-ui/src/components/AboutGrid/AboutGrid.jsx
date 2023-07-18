@@ -4,6 +4,7 @@ import { Flex, Spacer, Center, Image } from "@chakra-ui/react";
 
 
 export default function AboutGrid() {
+   
   const aboutInfo = [
     {
       name: "Marley Burrows",
@@ -12,7 +13,7 @@ export default function AboutGrid() {
       bio: "Hailing from Atlanta, Georgia, Marley enjoys reading a good book and traveling with friends and family.",
       image: "/marley.png",
       animatedImage:"/marleyA.png",
-      isOpen: false
+      isUnlocked: false
     },
     {
       name: "Oluwapelumi Tayo-Orisadare",
@@ -21,7 +22,7 @@ export default function AboutGrid() {
       bio: "Born in Nigeria, raised in the Midwest, Pelumi likes tennis, playing her saxophone, and watching tiktoks. 🙂",
       image: "/pelumi.png",
       animatedImage: "/pelumiA.png",
-      isOpen: false
+      isUnlocked: false
     },
     {
       name: "Iden Amoako",
@@ -30,8 +31,9 @@ export default function AboutGrid() {
       bio: "Coming in from New York City, Iden enjoys all things health and fitness, photography, and fashion!",
       image: "/iden.jpg",
       animatedImage: "/idenA.png",
-      isOpen: false
+      isUnlocked: false
     }
+    
   ];
 
 
@@ -51,7 +53,7 @@ export default function AboutGrid() {
           bio={creator.bio}
           image={creator.image}
           animatedImage={creator.animatedImage}
-          isOpen = {creator.isOpen}
+          isUnlocked = {creator.isUnlocked}
         />
         <Spacer />
         </>
