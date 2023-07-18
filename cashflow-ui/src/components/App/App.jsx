@@ -11,7 +11,7 @@ function App() {
     <AboutGrid />
     <CashBot />
 
-    </>
+    </div>
   )
 }
 
