@@ -6,18 +6,22 @@ const DbQuery = require("../utils/dbQuery");
 class User {
   static async _createPublicUser(user) {
 
+    const goals = await DbQuery.goals(user.id);
+
+
     const userInfo = {
       id: user.id,
       first_name: user.first_name,
+      last_name: user.last_name,
       username: user.username,
       email: user.email,
+      image_url: user.image_url,
+      total_points: user.total_points
     };
 
     return {
       user: userInfo,
-      exercise: exercise,
-      sleep: sleep,
-      nutrition: nutrition
+      goals: goals
     };
   }
 
@@ -50,6 +54,40 @@ class User {
   static async fetchUserByEmail(email) {
     const user = await DbQuery.fetchUser(email);
     return user;
+  }
+
+  static async authenticate(creds) {
+    const { email, password } = creds;
+
+    const userInfo = await User.fetchUserByEmail(email);
+
+    try {
+      if (userInfo) {
+        // compare hashed password to a new hash from password
+        const isValid = await bcrypt.compare(password, userInfo.password);
+        if (isValid === true) {
+          const { user, goals} =
+            await User._createPublicUser(userInfo);
+          return {
+            user: user,
+            goals: goals
+          };
+        }
+      }s
+
+      throw new UnauthorizedError("Invalid username/password");
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  }
+
+  static async insertGoal(data) {
+    const { id, start_date, end_date, category, description } = data;
+
+    const goal = await DbQuery.insertGoal(id, start_date, end_date, category, description)
+    
+    return goal;
   }
 }
 
