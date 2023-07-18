@@ -17,7 +17,7 @@ export default function CashBot() {
   const [typing, setTyping] = useState(false);
   const [messages, setMessages] = useState([
     {
-      message: "Hello, I am CashBot",
+      message: "Hello, I'm CashBot! I'm here to assist you on your CashFlow journey!",
       sender: "CashBot",
     },
   ]);
