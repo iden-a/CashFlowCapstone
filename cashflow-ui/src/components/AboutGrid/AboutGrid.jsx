@@ -1,5 +1,4 @@
 import AboutCard from "../AboutCard/AboutCard";
-import "./AboutGrid.css";
 import { Flex, Spacer, Center, Image } from "@chakra-ui/react";
 
 export default function AboutGrid() {

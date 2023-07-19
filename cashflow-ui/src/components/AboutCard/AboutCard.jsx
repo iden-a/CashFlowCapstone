@@ -5,8 +5,6 @@ import {
   Heading,
   Text,
   Stack,
-  Image,
-  ScaleFade,
   IconButton,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -72,7 +70,7 @@ export default function AboutCard({
               },
             }}
           >
-            {/* Conditionally render the image or animated image */}
+            {/* Conditionally renders the image or animated image */}
             {isExpanded ? (
               <motion.img
                 src={animatedImage}
@@ -121,7 +119,7 @@ export default function AboutCard({
           align={"center"}
           bg={useColorModeValue("var(--grey)", "var(--midnight)")}
         >
-          {/* Display name and aspiration */}
+          {/* Displays name and aspiration */}
           <Heading
             color={useColorModeValue("var(--midnight)", "var(--grey)")}
             fontSize={"2xl"}
@@ -138,13 +136,13 @@ export default function AboutCard({
           >
             {aspiration}
           </Text>
-          {/* Expand/Collapse button */}
+          
           <IconButton
             aria-label={isExpanded ? "Collapse info" : "Expand info"}
             onClick={handleExpand}
             icon={isExpanded ? <MinusIcon /> : <AddIcon />}
           />
-          {/* Conditionally display bio or school */}
+          {/* Conditionally displays bio or school */}
           {isExpanded ? (
             <Text
               color={useColorModeValue("var(--midnight)", "var(--grey)")}

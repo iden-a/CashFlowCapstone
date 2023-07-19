@@ -1,22 +1,31 @@
-import { useState } from 'react'
-import './App.css'
-import AboutGrid from '../AboutGrid/AboutGrid'
-import CashBot from '../Cashbot/Cashbot'
-import Navbar from '../Navbar/Navbar'
-import { useColorModeValue } from '@chakra-ui/react'
-
+import { ChakraProvider, useColorModeValue } from '@chakra-ui/react';
+import AboutGrid from '../AboutGrid/AboutGrid';
+import CashBot from '../Cashbot/Cashbot';
+import Navbar from '../Navbar/Navbar';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
-  // sets background color based on dark/light mode
+  // Sets background color based on dark/light mode
   const bgColor = useColorModeValue('var(--grey)', 'var(--midnight)');
 
   return (
-    <div className='app' style={{ backgroundColor: bgColor }}>
-    <Navbar />
-    <AboutGrid />
-    <CashBot />
+    <div className="app" style={{ backgroundColor: bgColor }}>
+    <BrowserRouter>
+    <Navbar/>
+        <Routes>
+          <Route path="/" element={<> </>} />
+          <Route path="/about" element={<AboutGrid />} />
+          <Route path="/register" element={<></>} />
+          <Route path="/login" element={<></>} />
+          <Route path="/profile" element={<></>} />
+          <Route path="/goals" element={<></>} />
+          <Route path="/dashboard" element={<></>} />
+      </Routes>
+      </BrowserRouter>
     </div>
-  )
+  );
 }
 
-export default App
+
+
+export default App;
