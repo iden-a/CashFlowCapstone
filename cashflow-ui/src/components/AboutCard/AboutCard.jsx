@@ -9,12 +9,20 @@ import {
   ScaleFade,
   IconButton,
   useDisclosure,
-} from '@chakra-ui/react';
-import { AddIcon, MinusIcon } from '@chakra-ui/icons';
-import { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+} from "@chakra-ui/react";
+import { AddIcon, MinusIcon } from "@chakra-ui/icons";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
-export default function AboutCard({ name, school, aspiration, bio, image, animatedImage, isUnlocked }) {
+export default function AboutCard({
+  name,
+  school,
+  aspiration,
+  bio,
+  image,
+  animatedImage,
+  isUnlocked,
+}) {
   const [isExpanded, setIsExpanded] = useState(isUnlocked);
   const { isOpen, onToggle } = useDisclosure();
 
@@ -26,41 +34,41 @@ export default function AboutCard({ name, school, aspiration, bio, image, animat
   return (
     <Center py={12}>
       <Box
-        role={'group'}
+        role={"group"}
         p={6}
-        maxW={'330px'}
-        w={'full'}
-        h={'550px'}
-        boxShadow={'2xl'}
-        rounded={'lg'}
-        pos={'relative'}
+        maxW={"330px"}
+        w={"full"}
+        h={"550px"}
+        boxShadow={"2xl"}
+        rounded={"lg"}
+        pos={"relative"}
         zIndex={1}
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"
-        bg={useColorModeValue('var(--grey)', 'var(--midnight)')}
+        bg={useColorModeValue("var(--grey)", "var(--midnight)")}
       >
         <AnimatePresence>
           {/* Container for the image */}
           <Box
-            rounded={'lg'}
-            pos={'relative'}
-            height={'230px'}
+            rounded={"lg"}
+            pos={"relative"}
+            height={"230px"}
             _after={{
-              transition: 'all .3s ease',
+              transition: "all .3s ease",
               content: '""',
-              w: 'full',
-              h: 'full',
-              pos: 'absolute',
+              w: "full",
+              h: "full",
+              pos: "absolute",
               top: 5,
               left: 0,
-              filter: 'blur(15px)',
+              filter: "blur(15px)",
               zIndex: -1,
               opacity: isExpanded ? 0 : 1,
             }}
             _groupHover={{
               _after: {
-                filter: 'blur(20px)',
+                filter: "blur(20px)",
               },
             }}
           >
@@ -70,24 +78,23 @@ export default function AboutCard({ name, school, aspiration, bio, image, animat
                 src={animatedImage}
                 alt="Animated Image"
                 key={animatedImage}
-                rounded={'lg'}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
                 style={{
-                  position: 'absolute',
+                  position: "absolute",
                   top: 0,
                   left: 0,
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  rounded: "lg"
                 }}
               />
             ) : (
               <motion.img
                 src={image}
-                rounded={'lg'}
                 alt="Image"
                 key={image}
                 initial={{ opacity: 0 }}
@@ -95,39 +102,64 @@ export default function AboutCard({ name, school, aspiration, bio, image, animat
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
                 style={{
-                  position: 'absolute',
+                  position: "absolute",
                   top: 0,
                   left: 0,
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  rounded: "lg",
+                  borderRadius: 10
                 }}
               />
             )}
           </Box>
         </AnimatePresence>
 
-        <Stack pt={10} align={'center'} bg={useColorModeValue('var(--grey)', 'var(--midnight)')}>
+        <Stack
+          pt={10}
+          align={"center"}
+          bg={useColorModeValue("var(--grey)", "var(--midnight)")}
+        >
           {/* Display name and aspiration */}
-          <Heading color={useColorModeValue('var(--midnight)', 'var(--grey)')} fontSize={'2xl'} fontFamily={'body'} fontWeight={500}>
+          <Heading
+            color={useColorModeValue("var(--midnight)", "var(--grey)")}
+            fontSize={"2xl"}
+            fontFamily={"body"}
+            fontWeight={500}
+          >
             {name}
           </Heading>
-          <Text color={useColorModeValue('var(--midnight)', 'var(--grey)')} fontSize={'sm'} textTransform={'uppercase'} mt={2}>
+          <Text
+            color={useColorModeValue("var(--midnight)", "var(--grey)")}
+            fontSize={"sm"}
+            textTransform={"uppercase"}
+            mt={2}
+          >
             {aspiration}
           </Text>
           {/* Expand/Collapse button */}
           <IconButton
-            aria-label={isExpanded ? 'Collapse info' : 'Expand info'}
+            aria-label={isExpanded ? "Collapse info" : "Expand info"}
             onClick={handleExpand}
             icon={isExpanded ? <MinusIcon /> : <AddIcon />}
           />
           {/* Conditionally display bio or school */}
           {isExpanded ? (
-            <Text color={useColorModeValue('var(--midnight)', 'var(--grey)')} fontSize={'sm'} mt={2}>
+            <Text
+              color={useColorModeValue("var(--midnight)", "var(--grey)")}
+              fontSize={"sm"}
+              mt={2}
+            >
               {bio}
             </Text>
           ) : (
-            <Text color={useColorModeValue('var(--midnight)', 'var(--grey)')} fontWeight={800} fontSize={'xl'} mt={2}>
+            <Text
+              color={useColorModeValue("var(--midnight)", "var(--grey)")}
+              fontWeight={800}
+              fontSize={"xl"}
+              mt={2}
+            >
               {school}
             </Text>
           )}
