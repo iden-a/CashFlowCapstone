@@ -1,0 +1,91 @@
+/* .register{
+    height: 100vh;
+}
+
+#tiffany {
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    z-index: 200;
+
+}
+
+#registerHeader {
+    font-size: 300%;
+    width: 40%;
+    margin: 0 auto;
+    z-index: 300;
+}
+
+#register-form{
+    background-color: var(--lightblue);
+    width: 30%;
+    margin: 0 auto;
+    height: 30%;
+    border-radius: 30px;
+    max-height: 400px;
+}
+  
+  .register-input {
+    width: 80%;
+    height: 45px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    padding-left: 10px;
+    border: none;
+    color: var(--midnight);
+  }
+  
+  ::placeholder {
+    color: var(--midnight);
+    font-size: 15px;
+  }
+  
+  
+  .register-button {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    width: 82%;
+    height: 45px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+  .register-button button {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 13%;
+    background-color: var(--midnight);
+    color: white;
+    border: none;
+  }
+  .register-button button:hover {
+    cursor: pointer;
+    background-color: var(--dark-theme);
+    border: solid 3px var(--jewel);
+  }
+  
+  .button-input {
+    flex-grow: 2;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 10px;
+    border: none;
+  }
+  
+  #register-signup {
+    width: 38%;
+    height: 45px;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--midnight);
+    color: var(--lightblue);
+    font-size: x-large;
+    cursor: pointer;
+    margin-top: 7px;
+  }
+   */
+
+   .regi{
+    float: ;
+   }

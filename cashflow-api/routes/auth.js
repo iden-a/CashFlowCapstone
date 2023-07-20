@@ -22,8 +22,6 @@ router.get("/moduleinfo", async function (req, res, next) {
     const topic = req.query.topic
     let module = [moduleinfo[topic]]
     return res.status(201).json({ module });
-
-
   } catch (err) {
     next(err);
   }

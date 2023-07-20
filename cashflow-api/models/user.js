@@ -50,7 +50,7 @@ class User {
       first_name,
       last_name
     );
-
+      console.log(user)
     return user;
   }
 
@@ -106,7 +106,7 @@ class User {
     return goal;
   }
 
-  //Inserts the quiz a user inputs into the goal table in our database
+  //Inserts the quiz a user inputs into the quiz table in our database
   static async insertQuiz(data) {
     const { id, topic, points } = data;
 

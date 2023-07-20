@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "setup": "psql -f cashflow.sql"
-  },
+    "setup": "psql -f cashflow.sql",
+    "testjest": "jest user.test.js --forceExit"
+},
   "author": "",
   "license": "ISC",
   "dependencies": {
