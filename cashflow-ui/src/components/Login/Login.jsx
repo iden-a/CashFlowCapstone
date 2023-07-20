@@ -12,14 +12,13 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  Link
+  Link,
 } from "@chakra-ui/react";
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Puff } from "react-loading-icons";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../../services/apiClient";
-import CashBot from "../Cashbot/Cashbot";
 import "./Login.css";
 
 export default function Login({ setAppState }) {
@@ -43,7 +42,6 @@ export default function Login({ setAppState }) {
           setIsLoading(false);
           return;
         }
-        console.log(data);
         if (data) {
           setLoginError("");
           setAppState((prevState) => ({
@@ -55,6 +53,7 @@ export default function Login({ setAppState }) {
           }));
 
           localStorage.setItem("CashFlow_Token", data.token);
+          apiClient.setToken(data.token);
           navigateTo("/");
         } else {
           setLoginError("Invalid email and/or password.");
@@ -192,7 +191,7 @@ export default function Login({ setAppState }) {
                 <Stack spacing={10}>
                   {userInfo.email.length === 0 ||
                   userInfo.email.includes("@") ? null : (
-                    <span
+                    <Text as="span"
                       style={{
                         color: "red",
                         marginBottom: "-45px",
@@ -200,12 +199,12 @@ export default function Login({ setAppState }) {
                       }}
                     >
                       Your email must have an '@'.
-                    </span>
+                    </Text>
                   )}
                   {loginError !== "" && (
-                    <span style={{ color: "red", marginLeft: "34%" }}>
+                    <Text as="span" style={{ color: "red", marginBottom: "-40px", marginLeft: "34%" }}>
                       {loginError}
-                    </span>
+                    </Text>
                   )}
                   <Button
                     onClick={handleSubmit}
@@ -217,11 +216,12 @@ export default function Login({ setAppState }) {
                     bg={"var(--midnight)"}
                     color={"var(--lightblue)"}
                     _hover={{
-                      bg: "var(--darkblue)",
+                      borderColor: "var(--grey)",
+                      border: "1px solid"
                     }}
                   >
                     {isLoading ? (
-                      <Puff stroke="var(--midnight)" speed={1.25} />
+                      <Puff stroke="var(--grey)" speed={1.25} />
                     ) : (
                       <span>Login</span>
                     )}
@@ -243,7 +243,6 @@ export default function Login({ setAppState }) {
           </Stack>
         </Flex>
       </Box>
-      <CashBot />
     </Fragment>
   );
 }

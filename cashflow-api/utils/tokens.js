@@ -3,7 +3,7 @@ const { SECRET_KEY } = require("../config");
 
 const verifyAuthToken = (token) => {
   try {
-    const decoded = jwt.verify(token, secretKey);
+    const decoded = jwt.verify(token, SECRET_KEY);
     return decoded;
   } catch (err) {
     return null;
@@ -18,7 +18,7 @@ const generateUserToken = (user) => {
     email: user.email,
     firstname: user.first_name,
     lastname: user.last_name,
-    username: user.username,
+    username: user.username
   };
 
   return generateToken(payload);

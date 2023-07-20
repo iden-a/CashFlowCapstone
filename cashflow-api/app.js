@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-// const security = require("./middleware/security");
+const security = require("./middleware/security");
 const authRoutes = require("./routes/auth");
 
 const app = express();
@@ -13,7 +13,7 @@ app.use(morgan("tiny"));
 //for every request, checks if a token exists in the
 //authorization header, if it does attach the decoded user to
 //res.locals
-// app.use(security.extractUserFromJwt);
+app.use(security.extractUserFromJwt);
 
 app.use("/auth", authRoutes);
 

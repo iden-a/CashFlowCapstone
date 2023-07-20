@@ -45,7 +45,7 @@ class ApiClient {
     return await this.request({
       endpoint: `auth/me`,
       method: `GET`,
-      data: creds,
+      data: creds
     });
   }
 

@@ -50,7 +50,6 @@ class User {
       first_name,
       last_name
     );
-      console.log(user)
     return user;
   }
 

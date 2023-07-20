@@ -2,13 +2,12 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 const tokens = require("../utils/tokens");
+const security = require("../middleware/security");
 const moduleinfo = require("../modules/modulesInfo.json")
 
-
-router.get("/me", async function (req, res, next) {
+router.get("/me", security.requireAuthenticatedUser, async function (req, res, next) {
   try {
-    //TODO!! CHANGE EMAIL TO DYNAMICALLY GENERATED EMAIL
-    const email = "pelumi.tayoorisadare@gmail.com";
+    const { email } = res.locals.user;
     const userInfo = await User.fetchUserByEmail(email);
     const { user, goals, quizzes } = await User._createPublicUser(userInfo);
     return res.status(201).json({ user, goals, quizzes });
