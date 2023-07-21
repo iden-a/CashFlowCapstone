@@ -1,11 +1,11 @@
 import { ChakraProvider, useColorModeValue } from '@chakra-ui/react';
 import AboutGrid from '../AboutGrid/AboutGrid';
-import CashBot from '../Cashbot/Cashbot';
 import Login from '../Login/Login';
 import Navbar from '../Navbar/Navbar';
 import { useState, useEffect } from 'react'
 import apiClient from "../../services/apiClient";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Register from '../Register/Register'
 
 function App() {
   const [appState, setAppState] = useState({
@@ -60,7 +60,7 @@ function App() {
         <Routes>
           <Route path="/" element={<> </>} />
           <Route path="/about" element={<AboutGrid />} />
-          <Route path="/register" element={<></>} />
+          <Route path="/register" element={<Register setAppState={setAppState}/>} />
           <Route path="/login" element={<Login setAppState={setAppState}/>} />
           <Route path="/profile" element={<></>} />
           <Route path="/goals" element={<></>} />
@@ -70,7 +70,5 @@ function App() {
     </div>
   );
 }
-
-
 
 export default App;

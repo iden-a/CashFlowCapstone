@@ -105,14 +105,19 @@ export default function CashBot() {
 
   return (
     <>
-      {isCashbotOpen ? ( //terenary operator for cashbot, the chatbox shows when cashbot is "true"
-        <div style={{ position: "relative", height: "500px", width: "400px" }}>
+      {isCashbotOpen ? 
+      ( //terenary operator for cashbot, the chatbox shows when isCashbotOpen is true
+        <div className="chatbox"
+        style={{ position: "relative", height: "500px", width: "500px", display:"flex", float:"right" }}>
           <img
+          style={{height:"100px", width:"100px", backgroundColor:"var(--midnight)", float:"right"}}
+            className="cashbot"
             src={Cashbot}
             alt="Cashbot for CashFlow Academy"
             onClick={handleOpenCashbot}
           />
-          <MainContainer>
+        
+          <MainContainer style={{}}>
             <ChatContainer
               style={{ position: "relative", height: "500px", width: "400px" }}
             >
@@ -125,9 +130,9 @@ export default function CashBot() {
                   ) : null
                 }
               >
-                {messages.map((message, i) => {
+                {messages.map((message, i) => { // 
                   return <Message key={i} model={message} />;
-                })}
+                })} 
               </MessageList>
               <MessageInput
                 placeholder="Type message here"
@@ -136,12 +141,17 @@ export default function CashBot() {
             </ChatContainer>
           </MainContainer>
         </div>
-      ) : ( // users only see the cashbot when the operator is false.
+      ) : (
+        // users only see the cashbot when the isCashbotOpen is false.
+        <div className="cashbot2">
         <img
+          style={{height:"200px", width:"200px", backgroundColor:"var(--midnight)", float:"right"}}
+          className="cashbot"
           src={Cashbot}
           alt="Cashbot for CashFlow Academy"
           onClick={handleOpenCashbot}
         />
+        </div>
       )}
     </>
   );
