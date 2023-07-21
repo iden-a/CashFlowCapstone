@@ -120,7 +120,8 @@ export default function AboutCard({
           bg={useColorModeValue("var(--grey)", "var(--midnight)")}
         >
           {/* Displays name and aspiration */}
-          <Heading
+          <center>
+            <Heading
             color={useColorModeValue("var(--midnight)", "var(--grey)")}
             fontSize={"2xl"}
             fontFamily={"body"}
@@ -128,6 +129,8 @@ export default function AboutCard({
           >
             {name}
           </Heading>
+          </center>
+          <center>
           <Text
             color={useColorModeValue("var(--midnight)", "var(--grey)")}
             fontSize={"sm"}
@@ -136,6 +139,8 @@ export default function AboutCard({
           >
             {aspiration}
           </Text>
+            </center>
+          
           
           <IconButton
             aria-label={isExpanded ? "Collapse info" : "Expand info"}
