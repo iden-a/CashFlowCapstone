@@ -1,3 +1,9 @@
-/* .cashbot {
-    border-radius: 10px;
-} */
+.chatbox {
+    float: right;
+    background-color: red;
+}
+
+.cashbot {
+    float: right;
+    background-color: red;
+}
