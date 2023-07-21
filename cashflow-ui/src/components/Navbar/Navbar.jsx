@@ -25,11 +25,12 @@ export default function Navbar({setAppState, appState}) {
   const { colorMode, toggleColorMode } = useColorMode();
   const navLinks = ['About', 'Register', 'Login'];
   const handleLogout = () =>{
-    //localStorage.removeItem("CashFlow_Token")
-    setAppState((appState) => ({...appState, user:{}, isAuthenticated: false}))
-    console.log("logged out")
+    console.log(appState)
+    localStorage.setItem("CashFlow_Token", null)
+    setAppState((appState) => ({...appState, isAuthenticated: false}))
     //window.location.reload();
 }
+  
   const NavLink = ({ children }) => {
       const handleClick = () => {
         window.location.href = children;
@@ -80,7 +81,7 @@ export default function Navbar({setAppState, appState}) {
         <Flex>
                  {/* TODO: Dynamically render sidebar if user is logged in */}
                  {!appState.isAuthenticated ? 
-                 <HStack
+                  <HStack
                  as={'nav'}
                  spacing={4}
                  display={{ base: 'none', md: 'flex' }}>
@@ -88,6 +89,7 @@ export default function Navbar({setAppState, appState}) {
                    <NavLink key={link}>{link}</NavLink>
                  ))}
                </HStack>
+                 
                  : 
                  
                  <Menu position={'fixed'}>
@@ -101,7 +103,7 @@ export default function Navbar({setAppState, appState}) {
                    <Avatar
                      size={'sm'}
                      // TODO: Insert profile image from user
-                     src={'https://avatars.dicebear.com/api/male/username.svg'}
+                     src={appState.user.image_url ? appState.image_url : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'}
                    />
                  </MenuButton>
                  
@@ -111,16 +113,16 @@ export default function Navbar({setAppState, appState}) {
                    {/* TODO: Insert profile image from user */}
                    <center><Avatar
                        size={'2xl'}
-                       src={'https://avatars.dicebear.com/api/male/username.svg'}
-                     />
+                       src={appState.user.image_url ? appState.image_url : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'}
+                       />
                      </center>
                    <br />
                    <Center>
-                     <p>Username</p> 
+                     <p>{appState.user.username}</p> 
                      {/* TODO: Insert username from user */}
                    </Center>
                    <Center>
-                     <p>Points: XXXX</p> 
+                     <p>Points: {appState.user.total_points}</p> 
                      {/* TODO: Insert points from user */}
                    </Center>
                    <br />
