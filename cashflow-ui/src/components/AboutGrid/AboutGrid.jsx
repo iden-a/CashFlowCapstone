@@ -1,5 +1,5 @@
 import AboutCard from "../AboutCard/AboutCard";
-import { Flex, Spacer, Center, Image } from "@chakra-ui/react";
+import { Flex, Spacer, Center, Image, Heading } from "@chakra-ui/react";
 
 export default function AboutGrid() {
   const aboutInfo = [

@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import apiClient from "../../services/apiClient";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from '../Register/Register'
+import Home from '../Home/Home';
 
 function App() {
   const [appState, setAppState] = useState({
@@ -58,7 +59,7 @@ function App() {
     <BrowserRouter>
     <Navbar setAppState={setAppState} appState={appState}/>
         <Routes>
-          <Route path="/" element={<> </>} />
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutGrid />} />
           <Route path="/register" element={<Register setAppState={setAppState}/>} />
           <Route path="/login" element={<Login setAppState={setAppState}/>} />
