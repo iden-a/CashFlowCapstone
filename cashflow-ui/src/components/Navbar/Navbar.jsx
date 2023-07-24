@@ -14,6 +14,7 @@ import {
   HStack,
   useColorMode,
   Center,
+  Spacer,
   Img,
   MenuItemOption,
 } from '@chakra-ui/react';
@@ -83,7 +84,7 @@ export default function Navbar({setAppState, appState}) {
                  {!appState.isAuthenticated ? 
                   <HStack
                  as={'nav'}
-                 spacing={4}
+                 spacing={10}
                  display={{ base: 'none', md: 'flex' }}>
                  {navLinks.map((link) => (
                    <NavLink key={link}>{link}</NavLink>
@@ -102,7 +103,6 @@ export default function Navbar({setAppState, appState}) {
                  >
                    <Avatar
                      size={'sm'}
-                     // TODO: Insert profile image from user
                      src={appState.user.image_url ? appState.image_url : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'}
                    />
                  </MenuButton>
@@ -110,7 +110,6 @@ export default function Navbar({setAppState, appState}) {
                  {/* Sidebar with user information */}
                  <MenuList zIndex={9999}>
                    <br />
-                   {/* TODO: Insert profile image from user */}
                    <center><Avatar
                        size={'2xl'}
                        src={appState.user.image_url ? appState.image_url : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541'}
@@ -119,11 +118,9 @@ export default function Navbar({setAppState, appState}) {
                    <br />
                    <Center>
                      <p>{appState.user.username}</p> 
-                     {/* TODO: Insert username from user */}
                    </Center>
                    <Center>
                      <p>Points: {appState.user.total_points}</p> 
-                     {/* TODO: Insert points from user */}
                    </Center>
                    <br />
                    <MenuDivider />
@@ -141,10 +138,11 @@ export default function Navbar({setAppState, appState}) {
                    </MenuItem>
                  </MenuList>
                </Menu>
+               
                  }
-
+               
                  <Flex alignItems={'center'}>
-            <Stack direction={'row'} spacing={7}>
+            <Stack direction={'row'} spacing={7} ml={7}>
               <Button onClick={toggleColorMode}>
                 {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
               </Button>
