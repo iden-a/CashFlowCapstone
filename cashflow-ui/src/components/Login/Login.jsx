@@ -26,11 +26,13 @@ export default function Login({ setAppState }) {
   const [isLoading, setIsLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
+  console.log(emailPattern.test(userInfo.email))
   const navigateTo = useNavigate();
   async function handleSubmit(e) {
     e.preventDefault();
-    if (userInfo.email.includes("@")) {
+    if (emailPattern.test(userInfo.email)) {
       setIsLoading(true);
       try {
         const { data, error, message } = await apiClient.login({
@@ -190,15 +192,15 @@ export default function Login({ setAppState }) {
                 </FormControl>
                 <Stack spacing={10}>
                   {userInfo.email.length === 0 ||
-                  userInfo.email.includes("@") ? null : (
+                  emailPattern.test(userInfo.email) ? null : (
                     <Text as="span"
                       style={{
                         color: "red",
-                        marginBottom: "-45px",
-                        marginLeft: "37%",
+                        marginBottom: "-40px",
+                        marginLeft: "57.5%",
                       }}
                     >
-                      Your email must have an '@'.
+                      Invalid email input.
                     </Text>
                   )}
                   {loginError !== "" && (
