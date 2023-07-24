@@ -3,7 +3,7 @@ import { useState, Fragment } from "react";
 import apiClient from "../../services/apiClient";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Puff } from "react-loading-icons";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Flex,
   Box,
@@ -32,9 +32,12 @@ export default function Register({ appState, setAppState }) {
   const [isLoading, setIsLoading] = useState(false);
   const [registerError, setRegisterError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-  //   const navigateTo = useNavigate();
-  console.log(userInfo);
+
+  console.log(emailPattern.test(userInfo.email))
+  const navigateTo = useNavigate();
   async function handleSubmit(e) {
     e.preventDefault();
     if (
@@ -46,7 +49,7 @@ export default function Register({ appState, setAppState }) {
       userInfo.password &&
       userInfo.password.length >= 8 &&
       userInfo.password === userInfo.confirmPassword &&
-      userInfo.email.includes("@")
+      emailPattern.test(userInfo.email)
     ) {
       setIsLoading(true);
       try {
@@ -76,7 +79,7 @@ export default function Register({ appState, setAppState }) {
           }));
           localStorage.setItem("CashFlow_Token", data.token);
           apiClient.setToken(data.token);
-          // navigateTo("/");
+          navigateTo("/login");
         } else {
           setRegisterError("Something went wrong with registration.");
         }
@@ -296,7 +299,7 @@ export default function Register({ appState, setAppState }) {
                           confirmPassword: e.target.value,
                         }))
                       }
-                      type={showPassword ? "text" : "password"}
+                      type={showConfirmPassword ? "text" : "password"}
                     />
                     <InputRightElement h={"full"}>
                       <Button
@@ -309,25 +312,25 @@ export default function Register({ appState, setAppState }) {
                         fontSize={"x-large"}
                         variant={"ghost"}
                         onClick={() =>
-                          setShowPassword((showPassword) => !showPassword)
+                          setShowConfirmPassword((showConfirmPassword) => !showConfirmPassword)
                         }
                       >
-                        {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                        {showConfirmPassword ? <ViewIcon /> : <ViewOffIcon />}
                       </Button>
                     </InputRightElement>
                   </InputGroup>
                 </FormControl>
                 <Stack spacing={10}>
                   {userInfo.email.length === 0 ||
-                  userInfo.email.includes("@") ? null : (
+                  emailPattern.test(userInfo.email) ? null : (
                     <span
                       style={{
                         color: "red",
                         marginBottom: "-30px",
-                        marginLeft: "37%",
+                        marginLeft: "61%",
                       }}
                     >
-                      Your email must have an '@'.
+                      Invalid email input.
                     </span>
                   )}
                   {userInfo.password !== userInfo.confirmPassword && (
@@ -335,7 +338,7 @@ export default function Register({ appState, setAppState }) {
                       <span
                         style={{
                           color: "red",
-                          marginLeft: "38%",
+                          marginLeft: "47.5%",
                           marginBottom: "-95px",
                         }}
                       >
@@ -350,10 +353,9 @@ export default function Register({ appState, setAppState }) {
                       <span
                         style={{
                           color: "red",
-                          marginLeft: "38%",
                         }}
                       >
-                        Your password must have a minimum of 8 characters.
+                        Password must have a minimum of 8 characters.
                       </span>
                     </>
                   )}

@@ -7,6 +7,7 @@ import apiClient from "../../services/apiClient";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from '../Register/Register'
 import Home from '../Home/Home';
+import RegisterQuiz from '../RegisterQuiz/RegisterQuiz';
 
 function App() {
   const [appState, setAppState] = useState({
@@ -66,6 +67,8 @@ function App() {
           <Route path="/profile" element={<></>} />
           <Route path="/goals" element={<></>} />
           <Route path="/dashboard" element={<></>} />
+          <Route path="/registerquiz" element={<RegisterQuiz setAppState={setAppState}/>} />
+
       </Routes>
       </BrowserRouter>
     </div>
