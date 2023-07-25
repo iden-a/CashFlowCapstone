@@ -67,7 +67,7 @@ function App() {
           <Route path="/profile" element={<></>} />
           <Route path="/goals" element={<></>} />
           <Route path="/dashboard" element={<></>} />
-          <Route path="/registerquiz" element={<RegisterQuiz setAppState={setAppState}/>} />
+          <Route path="/registerquiz" element={<RegisterQuiz />} />
 
       </Routes>
       </BrowserRouter>

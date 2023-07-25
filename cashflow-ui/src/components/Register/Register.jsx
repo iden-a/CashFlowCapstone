@@ -79,7 +79,7 @@ export default function Register({ appState, setAppState }) {
           }));
           localStorage.setItem("CashFlow_Token", data.token);
           apiClient.setToken(data.token);
-          navigateTo("/login");
+          navigateTo("/registerquiz");
         } else {
           setRegisterError("Something went wrong with registration.");
         }

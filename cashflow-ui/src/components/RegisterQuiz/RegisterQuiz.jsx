@@ -1,5 +1,7 @@
 import * as React from "react";
 import { Fragment } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   FormControl,
@@ -9,158 +11,186 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
-  Select,
-  HStack,
   Stack,
   RadioGroup,
   useColorModeValue,
   Radio,
-  FormHelperText,
   Flex,
   Heading,
   Image,
   Input,
-  InputGroup,
-
-  //   Formik,
   Button,
-  //   Field,
-  //   Form,
-  //   FormErrorMessage
+  Center,
 } from "@chakra-ui/react";
-// import {Form} from "react-router-dom";
-import { Field, Form, Formik } from "formik";
-import { color } from "framer-motion";
-
-// function FormikExample() {
-//     function validateName(value) {
-//       let error
-//       if (!value) {
-//         error = 'Name is required'
-//       } else if (value.toLowerCase() !== 'naruto') {
-//         error = "Jeez! You're not a fan 😱"
-//       }
-//       return error
-//     }}
 
 export default function RegisterQuiz() {
+  const [imageUrl, setImageUrl] = useState("");
+
+  console.log(imageUrl);
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setImageUrl(reader.result);
+    };
+
+    console.log("this is file", file);
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const navigateTo = useNavigate();
+  const handleStartLearning = (e) => {
+    navigateTo("/dashboard");
+  };
+
   return (
     <Fragment>
-      <Stack>
-        <Heading as="h3" size="lg" marginLeft={"700px"} >
-          Let’s Start With Examining Your Financial Goals...{" "}
+      <Stack bg={useColorModeValue("var(--grey)", "var(--midnight)")}>
+        <Heading
+          as="h3"
+          size="lg"
+          marginLeft={"750px"}
+          marginTop={""}
+          position={"relative"}
+          top={"70px"}
+          color={useColorModeValue("var(--midnight)", "var(--grey)")}
+        >
+          Let’s Start With Examining <br /> Your Financial Goals...{" "}
         </Heading>
       </Stack>
       <Box
-        maxWidth={"900px"}
-        maxHeight={"100vh"}
-        marginTop={"900px"}
-        height={"100vh"}
+        maxWidth={"720px"}
+        maxHeight={"110vh"}
         color={"white"}
         margin={"0 auto"}
-        //   mb={"200px"}
-        //   marginTop={"50px"}
         bg={useColorModeValue("var(--midnight)", "var(--lightblue)")}
         borderRadius={"40px"}
-        //   color={"black"} //
       >
         <Image
           textAlign={"center"}
           width={"400px"}
           height={"400px"}
           position={"absolute"}
-          top={"-30px"}
+          top={"60px"}
           marginLeft={"-70px"}
-          // backgroundColor={"red"}
-          // marginRight={"20px"}
-          //   margin={"0 auto"}
-          //   marginBottom={"90px"}
           src="/registerguy.png"
         ></Image>
-        <FormControl>
+        <FormControl position={"relative"} top={"70px"}>
           <FormLabel
             fontWeight={"bold"}
-            color={"black"}
             marginLeft={"20px"}
             marginTop={"10%"}
-            // marginTop={"100px"}
+            position={"relative"}
+            top={"90px"}
+            color={useColorModeValue("var(--grey)", "var(--midnight)")}
           >
             {" "}
             1. On a scale of 1-10, how would you rate your current financial
             stability?
           </FormLabel>
-          <NumberInput max={10} min={1} color={"black"}>
-            <NumberInputField color={"black"} />
+          <NumberInput
+            max={10}
+            min={1}
+            color={"black"}
+            position={"relative"}
+            top={"90px"}
+            width={"150px"}
+            marginLeft={"30px"}
+            borderRadius={"20px"}
+          >
+            <NumberInputField bg={"var(--grey)"} />
             <NumberInputStepper color={"black"}>
               <NumberIncrementStepper color={"black"} />
               <NumberDecrementStepper color={"black"} />
             </NumberInputStepper>
           </NumberInput>
         </FormControl>
-        <FormControl as="fieldset" marginTop={"10%"}>
+        <FormControl
+          as="fieldset"
+          marginTop={"10%"}
+          position={"relative"}
+          top={"70px"}
+        >
           <FormLabel
             as="legend"
             fontWeight={"bold"}
-            color={"black"}
             marginLeft={"20px"}
+            position={"relative"}
+            top={"50px"}
+            color={useColorModeValue("var(--grey)", "var(--midnight)")}
           >
             {" "}
             2. How would you rate your current level of debt?
           </FormLabel>
-          <RadioGroup defaultValue="Itachi">
+          <RadioGroup defaultValue="Question2">
             <Stack
               spacing="24px"
               direction={"column"}
-              color={"black"}
               marginLeft={"20px"}
+              position={"relative"}
+              top={"50px"}
+              color={useColorModeValue("var(--grey)", "var(--midnight)")}
             >
-              <Radio value="Sasuke"> No debt </Radio>
-              <Radio value="Nagato">
+              <Radio value="No debt"> No debt </Radio>
+              <Radio value=" Minimal debt (e.g., student loans, small credit card balance)o">
                 {" "}
                 Minimal debt (e.g., student loans, small credit card balance){" "}
               </Radio>
-              <Radio value="Itachi">
+              <Radio
+                value=" Moderate debt (e.g., mortgage, car loan, significant credit card
+                balance)"
+              >
                 {" "}
                 Moderate debt (e.g., mortgage, car loan, significant credit card
                 balance){" "}
               </Radio>
-              <Radio value="Sage of the six Paths">
+              <Radio value=" High debt (e.g., multiple loans, large credit card balances)">
                 {" "}
                 High debt (e.g., multiple loans, large credit card balances){" "}
               </Radio>
             </Stack>
           </RadioGroup>
-          {/* <FormHelperText>Select only if you're a fan.</FormHelperText> */}
         </FormControl>
-        <FormControl as="fieldset" marginTop={"10%"}>
+        <FormControl
+          as="fieldset"
+          marginTop={"10%"}
+          position={"relative"}
+          top={"50px"}
+        >
           <FormLabel
             as="legend"
             fontWeight={"bold"}
-            color={"black"}
             marginLeft={"20px"}
+            position={"relative"}
+            top={"50px"}
+            color={useColorModeValue("var(--grey)", "var(--midnight)")}
           >
             {" "}
             3. What is your primary financial goal/objective?
           </FormLabel>
-          {/* <FormHelperText
-            color={"black"}
-            marginBottom={"3%"}
-            marginLeft={"30px"}
+          <RadioGroup
+            defaultValue="Question3"
+            color={useColorModeValue("var(--grey)", "var(--midnight)")}
           >
-            (Please select all that apply.)
-          </FormHelperText> */}
-          <RadioGroup defaultValue="Itachi">
             <Stack
               spacing="24px"
               direction={"column"}
-              color={"black"}
               marginLeft={"20px"}
+              position={"relative"}
+              top={"50px"}
+              color={useColorModeValue("var(--grey)", "var(--midnight)")}
             >
               <Radio value="Saving for a specific purchase or expense">
                 {" "}
                 Saving for a specific purchase or expense{" "}
               </Radio>
-              <Radio value="Building an emergency fund"> Building an emergency fund </Radio>
+              <Radio value="Building an emergency fund">
+                {" "}
+                Building an emergency fund{" "}
+              </Radio>
               <Radio value="Paying off debt (e.g., credit cards, loans)">
                 {" "}
                 Paying off debt (e.g., credit cards, loans){" "}
@@ -176,51 +206,66 @@ export default function RegisterQuiz() {
             </Stack>
           </RadioGroup>
         </FormControl>
-        {/* <FormControl marginTop={"10%"} color={"black"} marginLeft={"20px"}>
-        <FormLabel fontWeight={"bold"}> Lastly, would you like to upload a profile photo? </FormLabel>
-        <Input type="text" /> */}
-        {/* <FormHelperText color={"black"}>We'll never share your emai.</FormHelperText> */}
-        {/* </FormControl> */}
+        <Box margin={"0 auto"}>
+          <FormControl marginTop={"10%"} position={"relative"} top={"50px"}>
+            <FormLabel
+              htmlFor="image"
+              fontWeight={"bold"}
+              marginLeft={"50px"}
+              position={"relative"}
+              top={"20px"}
+              color={useColorModeValue("var(--grey)", "var(--midnight)")}
+            >
+              {" "}
+              Lastly, would you like to upload a profile photo?
+            </FormLabel>
+            <Input
+              type="file"
+              id="image"
+              onChange={handleImageChange}
+              accept="image/*"
+              position={"relative"}
+              top={"20px"}
+              width={"450px"}
+              marginLeft={"30px"}
+              color={useColorModeValue("var(--grey)", "var(--midnight)")}
+            />
+          </FormControl>
+          {imageUrl && (
+            <Image
+              src={imageUrl}
+              alt="Uploaded preview"
+              mt={4}
+              backgroundColor={"white"}
+              marginLeft={"40px"}
+              maxWidth={"100px"}
+              maxHeight={"100px"}
+              position={"relative"}
+              top={"60px"}
+            />
+          )}
+        </Box>
 
-        <FormControl marginTop={"10%"}>
-          <Formik
-            initialValues={{ name: "Sasuke" }}
-            onSubmit={(values, actions) => {
-              setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                actions.setSubmitting(false);
-              }, 1000);
-            }}
-          >
-            {(props) => (
-              <Form>
-                <Field name="name">
-                  {({ field, form }) => (
-                    <FormControl>
-                      <FormLabel
-                        fontWeight={"bold"}
-                        color={"black"}
-                        marginLeft={"20px"}
-                      >
-                        Lastly, would you like to upload a profile photo?
-                      </FormLabel>
-                      <Input placeholder="name" />
-                      {/* <FormErrorMessage></FormErrorMessage> */}
-                    </FormControl>
-                  )}
-                </Field>
-                <Button
-                  mt={4}
-                  colorScheme="teal"
-                  isLoading={props.isSubmitting}
-                  type="submit"
-                >
-                  Upload Image
-                </Button>
-              </Form>
-            )}
-          </Formik>
-        </FormControl>
+        <Flex alignItems="center" justifyContent="center">
+          <Center>
+            <Button
+              onClick={handleStartLearning}
+              width={"100%"}
+              borderRadius={"20px"}
+              height={"45px"}
+              fontSize={"x-large"}
+              marginTop={"110px"}
+              marginBottom={"20px"}
+              bg={"var(--midnight)"}
+              color={"var(--lightblue)"}
+              _hover={{
+                bg: "var(--darkblue)",
+              }}
+            >
+              <span>Start Learning Now!</span>
+            </Button>
+          </Center>
+        </Flex>
       </Box>
     </Fragment>
   );
