@@ -17,6 +17,7 @@ class User {
       email: user.email,
       image_url: user.image_url,
       total_points: user.total_points,
+      status: user.status
     };
 
     return {
@@ -66,7 +67,7 @@ class User {
     const { email, password } = creds;
 
     const userInfo = await User.fetchUserByEmail(email);
-
+    console.log(userInfo)
     try {
       if (userInfo) {
         // compare hashed password to a new hash from password
@@ -92,17 +93,18 @@ class User {
 
   //Inserts the goal a user inputs into the goal table in our database
   static async insertGoal(data) {
-    const { id, start_date, end_date, category, description } = data;
+    const { id, goal, start_date, end_date, category, description } = data;
 
-    const goal = await DbQuery.insertGoal(
+    const goals = await DbQuery.insertGoal(
       id,
+      goal,
       start_date,
       end_date,
       category,
       description
     );
 
-    return goal;
+    return goals;
   }
 
   //Inserts the quiz a user inputs into the quiz table in our database

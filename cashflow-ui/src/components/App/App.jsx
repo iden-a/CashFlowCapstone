@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import apiClient from "../../services/apiClient";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from '../Register/Register'
+import GoalsTracker from '../GoalsTracker/GoalsTracker'
 import Home from '../Home/Home';
 import ModuleInfo from '../ModuleInfo/ModuleInfo';
 import Dashboard from '../Dashboard/Dashboard';
@@ -22,6 +23,7 @@ function App() {
   // Sets background color based on dark/light mode
   const bgColor = useColorModeValue('var(--grey)', 'var(--midnight)');
   const [isLoading, setIsLoading] = useState(false);
+
 
   const module_pages = ['bank-acct', 'credit-cards', 'debt', 'hysavings','cdsavings','roth','401k']
 
@@ -70,6 +72,7 @@ function App() {
           <Route path="/register" element={<Register setAppState={setAppState}/>} />
           <Route path="/login" element={<Login setAppState={setAppState}/>} />
           <Route path="/profile" element={<></>} />
+          <Route path="/goals" element={<GoalsTracker setAppState={setAppState} appState={appState}/>} />
           <Route path="/goals" element={<></>} />
 
           {module_pages.map((page) =>(
