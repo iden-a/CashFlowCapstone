@@ -270,3 +270,5 @@ export default function RegisterQuiz() {
     </Fragment>
   );
 }
+
+
