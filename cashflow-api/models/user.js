@@ -17,8 +17,9 @@ class User {
       email: user.email,
       image_url: user.image_url,
       total_points: user.total_points,
-      status: user.status
+      status: user.status,
     };
+    console.log(userInfo)
 
     return {
       user: userInfo,
@@ -67,7 +68,7 @@ class User {
     const { email, password } = creds;
 
     const userInfo = await User.fetchUserByEmail(email);
-    console.log(userInfo)
+    console.log(userInfo);
     try {
       if (userInfo) {
         // compare hashed password to a new hash from password
@@ -124,6 +125,17 @@ class User {
     const point = await DbQuery.updatePoints(updateValue, id);
 
     return point;
+  }
+
+  static async updateImageAndStatus(data) {
+    const { id, image_url, status } = data;
+    const imageStats = await DbQuery.updateImageAndStatus(
+      id,
+      image_url,
+      status
+    );
+
+    return imageStats;
   }
 }
 

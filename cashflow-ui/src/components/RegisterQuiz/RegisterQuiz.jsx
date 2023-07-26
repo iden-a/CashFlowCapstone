@@ -16,33 +16,42 @@ import {
   useColorModeValue,
   Radio,
   Flex,
+  InputGroup,
+  InputLeftAddon,
   Heading,
   Image,
   Input,
   Button,
   Center,
 } from "@chakra-ui/react";
+import apiClient from "../../services/apiClient";
 
-export default function RegisterQuiz() {
+export default function RegisterQuiz({ setAppState, appState }) {
   const [imageUrl, setImageUrl] = useState("");
 
-  console.log(imageUrl);
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setImageUrl(reader.result);
-    };
-
-    console.log("this is file", file);
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  };
-
   const navigateTo = useNavigate();
-  const handleStartLearning = (e) => {
+  const handleStartLearning = async (e) => {
+    e.preventDefault();
+    try {
+      const { data, error, message } = await apiClient.imageStats({
+        id: appState.user.id,
+        image_url: imageUrl,
+        status: "intermediate",
+      });
+      console.log(data);
+      if (error) {
+        return;
+      }
+      if (data) {
+        setAppState((prevState) => ({
+          ...prevState.user,
+          image_url: data.image_url,
+          status: data.status,
+        }));
+      }
+    } catch (err) {
+      console.log(err);
+    }
     navigateTo("/dashboard");
   };
 
@@ -134,12 +143,19 @@ export default function RegisterQuiz() {
               top={"50px"}
               color={useColorModeValue("var(--grey)", "var(--midnight)")}
             >
-              <Radio value="No debt"> No debt </Radio>
-              <Radio value=" Minimal debt (e.g., student loans, small credit card balance)o">
+              <Radio border={"1px solid white"} value="No debt">
+                {" "}
+                No debt{" "}
+              </Radio>
+              <Radio
+                border={"1px solid white"}
+                value=" Minimal debt (e.g., student loans, small credit card balance)o"
+              >
                 {" "}
                 Minimal debt (e.g., student loans, small credit card balance){" "}
               </Radio>
               <Radio
+                border={"1px solid white"}
                 value=" Moderate debt (e.g., mortgage, car loan, significant credit card
                 balance)"
               >
@@ -147,7 +163,10 @@ export default function RegisterQuiz() {
                 Moderate debt (e.g., mortgage, car loan, significant credit card
                 balance){" "}
               </Radio>
-              <Radio value=" High debt (e.g., multiple loans, large credit card balances)">
+              <Radio
+                border={"1px solid white"}
+                value=" High debt (e.g., multiple loans, large credit card balances)"
+              >
                 {" "}
                 High debt (e.g., multiple loans, large credit card balances){" "}
               </Radio>
@@ -183,23 +202,38 @@ export default function RegisterQuiz() {
               top={"50px"}
               color={useColorModeValue("var(--grey)", "var(--midnight)")}
             >
-              <Radio value="Saving for a specific purchase or expense">
+              <Radio
+                border={"1px solid white"}
+                value="Saving for a specific purchase or expense"
+              >
                 {" "}
                 Saving for a specific purchase or expense{" "}
               </Radio>
-              <Radio value="Building an emergency fund">
+              <Radio
+                border={"1px solid white"}
+                value="Building an emergency fund"
+              >
                 {" "}
                 Building an emergency fund{" "}
               </Radio>
-              <Radio value="Paying off debt (e.g., credit cards, loans)">
+              <Radio
+                border={"1px solid white"}
+                value="Paying off debt (e.g., credit cards, loans)"
+              >
                 {" "}
                 Paying off debt (e.g., credit cards, loans){" "}
               </Radio>
-              <Radio value=" Investing for retirement">
+              <Radio
+                border={"1px solid white"}
+                value=" Investing for retirement"
+              >
                 {" "}
                 Investing for retirement{" "}
               </Radio>
-              <Radio value="Saving for education (e.g., college fund)">
+              <Radio
+                border={"1px solid white"}
+                value="Saving for education (e.g., college fund)"
+              >
                 {" "}
                 Saving for education (e.g., college fund){" "}
               </Radio>
@@ -207,7 +241,12 @@ export default function RegisterQuiz() {
           </RadioGroup>
         </FormControl>
         <Box margin={"0 auto"}>
-          <FormControl marginTop={"10%"} position={"relative"} top={"50px"}>
+          <FormControl
+            encType="multipart/form-data"
+            marginTop={"10%"}
+            position={"relative"}
+            top={"50px"}
+          >
             <FormLabel
               htmlFor="image"
               fontWeight={"bold"}
@@ -217,9 +256,26 @@ export default function RegisterQuiz() {
               color={useColorModeValue("var(--grey)", "var(--midnight)")}
             >
               {" "}
-              Lastly, would you like to upload a profile photo?
+              Lastly, would you like to add a profile photo?
             </FormLabel>
-            <Input
+            <InputGroup
+              position={"relative"}
+              top={"20px"}
+              width={"450px"}
+              marginLeft={"50px"}
+              color={useColorModeValue("var(--grey)", "var(--midnight)")}
+              size="sm"
+              border={"solid 2px white"}
+            >
+              <InputLeftAddon children="https://" />
+              <Input
+                _placeholder={{ opacity: 1, color: "grey" }}
+                placeholder="My profile picture"
+                value={imageUrl}
+                onChange={(e) => setImageUrl(e.target.value)}
+              />
+            </InputGroup>
+            {/* <Input
               type="file"
               id="image"
               onChange={handleImageChange}
@@ -229,7 +285,7 @@ export default function RegisterQuiz() {
               width={"450px"}
               marginLeft={"30px"}
               color={useColorModeValue("var(--grey)", "var(--midnight)")}
-            />
+            /> */}
           </FormControl>
           {imageUrl && (
             <Image
@@ -237,7 +293,7 @@ export default function RegisterQuiz() {
               alt="Uploaded preview"
               mt={4}
               backgroundColor={"white"}
-              marginLeft={"40px"}
+              marginLeft={"50px"}
               maxWidth={"100px"}
               maxHeight={"100px"}
               position={"relative"}
@@ -270,4 +326,3 @@ export default function RegisterQuiz() {
     </Fragment>
   );
 }
-

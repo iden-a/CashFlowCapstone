@@ -3,7 +3,7 @@ import axios from "axios";
 class ApiClient {
   constructor(remoteHostUrl) {
     this.token = null;
-    this.remoteHostUrl = "http://localhost:3001"
+    this.remoteHostUrl = "http://localhost:3001";
   }
 
   setToken(token) {
@@ -45,7 +45,7 @@ class ApiClient {
     return await this.request({
       endpoint: `auth/me`,
       method: `GET`,
-      data: creds
+      data: creds,
     });
   }
 
@@ -63,9 +63,14 @@ class ApiClient {
       data: creds,
     });
   }
+
+  async imageStats(creds) {
+    return await this.request({
+      endpoint: `auth/imageStatus`,
+      method: `PATCH`,
+      data: creds,
+    });
+  }
 }
 
-
-
-
-export default  new ApiClient("http://localhost:3001");
+export default new ApiClient("http://localhost:3001");

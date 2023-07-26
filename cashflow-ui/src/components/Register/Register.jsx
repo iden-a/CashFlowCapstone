@@ -394,7 +394,7 @@ export default function Register({ appState, setAppState }) {
                 fontSize={"x-large"}
               >
                 Have an account?
-                <Link to="/login" style={{ color: "var(--blue)" }}>
+                <Link href="/login" style={{ color: "var(--blue)" }}>
                   <em> Sign In</em>
                 </Link>
               </Text>

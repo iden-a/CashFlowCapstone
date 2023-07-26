@@ -3,23 +3,27 @@ const router = express.Router();
 const User = require("../models/user");
 const tokens = require("../utils/tokens");
 const security = require("../middleware/security");
-const moduleinfo = require("../modules/modulesInfo.json")
+const moduleinfo = require("../modules/modulesInfo.json");
 
-router.get("/me", security.requireAuthenticatedUser, async function (req, res, next) {
-  try {
-    const { email } = res.locals.user;
-    const userInfo = await User.fetchUserByEmail(email);
-    const { user, goals, quizzes } = await User._createPublicUser(userInfo);
-    return res.status(201).json({ user, goals, quizzes });
-  } catch (err) {
-    next(err);
+router.get(
+  "/me",
+  security.requireAuthenticatedUser,
+  async function (req, res, next) {
+    try {
+      const { email } = res.locals.user;
+      const userInfo = await User.fetchUserByEmail(email);
+      const { user, goals, quizzes } = await User._createPublicUser(userInfo);
+      return res.status(201).json({ user, goals, quizzes });
+    } catch (err) {
+      next(err);
+    }
   }
-});
+);
 
 router.get("/moduleinfo", async function (req, res, next) {
   try {
-    const topic = req.query.topic
-    let module = [moduleinfo[topic]]
+    const topic = req.query.topic;
+    let module = [moduleinfo[topic]];
     return res.status(201).json({ module });
   } catch (err) {
     next(err);
@@ -68,6 +72,15 @@ router.patch("/totalpoints", async function (req, res, next) {
   try {
     const points = await User.updateTotalPoints(req.body);
     return res.status(201).json(points);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.patch("/imageStatus", async function (req, res, next) {
+  try {
+    const imageStats = await User.updateImageAndStatus(req.body);
+    return res.status(201).json(imageStats);
   } catch (err) {
     next(err);
   }

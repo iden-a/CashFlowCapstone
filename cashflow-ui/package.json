@@ -16,6 +16,7 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "axios": "^1.4.0",
+    "form-data": "^4.0.0",
     "framer-motion": "^10.13.1",
     "intersection-observer": "^0.12.2",
     "json-loader": "^0.5.7",

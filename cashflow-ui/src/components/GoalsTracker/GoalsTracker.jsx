@@ -25,6 +25,7 @@ import "./GoalsTracker.css";
 import apiClient from "../../services/apiClient";
 import { Puff } from "react-loading-icons";
 import GoalTile from "../GoalTile/GoalTile";
+import CashBot from "../Cashbot/Cashbot";
 
 export default function GoalsTracker({ setAppState, appState }) {
   const [goalInfo, setGoalInfo] = useState({
@@ -94,8 +95,10 @@ export default function GoalsTracker({ setAppState, appState }) {
   }
   return (
     <Fragment>
-      <Box marginTop={"5%"} height={"auto"} color={"white"}>
+      <CashBot/>
+      <Box marginTop={"5%"} height={"100vh"} color={"white"}>
         <Box
+        zIndex={"-1"}
           marginTop={"11%"}
           marginLeft={"16%"}
           rounded={"lg"}

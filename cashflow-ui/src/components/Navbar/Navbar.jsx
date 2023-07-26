@@ -4,6 +4,7 @@ import {
   Avatar,
   Button,
   Menu,
+  Link,
   MenuButton,
   MenuList,
   MenuItem,
@@ -15,7 +16,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 export default function Navbar({ setAppState, appState }) {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -64,7 +65,7 @@ export default function Navbar({ setAppState, appState }) {
       >
         {/* Clicking on logo leads back to homepage */}
         <Flex h={20} alignItems={"center"} justifyContent={"space-between"}>
-          <Link to="/">
+          <Link href="/">
             <Box>
               <img src={"/logo.png"} width={90} height={90} />
             </Box>
@@ -94,8 +95,8 @@ export default function Navbar({ setAppState, appState }) {
                   <Avatar
                     size={"sm"}
                     src={
-                      appState.user.image_url
-                        ? appState.image_url
+                      appState.user.image_url 
+                        ? appState.user.image_url
                         : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
                     }
                   />
@@ -109,7 +110,7 @@ export default function Navbar({ setAppState, appState }) {
                       size={"2xl"}
                       src={
                         appState.user.image_url
-                          ? appState.image_url
+                          ? appState.user.image_url
                           : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
                       }
                     />
@@ -124,16 +125,22 @@ export default function Navbar({ setAppState, appState }) {
                   <br />
                   <MenuDivider />
                   <MenuItem>
-                    <SideLink to="/profile">Your Profile</SideLink>
+                    <Link href="/profile" style={{textDecoration:"none"}} >
+                      Your Profile
+                    </Link>{" "}
                   </MenuItem>
                   <MenuItem>
-                    <SideLink to="/dashboard">Learning Dashboard</SideLink>
+                    <Link href="/dashboard" style={{textDecoration:"none"}}>
+                      Learning Dashboard
+                    </Link>{" "}
                   </MenuItem>
                   <MenuItem>
-                    <SideLink to="/goals">Goals</SideLink>
+                    <Link href="/goals" style={{textDecoration:"none"}}>
+                      Goals
+                    </Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link to="/" onClick={handleLogout}>
+                    <Link href="/"style={{textDecoration:"none"}} onClick={handleLogout}>
                       Logout
                     </Link>
                   </MenuItem>

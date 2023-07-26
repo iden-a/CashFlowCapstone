@@ -140,6 +140,20 @@ class DbQuery {
     );
     return points.rows[0];
   }
+
+  static async updateImageAndStatus(id, image_url, status) {
+    const imageStats = await db.query(
+      `UPDATE users
+      SET image_url = $1, status = $2
+      WHERE id = $3
+      RETURNING 
+      image_url,
+      status
+      `,
+      [image_url, status, id]
+    );
+    return imageStats.rows[0];
+  }
 }
 
 module.exports = DbQuery;

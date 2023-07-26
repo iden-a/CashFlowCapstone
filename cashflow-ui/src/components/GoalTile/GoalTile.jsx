@@ -5,16 +5,14 @@ export default function GoalTile({ userGoal }) {
   const [isChecked, setIsChecked] = useState(false);
   const [showGif, setShowGif] = useState(false);
 
-
   const handleCheckboxChange = () => {
-      setIsChecked(!isChecked)
-    };
-    console.log(isChecked)
-    useEffect(() => {
-      
+    setIsChecked(!isChecked);
+  };
+  console.log(isChecked);
+  useEffect(() => {
     const timer = setTimeout(() => {
-        setShowGif(false)
-        console.log(isChecked)
+      setShowGif(false);
+      console.log(isChecked);
     }, 5000);
 
     // Clear the timer if the component unmounts before 5 seconds
@@ -23,9 +21,9 @@ export default function GoalTile({ userGoal }) {
 
   useEffect(() => {
     if (isChecked === true) {
-        setShowGif(true)
+      setShowGif(true);
     }
-  }, [isChecked])
+  }, [isChecked]);
   let wordImage = userGoal.category.charAt(0).toUpperCase();
 
   const createdAtUTC = new Date(userGoal.start_date);
@@ -68,7 +66,8 @@ export default function GoalTile({ userGoal }) {
   return (
     <Fragment>
       <Box
-      position={"relative"}
+        zIndex={"1"}
+        position={"relative"}
         marginBottom={"15px"}
         height={"420px"}
         overflowY={"scroll"}
@@ -77,19 +76,19 @@ export default function GoalTile({ userGoal }) {
         borderRadius={"30px"}
         width={"30%"}
         padding={"15px"}
-        >
-          {showGif && (
-            <Image
-              position={"absolute"}
-              width={"100%"}
-              height={"420px"}
-              marginTop={"-15px"}
-              marginLeft={"-15px"}
-              objectFit={"cover"}
-              src="https://i.pinimg.com/originals/97/8d/48/978d481bf5fd81da9837c8a1f1c7b70d.gif"
-              zIndex={2}
-            />
-          )}
+      >
+        {showGif && (
+          <Image
+            position={"absolute"}
+            width={"100%"}
+            height={"420px"}
+            marginTop={"-15px"}
+            marginLeft={"-15px"}
+            objectFit={"cover"}
+            src="https://i.pinimg.com/originals/97/8d/48/978d481bf5fd81da9837c8a1f1c7b70d.gif"
+            zIndex={2}
+          />
+        )}
         <Box
           display="inline-block"
           objectFit={"cover"}
@@ -103,7 +102,7 @@ export default function GoalTile({ userGoal }) {
           fontSize={"xx-large"}
           fontWeight={"bold"}
           marginRight={"18%"}
-          >
+        >
           {wordImage}
         </Box>
         <Text
@@ -115,7 +114,7 @@ export default function GoalTile({ userGoal }) {
           backgroundColor={"var(--darkblue)"}
           fontSize={"x-large"}
           as={"span"}
-          >
+        >
           {userGoal.category}
         </Text>
         <Checkbox
@@ -125,7 +124,7 @@ export default function GoalTile({ userGoal }) {
           onChange={handleCheckboxChange}
           colorScheme="var(--darkblue)"
           border={"var(--midnight)"}
-          >
+        >
           Goal Accomplished?
         </Checkbox>
         <Text

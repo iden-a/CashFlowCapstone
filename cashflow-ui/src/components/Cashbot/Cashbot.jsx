@@ -105,52 +105,82 @@ export default function CashBot() {
 
   return (
     <>
-      {isCashbotOpen ? 
-      ( //terenary operator for cashbot, the chatbox shows when isCashbotOpen is true
-        <div className="chatbox"
-        style={{ position: "relative", height: "500px", width: "500px", display:"flex", float:"right" }}>
+      {isCashbotOpen ? (
+        //terenary operator for cashbot, the chatbox shows when isCashbotOpen is true
+        <div
+          className="chatbox"
+          style={{
+            position: "fixed",
+            zIndex:"10",
+            bottom: "0",
+            left: "72%",
+            height: "500px",
+            width: "500px",
+            display: "flex",
+          }}
+        >
+              <MainContainer style={{position:"static"}}>
+                <ChatContainer
+                  style={{
+                    zIndex:"10",
+                    position: "static",
+                    float: "right",
+                    bottom: "0",
+                    height: "500px",
+                    width: "400px",
+                  }}
+                >
+                  <MessageList
+                    style={{ color: "red" }}
+                    scrollBehavior="smooth"
+                    typingIndicator={
+                      typing ? (
+                        <TypingIndicator content="CashBot is typing" />
+                      ) : null
+                    }
+                  >
+                    {messages.map((message, i) => {
+                      //
+                      return <Message key={i} model={message} />;
+                    })}
+                  </MessageList>
+                  <MessageInput
+                    placeholder="Type message here"
+                    onSend={handleSend}
+                  />
+                </ChatContainer>
+              </MainContainer>
           <img
-          style={{height:"100px", width:"100px", backgroundColor:"var(--midnight)", float:"right"}}
+            style={{
+              height: "100px",
+              width: "100px",
+              backgroundColor: "var(--midnight)",
+            }}
             className="cashbot"
             src={Cashbot}
             alt="Cashbot for CashFlow Academy"
             onClick={handleOpenCashbot}
           />
-        
-          <MainContainer style={{}}>
-            <ChatContainer
-              style={{ position: "relative", height: "500px", width: "400px" }}
-            >
-              <MessageList
-                style={{ color: "red" }}
-                scrollBehavior="smooth"
-                typingIndicator={
-                  typing ? (
-                    <TypingIndicator content="CashBot is typing" />
-                  ) : null
-                }
-              >
-                {messages.map((message, i) => { // 
-                  return <Message key={i} model={message} />;
-                })} 
-              </MessageList>
-              <MessageInput
-                placeholder="Type message here"
-                onSend={handleSend}
-              />
-            </ChatContainer>
-          </MainContainer>
+
         </div>
       ) : (
         // users only see the cashbot when the isCashbotOpen is false.
         <div className="cashbot2">
-        <img
-          style={{height:"200px", width:"200px", backgroundColor:"var(--midnight)", float:"right"}}
-          className="cashbot"
-          src={Cashbot}
-          alt="Cashbot for CashFlow Academy"
-          onClick={handleOpenCashbot}
-        />
+          <img
+            style={{
+              zIndex:"10",
+              position: "fixed",
+              bottom: "0",
+              left: "88%",
+              height: "200px",
+              width: "200px",
+              backgroundColor: "var(--midnight)",
+            }}
+            className="cashbot"
+            src={Cashbot}
+            alt="Cashbot for CashFlow Academy"
+            onClick={handleOpenCashbot}
+          />
         </div>
       )}
     </>

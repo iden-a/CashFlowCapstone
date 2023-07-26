@@ -30,6 +30,7 @@ function App() {
 
   const module_pages = ['bank_account_basics', 'credit-cards', 'debt', 'hysavings','cdsavings','roth','401k']
 
+  console.log(appState)
   useEffect(() => {
     setIsLoading(true);
     const token = localStorage.getItem("CashFlow_Token");
@@ -82,6 +83,10 @@ function App() {
           {module_pages.map((page) =>(
        <Route path={`/${page}`} element={<ModuleInfo module_name={page} /> } />
     ))}
+
+
+          <Route path="/registerquiz" element={<RegisterQuiz setAppState={setAppState} appState={appState}/>} />
+
           {module_pages.map((page) =>(
        <Route path={`/${page}/quiz`} element={ <Module module_name={page}/> } />
        ))}
