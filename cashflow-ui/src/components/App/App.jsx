@@ -15,6 +15,8 @@ import Module from '../Module/Module';
 import GoodJob from '../Success/GoodJob';
 import NotQuite from '../Fail/NotQuite';
 import Failure from '../Fail/Failure';
+import ProfileView from '../ProfileView/ProfileView';
+
 
 function App() {
   const [appState, setAppState] = useState({
@@ -76,7 +78,7 @@ function App() {
           <Route path="/about" element={<AboutGrid />} />
           <Route path="/register" element={<Register setAppState={setAppState}/>} />
           <Route path="/login" element={<Login setAppState={setAppState}/>} />
-          <Route path="/profile" element={ <Failure /> } />
+          <Route path="/profile" element={ <ProfileView setAppState={setAppState}/> } />
           <Route path="/goals" element={<GoalsTracker setAppState={setAppState} appState={appState}/>} />
           <Route path="/goals" element={<></>} />
           
@@ -103,6 +105,8 @@ function App() {
       </BrowserRouter>
     </div>
   );
+
 }
+
 
 export default App;
