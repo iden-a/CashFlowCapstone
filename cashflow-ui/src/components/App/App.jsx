@@ -12,7 +12,6 @@ import ModuleInfo from '../ModuleInfo/ModuleInfo';
 import Dashboard from '../Dashboard/Dashboard';
 import RegisterQuiz from '../RegisterQuiz/RegisterQuiz';
 
-
 function App() {
   const [appState, setAppState] = useState({
     user: {},
