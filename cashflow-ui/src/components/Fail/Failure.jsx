@@ -2,28 +2,20 @@ import React, { useState } from 'react';
 import {
   Box,
   IconButton,
-  useBreakpointValue,
-  Stack,
   Heading,
-  Container,
   Image,
-  Text
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
-export default function Module({module_name}) {
-    // TODO: counter for module info pages 
-    const page_count = 0
-    const navigate = useNavigate()
-    const handleBegin= () => {
-        navigate(`/${module_name}/quiz`)
-      }
-      
-    const handleBack= () => {
-        navigate(`/${module_name}/`)
-      }
 
+export default function Failure({module_name}) {
+    // TODO: Take in module, question #, correct explanation, point value
+    const navigate = useNavigate()
+    const handleReturn = () => {
+        navigate('/')
+      }
+    
     return (
-        // TODO: Ternary operator for if the module info is complete
+        
     <>
     <Box
       display="flex"
@@ -31,22 +23,20 @@ export default function Module({module_name}) {
       alignItems="center"
       height="100vh" 
     >
-      <Box>
-      <Image src='/tiffany.png' position={'absolute'} top={'-50px'} ml={'500px'} h={500} zIndex={'1'}/>
+      <Box mt={20}>
+      <Image src='/gary.png' position={'absolute'} top={'-50px'} ml={'500px'} h={500} zIndex={'1'}/>
       <Box position={'relative'} height={'800px'} width={'1500px'} overflow={'inherit'} borderRadius={'3xl'} color={'var(--midnight)'} backgroundColor={'var(--lightblue)'}>
 
-        
-
-        {/* Left Icon */}
+        {/* Menu Icon */}
         <IconButton
-          aria-label="left-arrow"
+          aria-label="start"
           variant="ghost"
           position="absolute"
           transform={'translate(0%, -50%)'}
           zIndex={2}
           mt={700}
-          icon={<Image src="/back.png" maxH={'200px'} />}
-          onClick={handleBack}
+          icon={<Image src="/menu.png" maxH={'300px'} />}
+          onClick={handleReturn}
         />
         {/* Start Icon */}
         <IconButton
@@ -57,14 +47,17 @@ export default function Module({module_name}) {
           zIndex={2}
           mt={700}
           ml={1200}
-          icon={<Image src="/start.png" maxH={'300px'} />}
-          onClick={handleBegin}
+          icon={<Image src="/start.png" maxH={'330px'} />}
+          // onClick={handleRestart}
         />
+
         <Box pt={300}>
-        <Heading display={'flex'} size={'4xl'} justifyContent={'center'} >READY TO TEST YOUR KNOWLEDGE?</Heading>
-        <Heading pt={100} display={'flex'} justifyContent={'center'} >PRESS START TO BEGIN YOUR CASHFLOW QUIZ!</Heading>
+        <Heading display={'flex'} size={'4xl'} justifyContent={'center'} >YOU GOT THIS, TRY AGAIN!</Heading>
+        {/* TODO: Insert explanation  */}
+        <Heading pt={100} display={'flex'} justifyContent={'center'} >YOU HAVE NOT EARNED ENOUGH POINTS TO COMPLETE</Heading>
+        {/* TODO: Insert points  */}
+        <Heading display={'flex'} justifyContent={'center'} >THIS MODULE. TRY ASKING CASHBOT FOR MORE HELP!</Heading>
         </Box>
-   
       </Box>
       </Box>
     </Box>

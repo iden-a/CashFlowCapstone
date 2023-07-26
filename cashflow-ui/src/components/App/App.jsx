@@ -12,6 +12,12 @@ import ModuleInfo from '../ModuleInfo/ModuleInfo';
 import Dashboard from '../Dashboard/Dashboard';
 import RegisterQuiz from '../RegisterQuiz/RegisterQuiz';
 
+
+import Module from '../Module/Module';
+import GoodJob from '../Success/GoodJob';
+import NotQuite from '../Fail/NotQuite';
+import Failure from '../Fail/Failure';
+
 function App() {
   const [appState, setAppState] = useState({
     user: {},
@@ -24,7 +30,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
 
-  const module_pages = ['bank-acct', 'credit-cards', 'debt', 'hysavings','cdsavings','roth','401k']
+  const module_pages = ['bank_account_basics', 'credit-cards', 'debt', 'hysavings','cdsavings','roth','401k']
 
   useEffect(() => {
     setIsLoading(true);
@@ -67,20 +73,29 @@ function App() {
     <Navbar setAppState={setAppState} appState={appState}/>
         <Routes>
           <Route path="/" element={ appState.isAuthenticated ? <Dashboard /> : <Home />} />
+          <Route path="/" element={ appState.isAuthenticated ? <Dashboard /> : <Home />} />
           <Route path="/about" element={<AboutGrid />} />
           <Route path="/register" element={<Register setAppState={setAppState}/>} />
           <Route path="/login" element={<Login setAppState={setAppState}/>} />
-          <Route path="/profile" element={<></>} />
+          <Route path="/profile" element={ <Failure /> } />
           <Route path="/goals" element={<GoalsTracker setAppState={setAppState} appState={appState}/>} />
           <Route path="/goals" element={<></>} />
-
+          
           {module_pages.map((page) =>(
        <Route path={`/${page}`} element={<ModuleInfo module_name={page} /> } />
     ))}
-
-          <Route path="/dashboard" element={<></>} />
-          <Route path="/registerquiz" element={<RegisterQuiz />} />
-
+          {module_pages.map((page) =>(
+       <Route path={`/${page}/quiz`} element={ <Module module_name={page}/> } />
+       ))}
+          
+          
+          {module_pages.map((page) =>(
+       <Route path={`/${page}`} element={<ModuleInfo module_name={page} /> } />
+    ))}
+          {module_pages.map((page) =>(
+       <Route path={`/${page}/quiz`} element={ <Module module_name={page}/> } />
+       ))}
+          
       </Routes>
       </BrowserRouter>
     </div>
