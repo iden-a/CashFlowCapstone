@@ -56,6 +56,16 @@ class ApiClient {
       data: creds,
     });
   }
+  async goals(creds) {
+    return await this.request({
+      endpoint: `auth/goal`,
+      method: `POST`,
+      data: creds,
+    });
+  }
 }
+
+
+
 
 export default  new ApiClient("http://localhost:3001");

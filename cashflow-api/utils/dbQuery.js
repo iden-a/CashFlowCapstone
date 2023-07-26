@@ -49,7 +49,8 @@ class DbQuery {
             last_name,
             username,
             total_points,
-            image_url
+            image_url,
+            status
                FROM users
                WHERE email = $1
               `,
@@ -58,26 +59,28 @@ class DbQuery {
     return fetchUser.rows[0];
   }
 
-  static async insertGoal(id, start_date, end_date, category, description) {
-    const goal = await db.query(
+  static async insertGoal(id, goal, start_date, end_date, category, description) {
+    const goals = await db.query(
       `INSERT INTO goals (
+        goal,
         user_id, 
         start_date, 
         end_date, 
         category, 
         description
         )
-        VALUES ($1, $2, $3, $4, $5)
-        RETURNING             
+        VALUES ($1, $2, $3, $4, $5, $6)
+        RETURNING   
+                    goal,   
                     start_date, 
                     end_date,
                     category, 
                     description
 
     `,
-      [id, start_date, end_date, category, description]
+      [goal, id, start_date, end_date, category, description]
     );
-    return goal.rows[0];
+    return goals.rows[0];
   }
 
   static async insertQuiz(id, topic, points) {
@@ -101,6 +104,7 @@ class DbQuery {
   static async goals(id) {
     const goals = await db.query(
       `SELECT 
+      goal,
       start_date, 
       end_date,
       category, 
