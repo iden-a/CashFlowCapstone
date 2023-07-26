@@ -130,7 +130,7 @@ export default function Navbar({ setAppState, appState }) {
                     </Link>{" "}
                   </MenuItem>
                   <MenuItem>
-                    <Link href="/dashboard" style={{textDecoration:"none"}}>
+                    <Link href="/" style={{textDecoration:"none"}}>
                       Learning Dashboard
                     </Link>{" "}
                   </MenuItem>

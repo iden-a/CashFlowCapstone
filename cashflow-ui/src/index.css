@@ -6,7 +6,10 @@
   --darkblue: #07393c;
 }
 
-body{
+body {
   scroll-behavior: smooth;
+}
+
+html {
   background-color: var(--midnight);
 }

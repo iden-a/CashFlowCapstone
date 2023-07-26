@@ -2,7 +2,7 @@
 
 import { Image, Box } from '@chakra-ui/react'
 import { Link } from "react-router-dom";
-import ModuleInfo from '../ModuleInfo/ModuleInfo';
+import ModuleInfo from '../Module/ModuleInfo';
 import { useState } from 'react';
 
 export default function Dashboard() {
