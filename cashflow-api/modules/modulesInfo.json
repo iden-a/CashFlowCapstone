@@ -1,29 +1,407 @@
 {
-  "bank_account_basics": {
-    "who": [
-      "Working professionals, students, retirees, and individuals from various walks of life open bank accounts to manage their personal finances. ",
-      "TYPES OF ACCOUNT HOLDERS: Primary Account Holder - The person who applied to open a bank account or sign up for a credit card is referred to as the primary account holder. The financial institution uses their financial profile and information to approve or deny the account. Secondary Account Holder - Authorized users of an account who may have restricted access to the functions of the account. In most cases, the secondary account holder has no legal obligations to the account. Joint Account Holder - More common in marriages and families. This account allows multiple people to be considered primary account holders. Any person can add a secondary account holder and are responsible for any legal obligations that come with the account."
-    ],
-    "what": [
-      "A bank account is an account held at a financial institution that allows individuals or businesses to deposit and withdraw funds.",
-      "TYPES OF BANK ACCOUNTS: Checkings - A deposit account you can open at a physical bank, credit union, or online bank. Utilized to hold funds for a variety of needs and typically comes with a debit card for making purchases or withdrawals. It can also be linked to other bank accounts. Most have a minimum balance requirement and monthly maintenance fees. Savings - Deposit account used to hold money you don’t plan to spend right away. Most savings accounts provide an interest on deposits. Typically 0.4% annual percentage yield and subjected to a limit of six withdrawals per month. Money Market - A savings account and checkings account all in one. A money market account typically allows you to earn interest on balances, and can also offer debit-card access for spending or payments. Similar to a savings account, you will be limited to a limit of six withdrawals per month. CDs (Certificates of Deposits) - A savings account that exists for a fixed amount of time left untouched for that period of time. During this time, you’ll earn fixed interest on your balance. Withdrawing money before your term end date may lead to an early withdrawal penalty. "
-    ],
-    "when/where": [
-      "Opening a bank account is a personal decision based on your financial goals, convenience, and security preferences. If you find that the benefits align with your short-term and long-term needs, it is a great time to open a bank account.",
-      " Opening a bank account can seem intimidating at first, but if you have the following documents, you are good to go: Valid, government-issued photo ID (such as a driver's license or passport) Birth certificate Social Security Number or Tax Identification Number Proof of address (such as a utility bill or lease agreement) Initial deposit If you are opening a joint bank account, you will need identification for all primary account holders. Lastly, don't forget to ask questions during the account opening process! Seek clarification on any fees, account features, or terms and conditions that you may be unsure about. It's important to have a clear understanding of what you're agreeing to."
-    ],
-    "why": [
-      "Safekeeping of funds: Banks provide a secure environment for storing money.",
-      "Convenience: Bank accounts offer easy access to funds for day-to-day transactions, bill payments, and online shopping.",
-      "Interest earnings: Savings accounts and CDs may generate interest, allowing money to grow over time."
-    ],
-    "how": [
-      "Research different banks or financial institutions to find one that suits your needs in terms of services",
-      "Determine the type of account that best fits your requirements. ",
-      "Collect the necessary documents needed to open an account.",
-      "Depending on the bank, you can either visit a branch in person or apply online through their website. If you're applying online, follow the instructions provided by the bank to complete the application process.",
-      "Carefully review the terms and conditions provided by the bank, including any account fees, minimum balance requirements, withdrawal restrictions, and other account-specific details. ",
-      "Lastly, activate your new bank account!"
+  "bank-acct": {
+    "title": "BANK ACCOUNT BASICS",
+    "sections": [
+      {
+        "title": "WHO",
+        "content": [
+          "Working professionals, students, retirees, and individuals from various walks of life open bank accounts to manage their personal finances."
+        ]
+      },
+      {
+        "title": "TYPES OF ACCOUNT HOLDERS",
+        "content": [
+          "Primary Account Holder - The person who applied to open a bank account or sign up for a credit card is referred to as the primary account holder. The financial institution uses their financial profile and information to approve or deny the account.",
+          "Secondary Account Holder - Authorized users of an account who may have restricted access to the functions of the account. In most cases, the secondary account holder has no legal obligations to the account.",
+          "Joint Account Holder - More common in marriages and families. This account allows multiple people to be considered primary account holders. Any person can add a secondary account holder and are responsible for any legal obligations that come with the account."
+        ]
+      },
+      {
+        "title": "WHAT",
+        "content": [
+          "A bank account is an account held at a financial institution that allows individuals or businesses to deposit and withdraw funds."
+        ]
+      },
+      {
+        "title": "TYPES OF BANK ACCOUNTS",
+        "content": [
+          "Checkings - A deposit account you can open at a physical bank, credit union, or online bank. Utilized to hold funds for a variety of needs and typically comes with a debit card for making purchases or withdrawals. It can also be linked to other bank accounts. Most have a minimum balance requirement and monthly maintenance fees.",
+          "Savings - Deposit account used to hold money you don’t plan to spend right away. Most savings accounts provide an interest on deposits. Typically 0.4% annual percentage yield and subjected to a limit of six withdrawals per month.",
+          "Money Market - A savings account and checkings account all in one. A money market account typically allows you to earn interest on balances, and can also offer debit-card access for spending or payments. Similar to a savings account, you will be limited to a limit of six withdrawals per month.",
+          "CDs (Certificates of Deposits) - A savings account that exists for a fixed amount of time left untouched for that period of time. During this time, you’ll earn fixed interest on your balance. Withdrawing money before your term end date may lead to an early withdrawal penalty."
+        ]
+      },
+      {
+        "title": "WHEN/WHERE",
+        "content": [
+          "Opening a bank account is a personal decision based on your financial goals, convenience, and security preferences. If you find that the benefits align with your short-term and long-term needs, it is a great time to open a bank account.",
+          "Opening a bank account can seem intimidating at first, but if you have the following documents, you are good to go:",
+          "Valid, government-issued photo ID (such as a driver's license or passport)",
+          "Birth certificate",
+          "Social Security Number or Tax Identification Number",
+          "Proof of address (such as a utility bill or lease agreement)",
+          "Initial deposit",
+          "If you are opening a joint bank account, you will need identification for all primary account holders.",
+          "Lastly, don't forget to ask questions during the account opening process! Seek clarification on any fees, account features, or terms and conditions that you may be unsure about. It's important to have a clear understanding of what you're agreeing to."
+        ]
+      },
+      {
+        "title": "WHY",
+        "content": [
+          "Safekeeping of funds: Banks provide a secure environment for storing money.",
+          "Convenience: Bank accounts offer easy access to funds for day-to-day transactions, bill payments, and online shopping.",
+          "Interest earnings: Savings accounts and CDs may generate interest, allowing money to grow over time."
+        ]
+      },
+      {
+        "title": "HOW",
+        "content": [
+          "Research different banks or financial institutions to find one that suits your needs in terms of services",
+          "Determine the type of account that best fits your requirements.",
+          "Collect the necessary documents needed to open an account.",
+          "Depending on the bank, you can either visit a branch in person or apply online through their website. If you're applying online, follow the instructions provided by the bank to complete the application process.",
+          "Carefully review the terms and conditions provided by the bank, including any account fees, minimum balance requirements, withdrawal restrictions, and other account-specific details.",
+          "Lastly, activate your new bank account!"
+        ]
+      }
     ]
-  }
-}
+  },
+  "credit-cards": {
+    "title": "CREDIT CARDS",
+    "sections": [
+      {
+        "title": "WHO",
+        "content": [
+          "People who are looking to build their credit; individuals, consumers, business owners, travelers, etc.",
+          "Anyone who is looking to make purchases and borrow money on a short term basis."
+        ]
+      },
+      {
+        "title": "WHAT",
+        "content": [
+          "A credit card allows people to borrow money to make purchases/pay for services.",
+          "It is important to be aware that…",
+          "Credit cards come with a credit limit that is based on your trustworthiness as a consumer.",
+          "Interest rates and fees; interest rate is referred to as the APR(Annual Percentage Rate). Some fees include; annual fees, late payment fees, and cash advance fees.",
+          "Billing Cycle: billing cycle refers to the time between one billing statement closing date to the next.",
+          "Statement Balance: the amount of money that is shown on your monthly billing statement. Relates to the billing cycle (it represents the purchases and payments on your card during a set period of time)"
+        ]
+      },
+      {
+        "title": "WHEN/WHERE",
+        "content": [
+          "The sooner you begin building your credit history the more rewards and benefits you will have!",
+          "Ensure that you have some source of income.",
+          "Research and comparison between credit card companies before opening one",
+          "Purpose and need: using your credit card for a particular need can be extremely beneficial and allows you to narrow down what kind of services/payments you will be making with your card."
+        ]
+      },
+      {
+        "title": "WHY",
+        "content": [
+          "Convenient: Carrying a credit card is sometimes more convenient than carrying cash or writing checks.",
+          "Building Credit History: Credit cards are a great way to build credit history and build trustworthiness with banks. When you are able to showcase regular and responsible usage of a credit card, it makes it easier to pursue greater financial responsibilities such as loans and mortgages.",
+          "Emergencies and unexpected expenses: In times of financial emergencies, a credit card can provide a source of immediate financial support. Ensure that you are not abusing this right.",
+          "Rewards and Benefits: A variety of credit card companies offer rewards and benefits when you open a credit card account with them.",
+          "Consumer Protection: Most credit card companies offer built-in consumer protections that deal with fraud protection, dispute resolution services, purchase protection for stolen/damaged products"
+        ]
+      },
+      {
+        "title": "HOW",
+        "content": [
+          "Find a credit card company that appeals to your wants/needs. (ex. Travel, shopping, gas, food, etc.)",
+          "Make sure you are utilizing 10-30% of your credit card limit amount. This ensures that you are not overspending.",
+          "Always ensure that you are paying your required amount on the due date. Pay at least the credit card minimum or the full account balance to remain in good standing.",
+          "Keep track of your payment due dates and statement dates!",
+          "For those who have bad credit/have no credit history looking into secured credit cards are a great way to build trustworthiness and credit history."
+        ]
+      },
+      {
+        "title": "BEST CREDIT CARDS FOR STUDENTS",
+        "content": [
+          "RETURN LATER"
+        ]
+      }
+    ]
+  },
+  "debt": {
+    "title": "DEBT MANAGEMENT",
+    "sections": [
+      {
+      "title": "WHO",
+      "content": [
+      "Debt management involves individuals or entities who have incurred debt."
+      ]
+      },
+      {
+      "title": "WHAT",
+      "content": [
+      "Debt",
+      "Debt represents money borrowed from a lender or creditor, which must be repaid over time, typically with interest. Debt can come in various forms, such as credit card debt, student loans, mortgages, personal loans, or auto loans, each with different terms and conditions.",
+      "Debt Management",
+      "Debt creates a legal and financial obligation for the borrower to make regular payments to the lender until the borrowed amount, along with any interest, is fully repaid. Debt management involves strategies and practices aimed at reducing debt, minimizing interest costs, and maintaining financial stability.",
+      "Interest and Fees",
+      "Lenders charge interest on the borrowed amount, which is the cost of borrowing money. Additionally, some debt may incur fees, such as late payment fees or origination fees.",
+      "Impact on Credit",
+      "Managing debt responsibly is crucial, as it can impact credit scores and affect future borrowing opportunities. Timely payments and responsible debt management can help build a positive credit history."
+      ]
+      },
+      {
+      "title": "WHEN/WHERE",
+      "content": [
+      "You should prioritize debt management if…",
+      "1. You have accumulated a significant amount of debt.",
+      "2. You are experiencing financial instability, such as irregular income, job loss, or other financial hardships. Taking control of debts can help stabilize finances and prevent further financial strain.",
+      "3. You have debts with high-interest rates. High-interest debts can accumulate quickly and result in significant interest costs over time. Focusing on paying off high-interest debts can save money and improve financial well-being.",
+      "4. Your credit score is being negatively affected by outstanding debts. Taking steps to pay off debts, make timely payments, and improve credit utilization can help rebuild credit and open up future financial opportunities.",
+      "5. You have financial goals. If you want to save for a down payment on a house, start a business, or invest for the future, managing and reducing debts is essential to free up financial resources for these goals."
+      ]
+      },
+      {
+      "title": "WHY",
+      "content": [
+      "Debt management is crucial for several reasons:",
+      "Financial Stability: Effective debt management helps maintain financial stability by ensuring that debt remains at manageable levels and does not become overwhelming.",
+      "Creditworthiness: Responsible debt management is essential for building and maintaining a good credit history and credit score. This affects one's ability to access future credit, secure favorable interest rates, and obtain loans or mortgages.",
+      "Stress Reduction: Managing debt responsibly helps reduce financial stress and anxiety. It allows individuals to stay on top of payments, avoid late fees, and have a clear plan for debt repayment.",
+      "Long-Term Goals: Proper debt management enables individuals to work towards long-term financial goals, such as saving for retirement, buying a home, or starting a business. By minimizing debt and maximizing financial resources, individuals can allocate funds towards these goals.",
+      "Financial Freedom: Effective debt management provides individuals with greater financial freedom and flexibility. It allows them to allocate resources towards savings, investments, and experiences rather than being burdened by excessive debt obligations."
+      ]
+      },
+      {
+      "title": "HOW",
+      "content": [
+      "There are several debt repayment strategies available.",
+      "Prioritizing High-Interest Debts:",
+      "Debts with a higher interest rate generally cost you more money in the long run than debts with lower interest rates, even if the amount of principal you owe (your balance before adding any interest) is the same. Prioritizing high-interest debts is considered the most effective debt management strategy. If you decide to follow the highest-interest-rate plan, list your debts by interest rate from highest to lowest. Keep paying at least the minimum amount owed on all of them, but focus any extra money you can spare on the debt with the highest interest rate. After you've paid off that balance, tackle the one with the next highest interest rate, then the next, until you've taken care of all of the debts on your plate.",
+      "Minimum Payments/Debt Snowball:",
+      "According to this strategy, you always continue making all minimum monthly payments, but rather than organizing debts by their interest rates, you focus your extra money on eliminating the smallest balance first. Once you've paid off that one, take the amount of money you were paying each month and apply it toward the next-smallest balance, along with the minimum payments you were already making on that account.",
+      "Once the second debt is gone, you once again take all of the money you were paying each month and put it toward the next-smallest debt, continuing onward through all of the debts you owe, building momentum like a snowball rolling downhill.",
+      "Loan Consolidation:",
+      "Loan consolidation is the process of combining multiple loans into a single loan. By doing so, borrowers simplify their debt management and make one monthly payment instead of multiple payments to different lenders. The purpose of loan consolidation is to streamline repayment, potentially secure a lower interest rate, and improve overall financial management.",
+      "Credit Counseling:",
+      "Credit counseling is a service provided by nonprofit organizations to assist individuals in managing their debts and improving their overall financial situation. Credit counseling agencies offer guidance, education, and support to individuals who are struggling with debt or facing financial challenges."
+      ]
+      }
+      ]
+      },
+      "401k": {
+        "title": "401(k) BASICS",
+        "sections": [
+          {
+            "title": "WHO",
+            "content": [
+              "People who are employed/self-employed should consider opening a 401k."
+            ]
+          },
+          {
+            "title": "WHAT",
+            "content": [
+              "A type of retirement savings plan offered by US employers. It is named after a section of the IRS that governs these plans. It allows employees to save and invest a portion of their pre-tax income for retirement."
+            ]
+          },
+          {
+            "title": "WHEN/WHERE",
+            "content": [
+              "The best time to invest in a 401k is when an individual has begun their career. Having a stable source of income is the best way to begin because a 401k is directed towards people who are employed/self-employed."
+            ]
+          },
+          {
+            "title": "WHY",
+            "content": [
+              "Money for retirement! With a 401K, with each paycheck you are putting money aside for when you have reached the age where you want to retire from your career.",
+              "Some additional reasons why you should consider a 401K…",
+              "Tax advantages: Contributions made to traditional 401k are typically made with pre-tax income, they are deducted from your paycheck before taxes. This reduces taxable income for the year which lowers your tax liability.",
+              "Employer Matching contributions: Many employers offer matching contributions to their employees' 401(k) plans. This means that for every dollar you contribute, your employer may match a certain percentage of that amount, up to a certain limit. Employer matches are essentially free money added to your retirement savings, providing an immediate boost to your retirement funds.",
+              "Retirement Savings: By making regular contributions to a 401(k) account, you build a retirement nest egg over time, providing financial security in your later years. The potential for compounding growth on your investments can help your savings grow faster.",
+              "Investment Options: 401(k) plans usually offer a range of investment options, such as mutual funds, stocks, bonds, and target-date funds. This allows you to tailor your investment strategy to your risk tolerance and investment goals. Over time, your contributions and investment earnings can accumulate and grow, potentially generating significant wealth for retirement.",
+              "Asset Protection: In many cases, 401(k) assets are protected from creditors and legal claims. This means that even in the event of bankruptcy or other financial difficulties, your 401(k) funds are generally shielded and not easily accessible to creditors."
+            ]
+          },
+          {
+            "title": "HOW",
+            "content": [
+              "Check eligibility with your employer.",
+              "Enroll in your employer's 401(k) plan if you are eligible.",
+              "Decide on your contribution amount and contribution type (traditional or Roth 401(k)).",
+              "Choose your investment options based on your risk tolerance and retirement goals.",
+              "Make regular contributions to your 401(k) account through automatic payroll deductions.",
+              "Monitor and adjust your 401(k) investments as needed based on changing circumstances and market conditions.",
+              "Consider consulting a financial advisor for personalized guidance and advice on your retirement planning."
+            ]
+          }
+        ]
+      },
+      "roth": {
+        "title": "ROTH IRAs",
+        "sections": [
+          {
+            "title": "WHO",
+            "content": [
+              "Roth IRAs are good for young professionals and individuals expecting future income growth and who want to have a mix of different types of retirement savings accounts."
+            ]
+          },
+          {
+            "title": "WHAT",
+            "content": [
+              "A Roth IRA is a special type of account that you can use to save money for your retirement. What makes it different from other retirement accounts is that you contribute money that you've already paid taxes on, so you don't have to pay taxes on it when you withdraw it in retirement.",
+              "Advantage of a Roth IRA is that because you've already paid taxes on the money you contribute, you can potentially enjoy tax-free withdrawals in retirement. This can be especially beneficial if you expect your income tax rate to be higher when you retire.",
+              "Important to note that there are certain rules and limits on who can contribute to a Roth IRA and how much they can contribute. It's a good idea to learn more about these rules and consider speaking with a financial advisor to see if a Roth IRA is the right choice for your retirement savings."
+            ]
+          },
+          {
+            "title": "BE CAREFUL!",
+            "content": [
+              "If you try to withdraw from your Roth IRA earlier than allowed, you may be subject to a penalty which is generally 10% of the earnings withdrawn."
+            ]
+          },
+          {
+            "title": "WHEN/WHERE",
+            "content": [
+              "Eligibility: Determine the eligibility criteria for opening and contributing to a Roth IRA, including income limits and age requirements.",
+              "Account Providers: Research different financial institutions, such as banks, brokerage firms, or investment companies, that offer Roth IRAs. Compare their services, fees, investment options, and customer reviews.",
+              "Tax Considerations: You contribute after-tax money, so you don't get an immediate tax deduction. However, when you withdraw the money in retirement, it's tax-free.",
+              "No Required Minimum Distributions (RMDs): Unlike traditional retirement accounts, Roth IRAs do not require you to take required minimum distributions (RMDs) once you reach a certain age. This allows your funds to potentially continue growing tax-free for a longer period if you don't need to withdraw the money right away."
+            ]
+          },
+          {
+            "title": "WHY",
+            "content": [
+              "Benefits you gain due to having a Roth IRA!",
+              "No contribution age restrictions: You can contribute at any age as long as you have a qualifying earned Income.",
+              "Contributions into your ROTH-IRA grow tax-free: Contributions and investment gains grow tax-free.",
+              "Tax-Free Withdrawals: You can start withdrawing from your Roth IRA tax-free and penalty-free starting at the age of 59½ or older and if you have met the minimum account holding period of 5 years.",
+              "No income taxes for inherited Roth IRAs: Passing on your Roth IRA to your heirs results in their withdrawals also being tax-free!"
+            ]
+          },
+          {
+            "title": "HOW",
+            "content": [
+              "Account Opening Process:",
+              "Choose a Provider: Research and compare different financial institutions or investment firms that offer Roth IRAs. Consider factors such as fees, investment options, customer service, and online tools.",
+              "Complete Necessary Paperwork: Once you've chosen a provider, you'll need to fill out the required paperwork to open a Roth IRA account. This typically includes providing personal information, such as your name, address, Social Security Number, and employment details.",
+              "Funding the Account: Decide how much you want to contribute to your Roth IRA initially. You can typically fund the account through various methods, such as electronic bank transfers or rollovers from other retirement accounts.",
+              "Contribution Strategies:",
+              "Automatic Contributions: Set up automatic contributions to your Roth IRA, where a specific amount is automatically deducted from your bank account and deposited into your Roth IRA at regular intervals (e.g., monthly or bi-weekly).",
+              "Periodic Lump-Sum Contributions: Make periodic lump-sum contributions to your Roth IRA whenever you have additional funds available. This approach allows for flexibility in contributing larger amounts at specific times.",
+              "Maximizing Contributions Annually: Determine the maximum amount you're eligible to contribute to your Roth IRA each year based on the IRS limits. Aim to contribute the maximum allowable amount annually to make the most of the tax advantages and potential growth.",
+              "Investment Management:",
+              "Select Suitable Investment Options: Roth IRAs offer a range of investment options, such as stocks, bonds, mutual funds, ETFs, and more. Research and consider your investment goals, risk tolerance, and time horizon to select investments that align with your financial objectives.",
+              "Review Performance: Regularly review the performance of your Roth IRA investments. Monitor the returns, track any changes in the market or economy, and assess if adjustments need to be made to your investment strategy.",
+              "Rebalance as Needed: Over time, the value of your investments may change, which can lead to an imbalance in your desired asset allocation. Consider rebalancing your portfolio periodically to realign with your target asset allocation and manage risk appropriately.",
+              "It's important to note that managing a Roth IRA involves ongoing attention and decision-making. It's beneficial to stay informed about retirement planning strategies, investment trends, and changes in tax laws. Consider consulting with a financial advisor or utilizing online resources to stay up-to-date and make informed decisions about your Roth IRA."
+            ]
+          }
+        ]
+      },
+        "hysavings": {
+          "title": "HIGH YIELD SAVINGS",
+          "sections": [
+            {
+              "title": "WHO",
+              "content": [
+                "Savers Seeking Better Returns",
+                "Emergency Fund Builders",
+                "Short-Term Goal Savers",
+                "Large Balance Savers"
+              ]
+            },
+            {
+              "title": "WHAT",
+              "content": [
+                "A high-yield savings account is a type of savings account offered by banks or financial institutions that provides a higher interest rate compared to traditional savings accounts. It allows individuals to earn more interest on their savings while still maintaining the flexibility and accessibility of their funds.",
+                "Key Features:",
+                "- Higher Interest Rates: High-yield savings accounts offer higher interest rates compared to standard savings accounts.",
+                "- FDIC Insurance: Most high-yield savings accounts are FDIC-insured, which means that deposits are protected up to the maximum limit allowed by law (typically $250,000 per depositor, per insured bank).",
+                "- No or Low Minimum Balance Requirements: Many high-yield savings accounts have either no minimum balance requirement or a low minimum balance requirement.",
+                "- Easy Access to Funds: High-yield savings accounts typically allow individuals to withdraw their funds at any time without penalties.",
+                "- Online and Mobile Banking: Online banks or institutions that focus on digital banking often offer high-yield savings accounts."
+              ]
+            },
+            {
+              "title": "WHEN/WHERE",
+              "content": [
+                "Availability: High-yield savings accounts are offered by various financial institutions, including traditional banks, online banks, and credit unions. They are often available nationwide, allowing you to open an account from anywhere.",
+                "Market Conditions: Interest rates on high-yield savings accounts can fluctuate over time due to changes in the economy and prevailing market conditions. Stay informed about the current interest rate environment to make informed decisions."
+              ]
+            },
+            {
+              "title": "WHY",
+              "content": [
+                "Better Returns: High-yield savings accounts offer the opportunity to earn more interest on your savings compared to traditional savings accounts.",
+                "Savings Growth: With a higher interest rate, your savings can grow faster, helping you reach your financial goals more quickly.",
+                "Competitive Rates in the Market: High-yield savings accounts are designed to provide rates that are more competitive in the market.",
+                "Risk Mitigation: High-yield savings accounts are considered low-risk investments, providing a safe place to park your savings with the added benefit of higher returns.",
+                "Easy Access to Funds: Despite offering higher rates, high-yield savings accounts typically provide similar levels of accessibility to your funds as regular savings accounts."
+              ]
+            },
+            {
+              "title": "HOW",
+              "content": [
+                "Research different banks or financial institutions to find one that offers high-yield savings accounts that suit your needs in terms of services and interest rates.",
+                "Determine the type of high-yield savings account that best fits your requirements. Consider factors such as the interest rate, minimum balance requirements, account fees, and any additional features or benefits.",
+                "Collect the necessary documents needed to open a high-yield savings account. This typically includes a valid government-issued ID, proof of address, and your Social Security Number or Tax Identification Number. The bank or financial institution may require additional documentation.",
+                "Depending on the bank, you can either visit a branch in person or apply for a high-yield savings account online through their website. If you choose the online option, follow the instructions provided by the bank to complete the application process accurately.",
+                "Carefully review the terms and conditions provided by the bank for the high-yield savings account. Pay close attention to any account fees, minimum balance requirements, withdrawal restrictions, and other account-specific details. Ensure that the high-yield savings account meets your expectations and aligns with your financial goals."
+              ]
+            }
+          ]
+        },
+          "cdsavings": {
+            "title": "CD SAVINGS",
+            "sections": [
+              {
+                "title": "WHO",
+                "content": [
+                  "CDs (Certificates of Deposits) are suitable for individuals who have specific financial goals and are willing to commit their funds for a fixed period of time.",
+                  "Great for individuals who are saving for a future expense or have long-term financial goals such as a down payment on a home or a major purchase. They may choose CDs as a way to earn more interest than a regular savings account while maintaining the safety of their funds."
+                ]
+              },
+              {
+                "title": "WHAT",
+                "content": [
+                  "A savings account that exists for a fixed amount of time left untouched for that period of time. During this time, you’ll earn fixed interest on your balance. Withdrawing money before your term end date may lead to an early withdrawal penalty.",
+                  "Once the CD matures, you can either withdraw your initial deposit along with interest earned or roll the entire amount over to a new CD. The interest rate offered on CDs is generally higher than that of regular savings accounts due to the fixed-term commitment.",
+                  "Banks may offer CDs with terms as short as 28 days or as long as 10 years or more. Generally, a longer term means a higher interest rate. CDs can be good for money you don’t think you’ll need right away, but they may be a poor choice for emergency funds."
+                ]
+              },
+              {
+                "title": "BE CAREFUL!",
+                "content": [
+                  "When it comes to certificates of deposit (CDs), banks often impose early withdrawal penalties if you withdraw funds from a CD before its maturity date. The purpose of these penalties is to discourage customers from accessing their funds before the agreed-upon term.",
+                  "The specific early withdrawal penalties can vary between banks and depend on factors such as the CD term and the amount withdrawn. Generally, the penalty is a percentage of the interest earned or a specified number of months' worth of interest."
+                ]
+              },
+              {
+                "title": "WHEN/WHERE",
+                "content": [
+                  "When you're considering a CD, there are a few important things to think about. The first is the maturity term, which is how long you'll have to keep your money in the CD before you can access it. Longer terms often come with higher interest rates, but keep in mind that you won't be able to touch your savings for a while.",
+                  "It's also important to consider the interest rate or annual percentage yield (APY). This is the amount of money you'll earn on your CD over time. Generally, longer-term CDs offer higher rates, but it's essential to shop around and compare rates from different banks or financial institutions.",
+                  "Take a look at the current interest rate environment as well. If rates are generally low, you might find better options for higher rates with online CDs. It's worth doing some research and looking at different banks to find the best combination of rates and terms.",
+                  "By carefully thinking about the maturity term, interest rate or APY, and the overall interest rate climate, you can make an informed decision that fits your savings goals and gives you the best chance of earning more from your CD. Don't be afraid to ask questions and explore different options to find what works best for you."
+                ]
+              },
+              {
+                "title": "WHY",
+                "content": [
+                  "Interest Earnings: CDs typically offer higher interest rates compared to regular savings accounts, providing an opportunity to earn more on savings.",
+                  "Low-Risk Investment: CDs are considered low-risk investments due to their FDIC (This means that deposits in CDs are insured up to certain limits, typically $250,000 per depositor, per institution, in the US) or similar deposit insurance coverage, providing peace of mind for savers.",
+                  "Savings Goals: CDs can help individuals save towards specific financial goals, such as a down payment on a home, education expenses, or a future purchase."
+                ]
+              },
+              {
+                "title": "HOW",
+                "content": [
+                  "Research different banks or financial institutions to find one that offers CDs that suit your needs in terms of services and interest rates.",
+                  "Determine the type of CD that best fits your requirements. Consider factors such as the desired maturity term and whether you prefer a fixed-rate or variable-rate CD.",
+                  "Collect the necessary documents needed to open a CD, such as a valid government-issued ID, Social Security Number or Tax Identification Number, and any additional documentation required by the bank or financial institution.",
+                  "Depending on the bank, you can either visit a branch in person or apply for a CD online through their website. If you choose the online option, follow the instructions provided by the bank to complete the application process accurately.",
+                  "Carefully review the terms and conditions provided by the bank for the CD. Pay close attention to any account fees, minimum balance requirements, penalties for early withdrawal, and other account-specific details relevant to CDs.",
+                  "Once you have selected the CD and reviewed the terms, proceed to activate your new CD account according to the bank's instructions. This may involve funding the CD with the required initial deposit."
+                ]
+              }
+            ]
+          }        
+
+    }
+            
