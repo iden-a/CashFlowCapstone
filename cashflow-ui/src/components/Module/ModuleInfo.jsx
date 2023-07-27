@@ -25,7 +25,7 @@ const settings = {
 };
 
 // TODO: pass in specific module here 
-export default function ModuleInfo({module_data, num_pages, infoPage, setInfoPage}) {
+export default function ModuleInfo({module_data, num_pages, infoPage, setInfoPage, cashBotLink}) {
   const [slider, setSlider] = useState(null);
   const top = useBreakpointValue({ base: '90%', md: '50%' });
   const side = useBreakpointValue({ base: '30%', md: '40px' });
@@ -124,7 +124,7 @@ const handleBack= () => {
       </Slider>
       </Box>
       </Box>
-      <Cashbot />
+      <Cashbot cashBotLink={cashBotLink}/>
     </Box>
 
     </>

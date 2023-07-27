@@ -160,6 +160,7 @@ export default function RegisterQuiz({ setAppState, appState }) {
 
   return (
     <Fragment>
+      <Box marginBottom={"5%"}>
       <Stack bg={useColorModeValue("var(--grey)", "var(--midnight)")}>
         <Heading
           as="h3"
@@ -175,7 +176,8 @@ export default function RegisterQuiz({ setAppState, appState }) {
       </Stack>
       <Box
         maxWidth={"720px"}
-        maxHeight={"110vh"}
+        minHeight={"100vh"}
+        maxHeight={"auto"}
         color={"white"}
         margin={"0 auto"}
         bg={useColorModeValue("var(--midnight)", "var(--lightblue)")}
@@ -454,6 +456,7 @@ export default function RegisterQuiz({ setAppState, appState }) {
             </Button>
           </Center>
         </Flex>
+      </Box>
       </Box>
     </Fragment>
   );
