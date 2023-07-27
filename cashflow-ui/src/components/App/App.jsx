@@ -17,6 +17,8 @@ import NotQuite from '../Fail/NotQuite';
 import Failure from '../Fail/Failure';
 import ModuleQuiz from '../Module/ModuleQuiz';
 import QuizPreview from '../Module/QuizPreview';
+import ProfileView from '../ProfileView/ProfileView';
+
 
 function App() {
   const [appState, setAppState] = useState({
@@ -77,7 +79,7 @@ function App() {
           <Route path="/about" element={<AboutGrid />} />
           <Route path="/register" element={<Register setAppState={setAppState}/>} />
           <Route path="/login" element={<Login setAppState={setAppState}/>} />
-          <Route path="/profile" element={ <Failure /> } />
+          <Route path="/profile" element={ <ProfileView appState={appState} setAppState={setAppState}/> } />
           <Route path="/goals" element={<GoalsTracker setAppState={setAppState} appState={appState}/>} />
           <Route path="/registerquiz" element={<RegisterQuiz setAppState={setAppState} appState={appState}/>} />
           {module_pages.map((module_name) =>(
@@ -90,6 +92,8 @@ function App() {
       </BrowserRouter>
     </div>
   );
+
 }
+
 
 export default App;
