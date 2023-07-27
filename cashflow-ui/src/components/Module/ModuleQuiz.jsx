@@ -7,9 +7,15 @@ import {
   Heading,
   Container,
   Image,
+  FormControl,
+  FormLabel,
+  RadioGroup,
+  Radio,
   Text
 } from '@chakra-ui/react';
 import Slider from 'react-slick';
+import moduleQuiz from '../../../../cashflow-api/modules/modulequiz.json';
+
 
 // Settings for the slider
 const settings = {
@@ -24,29 +30,46 @@ const settings = {
 };
 
 // TODO: pass in specific module here 
-export default function ModuleQuiz({module_data, num_pages, infoPage, setInfoPage}) {
+export default function ModuleQuiz({module_name}) {
   const [slider, setSlider] = useState(null);
   const top = useBreakpointValue({ base: '90%', md: '50%' });
   const side = useBreakpointValue({ base: '30%', md: '40px' });
-  // Loads info from specified module
-  
-  const handleNext= () => {
-    if(infoPage < num_pages) 
-      setInfoPage(infoPage + 1)
-    console.log(infoPage)
-    slider?.slickNext()
-  }
-  
-const handleBack= () => {
-  if(infoPage > 0) 
-    setInfoPage(infoPage - 1)
-  console.log(infoPage)
-  slider?.slickPrev()
-  }
 
+
+  function Quiz({ module_name }) {
+    const quiz_data = moduleQuiz[module_name]; // Retrieve quiz_data for the specific module
+    return (
+      <Stack spacing={6}>
+        {quiz_data.questions?.map((question, index) => (
+          <Question key={index} question={question} />
+        ))}
+      </Stack>
+    );
+  }
+  
+  function Question({ question }) {
+    const { scenario, options } = question;
+  
+    return (
+      <Box>
+        <FormControl as="fieldset" color={'black'}>
+          <FormLabel as="legend">{scenario}</FormLabel>
+          <RadioGroup>
+            <Stack spacing={3}>
+              {options.map((option, index) => (
+                <Radio key={index}>
+                  {option}
+                </Radio>
+              ))}
+            </Stack>
+          </RadioGroup>
+        </FormControl>
+      </Box>
+    );
+  }
+  
   return (
     <>
-    <Heading display={'flex'} justifyContent={'center'} >{module_data.title}</Heading>
     <Box
       display="flex"
       justifyContent="center"
@@ -66,7 +89,7 @@ const handleBack= () => {
           transform={'translate(0%, -50%)'}
           zIndex={2}
           icon={<Image src="/back.png" maxH={'120px'} />}
-          onClick={handleBack}
+          onClick={() => slider?.slickNext()}
         />
         {/* Right Icon */}
         <IconButton
@@ -78,49 +101,14 @@ const handleBack= () => {
           transform={'translate(0%, -50%)'}
           zIndex={2}
           icon={<Image src="/next.png" maxH={'120px'} />}
-          onClick={handleNext}
+          onClick={() => slider?.slickPrev()}
         />
         {/* Slider */}
-        <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {module_data.sections.map((moduleData, index) => (
-          <Box
-            key={index}
-            height={'6xl'}
-            position="absolute"
-            backgroundPosition="center"
-            backgroundRepeat="no-repeat"
-            left={`${index * 100}%`}
-          >
-            <Container size="container.lg" height="600px" pt={'20px'}>
-              <Heading
-                textAlign={'center'}
-                mt={'180px'}
-                fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}
-                color="var(--midnight)"
-              >
-                {moduleData.title}
-              </Heading>
-              <Stack
-                spacing={6}
-                w={'full'}
-                maxW={'lg'}
-                top="50%"
-                transform="translate(0, -50%)"
-                
-              >
-                <Box w={'1000px'} display={'contents'}>
-                  {/* Displays information stored in json file  */}
-                {moduleData.content.map((line, idx) => (
-                      <Text key={idx} fontWeight={'bold'} color={'var(--midnight)'} >
-                     {line}
-                    </Text>
-                 ))}
-                </Box>
-              </Stack>
-            </Container>
-          </Box>
-        ))}
-      </Slider>
+        
+        <Quiz module_name={module_name}/>
+
+
+        
       </Box>
       </Box>
     </Box>

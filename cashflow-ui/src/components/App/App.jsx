@@ -15,8 +15,8 @@ import Module from '../Module/Module';
 import GoodJob from '../Success/GoodJob';
 import NotQuite from '../Fail/NotQuite';
 import Failure from '../Fail/Failure';
-import QuizPreview from '../Module/QuizPreview';
 import ModuleQuiz from '../Module/ModuleQuiz';
+import QuizPreview from '../Module/QuizPreview';
 
 function App() {
   const [appState, setAppState] = useState({
@@ -29,7 +29,7 @@ function App() {
   const bgColor = useColorModeValue('var(--grey)', 'var(--midnight)');
   const [isLoading, setIsLoading] = useState(false);
 
-
+  // Module variables 
   const module_pages = ['bank-acct', 'credit-cards', 'debt', 'hysavings','cdsavings','roth','401k']
   const [infoPage, setInfoPage] = useState(0)
 
@@ -83,8 +83,8 @@ function App() {
           {module_pages.map((module_name) =>(
        <Route path={`/${module_name}`} element={<Module setInfoPage={setInfoPage} infoPage={infoPage} module_name={module_name} /> } />
     ))}
-          {module_pages.map((page) =>(
-       <Route path={`/${page}/quiz`} element={ <ModuleQuiz setInfoPage={setInfoPage} infoPage={infoPage} module_name={page}/> } />
+          {module_pages.map((module_name) =>(
+       <Route path={`/${module_name}/quiz`} element={ <ModuleQuiz setInfoPage={setInfoPage} infoPage={infoPage} module_name={module_name}/> } />
        ))}
       </Routes>
       </BrowserRouter>
