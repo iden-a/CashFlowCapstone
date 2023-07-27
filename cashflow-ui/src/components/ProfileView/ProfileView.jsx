@@ -3,29 +3,15 @@ import {
   Flex,
   Box,
   Avatar,
-  FormControl,
-  FormHelperText,
-  Input,
-  InputGroup,
-  Image,
-  HStack,
-  Wrap,
-  WrapItem,
-  InputRightElement,
-  Stack,
-  Button,
   Heading,
-  Select,
-  Spacer,
-  Checkbox,
   Text,
-  Textarea,
   Container,
   useColorModeValue,
-  Link,
+  Center
 } from "@chakra-ui/react";
+import GoalTile from "../GoalTile/GoalTile";
 
-export default function ProfileView({appState, setAppState}) {
+export default function ProfileView({ appState, setAppState }) {
   return (
     <Fragment>
       <Box marginTop={"5%"} height={"100vh"} color={"white"}>
@@ -41,36 +27,49 @@ export default function ProfileView({appState, setAppState}) {
           bg={useColorModeValue("var(--midnight)", "var(--lightblue)")}
           boxShadow={"dark-lg"}
           p={8}
-        ></Box>
+        >
+          <Center>
         <Avatar
           // marginTop={"-850px"}
           // marginLeft={"43%"}
+          // alignItems={"center"}
+          // alignContent={"center"}
           // margin={"0 auto"}
           // justifyContent={"center"}
           width={"250px"}
           height={"250px"}
           size={"sm"}
           src={
-            appState.user.image_url
-              ? appState.user.image_url
-               : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
+            appState.user !== {} 
+            ? appState.user.image_url
+              : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
           }
         />
+        </Center>
         <Flex>
-          <Flex>
-          <Heading
-            color={useColorModeValue("var(--grey)", "var(--midnight)")}
-            // fontSize={"200%"}
-            // marginTop={"-32%"}
-            // marginBottom={"10px"}
-            // marginLeft={"35%"}
+          <Flex 
+          margin={"0 auto"}
+          flex={"wrap"}
+          display={"column"}
           >
-        {appState.user.username}
-          </Heading>
-          <Text>
-            Username
-          </Text>
+            <Heading
+              color={useColorModeValue("var(--grey)", "var(--midnight)")}
+              // fontSize={"200%"}
+              // marginTop={"-32%"}
+              // marginBottom={"10px"}
+              // marginLeft={"35%"}
+            >
+              {appState.user.username}
+            </Heading>
+            <Text
+            color={useColorModeValue("var(--grey)", "var(--midnight)")}
+            >Username</Text>
           </Flex>
+          <Flex
+          margin={"0 auto"}
+          flex={"wrap"}
+          display={"column"}
+          >
           <Heading
             color={useColorModeValue("var(--grey)", "var(--midnight)")}
             // fontSize={"200%"}
@@ -78,13 +77,16 @@ export default function ProfileView({appState, setAppState}) {
             // marginBottom={"10px"}
             // marginLeft={"20%"}
           >
-        {appState.user.total_points}
+            {appState.user.total_points}
           </Heading>
-          <Text>
-            Points
-          </Text>
-        </Flex>
-        <Flex>
+          <Text
+          color={useColorModeValue("var(--grey)", "var(--midnight)")}
+          >Points</Text>
+          </Flex>
+      
+        <Flex  margin={"0 auto"}
+         flex={"wrap"}
+         display={"column"}>
           <Heading
             color={useColorModeValue("var(--grey)", "var(--midnight)")}
             // fontSize={"200%"}
@@ -92,12 +94,13 @@ export default function ProfileView({appState, setAppState}) {
             // marginBottom={"10px"}
             // marginLeft={"35%"}
           >
-        {appState.user.status}
+            {appState.user.status}
           </Heading>
-          <Text>
-            Status
-          </Text>
-          </Flex>
+          <Text
+          color={useColorModeValue("var(--grey)", "var(--midnight)")}
+          >Status</Text>
+        </Flex>
+        </Flex>
         {/* <Heading
           color={useColorModeValue("var(--grey)", "var(--midnight)")}
           fontSize={"200%"}
@@ -107,12 +110,26 @@ export default function ProfileView({appState, setAppState}) {
         >
           Completed Modules
         </Heading> */}
-        <Box
+        {/* <Box
           backgroundColor={"white"}
           maxHeight={"100px"}
           maxWidth={"100px"}
-        ></Box>
-        <Container backgroundColor={"white"}></Container>
+        ></Box> */}
+        {/* <Container backgroundColor={"white"}></Container> */}
+        <Flex
+              flexWrap={"wrap"}
+              justifyContent={"space-evenly"}
+              marginTop={"20px"}
+              direction={"row"}
+              // bg={"yellow"}
+              spacing={"2%"}
+            >
+              {appState.goals.map((userGoal) => {
+                return <GoalTile userGoal={userGoal} />;
+              })}
+            </Flex>
+        </Box>
+           
       </Box>
     </Fragment>
   );
