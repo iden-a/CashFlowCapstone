@@ -43,9 +43,10 @@ export default function ProfileView({appState, setAppState}) {
           p={8}
         ></Box>
         <Avatar
-          marginTop={"-850px"}
-          marginLeft={"43%"}
-          justifyContent={"center"}
+          // marginTop={"-850px"}
+          // marginLeft={"43%"}
+          // margin={"0 auto"}
+          // justifyContent={"center"}
           width={"250px"}
           height={"250px"}
           size={"sm"}
@@ -56,26 +57,48 @@ export default function ProfileView({appState, setAppState}) {
           }
         />
         <Flex>
+          <Flex>
           <Heading
             color={useColorModeValue("var(--grey)", "var(--midnight)")}
-            fontSize={"200%"}
-            marginTop={"-32%"}
-            marginBottom={"10px"}
-            marginLeft={"35%"}
+            // fontSize={"200%"}
+            // marginTop={"-32%"}
+            // marginBottom={"10px"}
+            // marginLeft={"35%"}
           >
-            Username: {appState.user.image_url}
+        {appState.user.username}
           </Heading>
+          <Text>
+            Username
+          </Text>
+          </Flex>
           <Heading
             color={useColorModeValue("var(--grey)", "var(--midnight)")}
-            fontSize={"200%"}
-            marginTop={"-32%"}
-            marginBottom={"10px"}
-            marginLeft={"20%"}
+            // fontSize={"200%"}
+            // marginTop={"-32%"}
+            // marginBottom={"10px"}
+            // marginLeft={"20%"}
           >
-           Points: {appState.user.total_points}
+        {appState.user.total_points}
           </Heading>
+          <Text>
+            Points
+          </Text>
         </Flex>
-        <Heading
+        <Flex>
+          <Heading
+            color={useColorModeValue("var(--grey)", "var(--midnight)")}
+            // fontSize={"200%"}
+            // marginTop={"-32%"}
+            // marginBottom={"10px"}
+            // marginLeft={"35%"}
+          >
+        {appState.user.status}
+          </Heading>
+          <Text>
+            Status
+          </Text>
+          </Flex>
+        {/* <Heading
           color={useColorModeValue("var(--grey)", "var(--midnight)")}
           fontSize={"200%"}
           textAlign={"center"}
@@ -83,7 +106,7 @@ export default function ProfileView({appState, setAppState}) {
           marginBottom={"10px"}
         >
           Completed Modules
-        </Heading>
+        </Heading> */}
         <Box
           backgroundColor={"white"}
           maxHeight={"100px"}

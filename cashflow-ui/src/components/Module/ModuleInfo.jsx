@@ -10,7 +10,6 @@ import {
   Text
 } from '@chakra-ui/react';
 import Slider from 'react-slick';
-import modulesInfo from '../../../../cashflow-api/modules/modulesInfo.json';
 import Cashbot from '../Cashbot/Cashbot'
 
 // Settings for the slider
@@ -26,16 +25,29 @@ const settings = {
 };
 
 // TODO: pass in specific module here 
-export default function ModuleInfo({module_name}) {
+export default function ModuleInfo({module_data, num_pages, infoPage, setInfoPage}) {
   const [slider, setSlider] = useState(null);
   const top = useBreakpointValue({ base: '90%', md: '50%' });
   const side = useBreakpointValue({ base: '30%', md: '40px' });
   // Loads info from specified module
-  const moduleDataArray = modulesInfo[`${module_name}`];
+  
+  const handleNext= () => {
+    if(infoPage < num_pages) 
+      setInfoPage(infoPage + 1)
+    console.log(infoPage)
+    slider?.slickNext()
+  }
+  
+const handleBack= () => {
+  if(infoPage > 0) 
+    setInfoPage(infoPage - 1)
+  console.log(infoPage)
+  slider?.slickPrev()
+  }
 
   return (
     <>
-    <Heading display={'flex'} justifyContent={'center'} >{moduleDataArray.title}</Heading>
+    <Heading display={'flex'} justifyContent={'center'} >{module_data.title}</Heading>
     <Box
       display="flex"
       justifyContent="center"
@@ -43,8 +55,8 @@ export default function ModuleInfo({module_name}) {
       height="100vh" 
     >
       <Box>
-      <Image src='marcus.png' position={'absolute'} top={'25px'} ml={'200px'} zIndex={'1'} />
-      <Box position={'relative'} height={'800px'} width={'1500px'} overflow={'scroll'} borderRadius={'3xl'} backgroundColor={'var(--lightblue)'}>
+      <Image src='/marcus.png' position={'absolute'} top={'25px'} ml={'200px'} zIndex={'1'} />
+      <Box position={'relative'} height={'800px'} width={'100vh'} overflow={'scroll'} borderRadius={'3xl'} backgroundColor={'var(--lightblue)'}>
         {/* Left Icon */}
         <IconButton
           aria-label="left-arrow"
@@ -55,7 +67,7 @@ export default function ModuleInfo({module_name}) {
           transform={'translate(0%, -50%)'}
           zIndex={2}
           icon={<Image src="/back.png" maxH={'120px'} />}
-          onClick={() => slider?.slickPrev()}
+          onClick={handleBack}
         />
         {/* Right Icon */}
         <IconButton
@@ -67,11 +79,11 @@ export default function ModuleInfo({module_name}) {
           transform={'translate(0%, -50%)'}
           zIndex={2}
           icon={<Image src="/next.png" maxH={'120px'} />}
-          onClick={() => slider?.slickNext()}
+          onClick={handleNext}
         />
         {/* Slider */}
         <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {moduleDataArray.sections.map((moduleData, index) => (
+        {module_data.sections.map((moduleData, index) => (
           <Box
             key={index}
             height={'6xl'}
@@ -105,8 +117,6 @@ export default function ModuleInfo({module_name}) {
                     </Text>
                  ))}
                 </Box>
-                
-                
               </Stack>
             </Container>
           </Box>
@@ -114,7 +124,7 @@ export default function ModuleInfo({module_name}) {
       </Slider>
       </Box>
       </Box>
-      {/* <Cashbot /> */}
+      <Cashbot />
     </Box>
 
     </>

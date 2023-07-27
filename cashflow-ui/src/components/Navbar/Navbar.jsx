@@ -26,6 +26,7 @@ export default function Navbar({ setAppState, appState }) {
     localStorage.setItem("CashFlow_Token", null);
     setAppState((appState) => ({ ...appState, isAuthenticated: false }));
   };
+  console.log(appState.user)
 
   const NavLink = ({ children }) => {
     const handleClick = () => {
@@ -95,7 +96,7 @@ export default function Navbar({ setAppState, appState }) {
                   <Avatar
                     size={"sm"}
                     src={
-                      appState.user.image_url 
+                      appState.user !== {} 
                         ? appState.user.image_url
                         : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
                     }
@@ -109,7 +110,7 @@ export default function Navbar({ setAppState, appState }) {
                     <Avatar
                       size={"2xl"}
                       src={
-                        appState.user.image_url
+                        appState.user !== {} 
                           ? appState.user.image_url
                           : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
                       }
@@ -130,7 +131,7 @@ export default function Navbar({ setAppState, appState }) {
                     </Link>{" "}
                   </MenuItem>
                   <MenuItem>
-                    <Link href="/dashboard" style={{textDecoration:"none"}}>
+                    <Link href="/" style={{textDecoration:"none"}}>
                       Learning Dashboard
                     </Link>{" "}
                   </MenuItem>

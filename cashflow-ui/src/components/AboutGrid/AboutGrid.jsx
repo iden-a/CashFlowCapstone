@@ -37,7 +37,7 @@ export default function AboutGrid() {
       <Center h="250px">
         <Image src="/meet.png" />
       </Center>
-      <Flex>
+      <Flex height={'100vh'} >
         {aboutInfo.map((creator) => (
           <>
             <Spacer />
