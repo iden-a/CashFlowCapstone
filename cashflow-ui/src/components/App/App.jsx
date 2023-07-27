@@ -73,8 +73,7 @@ function App() {
     <BrowserRouter>
     <Navbar setAppState={setAppState} appState={appState}/>
         <Routes>
-          <Route path="/" element={ appState.isAuthenticated ? <Dashboard /> : <Home />} />
-          <Route path="/" element={ appState.isAuthenticated ? <Dashboard /> : <Home />} />
+          <Route path="/" element={ appState.isAuthenticated ? <Dashboard appState={appState}/> : <Home />} />
           <Route path="/about" element={<AboutGrid />} />
           <Route path="/register" element={<Register setAppState={setAppState}/>} />
           <Route path="/login" element={<Login setAppState={setAppState}/>} />

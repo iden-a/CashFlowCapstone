@@ -5,13 +5,17 @@ import { Link } from "react-router-dom";
 import ModuleInfo from '../Module/ModuleInfo';
 import { useState } from 'react';
 
-export default function Dashboard() {
+export default function Dashboard({appState}) {
   // TODO: Separate beginner & intermediate dashboard 
-    const beginnerimg = ['bank-acct', 'credit-cards', 'debt']
-    const interimg = ['hysavings','cdsavings','roth','401k']
+  let dashboard = []
+    if(appState.user.status === 'beginner')
+      dashboard = ['bank-acct', 'credit-cards', 'debt']
+    else if (appState.user.status === 'intermediate')
+      dashboard = ['hysavings','cdsavings','roth','401k']
+
   return (
     <Box display={'flex'} justifyContent={'center'} height={'100vh'}>
-    {beginnerimg.map((img) =>(
+    {dashboard.map((img) =>(
       <Box>
         <Link to={`/${img}`} >
         <Image boxSize={300} key={img} src={`${img}.png`}></Image>
