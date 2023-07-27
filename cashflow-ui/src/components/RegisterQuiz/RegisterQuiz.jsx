@@ -1,6 +1,4 @@
-import * as React from "react";
-import { Fragment } from "react";
-import { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -27,32 +25,137 @@ import {
 import apiClient from "../../services/apiClient";
 
 export default function RegisterQuiz({ setAppState, appState }) {
-  const [imageUrl, setImageUrl] = useState("");
-
+  const [quizInfo, setQuizInfo] = useState({
+    imageUrl: "",
+    scale: 0,
+    levelOfDebt: "",
+    finanGoal: ""
+  })
+  // const [imageUrl, setImageUrl] = useState("");
+  // const [scale, setScale] = useState(0);
+  // const [levelOfDebt, setLevelOfDebt] = useState("");
+  // const [finanGoal, setFinanGoal] = useState("");
   const navigateTo = useNavigate();
+
+  const formChange = (event) => {
+    setQuizInfo((prevState) => ({
+      ...prevState,
+      scale: event.target.value,
+    }))
+  };
+
+  function calculateFinancialLiteracyLevel(
+    stabilityRating,
+    debtRating,
+    financialGoal
+  ) {
+    let stabilityScore = 0;
+    let debtScore = 0;
+    let goalScore = 0;
+
+    // Assign scores based on stability rating
+    switch (stabilityRating) {
+      case "1":
+      case "2":
+      case "3":
+        stabilityScore = 1; // Low financial stability
+        break;
+      case "4":
+      case "5":
+      case "6":
+        stabilityScore = 2; // Moderate financial stability
+        break;
+      case "7":
+      case "8":
+      case "9":
+      case "10":
+        stabilityScore = 3; // High financial stability
+        break;
+      default:
+        break;
+    }
+
+    // Assign scores based on debt rating
+    switch (debtRating) {
+      case "No debt":
+        debtScore = 3; // No debt - high financial literacy in this area
+        break;
+      case "Minimal debt":
+        debtScore = 2; // Minimal debt - moderate financial literacy in this area
+        break;
+      case "Moderate debt":
+        debtScore = 1; // Moderate debt - low financial literacy in this area
+        break;
+      case "High debt":
+        debtScore = 1; // High debt - low financial literacy in this area
+        break;
+      default:
+        break;
+    }
+
+    // Assign scores based on financial goal
+    switch (financialGoal) {
+      case "Saving for a specific purchase or expense":
+        goalScore = 2; // Intermediate financial literacy
+        break;
+      case "Building an emergency fund":
+        goalScore = 3; // High financial literacy
+        break;
+      case "Paying off debt":
+        goalScore = 2; // Intermediate financial literacy
+        break;
+      case "Investing for retirement":
+        goalScore = 3; // High financial literacy
+        break;
+      case "Saving for education":
+        goalScore = 3; // Intermediate financial literacy
+        break;
+      default:
+        break;
+    }
+    // Calculate overall financial literacy level
+    const totalScore = stabilityScore + debtScore + goalScore;
+    const averageScore = totalScore / 3;
+    // Determine the financial literacy level
+    if (averageScore >= 2.5) {
+      return "intermediate";
+    } else {
+      return "beginner";
+    }
+  }
+
   const handleStartLearning = async (e) => {
     e.preventDefault();
-    try {
-      const { data, error, message } = await apiClient.imageStats({
-        id: appState.user.id,
-        image_url: imageUrl,
-        status: "intermediate",
-      });
-      console.log(data);
-      if (error) {
-        return;
+    if (quizInfo.scale && quizInfo.levelOfDebt && quizInfo.finanGoal) {
+      try {
+        const { data, error, message } = await apiClient.imageStats({
+          id: appState.user.id,
+          image_url: quizInfo.imageUrl,
+          status: calculateFinancialLiteracyLevel(
+            quizInfo.scale,
+            quizInfo.levelOfDebt,
+            quizInfo.finanGoal
+          ),
+        });
+        console.log(data);
+        if (error) {
+          return;
+        }
+        if (data) {
+          setAppState((prevState) => ({
+            ...prevState.user,
+            user: {
+              ...prevState.user, 
+              image_url: data.image_url,
+              status: data.status
+            },
+          }));
+        }
+      } catch (err) {
+        console.log(err);
       }
-      if (data) {
-        setAppState((prevState) => ({
-          ...prevState.user,
-          image_url: data.image_url,
-          status: data.status,
-        }));
-      }
-    } catch (err) {
-      console.log(err);
+      navigateTo("/");
     }
-    navigateTo("/dashboard");
   };
 
   return (
@@ -61,7 +164,7 @@ export default function RegisterQuiz({ setAppState, appState }) {
         <Heading
           as="h3"
           size="lg"
-          marginLeft={"750px"}
+          marginLeft={"42%"}
           marginTop={""}
           position={"relative"}
           top={"70px"}
@@ -90,30 +193,34 @@ export default function RegisterQuiz({ setAppState, appState }) {
         <FormControl position={"relative"} top={"70px"}>
           <FormLabel
             fontWeight={"bold"}
-            marginLeft={"20px"}
             marginTop={"10%"}
             position={"relative"}
             top={"90px"}
+            marginLeft={"50px"}
             color={useColorModeValue("var(--grey)", "var(--midnight)")}
           >
             {" "}
             1. On a scale of 1-10, how would you rate your current financial
-            stability?
+            stability? <span style={{ color: "red" }}>*</span>
           </FormLabel>
           <NumberInput
-            max={10}
-            min={1}
             color={"black"}
             position={"relative"}
+            defaultValue={0}
+            min={1}
+            max={10}
+            value={quizInfo.scale}
+            onChange={(value) => formChange({ target: { value } })}
             top={"90px"}
-            width={"150px"}
-            marginLeft={"30px"}
+            width={"50%"}
+            marginLeft={"50px"}
             borderRadius={"20px"}
+            bg={"var(--grey)"}
           >
-            <NumberInputField bg={"var(--grey)"} />
-            <NumberInputStepper color={"black"}>
-              <NumberIncrementStepper color={"black"} />
-              <NumberDecrementStepper color={"black"} />
+            <NumberInputField />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
             </NumberInputStepper>
           </NumberInput>
         </FormControl>
@@ -126,47 +233,63 @@ export default function RegisterQuiz({ setAppState, appState }) {
           <FormLabel
             as="legend"
             fontWeight={"bold"}
-            marginLeft={"20px"}
+            marginLeft={"50px"}
             position={"relative"}
             top={"50px"}
             color={useColorModeValue("var(--grey)", "var(--midnight)")}
           >
             {" "}
-            2. How would you rate your current level of debt?
+            2. How would you rate your current level of debt?{" "}
+            <span style={{ color: "red" }}>*</span>
           </FormLabel>
           <RadioGroup defaultValue="Question2">
             <Stack
               spacing="24px"
               direction={"column"}
-              marginLeft={"20px"}
+              marginLeft={"50px"}
               position={"relative"}
               top={"50px"}
               color={useColorModeValue("var(--grey)", "var(--midnight)")}
             >
-              <Radio border={"1px solid white"} value="No debt">
+              <Radio
+                border={"1px solid white"}
+                value={"No debt"}
+                onChange={(e) => setQuizInfo((prevState) => ({
+                  ...prevState,
+                  levelOfDebt: e.target.value,
+                }))}
+              >
                 {" "}
                 No debt{" "}
               </Radio>
               <Radio
                 border={"1px solid white"}
-                value=" Minimal debt (e.g., student loans, small credit card balance)o"
-              >
+                value={"Minimal debt"}
+                onChange={(e) => setQuizInfo((prevState) => ({
+                  ...prevState,
+                  levelOfDebt: e.target.value,
+                }))}              >
                 {" "}
                 Minimal debt (e.g., student loans, small credit card balance){" "}
               </Radio>
               <Radio
                 border={"1px solid white"}
-                value=" Moderate debt (e.g., mortgage, car loan, significant credit card
-                balance)"
-              >
+                value={"Moderate debt"}
+                onChange={(e) => setQuizInfo((prevState) => ({
+                  ...prevState,
+                  levelOfDebt: e.target.value,
+                }))}              >
                 {" "}
                 Moderate debt (e.g., mortgage, car loan, significant credit card
                 balance){" "}
               </Radio>
               <Radio
                 border={"1px solid white"}
-                value=" High debt (e.g., multiple loans, large credit card balances)"
-              >
+                value={"High debt"}
+                onChange={(e) => setQuizInfo((prevState) => ({
+                  ...prevState,
+                  levelOfDebt: e.target.value,
+                }))}              >
                 {" "}
                 High debt (e.g., multiple loans, large credit card balances){" "}
               </Radio>
@@ -182,13 +305,14 @@ export default function RegisterQuiz({ setAppState, appState }) {
           <FormLabel
             as="legend"
             fontWeight={"bold"}
-            marginLeft={"20px"}
+            marginLeft={"50px"}
             position={"relative"}
             top={"50px"}
             color={useColorModeValue("var(--grey)", "var(--midnight)")}
           >
             {" "}
-            3. What is your primary financial goal/objective?
+            3. What is your primary financial goal/objective?{" "}
+            <span style={{ color: "red" }}>*</span>
           </FormLabel>
           <RadioGroup
             defaultValue="Question3"
@@ -197,43 +321,59 @@ export default function RegisterQuiz({ setAppState, appState }) {
             <Stack
               spacing="24px"
               direction={"column"}
-              marginLeft={"20px"}
+              marginLeft={"50px"}
               position={"relative"}
               top={"50px"}
               color={useColorModeValue("var(--grey)", "var(--midnight)")}
             >
               <Radio
                 border={"1px solid white"}
-                value="Saving for a specific purchase or expense"
+                value={"Saving for a specific purchase or expense"}
+                onChange={(e) => setQuizInfo((prevState) => ({
+                  ...prevState,
+                  finanGoal: e.target.value,
+                }))}
               >
                 {" "}
                 Saving for a specific purchase or expense{" "}
               </Radio>
               <Radio
                 border={"1px solid white"}
-                value="Building an emergency fund"
-              >
+                value={"Building an emergency fund"}
+                onChange={(e) => setQuizInfo((prevState) => ({
+                  ...prevState,
+                  finanGoal: e.target.value,
+                }))}              >
                 {" "}
                 Building an emergency fund{" "}
               </Radio>
               <Radio
                 border={"1px solid white"}
-                value="Paying off debt (e.g., credit cards, loans)"
-              >
+                value={"Paying off debt"}
+                onChange={(e) => setQuizInfo((prevState) => ({
+                  ...prevState,
+                  finanGoal: e.target.value,
+                }))}              >
                 {" "}
                 Paying off debt (e.g., credit cards, loans){" "}
               </Radio>
               <Radio
                 border={"1px solid white"}
-                value=" Investing for retirement"
-              >
+                value={"Investing for retirement"}
+                onChange={(e) => setQuizInfo((prevState) => ({
+                  ...prevState,
+                  finanGoal: e.target.value,
+                }))}              >
                 {" "}
                 Investing for retirement{" "}
               </Radio>
               <Radio
                 border={"1px solid white"}
-                value="Saving for education (e.g., college fund)"
-              >
+                value={"Saving for education"}
+                onChange={(e) => setQuizInfo((prevState) => ({
+                  ...prevState,
+                  finanGoal: e.target.value,
+                }))}              >
                 {" "}
                 Saving for education (e.g., college fund){" "}
               </Radio>
@@ -271,25 +411,17 @@ export default function RegisterQuiz({ setAppState, appState }) {
               <Input
                 _placeholder={{ opacity: 1, color: "grey" }}
                 placeholder="My profile picture"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
+                value={quizInfo.imageUrl}
+                onChange={(e) => setQuizInfo((prevState) => ({
+                  ...prevState,
+                  imageUrl: e.target.value,
+                }))}
               />
             </InputGroup>
-            {/* <Input
-              type="file"
-              id="image"
-              onChange={handleImageChange}
-              accept="image/*"
-              position={"relative"}
-              top={"20px"}
-              width={"450px"}
-              marginLeft={"30px"}
-              color={useColorModeValue("var(--grey)", "var(--midnight)")}
-            /> */}
           </FormControl>
-          {imageUrl && (
+          {quizInfo.imageUrl && (
             <Image
-              src={imageUrl}
+              src={quizInfo.imageUrl}
               alt="Uploaded preview"
               mt={4}
               backgroundColor={"white"}
