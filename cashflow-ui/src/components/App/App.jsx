@@ -14,7 +14,6 @@ import RegisterQuiz from '../RegisterQuiz/RegisterQuiz';
 import Module from '../Module/Module';
 import GoodJob from '../Success/GoodJob';
 import NotQuite from '../Fail/NotQuite';
-import Failure from '../Fail/Failure';
 import ModuleQuiz from '../Module/ModuleQuiz';
 import QuizPreview from '../Module/QuizPreview';
 import ProfileView from '../ProfileView/ProfileView';
