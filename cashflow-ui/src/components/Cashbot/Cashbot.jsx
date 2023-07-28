@@ -154,7 +154,6 @@ export default function CashBot({cashBotLink}) {
             style={{
               height: "100px",
               width: "100px",
-              backgroundColor: "var(--midnight)",
             }}
             className="cashbot"
             src={cashBotLink}

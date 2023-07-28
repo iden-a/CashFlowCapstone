@@ -9,7 +9,6 @@ import Register from '../Register/Register'
 import GoalsTracker from '../GoalsTracker/GoalsTracker'
 import Home from '../Home/Home';
 import ModuleInfo from '../Module/ModuleInfo';
-import ModuleInfo from '../Module/ModuleInfo';
 import Dashboard from '../Dashboard/Dashboard';
 import RegisterQuiz from '../RegisterQuiz/RegisterQuiz';
 import Module from '../Module/Module';

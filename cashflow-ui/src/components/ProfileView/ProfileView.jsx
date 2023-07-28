@@ -40,7 +40,7 @@ export default function ProfileView({ appState, setAppState }) {
           height={"250px"}
           size={"sm"}
           src={
-            appState.user !== {} 
+            appState.user.image_url !== "" 
             ? appState.user.image_url
               : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
           }
