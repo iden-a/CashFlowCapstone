@@ -10,3 +10,7 @@ body {
   scroll-behavior: smooth;
   margin: 0;
 }
+
+html{
+  padding-top: 1%;
+}

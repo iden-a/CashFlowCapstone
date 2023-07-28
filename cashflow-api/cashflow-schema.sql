@@ -7,7 +7,7 @@ CREATE TABLE users (
   email         VARCHAR(255) NOT NULL UNIQUE CHECK (position('@' IN email) > 1),
   image_url     VARCHAR(1000),
   created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  status        VARCHAR(20) CHECK (status IN (NULL, 'beginner', 'intermediate')),
+  status        VARCHAR(20) CHECK (status IN (NULL, 'Beginner', 'Intermediate')),
   total_points  INTEGER NOT NULL
 );
 

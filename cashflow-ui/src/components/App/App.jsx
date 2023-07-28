@@ -52,7 +52,7 @@ function App() {
     } else {
       setCashBotLink("cashbotDark.png");
     }
-  });
+  }, [bgColor]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -110,7 +110,7 @@ function App() {
             element={<Register setAppState={setAppState} />}
           />
           <Route path="/login" element={<Login setAppState={setAppState} />} />
-          <Route path="/profile" element={<Failure />} />
+          <Route path="/profile" element={<ProfileView />} />
           <Route
             path="/goals"
             element={

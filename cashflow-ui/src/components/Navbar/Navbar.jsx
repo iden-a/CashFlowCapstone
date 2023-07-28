@@ -67,7 +67,7 @@ export default function Navbar({ setAppState, appState }) {
         {/* Clicking on logo leads back to homepage */}
         <Flex h={20} alignItems={"center"} justifyContent={"space-between"}>
           <Link href="/">
-            <Box>
+            <Box marginLeft={30}>
               <img src={"/logo.png"} width={90} height={90} />
             </Box>
           </Link>
@@ -122,6 +122,9 @@ export default function Navbar({ setAppState, appState }) {
                   </Center>
                   <Center>
                     <p>Points: {appState.user.total_points}</p>
+                  </Center>
+                  <Center>
+                    <p>Status: {appState.user.status}</p>
                   </Center>
                   <br />
                   <MenuDivider />

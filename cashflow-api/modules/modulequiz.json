@@ -9,17 +9,17 @@
           "Passport",
           "All of the above"
         ],
-        "answer": ""
+        "answer": "All of the above"
       },
       {
         "scenario": "Lisa wants to earn interest on her savings. Which type of account would be most suitable for her?",
         "options": [
           "Checking account",
           "Savings account",
-          "Certificate of deposit (CD)",
+          "High-yield savings account",
           "Money market account"
         ],
-        "answer": ""
+        "answer": "High-yield savings account"
       },
       {
         "scenario": "Mark receives a paycheck from his employer and wants to deposit it into his bank account. What is the most common method for depositing a paycheck?",
@@ -29,7 +29,7 @@
           "Direct deposit",
           "Teller deposit"
         ],
-        "answer": ""
+        "answer": "Direct deposit"
       },
       {
         "scenario": "Sarah is worried about unauthorized transactions on her bank account. Which of the following security measures can help protect her account?",
@@ -39,7 +39,7 @@
           "Enabling two-factor authentication",
           "All of the above"
         ],
-        "answer": ""
+        "answer": "All of the above"
       },
       {
         "scenario": "James withdraws money from an ATM using his debit card. Will this transaction be recorded in his bank statement?",
@@ -49,7 +49,7 @@
           "It depends on the bank's policy.",
           "Only if James requests a receipt."
         ],
-        "answer": ""
+        "answer": "Yes, ATM withdrawals are always recorded in the bank statement."
       },
       {
         "scenario": "Emily is a college student who needs to open a bank account. Which type of account would be most suitable for her, considering she has limited funds and frequently needs to make transactions?",
@@ -59,7 +59,7 @@
           "Money market account",
           "Certificate of deposit (CD)"
         ],
-        "answer": ""
+        "answer": "Checking account"
       },
       {
         "scenario": "Alex wants to track his spending and manage his budget effectively. Which of the following tools or features offered by many banks would be most helpful for him?",
@@ -69,51 +69,51 @@
           "Budgeting tools",
           "All of the above"
         ],
-        "answer": ""
+        "answer": "All of the above"
       }
     ]
   },
   "debt": {
     "questions": [
       {
-        "scenario": "Sarah has accumulated credit card debt and wants to develop a plan to pay it off. Which of the following debt repayment strategies is most effective?",
+        "scenario": "Sarah has accumulated credit card debt and wants to develop a plan to pay it off. Which of the following debt repayment strategies is the most recommended?",
         "options": [
           "Paying off debts with the highest interest rates first",
           "Paying off debts with the lowest balances first",
           "Making only minimum payments on all debts",
           "Ignoring the debts and hoping they will go away"
         ],
-        "answer": ""
+        "answer": "Paying off debts with the highest interest rates first"
       },
       {
         "scenario": "James has multiple student loans with different interest rates. What debt management technique can help him simplify his payments and save money?",
         "options": [
-          "Loan consolidation",
           "Loan forbearance",
           "Loan forgiveness",
+          "Loan consolidation",
           "Loan deferment"
         ],
-        "answer": ""
+        "answer": "Loan consolidation"
       },
       {
         "scenario": "Lisa is struggling to pay her debts and is considering seeking professional help. What type of professional can help her manage her debt?",
         "options": [
-          "Credit counselor",
           "Financial planner",
           "Banker",
-          "Tax advisor"
+          "Tax advisor",
+          "Credit counselor"
         ],
-        "answer": ""
+        "answer": "Credit counselor"
       },
       {
         "scenario": "Emily wants to avoid getting into debt in the first place. What is a good practice for managing finances and preventing debt accumulation?",
         "options": [
-          "Creating a budget and sticking to it",
           "Using credit cards for all purchases",
           "Ignoring credit card statements",
+          "Creating a budget and sticking to it",
           "Borrowing money for non-essential items"
         ],
-        "answer": ""
+        "answer": "Creating a budget and sticking to it"
       }
     ]
   },
@@ -122,32 +122,27 @@
       {
         "scenario": "Michael wants to build his credit history and establish a good credit score. Which of the following actions is most likely to positively impact his credit score?",
         "options": [
-          "Paying credit card bills on time",
           "Carrying a high credit card balance",
           "Closing credit card accounts",
-          "Making only minimum payments on credit cards"
+          "Making only minimum payments on credit cards",
+          "Paying credit card bills on time"
         ],
-        "answer": ""
+        "answer": "Paying credit card bills on time"
       },
       {
         "scenario": "Lisa is considering applying for a credit card. What factor should she pay attention to, to compare different credit card offers?",
         "options": [
           "Annual fee",
           "Interest rate (APR)",
-          "Rewards program",
-          "All of the above"
+          "All of the above",
+          "Rewards program"
         ],
-        "answer": ""
+        "answer": "All of the above"
       },
       {
         "scenario": "David has a credit card with a $1,000 credit limit. He has a balance of $800 on his card. What is his credit utilization ratio?",
-        "options": [
-          "80%",
-          "20%",
-          "100%",
-          "8%"
-        ],
-        "answer": ""
+        "options": ["80%", "20%", "100%", "8%"],
+        "answer": "80%"
       },
       {
         "scenario": "Emily received her credit card bill, and the due date is approaching. Which of the following actions should she take to avoid late payment fees and negative impact on her credit score?",
@@ -157,20 +152,20 @@
           "Ignore the bill since it's a small amount",
           "Wait until the last day to make the payment"
         ],
-        "answer": ""
+        "answer": "Pay the full balance"
       },
       {
         "scenario": "John lost his credit card. What is the first step he should take to prevent unauthorized charges on his account?",
         "options": [
-          "Call the credit card company to report the loss",
           "Do nothing and hope it will turn up",
           "Cancel his bank account",
+          "Call the credit card company to report the loss",
           "File a police report"
         ],
-        "answer": ""
+        "answer": "Call the credit card company to report the loss"
       }
     ]
-  },  
+  },
   "401k": {
     "questions": [
       {
@@ -181,37 +176,32 @@
           "Building retirement savings",
           "Paying off credit card debt"
         ],
-        "answer": ""
+        "answer": "Building retirement savings"
       },
       {
         "scenario": "Lisa wants to maximize her retirement savings through her 401(k) plan. What is the maximum annual contribution limit for a 401(k) in 2023?",
-        "options": [
-          "$5,000",
-          "$10,000",
-          "$19,500",
-          "$50,000"
-        ],
-        "answer": ""
+        "options": ["$19,500", "$5,000", "$10,000", "$50,000"],
+        "answer": "19,500"
       },
       {
         "scenario": "David wants to reduce his taxable income. How does contributing to a 401(k) plan affect his taxes?",
         "options": [
           "It increases his taxable income.",
           "It has no impact on his taxable income.",
-          "It decreases his taxable income.",
-          "It has no impact on his taxes."
+          "It has no impact on his taxes.",
+          "It decreases his taxable income."
         ],
-        "answer": ""
+        "answer": "It decreases his taxable income."
       },
       {
         "scenario": "Emily has changed jobs and wants to avoid taxes and penalties on her 401(k) savings. Which of the following options allows her to transfer her 401(k) funds to a new employer's retirement plan without incurring taxes or penalties?",
         "options": [
+          "Rollover",
           "Roth conversion",
           "Early withdrawal",
-          "Rollover",
           "Cash-out"
         ],
-        "answer": ""
+        "answer": "Rollover"
       },
       {
         "scenario": "Mark is approaching retirement age and wants to start withdrawing funds from his 401(k) account. What is the earliest age at which he can start making penalty-free withdrawals from a 401(k) plan?",
@@ -221,23 +211,22 @@
           "65 years old",
           "70 ½ years old"
         ],
-        "answer": ""
+        "answer": "59 ½ years old"
       }
     ]
-  },  
-      
-       
+  },
+
   "roth": {
     "questions": [
       {
         "scenario": "Sarah wants to contribute to a retirement account that offers tax-free withdrawals in retirement. Which type of account should she consider?",
         "options": [
           "Traditional IRA",
-          "Roth IRA",
           "401(k) plan",
-          "Pension plan"
+          "Pension plan",
+          "Roth IRA"
         ],
-        "answer": ""
+        "answer": "Roth IRA"
       },
       {
         "scenario": "James wants to open a Roth IRA but is concerned about the income limits. Are there any income restrictions for contributing to a Roth IRA?",
@@ -247,17 +236,12 @@
           "Income limits only apply to individuals over 65.",
           "Income limits only apply to individuals under 18."
         ],
-        "answer": ""
+        "answer": "Yes, there are income limits for Roth IRA contributions."
       },
       {
-        "scenario": "Lisa contributed $5,000 to her Roth IRA for the year. What is the maximum Roth IRA contribution limit in 2023?",
-        "options": [
-          "$2,000",
-          "$5,500",
-          "$6,000",
-          "$7,000"
-        ],
-        "answer": ""
+        "scenario": "Lisa is 25 years old and has contributed $5,000 to her Roth IRA for the year. What is the maximum Roth IRA contribution limit for Lisa in 2023?",
+        "options": ["$2,000", "$5,500", "$6,000", "$7,000"],
+        "answer": "6,000"
       },
       {
         "scenario": "Mark wants to withdraw money from his Roth IRA before reaching retirement age. What is the penalty for early withdrawals from a Roth IRA?",
@@ -267,42 +251,36 @@
           "No penalty if the funds are used for qualified expenses",
           "No penalty if the funds are withdrawn after age 59 ½"
         ],
-        "answer": ""
+        "answer": "10% penalty on the withdrawn amount"
       },
       {
         "scenario": "Emily is considering converting her traditional IRA to a Roth IRA. What is a key advantage of a Roth IRA conversion?",
         "options": [
-          "Tax-free growth of contributions",
           "Tax-deductible contributions",
           "No required minimum distributions (RMDs)",
-          "Ability to withdraw contributions at any time without penalty"
+          "Ability to withdraw contributions at any time without penalty",
+          "Tax-free growth of contributions"
         ],
-        "answer": ""
+        "answer": "Tax-free growth of contributions"
       }
     ]
-  }
-  ,
+  },
   "hysavings": {
     "questions": [
       {
         "scenario": "John wants to earn a higher interest rate on his savings while keeping his funds easily accessible. Which type of account should he consider?",
         "options": [
           "Regular savings account",
+          "Money market account",
           "High-yield savings account",
-          "Certificate of deposit (CD)",
-          "Money market account"
+          "Certificate of deposit (CD)"
         ],
-        "answer": ""
+        "answer": "Money market account"
       },
       {
         "scenario": "Lisa has $10,000 in her high-yield savings account that earns an annual interest rate of 2.5%. How much interest will she earn in one year?",
-        "options": [
-          "$100",
-          "$250",
-          "$500",
-          "$2,500"
-        ],
-        "answer": ""
+        "options": ["$100", "$250", "$500", "$2,500"],
+        "answer": "$250"
       },
       {
         "scenario": "David wants to compare different high-yield savings accounts to find the best option. What factor should he consider to determine the best account?",
@@ -312,7 +290,7 @@
           "Minimum balance requirements",
           "Interest rate"
         ],
-        "answer": ""
+        "answer": "Interest rate"
       },
       {
         "scenario": "Emily wants to deposit $50,000 into a high-yield savings account. What is an advantage of keeping a large balance in a high-yield savings account?",
@@ -322,21 +300,20 @@
           "Higher withdrawal limits",
           "Unlimited transactions"
         ],
-        "answer": ""
+        "answer": "Higher interest rates"
       },
       {
         "scenario": "Mark wants to withdraw money from his high-yield savings account. Are there any restrictions or penalties for withdrawing funds from a high-yield savings account?",
         "options": [
-          "Yes, there are restrictions and penalties for withdrawals.",
           "No, funds can be withdrawn anytime without penalties.",
           "Withdrawals are only allowed once a year.",
+          "Yes, there are restrictions and penalties for withdrawals.",
           "Withdrawals are subject to a fixed fee."
         ],
-        "answer": ""
+        "answer": "Yes, there are restrictions and penalties for withdrawals."
       }
     ]
-  }
-  ,
+  },
   "cdsavings": {
     "questions": [
       {
@@ -347,17 +324,12 @@
           "CD (Certificate of Deposit)",
           "Money market account"
         ],
-        "answer": ""
+        "answer": "CD (Certificate of Deposit)"
       },
       {
         "scenario": "James is considering investing $5,000 in a 2-year CD with an interest rate of 3%. How much interest will he earn at the end of the term?",
-        "options": [
-          "$100",
-          "$150",
-          "$300",
-          "$500"
-        ],
-        "answer": ""
+        "options": ["$100", "$150", "$300", "$500"],
+        "answer": "$300"
       },
       {
         "scenario": "Lisa wants to compare different CD options to find the best one. What factor should she consider to determine the best CD?",
@@ -367,7 +339,7 @@
           "Minimum balance requirements",
           "Interest rate and term"
         ],
-        "answer": ""
+        "answer": "Interest rate and term"
       },
       {
         "scenario": "Mark wants to withdraw money from his CD before the maturity date. What is a potential consequence of early withdrawal from a CD?",
@@ -377,18 +349,13 @@
           "Increased interest rate",
           "No consequences for early withdrawal"
         ],
-        "answer": ""
+        "answer": "Early withdrawal penalty"
       },
       {
         "scenario": "Emily wants to maximize her returns with a CD. Which term length typically offers the highest interest rate?",
-        "options": [
-          "3 months",
-          "6 months",
-          "1 year",
-          "5 years"
-        ],
-        "answer": ""
+        "options": ["3 months", "6 months", "1 year", "5 years"],
+        "answer": "5 years"
       }
     ]
-  }}
-  
+  }
+}
