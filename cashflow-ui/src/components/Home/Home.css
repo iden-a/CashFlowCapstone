@@ -57,7 +57,7 @@
   color: #f0edee;
   text-align: center;
   font-size: 300%;
-  width: 23%;
+  width:fit-content;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: 0.15em solid orange; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
@@ -189,10 +189,10 @@
 }
 
 .stack img:nth-child(odd) {
-  --glitch-translate: 8px;
+  --glitch-translate: 80px;
 }
 .stack img:nth-child(even) {
-  --glitch-translate: -8px;
+  --glitch-translate: -80px;
 }
 
 @keyframes stack {

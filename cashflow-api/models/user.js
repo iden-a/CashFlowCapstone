@@ -19,7 +19,6 @@ class User {
       total_points: user.total_points,
       status: user.status,
     };
-    console.log(userInfo)
 
     return {
       user: userInfo,
@@ -68,7 +67,6 @@ class User {
     const { email, password } = creds;
 
     const userInfo = await User.fetchUserByEmail(email);
-    console.log(userInfo);
     try {
       if (userInfo) {
         // compare hashed password to a new hash from password

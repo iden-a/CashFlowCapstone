@@ -8,11 +8,9 @@ export default function GoalTile({ userGoal }) {
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
-  console.log(isChecked);
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowGif(false);
-      console.log(isChecked);
     }, 5000);
 
     // Clear the timer if the component unmounts before 5 seconds

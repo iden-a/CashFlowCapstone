@@ -35,8 +35,6 @@ export default function Register({ appState, setAppState }) {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-
-  console.log(emailPattern.test(userInfo.email))
   const navigateTo = useNavigate();
   async function handleSubmit(e) {
     e.preventDefault();
@@ -67,7 +65,6 @@ export default function Register({ appState, setAppState }) {
           return;
         }
 
-        console.log(data);
         if (data) {
           setRegisterError("");
           setAppState((prevState) => ({
@@ -80,7 +77,6 @@ export default function Register({ appState, setAppState }) {
           localStorage.setItem("CashFlow_Token", data.token);
           apiClient.setToken(data.token);
           navigateTo("/registerquiz");
-
         } else {
           setRegisterError("Something went wrong with registration.");
         }
@@ -104,12 +100,17 @@ export default function Register({ appState, setAppState }) {
 
   return (
     <Fragment>
-      <Box marginTop={"5%"} height={"100vh"} color={"white"}>
+      <Box
+        marginBottom={"5%"}
+        marginTop={"5%"}
+        height={"100vh"}
+        color={"white"}
+      >
         <Heading
           textAlign={"center"}
           width={"50%"}
           fontSize={"300%"}
-          margin={"0 auto"}
+          mx={"auto"}
           color={useColorModeValue("var(--midnight)", "var(--grey)")}
         >
           Welcome To CashFlow Academy!
@@ -117,8 +118,7 @@ export default function Register({ appState, setAppState }) {
         <Image
           marginTop={"-80px"}
           textAlign={"center"}
-          marginLeft={"auto"}
-          marginRight={"auto"}
+          mx={"auto"}
           width={"500px"}
           height={"500px"}
           src="/tiffany.png"
@@ -137,13 +137,12 @@ export default function Register({ appState, setAppState }) {
             maxW={"lg"}
           >
             <Box
-              rounded={"lg"}
               borderRadius={"40px"}
               width={"40vh"}
               bg={useColorModeValue("var(--midnight)", "var(--lightblue)")}
               boxShadow={"lg"}
               p={8}
-              
+              mx={"auto"}
             >
               <Stack align={"center"}>
                 <Heading
@@ -311,7 +310,9 @@ export default function Register({ appState, setAppState }) {
                         fontSize={"x-large"}
                         variant={"ghost"}
                         onClick={() =>
-                          setShowConfirmPassword((showConfirmPassword) => !showConfirmPassword)
+                          setShowConfirmPassword(
+                            (showConfirmPassword) => !showConfirmPassword
+                          )
                         }
                       >
                         {showConfirmPassword ? <ViewIcon /> : <ViewOffIcon />}
@@ -324,7 +325,7 @@ export default function Register({ appState, setAppState }) {
                   emailPattern.test(userInfo.email) ? null : (
                     <span
                       style={{
-                        color: "red"
+                        color: "red",
                       }}
                     >
                       Invalid email input.
@@ -334,7 +335,7 @@ export default function Register({ appState, setAppState }) {
                     <>
                       <span
                         style={{
-                          color: "red"
+                          color: "red",
                         }}
                       >
                         Passwords do not match.
@@ -387,7 +388,10 @@ export default function Register({ appState, setAppState }) {
                 fontSize={"x-large"}
               >
                 Have an account?
-                <Link href="/login" style={{ color: "var(--blue)" }}>
+                <Link
+                  href="/login"
+                  style={{ textDecoration: "none", color: "var(--blue)" }}
+                >
                   <em> Sign In</em>
                 </Link>
               </Text>

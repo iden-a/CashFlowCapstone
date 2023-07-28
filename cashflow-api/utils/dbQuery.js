@@ -25,7 +25,9 @@ class DbQuery {
                 last_name,
                 username,
                 email,
-                total_points
+                total_points,
+                status, 
+                image_url
       `,
       [
         normalizedEmail,

@@ -8,12 +8,11 @@ import {
   MessageInput,
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
-import { ChakraProvider, useColorModeValue } from '@chakra-ui/react';
 
 //API key is hidden
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-export default function CashBot({cashBotLink}) {
+export default function CashBot({ cashBotLink }) {
   const [isCashbotOpen, setIsCashbotOpen] = useState(false);
   const [typing, setTyping] = useState(false);
   const [messages, setMessages] = useState([
@@ -67,7 +66,7 @@ export default function CashBot({cashBotLink}) {
     const systemMessage = {
       role: "system",
       content:
-        "Explain all concepts like I am a college student who wants to learn more about financial literacy, respond in short concise sentences",
+        "Explain all concepts like I am a college student who wants to learn more about financial literacy, respond in short concise sentences. If the user asks a question that is not related to finance, respond in a finance context.",
     };
 
     const apiRequestBody = {
@@ -111,67 +110,65 @@ export default function CashBot({cashBotLink}) {
           className="chatbox"
           style={{
             position: "fixed",
-            zIndex:"10",
+            zIndex: "10",
             bottom: "0",
-            left: "72%",
+            left: "73vw",
             height: "500px",
             width: "500px",
             display: "flex",
           }}
         >
-              <MainContainer style={{position:"static"}}>
-                <ChatContainer
-                  style={{
-                    zIndex:"10",
-                    position: "static",
-                    float: "right",
-                    bottom: "0",
-                    height: "500px",
-                    width: "400px",
-                  }}
-                >
-                  <MessageList
-                    style={{ color: "red" }}
-                    scrollBehavior="smooth"
-                    typingIndicator={
-                      typing ? (
-                        <TypingIndicator content="CashBot is typing" />
-                      ) : null
-                    }
-                  >
-                    {messages.map((message, i) => {
-                      //
-                      return <Message key={i} model={message} />;
-                    })}
-                  </MessageList>
-                  <MessageInput
-                    placeholder="Type message here"
-                    onSend={handleSend}
-                  />
-                </ChatContainer>
-              </MainContainer>
+          <MainContainer style={{ position: "static" }}>
+            <ChatContainer
+              style={{
+                zIndex: "10",
+                position: "static",
+                float: "right",
+                bottom: "0",
+                height: "500px",
+                width: "400px",
+              }}
+            >
+              <MessageList
+                style={{ color: "red" }}
+                scrollBehavior="smooth"
+                typingIndicator={
+                  typing ? (
+                    <TypingIndicator content="CashBot is typing" />
+                  ) : null
+                }
+              >
+                {messages.map((message, i) => {
+                  //
+                  return <Message key={i} model={message} />;
+                })}
+              </MessageList>
+              <MessageInput
+                placeholder="Type message here"
+                onSend={handleSend}
+              />
+            </ChatContainer>
+          </MainContainer>
           <img
             style={{
-              height: "100px",
-              width: "100px",
-              backgroundColor: "var(--midnight)",
+              height: "150px",
+              width: "150px",
             }}
             className="cashbot"
             src={cashBotLink}
             alt="Cashbot for CashFlow Academy"
             onClick={handleOpenCashbot}
           />
-
         </div>
       ) : (
         // users only see the cashbot when the isCashbotOpen is false.
         <div className="cashbot2">
           <img
             style={{
-              zIndex:"10",
+              zIndex: "10",
               position: "fixed",
               bottom: "0",
-              left: "88%",
+              left: "90vw",
               height: "200px",
               width: "200px",
             }}

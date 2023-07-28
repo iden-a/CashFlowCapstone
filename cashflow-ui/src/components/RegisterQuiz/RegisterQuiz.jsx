@@ -27,14 +27,11 @@ import apiClient from "../../services/apiClient";
 export default function RegisterQuiz({ setAppState, appState }) {
   const [quizInfo, setQuizInfo] = useState({
     imageUrl: "",
-    scale: 0,
+    scale: 1,
     levelOfDebt: "",
     finanGoal: "",
   });
-  // const [imageUrl, setImageUrl] = useState("");
-  // const [scale, setScale] = useState(0);
-  // const [levelOfDebt, setLevelOfDebt] = useState("");
-  // const [finanGoal, setFinanGoal] = useState("");
+
   const navigateTo = useNavigate();
 
   const formChange = (event) => {
@@ -126,7 +123,12 @@ export default function RegisterQuiz({ setAppState, appState }) {
 
   const handleStartLearning = async (e) => {
     e.preventDefault();
-    if (quizInfo.scale && quizInfo.levelOfDebt && quizInfo.finanGoal) {
+    if (
+      quizInfo.scale <= 10 &&
+      quizInfo.scale >= 1 &&
+      quizInfo.levelOfDebt &&
+      quizInfo.finanGoal
+    ) {
       try {
         const { data, error, message } = await apiClient.imageStats({
           id: appState.user.id,
@@ -137,19 +139,16 @@ export default function RegisterQuiz({ setAppState, appState }) {
             quizInfo.finanGoal
           ),
         });
-        console.log(data);
         if (error) {
           return;
         }
         if (data) {
-          setAppState((prevState) => ({
-            ...prevState.user,
-            user: {
-              ...prevState.user,
-              image_url: data.image_url,
-              status: data.status,
-            },
-          }));
+          const updatedUser = { ...appState.user };
+
+          updatedUser.image_url = data.image_url;
+          updatedUser.status = data.status;
+
+          setAppState({ ...appState, user: updatedUser })
         }
       } catch (err) {
         console.log(err);
@@ -165,8 +164,9 @@ export default function RegisterQuiz({ setAppState, appState }) {
           <Heading
             as="h3"
             size="lg"
-            marginLeft={"42%"}
-            marginTop={""}
+            marginLeft={"44vw"}
+            // marginTop={""}
+            // mx={"auto"}
             position={"relative"}
             top={"70px"}
             color={useColorModeValue("var(--midnight)", "var(--grey)")}
@@ -176,7 +176,7 @@ export default function RegisterQuiz({ setAppState, appState }) {
         </Stack>
         <Box
           maxWidth={"720px"}
-          minHeight={"100vh"}
+          minHeight={"80vh"}
           maxHeight={"auto"}
           color={"white"}
           margin={"0 auto"}
@@ -453,10 +453,13 @@ export default function RegisterQuiz({ setAppState, appState }) {
                 src={quizInfo.imageUrl}
                 alt="Uploaded preview"
                 mt={4}
+                filter={"drop-shadow(8px 5px 4px var(--blue))"}
+                borderRadius={"50%"}
                 backgroundColor={"white"}
-                marginLeft={"50px"}
-                maxWidth={"100px"}
-                maxHeight={"100px"}
+                mx={"auto"}
+                width={"100px"}
+                height={"100px"}
+                objectFit={"cover"}
                 position={"relative"}
                 top={"60px"}
               />

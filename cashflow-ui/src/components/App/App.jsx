@@ -5,19 +5,19 @@ import Navbar from "../Navbar/Navbar";
 import { useState, useEffect } from "react";
 import apiClient from "../../services/apiClient";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Register from '../Register/Register'
-import GoalsTracker from '../GoalsTracker/GoalsTracker'
-import Home from '../Home/Home';
-import ModuleInfo from '../Module/ModuleInfo';
-import Dashboard from '../Dashboard/Dashboard';
-import RegisterQuiz from '../RegisterQuiz/RegisterQuiz';
-import Module from '../Module/Module';
-import GoodJob from '../Success/GoodJob';
-import NotQuite from '../Fail/NotQuite';
-import Failure from '../Fail/Failure';
-import ModuleQuiz from '../Module/ModuleQuiz';
-import QuizPreview from '../Module/QuizPreview';
-import ProfileView from '../ProfileView/ProfileView';
+import Register from "../Register/Register";
+import GoalsTracker from "../GoalsTracker/GoalsTracker";
+import Home from "../Home/Home";
+import ModuleInfo from "../Module/ModuleInfo";
+import Dashboard from "../Dashboard/Dashboard";
+import RegisterQuiz from "../RegisterQuiz/RegisterQuiz";
+import Module from "../Module/Module";
+import GoodJob from "../Success/GoodJob";
+import NotQuite from "../Fail/NotQuite";
+import Failure from "../Fail/Failure";
+import ModuleQuiz from "../Module/ModuleQuiz";
+import QuizPreview from "../Module/QuizPreview";
+import ProfileView from "../ProfileView/ProfileView";
 
 function App() {
   const [appState, setAppState] = useState({
@@ -53,7 +53,7 @@ function App() {
       setCashBotLink("cashbotDark.png");
     }
   }, [bgColor]);
-
+console.log(appState)
   useEffect(() => {
     setIsLoading(true);
     const token = localStorage.getItem("CashFlow_Token");
@@ -104,39 +104,66 @@ function App() {
               )
             }
           />
-          <Route path="/about" element={<AboutGrid />} />
+          <Route
+            path="/about"
+            element={appState.isAuthenticated ? null : <AboutGrid />}
+          />
           <Route
             path="/register"
-            element={<Register setAppState={setAppState} />}
+            element={
+              appState.isAuthenticated ? null : (
+                <Register setAppState={setAppState} />
+              )
+            }
           />
-          <Route path="/login" element={<Login setAppState={setAppState} />} />
-          <Route path="/profile" element={<ProfileView />} />
+          <Route
+            path="/login"
+            element={
+              appState.isAuthenticated ? null : (
+                <Login setAppState={setAppState} />
+              )
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              appState.isAuthenticated ? (
+                <ProfileView appState={appState} />
+              ) : null
+            }
+          />
           <Route
             path="/goals"
             element={
-              <GoalsTracker
-                cashBotLink={cashBotLink}
-                setAppState={setAppState}
-                appState={appState}
-              />
+              appState.isAuthenticated ? (
+                <GoalsTracker
+                  cashBotLink={cashBotLink}
+                  setAppState={setAppState}
+                  appState={appState}
+                />
+              ) : null
             }
           />
           <Route
             path="/registerquiz"
             element={
-              <RegisterQuiz setAppState={setAppState} appState={appState} />
+              appState.isAuthenticated ? (
+                <RegisterQuiz setAppState={setAppState} appState={appState} />
+              ) : null
             }
           />
           {module_pages.map((module_name) => (
             <Route
               path={`/${module_name}`}
               element={
-                <Module
-                  cashBotLink={cashBotLink}
-                  setInfoPage={setInfoPage}
-                  infoPage={infoPage}
-                  module_name={module_name}
-                />
+                appState.isAuthenticated ? (
+                  <Module
+                    cashBotLink={cashBotLink}
+                    setInfoPage={setInfoPage}
+                    infoPage={infoPage}
+                    module_name={module_name}
+                  />
+                ) : null
               }
             />
           ))}
@@ -144,11 +171,13 @@ function App() {
             <Route
               path={`/${module_name}/quiz`}
               element={
-                <ModuleQuiz
-                  setInfoPage={setInfoPage}
-                  infoPage={infoPage}
-                  module_name={module_name}
-                />
+                appState.isAuthenticated ? (
+                  <ModuleQuiz
+                    setInfoPage={setInfoPage}
+                    infoPage={infoPage}
+                    module_name={module_name}
+                  />
+                ) : null
               }
             />
           ))}
@@ -156,8 +185,6 @@ function App() {
       </BrowserRouter>
     </div>
   );
-
 }
-
 
 export default App;

@@ -21,11 +21,9 @@ import {
   useColorModeValue,
   Link,
 } from "@chakra-ui/react";
-import "./GoalsTracker.css";
 import apiClient from "../../services/apiClient";
 import { Puff } from "react-loading-icons";
 import GoalTile from "../GoalTile/GoalTile";
-import CashBot from "../Cashbot/Cashbot";
 
 export default function GoalsTracker({ setAppState, appState }) {
   const [goalInfo, setGoalInfo] = useState({
@@ -37,15 +35,6 @@ export default function GoalsTracker({ setAppState, appState }) {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [goalForm, setGoalForm] = useState(false);
-  // const [isChecked, setIsChecked] = useState(false);
-  // const [checked, setChecked] = useState(false)
-
-  console.log();
-  console.log(goalInfo);
-  // console.log(isChecked)
-  // const handleCheckboxChange = () => {
-  //   setIsChecked(!isChecked);
-  // };
 
   function handleRecord(e) {
     e.preventDefault();
@@ -73,7 +62,6 @@ export default function GoalsTracker({ setAppState, appState }) {
           category: goalInfo.category,
           description: goalInfo.description,
         });
-        console.log(data);
         setAppState((prevState) => ({
           ...prevState,
           goals: [data.goal, ...prevState.goals],
@@ -148,6 +136,7 @@ export default function GoalsTracker({ setAppState, appState }) {
           {goalForm ? (
             <Box
               margin={"0 auto"}
+              border={`1px solid ${useColorModeValue("var(--grey)", "var(--lightblue)")}`}
               rounded={"lg"}
               marginTop={"10px"}
               max-height={"40vh"}

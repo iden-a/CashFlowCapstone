@@ -16,17 +16,14 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-// import { Link } from "react-router-dom";
 
 export default function Navbar({ setAppState, appState }) {
   const { colorMode, toggleColorMode } = useColorMode();
   const navLinks = ["About", "Register", "Login"];
   const handleLogout = () => {
-    console.log(appState);
     localStorage.setItem("CashFlow_Token", null);
     setAppState((appState) => ({ ...appState, isAuthenticated: false }));
   };
-  console.log(appState.user)
 
   const NavLink = ({ children }) => {
     const handleClick = () => {
@@ -94,7 +91,7 @@ export default function Navbar({ setAppState, appState }) {
                   minW={0}
                 >
                   <Avatar
-                    size={"sm"}
+                    size={"lg"}
                     src={
                       appState.user.image_url !== ''
                       ? appState.user.image_url
@@ -154,7 +151,7 @@ export default function Navbar({ setAppState, appState }) {
 
             <Flex alignItems={"center"}>
               <Stack direction={"row"} spacing={7} ml={7}>
-                <Button onClick={toggleColorMode}>
+                <Button size={"md"} onClick={toggleColorMode}>
                   {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
                 </Button>
               </Stack>
