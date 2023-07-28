@@ -5,9 +5,8 @@ import {
   Avatar,
   Heading,
   Text,
-  Container,
   useColorModeValue,
-  Center
+  Center,
 } from "@chakra-ui/react";
 import GoalTile from "../GoalTile/GoalTile";
 
@@ -29,107 +28,62 @@ export default function ProfileView({ appState, setAppState }) {
           p={8}
         >
           <Center>
-        <Avatar
-          // marginTop={"-850px"}
-          // marginLeft={"43%"}
-          // alignItems={"center"}
-          // alignContent={"center"}
-          // margin={"0 auto"}
-          // justifyContent={"center"}
-          width={"250px"}
-          height={"250px"}
-          size={"sm"}
-          src={
-            appState.user.image_url !== "" 
-            ? appState.user.image_url
-              : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
-          }
-        />
-        </Center>
-        <Flex>
-          <Flex 
-          margin={"0 auto"}
-          flex={"wrap"}
-          display={"column"}
-          >
-            <Heading
-              color={useColorModeValue("var(--grey)", "var(--midnight)")}
-              // fontSize={"200%"}
-              // marginTop={"-32%"}
-              // marginBottom={"10px"}
-              // marginLeft={"35%"}
-            >
-              {appState.user.username}
-            </Heading>
-            <Text
-            color={useColorModeValue("var(--grey)", "var(--midnight)")}
-            >Username</Text>
+            <Avatar
+              width={"250px"}
+              height={"250px"}
+              size={"sm"}
+              src={
+                appState.user.image_url !== ""
+                  ? appState.user.image_url
+                  : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
+              }
+            />
+          </Center>
+          <Flex>
+            <Flex margin={"0 auto"} flex={"wrap"} display={"column"}>
+              <Heading
+                color={useColorModeValue("var(--grey)", "var(--midnight)")}
+              >
+                {appState.user.username}
+              </Heading>
+              <Text color={useColorModeValue("var(--grey)", "var(--midnight)")}>
+                Username
+              </Text>
+            </Flex>
+            <Flex margin={"0 auto"} flex={"wrap"} display={"column"}>
+              <Heading
+                color={useColorModeValue("var(--grey)", "var(--midnight)")}
+              >
+                {appState.user.total_points}
+              </Heading>
+              <Text color={useColorModeValue("var(--grey)", "var(--midnight)")}>
+                Points
+              </Text>
+            </Flex>
+
+            <Flex margin={"0 auto"} flex={"wrap"} display={"column"}>
+              <Heading
+                color={useColorModeValue("var(--grey)", "var(--midnight)")}
+              >
+                {appState.user.status}
+              </Heading>
+              <Text color={useColorModeValue("var(--grey)", "var(--midnight)")}>
+                Status
+              </Text>
+            </Flex>
           </Flex>
           <Flex
-          margin={"0 auto"}
-          flex={"wrap"}
-          display={"column"}
+            flexWrap={"wrap"}
+            justifyContent={"space-evenly"}
+            marginTop={"20px"}
+            direction={"row"}
+            spacing={"2%"}
           >
-          <Heading
-            color={useColorModeValue("var(--grey)", "var(--midnight)")}
-            // fontSize={"200%"}
-            // marginTop={"-32%"}
-            // marginBottom={"10px"}
-            // marginLeft={"20%"}
-          >
-            {appState.user.total_points}
-          </Heading>
-          <Text
-          color={useColorModeValue("var(--grey)", "var(--midnight)")}
-          >Points</Text>
+            {appState.goals.map((userGoal) => {
+              return <GoalTile userGoal={userGoal} />;
+            })}
           </Flex>
-      
-        <Flex  margin={"0 auto"}
-         flex={"wrap"}
-         display={"column"}>
-          <Heading
-            color={useColorModeValue("var(--grey)", "var(--midnight)")}
-            // fontSize={"200%"}
-            // marginTop={"-32%"}
-            // marginBottom={"10px"}
-            // marginLeft={"35%"}
-          >
-            {appState.user.status}
-          </Heading>
-          <Text
-          color={useColorModeValue("var(--grey)", "var(--midnight)")}
-          >Status</Text>
-        </Flex>
-        </Flex>
-        {/* <Heading
-          color={useColorModeValue("var(--grey)", "var(--midnight)")}
-          fontSize={"200%"}
-          textAlign={"center"}
-          marginTop={"-20%"}
-          marginBottom={"10px"}
-        >
-          Completed Modules
-        </Heading> */}
-        {/* <Box
-          backgroundColor={"white"}
-          maxHeight={"100px"}
-          maxWidth={"100px"}
-        ></Box> */}
-        {/* <Container backgroundColor={"white"}></Container> */}
-        <Flex
-              flexWrap={"wrap"}
-              justifyContent={"space-evenly"}
-              marginTop={"20px"}
-              direction={"row"}
-              // bg={"yellow"}
-              spacing={"2%"}
-            >
-              {appState.goals.map((userGoal) => {
-                return <GoalTile userGoal={userGoal} />;
-              })}
-            </Flex>
         </Box>
-           
       </Box>
     </Fragment>
   );

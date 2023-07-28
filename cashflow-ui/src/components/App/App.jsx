@@ -110,7 +110,7 @@ function App() {
             element={<Register setAppState={setAppState} />}
           />
           <Route path="/login" element={<Login setAppState={setAppState} />} />
-          <Route path="/profile" element={<Failure />} />
+          <Route path="/profile" element={<ProfileView appState={appState} />} />
           <Route
             path="/goals"
             element={
