@@ -1,15 +1,12 @@
 :root {
-  --midnight: #0A090C;
-  --grey: #F0EDEE;
-  --lightblue: #90DDF0;
+  --midnight: #0a090c;
+  --grey: #f0edee;
+  --lightblue: #90ddf0;
   --blue: #2c666e;
   --darkblue: #07393c;
 }
 
 body {
   scroll-behavior: smooth;
-}
-
-html {
-  background-color: var(--midnight);
+  margin: 0;
 }

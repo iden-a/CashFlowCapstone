@@ -106,13 +106,9 @@ export default function Login({ setAppState }) {
             bg={useColorModeValue("var(--grey)", "var(--midnight)")}
             spacing={8}
             mx={"auto"}
-            maxW={"lg"}
-            py={12}
-            px={6}
-          >
+            maxW={"lg"}          
+            >
             <Box
-              marginTop={"-80px"}
-              rounded={"lg"}
               max-height={"40vh"}
               borderRadius={"40px"}
               width={"40vh"}
@@ -190,21 +186,21 @@ export default function Login({ setAppState }) {
                     </InputRightElement>
                   </InputGroup>
                 </FormControl>
-                <Stack spacing={10}>
+                <Stack spacing={1}>
                   {userInfo.email.length === 0 ||
                   emailPattern.test(userInfo.email) ? null : (
                     <Text as="span"
                       style={{
                         color: "red",
-                        marginBottom: "-40px",
-                        marginLeft: "57.5%",
+                        // marginBottom: "-40px",
+                        // marginLeft: "57.5%",
                       }}
                     >
                       Invalid email input.
                     </Text>
                   )}
                   {loginError !== "" && (
-                    <Text as="span" style={{ color: "red", marginBottom: "-40px", marginLeft: "34%" }}>
+                    <Text as="span" style={{ color: "red" }}>
                       {loginError}
                     </Text>
                   )}

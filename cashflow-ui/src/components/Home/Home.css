@@ -27,7 +27,7 @@
   margin-right: 0 auto;
   margin-bottom: 8%;
   width: 100%;
-  height: 61px;
+  height: 6vh;
   object-fit: cover;
 }
 
@@ -48,7 +48,6 @@
   font-size: 300%;
   width: 23%;
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-
   /* margin-left: 0 auto;
   margin-right: 0 auto; */
   margin-top: 33%;
@@ -150,24 +149,18 @@
 .homeContainers4 .bg {
   background: url("tiffany.png") 50% 65% no-repeat fixed;
 }
+.logoCont .bg{
+  background: url("homeChar1.png") 50% 46vh no-repeat fixed;
+}
 
 .homeContainers2 .bg,
 .homeContainers3 .bg,
 .homeContainers1 .bg,
-.homeContainers4 .bg {
-  margin-top: -343px;
-  background-size: 650px 650px;
-  height: 90vh;
-  position: absolute;
-  width: inherit;
-  z-index: 10;
-}
-
-.logoCont .bg {
-  background: url("homeChar1.png") 50% 122% no-repeat fixed;
-  margin-top: -300px;
-  background-size: 650px 650px;
-  height: 90vh;
+.homeContainers4 .bg,
+.logoCont .bg  {
+  margin-top: -40vh;
+  background-size: 60vh 60vh;
+  height: 100vh;
   position: absolute;
   width: inherit;
   z-index: 10;

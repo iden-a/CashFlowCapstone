@@ -34,10 +34,10 @@ export default function AboutGrid() {
 
   return (
     <>
-      <Center h="250px">
+      <Center h="25vh">
         <Image src="/meet.png" />
       </Center>
-      <Flex height={'100vh'} >
+      <Flex height={'80vh'} >
         {aboutInfo.map((creator) => (
           <>
             <Spacer />

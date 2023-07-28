@@ -8,12 +8,12 @@ import {
   MessageInput,
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
-import Cashbot from "../../assets/cashbot.png";
+import { ChakraProvider, useColorModeValue } from '@chakra-ui/react';
 
 //API key is hidden
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-export default function CashBot() {
+export default function CashBot({cashBotLink}) {
   const [isCashbotOpen, setIsCashbotOpen] = useState(false);
   const [typing, setTyping] = useState(false);
   const [messages, setMessages] = useState([
@@ -157,7 +157,7 @@ export default function CashBot() {
               backgroundColor: "var(--midnight)",
             }}
             className="cashbot"
-            src={Cashbot}
+            src={cashBotLink}
             alt="Cashbot for CashFlow Academy"
             onClick={handleOpenCashbot}
           />
@@ -174,10 +174,9 @@ export default function CashBot() {
               left: "88%",
               height: "200px",
               width: "200px",
-              backgroundColor: "var(--midnight)",
             }}
             className="cashbot"
-            src={Cashbot}
+            src={cashBotLink}
             alt="Cashbot for CashFlow Academy"
             onClick={handleOpenCashbot}
           />

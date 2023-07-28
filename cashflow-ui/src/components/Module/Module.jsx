@@ -5,7 +5,7 @@ import modulesInfo from '../../../../cashflow-api/modules/modulesInfo.json';
 
 
 
-export default function Module({setInfoPage, infoPage, module_name}) {
+export default function Module({setInfoPage, infoPage, module_name, cashBotLink}) {
     
     const module_data = modulesInfo[`${module_name}`]
     const num_pages = module_data.sections.length
@@ -15,7 +15,7 @@ export default function Module({setInfoPage, infoPage, module_name}) {
             (infoPage === num_pages) ? 
             <QuizPreview module_name={module_name}/>
             :
-            <ModuleInfo module_data={module_data} num_pages={num_pages} setInfoPage={setInfoPage} infoPage={infoPage} />
+            <ModuleInfo cashBotLink={cashBotLink} module_data={module_data} num_pages={num_pages} setInfoPage={setInfoPage} infoPage={infoPage} />
         }
         </>
     )

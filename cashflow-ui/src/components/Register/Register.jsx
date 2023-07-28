@@ -135,17 +135,15 @@ export default function Register({ appState, setAppState }) {
             spacing={8}
             mx={"auto"}
             maxW={"lg"}
-            py={12}
-            px={6}
           >
             <Box
-              marginTop={"-80px"}
               rounded={"lg"}
               borderRadius={"40px"}
               width={"40vh"}
               bg={useColorModeValue("var(--midnight)", "var(--lightblue)")}
               boxShadow={"lg"}
               p={8}
+              
             >
               <Stack align={"center"}>
                 <Heading
@@ -321,14 +319,12 @@ export default function Register({ appState, setAppState }) {
                     </InputRightElement>
                   </InputGroup>
                 </FormControl>
-                <Stack spacing={10}>
+                <Stack spacing={2}>
                   {userInfo.email.length === 0 ||
                   emailPattern.test(userInfo.email) ? null : (
                     <span
                       style={{
-                        color: "red",
-                        marginBottom: "-30px",
-                        marginLeft: "61%",
+                        color: "red"
                       }}
                     >
                       Invalid email input.
@@ -338,14 +334,11 @@ export default function Register({ appState, setAppState }) {
                     <>
                       <span
                         style={{
-                          color: "red",
-                          marginLeft: "47.5%",
-                          marginBottom: "-95px",
+                          color: "red"
                         }}
                       >
                         Passwords do not match.
-                      </span>{" "}
-                      <br />
+                      </span>
                     </>
                   )}
                   {userInfo.password.length >= 8 ||
@@ -380,7 +373,7 @@ export default function Register({ appState, setAppState }) {
                     }}
                   >
                     {isLoading ? (
-                      <Puff stroke="var(--midnight)" speed={1.25} />
+                      <Puff stroke="white" speed={1.25} />
                     ) : (
                       <span>Create Account</span>
                     )}

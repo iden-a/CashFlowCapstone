@@ -95,12 +95,11 @@ export default function GoalsTracker({ setAppState, appState }) {
   }
   return (
     <Fragment>
-      <CashBot/>
-      <Box marginTop={"5%"} height={"100vh"} color={"white"}>
+      <Box marginBottom={"5%"} marginTop={"5%"} height={"100vh"} color={"white"}>
         <Box
-        zIndex={"-1"}
+          zIndex={"-1"}
+          mx={"auto"}
           marginTop={"11%"}
-          marginLeft={"16%"}
           rounded={"lg"}
           minHeight={"70vh"}
           maxHeight={"auto"}
@@ -112,13 +111,12 @@ export default function GoalsTracker({ setAppState, appState }) {
         >
           <Image
             marginTop={"-300px"}
-            marginLeft={"29%"}
+            mx={"auto"}
             width={"500px"}
             height={"500px"}
             src="goalGuy.png"
           />
           <Heading
-            // bg={"red"}
             color={useColorModeValue("var(--grey)", "var(--midnight)")}
             fontSize={"300%"}
             textAlign={"center"}

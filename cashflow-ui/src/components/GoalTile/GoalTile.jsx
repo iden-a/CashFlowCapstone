@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Flex, Box, HStack, Checkbox, Image, Text } from "@chakra-ui/react";
+import { Flex, Box, HStack, Checkbox, Image, Text, useColorModeValue } from "@chakra-ui/react";
 
 export default function GoalTile({ userGoal }) {
   const [isChecked, setIsChecked] = useState(false);
@@ -97,6 +97,7 @@ export default function GoalTile({ userGoal }) {
           width={"70px"}
           height={"60px"}
           borderRadius={"50%"}
+          boxShadow={ `7px 7px 7px ${useColorModeValue("var(--darkblue)", "var(--lightblue)")}`}
           paddingTop={"2%"}
           paddingLeft={"8%"}
           fontSize={"xx-large"}
@@ -118,17 +119,17 @@ export default function GoalTile({ userGoal }) {
           {userGoal.category}
         </Text>
         <Checkbox
-          color={"black"}
+          color={useColorModeValue("var(--grey)", "var(--midnight)")}
           marginTop={"10px"}
           checked={isChecked}
           onChange={handleCheckboxChange}
           colorScheme="var(--darkblue)"
-          border={"var(--midnight)"}
+          border={useColorModeValue("var(--grey)", "var(--midnight)")}
         >
           Goal Accomplished?
         </Checkbox>
         <Text
-          color={"var(--midnight)"}
+          color={useColorModeValue("var(--grey)", "var(--midnight)")}
           fontWeight={"bold"}
           textAlign={"center"}
           marginTop={"5px"}
@@ -152,7 +153,7 @@ export default function GoalTile({ userGoal }) {
               Start Date
             </Text>
             <Text
-              color={"var(--midnight)"}
+              color={useColorModeValue("var(--grey)", "var(--midnight)")}
               fontWeight={"bold"}
               textAlign={"center"}
               marginTop={"5px"}
@@ -171,7 +172,7 @@ export default function GoalTile({ userGoal }) {
               End Date
             </Text>
             <Text
-              color={"var(--midnight)"}
+              color={useColorModeValue("var(--grey)", "var(--midnight)")}
               fontWeight={"bold"}
               textAlign={"center"}
               marginTop={"5px"}
@@ -182,7 +183,7 @@ export default function GoalTile({ userGoal }) {
             </Text>
           </Flex>
         </HStack>
-        <Text fontSize={"x-large"} color={"var(--midnight)"}>
+        <Text fontSize={"x-large"} color={useColorModeValue("var(--grey)", "var(--midnight)")}>
           Description:
         </Text>
         <Text
