@@ -87,7 +87,7 @@ export default function GoalsTracker({ setAppState, appState }) {
         <Box
           zIndex={"-1"}
           mx={"auto"}
-          marginTop={"11%"}
+          marginTop={"20vh"}
           rounded={"lg"}
           minHeight={"70vh"}
           maxHeight={"auto"}
@@ -285,7 +285,7 @@ export default function GoalsTracker({ setAppState, appState }) {
                 <Flex margin={"0 auto"} width={"90%"}>
                   <Button
                     onClick={handleRecord}
-                    width={"40%"}
+                    width={"fit-content"}
                     borderRadius={"20px"}
                     height={"45px"}
                     fontSize={"130%"}
@@ -305,7 +305,7 @@ export default function GoalsTracker({ setAppState, appState }) {
                   </Button>
                   <Button
                     onClick={handleSubmit}
-                    width={"40%"}
+                    width={"fit-content"}
                     borderRadius={"20px"}
                     height={"45px"}
                     fontSize={"130%"}

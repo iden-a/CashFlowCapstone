@@ -29,6 +29,7 @@ export default function Register({ appState, setAppState }) {
     password: "",
     confirmPassword: "",
   });
+  // const fakeQuizzes = [{topic: "back_account_basics", }]
   const [isLoading, setIsLoading] = useState(false);
   const [registerError, setRegisterError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -356,13 +357,13 @@ export default function Register({ appState, setAppState }) {
                   )}
 
                   {registerError !== "" && (
-                    <span style={{ color: "red", marginLeft: "34%" }}>
+                    <span style={{ color: "red" }}>
                       {registerError}
                     </span>
                   )}
                   <Button
                     onClick={handleSubmit}
-                    width={"60%"}
+                    width={"fit-content"}
                     borderRadius={"20px"}
                     height={"45px"}
                     fontSize={"x-large"}

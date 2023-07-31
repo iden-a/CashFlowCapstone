@@ -12,6 +12,7 @@ import {
 import { useNavigate } from 'react-router';
 export default function QuizPreview({module_name}) {
     // TODO: counter for module info pages 
+    console.log(module_name)
     const page_count = 0
     const navigate = useNavigate()
     const handleBegin= () => {
@@ -19,7 +20,7 @@ export default function QuizPreview({module_name}) {
       }
       
     const handleBack = () => {
-        navigate(`/${module_name}/`)
+        navigate(`/${module_name}`)
         window.location.reload(false)
       }
 

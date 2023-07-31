@@ -123,7 +123,8 @@ class DbQuery {
     const quizzes = await db.query(
       `SELECT 
       topic, 
-      points
+      points,
+      created_at
             FROM quiz
             WHERE user_id = $1
             ORDER BY created_at DESC`,

@@ -8,6 +8,7 @@ import {
   MessageInput,
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
+import "./Cashbot.css";
 
 //API key is hidden
 const API_KEY = import.meta.env.VITE_API_KEY;

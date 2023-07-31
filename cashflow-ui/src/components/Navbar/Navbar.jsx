@@ -62,7 +62,7 @@ export default function Navbar({ setAppState, appState }) {
         position={"relative"}
       >
         {/* Clicking on logo leads back to homepage */}
-        <Flex h={20} alignItems={"center"} justifyContent={"space-between"}>
+        <Flex paddingTop={"1g%"} h={20} alignItems={"center"} justifyContent={"space-between"}>
           <Link href="/">
             <Box marginLeft={30}>
               <img src={"/logo.png"} width={90} height={90} />
