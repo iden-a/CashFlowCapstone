@@ -25,7 +25,7 @@ export default function CashBot({ cashBotLink }) {
 
   //function for when cashbot is open
   const handleOpenCashbot = () => {
-    setIsCashbotOpen(!isCashbotOpen);
+    setIsCashbotOpen(!isCashbotOpen); //logical operator that toggles between true/false 
   };
 
   // this function is for when the user is sending a message.

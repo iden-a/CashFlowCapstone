@@ -8,9 +8,24 @@ import {
   useColorModeValue,
   Center,
 } from "@chakra-ui/react";
-import GoalTile from "../GoalTile/GoalTile";
+import ProfileModule from "./ProfileModule";
 
 export default function ProfileView({ appState, setAppState }) {
+  const fakeQuizzes = [
+    {
+      topic: "Bank Account Basics",
+      points: "100",
+      created_at: "07/30/2023",
+    },
+    { topic: "Credit Cards", 
+    points: "200", 
+    created_at: "07/31/2023" 
+  },
+    { topic: "Debt Management", 
+    points: "500", 
+    created_at: "08/01/2023" 
+  },
+  ];
   return (
     <Fragment>
       <Box marginTop={"5%"} height={"100vh"} color={"white"}>
@@ -39,8 +54,8 @@ export default function ProfileView({ appState, setAppState }) {
               }
             />
           </Center>
-          <Flex>
-            <Flex margin={"0 auto"} flex={"wrap"} display={"column"}>
+          <Flex >
+            <Flex margin={"0 auto"} flex={"wrap"} display={"column"} textAlign={"center"}>
               <Heading
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
               >
@@ -50,18 +65,18 @@ export default function ProfileView({ appState, setAppState }) {
                 Username
               </Text>
             </Flex>
-            <Flex margin={"0 auto"} flex={"wrap"} display={"column"}>
+            <Flex margin={"0 auto"} flex={"wrap"} display={"column"} textAlign={"center"}>
               <Heading
-                color={useColorModeValue("var(--grey)", "var(--midnight)")}
+                color={useColorModeValue("var(--grey)", "var(--midnight)")} marginLeft={"auto"} marginRight={"auto"}
               >
                 {appState.user.total_points}
               </Heading>
-              <Text color={useColorModeValue("var(--grey)", "var(--midnight)")}>
+              <Text color={useColorModeValue("var(--grey)", "var(--midnight)")} >
                 Points
               </Text>
             </Flex>
 
-            <Flex margin={"0 auto"} flex={"wrap"} display={"column"}>
+            <Flex margin={"0 auto"} flex={"wrap"} display={"column"} textAlign={"center"}>
               <Heading
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
               >
@@ -72,6 +87,9 @@ export default function ProfileView({ appState, setAppState }) {
               </Text>
             </Flex>
           </Flex>
+          <Heading color={useColorModeValue("var(--grey)", "var(--midnight)")} textAlign={"center"} marginTop={"5%"}>
+                Completed Modules
+              </Heading>
           <Flex
             flexWrap={"wrap"}
             justifyContent={"space-evenly"}
@@ -79,8 +97,8 @@ export default function ProfileView({ appState, setAppState }) {
             direction={"row"}
             spacing={"2%"}
           >
-            {appState.goals.map((userGoal) => {
-              return <GoalTile userGoal={userGoal} />;
+            {fakeQuizzes.map((userQuiz) => {
+              return <ProfileModule userQuiz={userQuiz} />;
             })}
           </Flex>
         </Box>

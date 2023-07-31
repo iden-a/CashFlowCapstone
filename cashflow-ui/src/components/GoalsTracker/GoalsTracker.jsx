@@ -24,8 +24,9 @@ import {
 import apiClient from "../../services/apiClient";
 import { Puff } from "react-loading-icons";
 import GoalTile from "../GoalTile/GoalTile";
+import CashBot from "../Cashbot/Cashbot";
 
-export default function GoalsTracker({ setAppState, appState }) {
+export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
   const [goalInfo, setGoalInfo] = useState({
     goal: "",
     start_date: "",
@@ -342,6 +343,7 @@ export default function GoalsTracker({ setAppState, appState }) {
           )}
         </Box>
       </Box>
+      <CashBot cashBotLink={cashBotLink}/>
     </Fragment>
   );
 }
