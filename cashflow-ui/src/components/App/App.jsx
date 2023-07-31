@@ -112,8 +112,9 @@ function App() {
           />
           <Route
             path="/about"
+
             element={ <AboutGrid />}
-            
+
           />
           <Route
             path="/register"

@@ -1,5 +1,6 @@
 import AboutCard from "../AboutCard/AboutCard";
 import { Flex, Spacer, Center, Image, Heading } from "@chakra-ui/react";
+import Footer from "../App/Footer";
 
 export default function AboutGrid() {
   const aboutInfo = [
@@ -54,6 +55,7 @@ export default function AboutGrid() {
           </>
         ))}
       </Flex>
+      <Footer />
     </>
   );
 }
