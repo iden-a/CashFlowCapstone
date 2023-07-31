@@ -31,6 +31,7 @@ function App() {
   const bgColor = useColorModeValue("var(--grey)", "var(--midnight)");
   const [isLoading, setIsLoading] = useState(false);
   const [cashBotLink, setCashBotLink] = useState("");
+  const [errorLink, setErrorLink] = useState("");
 
   // Module variables
   const module_pages = [
@@ -50,8 +51,10 @@ function App() {
     console.log(bgColor);
     if (bgColor === "var(--midnight)") {
       setCashBotLink("cashbot.png");
+      setErrorLink("404light.png")
     } else {
       setCashBotLink("cashbotDark.png");
+      setErrorLink("404dark.png")
     }
   }, [bgColor]);
   console.log(appState);
@@ -107,12 +110,12 @@ function App() {
           />
           <Route
             path="/about"
-            element={appState.isAuthenticated ? <ErrorPage/> : <AboutGrid />}
+            element={appState.isAuthenticated ? <ErrorPage errorLink={errorLink}/> : <AboutGrid />}
           />
           <Route
             path="/register"
             element={
-              appState.isAuthenticated ? <ErrorPage/> : (
+              appState.isAuthenticated ? <ErrorPage errorLink={errorLink}/> : (
                 <Register setAppState={setAppState} />
               )
             }
@@ -120,7 +123,7 @@ function App() {
           <Route
             path="/login"
             element={
-              appState.isAuthenticated ? <ErrorPage/> : (
+              appState.isAuthenticated ? <ErrorPage errorLink={errorLink}/> : (
                 <Login setAppState={setAppState} />
               )
             }
@@ -131,7 +134,7 @@ function App() {
               appState.isAuthenticated ? (
                 <ProfileView appState={appState} />
               ) : (
-                <ErrorPage />
+                <ErrorPage errorLink={errorLink}/>
               )
             }
           />
@@ -145,7 +148,7 @@ function App() {
                   appState={appState}
                 />
               ) : (
-                <ErrorPage />
+                <ErrorPage errorLink={errorLink}/>
               )
             }
           />
@@ -155,7 +158,7 @@ function App() {
               appState.isAuthenticated ? (
                 <RegisterQuiz setAppState={setAppState} appState={appState} />
               ) : (
-                <ErrorPage />
+                <ErrorPage errorLink={errorLink}/>
               )
             }
           />
@@ -170,7 +173,7 @@ function App() {
                     infoPage={infoPage}
                     module_name={module_name}
                   />
-                ) : <ErrorPage/>
+                ) : <ErrorPage errorLink={errorLink}/>
               }
             />
           ))}
@@ -184,13 +187,13 @@ function App() {
                     infoPage={infoPage}
                     module_name={module_name}
                   />
-                ) : <ErrorPage/>
+                ) : <ErrorPage errorLink={errorLink}/>
               }
             />
           ))}
           <Route
           path="*" 
-          element={<ErrorPage/>}
+          element={<ErrorPage errorLink={errorLink}/>}
           />
         </Routes>
       </BrowserRouter>
