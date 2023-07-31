@@ -85,7 +85,7 @@ export default function ProfileModule({ userQuiz }) {
               color={"var(--blue)"}
               fontSize={"x-large"}
             >
-              Completed Date
+              Completion Date
             </Text>
             <Text
               color={useColorModeValue("var(--grey)", "var(--midnight)")}

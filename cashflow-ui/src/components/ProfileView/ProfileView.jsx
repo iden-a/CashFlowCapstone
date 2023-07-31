@@ -9,6 +9,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import ProfileModule from "./ProfileModule";
+import GoalTile from "../GoalTile/GoalTile";
 
 export default function ProfileView({ appState, setAppState }) {
   const fakeQuizzes = [
@@ -17,14 +18,8 @@ export default function ProfileView({ appState, setAppState }) {
       points: "100",
       created_at: "07/30/2023",
     },
-    { topic: "Credit Cards", 
-    points: "200", 
-    created_at: "07/31/2023" 
-  },
-    { topic: "Debt Management", 
-    points: "500", 
-    created_at: "08/01/2023" 
-  },
+    { topic: "Credit Cards", points: "200", created_at: "07/31/2023" },
+    { topic: "Debt Management", points: "500", created_at: "08/01/2023" },
   ];
   return (
     <Fragment>
@@ -54,8 +49,13 @@ export default function ProfileView({ appState, setAppState }) {
               }
             />
           </Center>
-          <Flex >
-            <Flex margin={"0 auto"} flex={"wrap"} display={"column"} textAlign={"center"}>
+          <Flex marginTop={"3%"}>
+            <Flex
+              margin={"0 auto"}
+              flex={"wrap"}
+              display={"column"}
+              textAlign={"center"}
+            >
               <Heading
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
               >
@@ -65,18 +65,30 @@ export default function ProfileView({ appState, setAppState }) {
                 Username
               </Text>
             </Flex>
-            <Flex margin={"0 auto"} flex={"wrap"} display={"column"} textAlign={"center"}>
+            <Flex
+              margin={"0 auto"}
+              flex={"wrap"}
+              display={"column"}
+              textAlign={"center"}
+            >
               <Heading
-                color={useColorModeValue("var(--grey)", "var(--midnight)")} marginLeft={"auto"} marginRight={"auto"}
+                color={useColorModeValue("var(--grey)", "var(--midnight)")}
+                marginLeft={"auto"}
+                marginRight={"auto"}
               >
                 {appState.user.total_points}
               </Heading>
-              <Text color={useColorModeValue("var(--grey)", "var(--midnight)")} >
+              <Text color={useColorModeValue("var(--grey)", "var(--midnight)")}>
                 Points
               </Text>
             </Flex>
 
-            <Flex margin={"0 auto"} flex={"wrap"} display={"column"} textAlign={"center"}>
+            <Flex
+              margin={"0 auto"}
+              flex={"wrap"}
+              display={"column"}
+              textAlign={"center"}
+            >
               <Heading
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
               >
@@ -87,9 +99,13 @@ export default function ProfileView({ appState, setAppState }) {
               </Text>
             </Flex>
           </Flex>
-          <Heading color={useColorModeValue("var(--grey)", "var(--midnight)")} textAlign={"center"} marginTop={"5%"}>
-                Completed Modules
-              </Heading>
+          <Heading
+            color={useColorModeValue("var(--grey)", "var(--midnight)")}
+            textAlign={"center"}
+            marginTop={"5%"}
+          >
+            Completed Modules
+          </Heading>
           <Flex
             flexWrap={"wrap"}
             justifyContent={"space-evenly"}
@@ -100,6 +116,24 @@ export default function ProfileView({ appState, setAppState }) {
             {fakeQuizzes.map((userQuiz) => {
               return <ProfileModule userQuiz={userQuiz} />;
             })}
+          </Flex>
+          <Heading
+            color={useColorModeValue("var(--grey)", "var(--midnight)")}
+            textAlign={"center"}
+            marginTop={"5%"}
+          >
+            Completed Goals
+          </Heading>
+          <Flex
+            flexWrap={"wrap"}
+            justifyContent={"space-evenly"}
+            marginTop={"20px"}
+            direction={"row"}
+            spacing={"2%"}
+          >
+              {appState.goals.map((userGoal) => {
+                return <GoalTile userGoal={userGoal} />;
+              })}
           </Flex>
         </Box>
       </Box>
