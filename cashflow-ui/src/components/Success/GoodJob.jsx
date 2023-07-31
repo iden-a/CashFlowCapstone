@@ -1,14 +1,27 @@
-import React from 'react';
-import { Box, IconButton, Heading, Image } from '@chakra-ui/react';
-import { useNavigate } from 'react-router';
+import React from "react";
+import { Box, IconButton, Heading, Image } from "@chakra-ui/react";
+import { useNavigate } from "react-router";
 
 export default function GoodJob({ onNextClick }) {
- 
   return (
     <>
-      <Box display="flex" justifyContent="center" alignItems="center" height="800px">
+      <Box
+        left={"12%"}
+        position={"absolute"}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        height="800px"
+      >
         <Box mt={20}>
-          <Image src="/tiffany.png" position="absolute" top="-100px" ml="100px" h={600} zIndex="1" />
+          <Image
+            src="/tiffany.png"
+            position="absolute"
+            top="-100px"
+            ml="100px"
+            h={600}
+            zIndex="1"
+          />
           <Box
             position="relative"
             height="800px"
@@ -34,7 +47,7 @@ export default function GoodJob({ onNextClick }) {
                 zIndex={2}
                 mt={50}
                 icon={<Image src="/next.png" maxH="120px" />}
-                onClick={onNextClick} 
+                onClick={onNextClick}
               />
             </Box>
           </Box>

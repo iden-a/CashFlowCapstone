@@ -131,11 +131,6 @@ function App() {
               )
             }
           />
-              ) : (
-                <ErrorPage errorLink={errorLink}/>
-              )
-            }
-          />
           <Route
             path="/registerquiz"
             element={
