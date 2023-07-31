@@ -8,19 +8,19 @@ export default function ErrorPage({errorLink}) {
           id="404"
           src={errorLink}
           alt="image of Cashflow Academy's slogan"
-          style={{ width: "30%", height: "70%", margin: "0 auto", "--index" : "0" }}
+          style={{ width: "40%", height: "80%", margin: "0 auto", "--index" : "0" }}
         />
         <img
           id="404"
           src={errorLink}
           alt="image of Cashflow Academy's slogan"
-          style={{ width: "30%", height: "70%", margin: "0 auto", "--index" : "1" }}
+          style={{ width: "40%", height: "80%", margin: "0 auto", "--index" : "1" }}
         />
         <img
           id="404"
           src={errorLink}
           alt="image of Cashflow Academy's slogan"
-          style={{ width: "30%", height: "70%", margin: "0 auto", "--index" : "2" }}
+          style={{ width: "40%", height: "80%", margin: "0 auto", "--index" : "2" }}
         />
       </div>
     </Fragment>
