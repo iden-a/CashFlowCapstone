@@ -7,12 +7,10 @@ import {
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
 
-export default function NotQuite({module_name}) {
+export default function NotQuite({onNextClick}) {
     // TODO: Take in module, question #, correct explanation, point value
     const navigate = useNavigate()
-    const handleReturn = () => {
-        navigate('/')
-      }
+  
     
     return (
         
@@ -37,7 +35,7 @@ export default function NotQuite({module_name}) {
           mt={700}
           ml={1200}
           icon={<Image src="/next.png" maxH={'300px'} />}
-          //onClick={}  next question
+          onClick={onNextClick} 
         />
         <Box pt={300}>
         <Heading display={'flex'} size={'4xl'} justifyContent={'center'} >NOT QUITE!</Heading>

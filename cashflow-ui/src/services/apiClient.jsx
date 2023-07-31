@@ -63,6 +63,13 @@ class ApiClient {
       data: creds,
     });
   }
+  async quiz(creds) {
+    return await this.request({
+      endpoint: `auth/updatequiz`,
+      method: `POST`,
+      data: creds,
+    });
+  }
 
   async imageStats(creds) {
     return await this.request({

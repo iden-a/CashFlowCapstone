@@ -5,6 +5,7 @@ import modulesInfo from '../../../../cashflow-api/modules/modulesInfo.json';
 
 
 
+
 export default function Module({setInfoPage, infoPage, module_name, cashBotLink}) {
     
     const module_data = modulesInfo[`${module_name}`]

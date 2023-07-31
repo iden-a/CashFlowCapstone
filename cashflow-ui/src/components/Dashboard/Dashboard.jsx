@@ -8,6 +8,7 @@ import { useState } from 'react';
 export default function Dashboard({appState}) {
   // TODO: Separate beginner & intermediate dashboard 
   let dashboard = []
+
     if(appState.user.status === 'Beginner')
       dashboard = ['bank-acct', 'credit-cards', 'debt']
     else if (appState.user.status === 'Intermediate')

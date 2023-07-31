@@ -93,6 +93,8 @@ function App() {
     });
   }, [appState.isAuthenticated]);
 
+  console.log(appState)
+
   return (
     <div className="app" style={{ backgroundColor: bgColor }}>
       <BrowserRouter>
@@ -110,7 +112,8 @@ function App() {
           />
           <Route
             path="/about"
-            element={appState.isAuthenticated ? <ErrorPage errorLink={errorLink}/> : <AboutGrid />}
+            element={ <AboutGrid />}
+            
           />
           <Route
             path="/register"
@@ -128,25 +131,6 @@ function App() {
               )
             }
           />
-          <Route
-            path="/profile"
-            element={
-              appState.isAuthenticated ? (
-                <ProfileView appState={appState} />
-              ) : (
-                <ErrorPage errorLink={errorLink}/>
-              )
-            }
-          />
-          <Route
-            path="/goals"
-            element={
-              appState.isAuthenticated ? (
-                <GoalsTracker
-                  cashBotLink={cashBotLink}
-                  setAppState={setAppState}
-                  appState={appState}
-                />
               ) : (
                 <ErrorPage errorLink={errorLink}/>
               )
