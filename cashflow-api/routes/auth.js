@@ -77,6 +77,16 @@ router.patch("/totalpoints", async function (req, res, next) {
   }
 });
 
+router.patch("/goalStatus", async function (req, res, next) {
+  try {
+    console.log(req.body)
+    const goalStat = await User.updateGoalStatus(req.body);
+    return res.status(201).json(goalStat);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.patch("/imageStatus", async function (req, res, next) {
   try {
     const imageStats = await User.updateImageAndStatus(req.body);

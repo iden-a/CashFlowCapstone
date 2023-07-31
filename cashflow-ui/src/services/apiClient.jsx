@@ -71,6 +71,14 @@ class ApiClient {
       data: creds,
     });
   }
+
+  async goalStat(creds) {
+    return await this.request({
+      endpoint: `auth/goalStatus`,
+      method: `PATCH`,
+      data: creds,
+    });
+  }
 }
 
 export default  new ApiClient("http://localhost:3001");

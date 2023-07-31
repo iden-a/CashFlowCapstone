@@ -135,6 +135,15 @@ class User {
 
     return imageStats;
   }
+
+  static async updateGoalStatus(data) {
+    const { id } = data;
+    const goalStat = await DbQuery.updateGoalStatus(
+      id
+    );
+
+    return goalStat;
+  }
 }
 
 module.exports = User;

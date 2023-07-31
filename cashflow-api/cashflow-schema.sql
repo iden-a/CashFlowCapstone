@@ -18,6 +18,7 @@ CREATE TABLE goals (
   description       VARCHAR(255) NOT NULL,
   start_date        TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   end_date          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  status            VARCHAR(20) DEFAULT 'In progress' CHECK (status IN ('In progress', 'Accomplished')),
   created_at        TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   user_id           INTEGER NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (id)

@@ -332,7 +332,7 @@ export default function Register({ appState, setAppState }) {
                       Invalid email input.
                     </span>
                   )}
-                  {userInfo.password !== userInfo.confirmPassword && (
+                  {((userInfo.password.length >= 1 && userInfo.confirmPassword.length >= 1) && userInfo.password !== userInfo.confirmPassword ) && (
                     <>
                       <span
                         style={{
