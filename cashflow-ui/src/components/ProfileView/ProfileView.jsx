@@ -125,16 +125,25 @@ export default function ProfileView({ appState, setAppState }) {
             Completed Goals
           </Heading>
           <Flex
-            flexWrap={"wrap"}
-            justifyContent={"space-evenly"}
-            marginTop={"20px"}
-            direction={"row"}
-            spacing={"2%"}
-          >
-              {appState.goals.map((userGoal) => {
-                return <GoalTile userGoal={userGoal} />;
+              flexWrap={"wrap"}
+              justifyContent={"space-evenly"}
+              marginTop={"20px"}
+              direction={"row"}
+              spacing={"2%"}
+            >
+              {appState.goals.map((userGoal, ind) => {
+                return (
+                  userGoal.status === "Accomplished" && (
+                    <GoalTile
+                      ind={ind}
+                      setAppState={setAppState}
+                      appState={appState}
+                      userGoal={userGoal}
+                    />
+                  )
+                );
               })}
-          </Flex>
+            </Flex>
         </Box>
       </Box>
     </Fragment>
