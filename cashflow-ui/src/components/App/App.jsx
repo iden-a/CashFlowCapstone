@@ -18,6 +18,7 @@ import Failure from "../Fail/Failure";
 import ModuleQuiz from "../Module/ModuleQuiz";
 import QuizPreview from "../Module/QuizPreview";
 import ProfileView from "../ProfileView/ProfileView";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 function App() {
   const [appState, setAppState] = useState({
@@ -53,7 +54,7 @@ function App() {
       setCashBotLink("cashbotDark.png");
     }
   }, [bgColor]);
-console.log(appState)
+  console.log(appState);
   useEffect(() => {
     setIsLoading(true);
     const token = localStorage.getItem("CashFlow_Token");
@@ -106,12 +107,12 @@ console.log(appState)
           />
           <Route
             path="/about"
-            element={appState.isAuthenticated ? null : <AboutGrid />}
+            element={appState.isAuthenticated ? <ErrorPage/> : <AboutGrid />}
           />
           <Route
             path="/register"
             element={
-              appState.isAuthenticated ? null : (
+              appState.isAuthenticated ? <ErrorPage/> : (
                 <Register setAppState={setAppState} />
               )
             }
@@ -119,7 +120,7 @@ console.log(appState)
           <Route
             path="/login"
             element={
-              appState.isAuthenticated ? null : (
+              appState.isAuthenticated ? <ErrorPage/> : (
                 <Login setAppState={setAppState} />
               )
             }
@@ -129,7 +130,9 @@ console.log(appState)
             element={
               appState.isAuthenticated ? (
                 <ProfileView appState={appState} />
-              ) : null
+              ) : (
+                <ErrorPage />
+              )
             }
           />
           <Route
@@ -141,7 +144,9 @@ console.log(appState)
                   setAppState={setAppState}
                   appState={appState}
                 />
-              ) : null
+              ) : (
+                <ErrorPage />
+              )
             }
           />
           <Route
@@ -149,7 +154,9 @@ console.log(appState)
             element={
               appState.isAuthenticated ? (
                 <RegisterQuiz setAppState={setAppState} appState={appState} />
-              ) : null
+              ) : (
+                <ErrorPage />
+              )
             }
           />
           {module_pages.map((module_name) => (
@@ -163,7 +170,7 @@ console.log(appState)
                     infoPage={infoPage}
                     module_name={module_name}
                   />
-                ) : null
+                ) : <ErrorPage/>
               }
             />
           ))}
@@ -177,10 +184,14 @@ console.log(appState)
                     infoPage={infoPage}
                     module_name={module_name}
                   />
-                ) : null
+                ) : <ErrorPage/>
               }
             />
           ))}
+          <Route
+          path="*" 
+          element={<ErrorPage/>}
+          />
         </Routes>
       </BrowserRouter>
     </div>
