@@ -24,7 +24,6 @@ import {
 import apiClient from "../../services/apiClient";
 import { Puff } from "react-loading-icons";
 import GoalTile from "../GoalTile/GoalTile";
-import CashBot from "../Cashbot/Cashbot";
 
 export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
   const [goalInfo, setGoalInfo] = useState({
@@ -98,7 +97,8 @@ export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
           minHeight={"70vh"}
           maxHeight={"auto"}
           borderRadius={"40px"}
-          width={"120vh"}
+          width={"auto"}
+          maxWidth={"120vh"}
           bg={useColorModeValue("var(--midnight)", "var(--lightblue)")}
           boxShadow={"dark-lg"}
           p={8}
@@ -121,11 +121,12 @@ export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
           </Heading>
           <Button
             onClick={handleRecord}
-            width={"25%"}
+            width={"fit-content"}
             borderRadius={"20px"}
             height={"45px"}
             fontSize={"130%"}
-            marginLeft={"38%"}
+            display={"inline-block"}
+            marginLeft={"43%"}
             bg={"var(--midnight)"}
             color={"var(--lightblue)"}
             _hover={{
@@ -359,7 +360,6 @@ export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
           )}
         </Box>
       </Box>
-      <CashBot cashBotLink={cashBotLink}/>
     </Fragment>
   );
 }

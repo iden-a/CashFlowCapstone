@@ -11,6 +11,7 @@ import {
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { FaInstagram, FaTwitter, FaYoutube, FaLinkedin } from "react-icons/fa";
 
 export default function AboutCard({
   name,
@@ -20,10 +21,10 @@ export default function AboutCard({
   image,
   animatedImage,
   isUnlocked,
+  linkedIn,
 }) {
   const [isExpanded, setIsExpanded] = useState(isUnlocked);
   const { isOpen, onToggle } = useDisclosure();
-
   function handleExpand() {
     setIsExpanded(!isExpanded);
     onToggle();
@@ -87,7 +88,7 @@ export default function AboutCard({
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
-                  rounded: "lg"
+                  rounded: "lg",
                 }}
               />
             ) : (
@@ -107,7 +108,7 @@ export default function AboutCard({
                   height: "100%",
                   objectFit: "cover",
                   rounded: "lg",
-                  borderRadius: 10
+                  borderRadius: 10,
                 }}
               />
             )}
@@ -122,31 +123,34 @@ export default function AboutCard({
           {/* Displays name and aspiration */}
           <center>
             <Heading
-            color={useColorModeValue("var(--midnight)", "var(--grey)")}
-            fontSize={"2xl"}
-            fontFamily={"body"}
-            fontWeight={500}
-          >
-            {name}
-          </Heading>
+              color={useColorModeValue("var(--midnight)", "var(--grey)")}
+              fontSize={"2xl"}
+              fontFamily={"body"}
+              fontWeight={500}
+            >
+              {name}
+            </Heading>
           </center>
           <center>
-          <Text
-            color={useColorModeValue("var(--midnight)", "var(--grey)")}
-            fontSize={"sm"}
-            textTransform={"uppercase"}
-            mt={2}
-          >
-            {aspiration}
-          </Text>
-            </center>
-          
-          
+            <Text
+              color={useColorModeValue("var(--midnight)", "var(--grey)")}
+              fontSize={"sm"}
+              textTransform={"uppercase"}
+              mt={2}
+            >
+              {aspiration}
+            </Text>
+          </center>
+
           <IconButton
             aria-label={isExpanded ? "Collapse info" : "Expand info"}
             onClick={handleExpand}
             icon={isExpanded ? <MinusIcon /> : <AddIcon />}
           />
+          <a href={linkedIn}>
+            <FaLinkedin fontSize={"180%"} />
+          </a>
+
           {/* Conditionally displays bio or school */}
           {isExpanded ? (
             <Text

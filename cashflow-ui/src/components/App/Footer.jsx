@@ -7,9 +7,10 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  useMediaQuery,
   VisuallyHidden,
 } from '@chakra-ui/react'
-import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { FaInstagram, FaTwitter, FaYoutube, FaLinkedinIn } from 'react-icons/fa'
 import ChromeDinoGame from 'react-chrome-dino';
 
 const Logo = (props) => {
@@ -43,25 +44,17 @@ const SocialButton = ({ children, label, href }) => {
   );
 };
 export default function Footer() {
+  const [media] = useMediaQuery("(max-width: 371px)")
   return (
     <Box bg={useColorModeValue('var(--grey)', 'var(--midnight)')} color={useColorModeValue('gray.700', 'gray.200')}>
       <Container as={Stack} maxW={'6xl'} py={4} spacing={4} justify={'center'} align={'center'}>
       <Logo />
-        <Stack direction={'row'} spacing={6}>
+        <Stack width={"80vw"} fontSize={"x-large"} justifyContent={"space-evenly"}  direction={'row'} spacing={2}>
           <Box as="a" href={'/'}>
             Home
           </Box>
           <Box as="a" href={'/About'}>
             About
-          </Box>
-          <Box as="a" href={'https://www.linkedin.com/in/marleyburrows/'}>
-            Marley's LinkedIn
-          </Box>
-          <Box as="a" href={'https://www.linkedin.com/in/iden-amoako-37695724b/'}>
-            Iden's LinkedIn
-          </Box>
-          <Box as="a" href={'https://www.linkedin.com/in/oluwapelumi-tayo-orisadare/'}>
-            Pelumi's LinkedIn
           </Box>
         </Stack>
       </Container>

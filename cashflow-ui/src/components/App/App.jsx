@@ -142,6 +142,26 @@ function App() {
               )
             }
           />
+          <Route
+            path="/goals"
+            element={
+              appState.isAuthenticated ? (
+                <GoalsTracker setAppState={setAppState} appState={appState} />
+              ) : (
+                <ErrorPage errorLink={errorLink}/>
+              )
+            }
+          />
+             <Route
+            path="/profile"
+            element={
+              appState.isAuthenticated ? (
+                <ProfileView setAppState={setAppState} appState={appState} />
+              ) : (
+                <ErrorPage errorLink={errorLink}/>
+              )
+            }
+          />
           {module_pages.map((module_name) => (
             <Route
               path={`/${module_name}`}

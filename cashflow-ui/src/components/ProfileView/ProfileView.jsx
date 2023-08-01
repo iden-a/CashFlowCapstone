@@ -7,9 +7,10 @@ import {
   Text,
   useColorModeValue,
   Center,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import ProfileModule from "./ProfileModule";
-import GoalTile from "../GoalTile/GoalTile";
+import ProfileGoals from "./ProfileGoals";
 
 export default function ProfileView({ appState, setAppState }) {
   const fakeQuizzes = [
@@ -21,6 +22,13 @@ export default function ProfileView({ appState, setAppState }) {
     { topic: "Credit Cards", points: "200", created_at: "07/31/2023" },
     { topic: "Debt Management", points: "500", created_at: "08/01/2023" },
   ];
+  const [media, moreMedia] = useMediaQuery([
+    "(max-width: 1000px)",
+    "(max-width: 330px)",
+  ]);
+
+  console.log(moreMedia);
+
   return (
     <Fragment>
       <Box marginTop={"5%"} height={"100vh"} color={"white"}>
@@ -28,20 +36,21 @@ export default function ProfileView({ appState, setAppState }) {
           zIndex={"-1"}
           marginTop={"11%"}
           marginLeft={"16%"}
+          mx={"auto"}
           rounded={"lg"}
           minHeight={"70vh"}
           maxHeight={"auto"}
           borderRadius={"40px"}
-          width={"120vh"}
+          fontSize={`${moreMedia ? "140%" : "220%"}`}
+          width={`${moreMedia ? "95vw" : "70vw"}`}
           bg={useColorModeValue("var(--midnight)", "var(--lightblue)")}
           boxShadow={"dark-lg"}
           p={8}
         >
           <Center>
             <Avatar
-              width={"250px"}
-              height={"250px"}
-              size={"sm"}
+              width={"20vh"}
+              height={"20vh"}
               src={
                 appState.user.image_url !== ""
                   ? appState.user.image_url
@@ -49,7 +58,10 @@ export default function ProfileView({ appState, setAppState }) {
               }
             />
           </Center>
-          <Flex marginTop={"3%"}>
+          <Flex
+            flexDirection={`${media ? "column" : "row"}`}
+            marginTop={"3%"}
+          >
             <Flex
               margin={"0 auto"}
               flex={"wrap"}
@@ -57,6 +69,7 @@ export default function ProfileView({ appState, setAppState }) {
               textAlign={"center"}
             >
               <Heading
+                fontSize={`${moreMedia ? "140%" : "100%" }`}
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
               >
                 {appState.user.username}
@@ -72,6 +85,7 @@ export default function ProfileView({ appState, setAppState }) {
               textAlign={"center"}
             >
               <Heading
+                fontSize={`${moreMedia ? "140%" : "100%"}`}
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
                 marginLeft={"auto"}
                 marginRight={"auto"}
@@ -90,6 +104,7 @@ export default function ProfileView({ appState, setAppState }) {
               textAlign={"center"}
             >
               <Heading
+                fontSize={`${moreMedia ? "140%" : "100%"}`}
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
               >
                 {appState.user.status}
@@ -103,47 +118,56 @@ export default function ProfileView({ appState, setAppState }) {
             color={useColorModeValue("var(--grey)", "var(--midnight)")}
             textAlign={"center"}
             marginTop={"5%"}
+            fontSize={`${moreMedia ? "140%" : "100%"}`}
+
           >
             Completed Modules
           </Heading>
           <Flex
+            flexDirection={`${media ? "column" : "row"}`}
             flexWrap={"wrap"}
-            justifyContent={"space-evenly"}
+            alignItems={"center"}
+            justifyContent={`${media ? "space-between" : "space-evenly"}`}
             marginTop={"20px"}
             direction={"row"}
             spacing={"2%"}
           >
             {fakeQuizzes.map((userQuiz) => {
-              return <ProfileModule userQuiz={userQuiz} />;
+              return <ProfileModule media={media} userQuiz={userQuiz} />;
             })}
           </Flex>
           <Heading
             color={useColorModeValue("var(--grey)", "var(--midnight)")}
             textAlign={"center"}
             marginTop={"5%"}
+            fontSize={`${moreMedia ? "140%" : "100%"}`}
           >
             Completed Goals
           </Heading>
           <Flex
-              flexWrap={"wrap"}
-              justifyContent={"space-evenly"}
-              marginTop={"20px"}
-              direction={"row"}
-              spacing={"2%"}
-            >
-              {appState.goals.map((userGoal, ind) => {
-                return (
-                  userGoal.status === "Accomplished" && (
-                    <GoalTile
-                      ind={ind}
-                      setAppState={setAppState}
-                      appState={appState}
-                      userGoal={userGoal}
-                    />
-                  )
-                );
-              })}
-            </Flex>
+            flexWrap={"wrap"}
+            alignItems={"center"}
+            flexDirection={`${media ? "column" : "row"}`}
+            justifyContent={`${media ? "space-between" : "space-evenly"}`}
+            marginTop={"20px"}
+            direction={"row"}
+            spacing={"2%"}
+          >
+            {appState.goals.map((userGoal, ind) => {
+              return (
+                userGoal.status === "Accomplished" && (
+                  <ProfileGoals
+                    moreMedia={moreMedia}
+                    media={media}
+                    ind={ind}
+                    setAppState={setAppState}
+                    appState={appState}
+                    userGoal={userGoal}
+                  />
+                )
+              );
+            })}
+          </Flex>
         </Box>
       </Box>
     </Fragment>

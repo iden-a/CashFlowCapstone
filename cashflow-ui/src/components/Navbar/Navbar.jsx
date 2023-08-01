@@ -4,6 +4,7 @@ import {
   Avatar,
   Button,
   Menu,
+  IconButton,
   Link,
   MenuButton,
   MenuList,
@@ -14,12 +15,16 @@ import {
   HStack,
   useColorMode,
   Center,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { HamburgerIcon } from "@chakra-ui/icons";
 
 export default function Navbar({ setAppState, appState }) {
   const { colorMode, toggleColorMode } = useColorMode();
   const navLinks = ["About", "Register", "Login"];
+  const [media] = useMediaQuery("(max-width: 768px)");
+  console.log(media);
   const handleLogout = () => {
     localStorage.setItem("CashFlow_Token", null);
     setAppState((appState) => ({ ...appState, isAuthenticated: false }));
@@ -46,13 +51,6 @@ export default function Navbar({ setAppState, appState }) {
       </span>
     );
   };
-  const SideLink = ({ children, to }) => {
-    const handleClick = () => {
-      window.location.href = to;
-    };
-
-    return <span onClick={handleClick}>{children}</span>;
-  };
 
   return (
     <>
@@ -62,7 +60,12 @@ export default function Navbar({ setAppState, appState }) {
         position={"relative"}
       >
         {/* Clicking on logo leads back to homepage */}
-        <Flex paddingTop={"1g%"} h={20} alignItems={"center"} justifyContent={"space-between"}>
+        <Flex
+          paddingTop={"1g%"}
+          h={20}
+          alignItems={"center"}
+          justifyContent={"space-between"}
+        >
           <Link href="/">
             <Box marginLeft={30}>
               <img src={"/logo.png"} width={90} height={90} />
@@ -72,15 +75,42 @@ export default function Navbar({ setAppState, appState }) {
           {/* Navbar that links to pages on site  */}
           <Flex>
             {!appState.isAuthenticated ? (
-              <HStack
-                as={"nav"}
-                spacing={10}
-                display={{ base: "none", md: "flex" }}
-              >
-                {navLinks.map((link) => (
-                  <NavLink key={link}>{link}</NavLink>
-                ))}
-              </HStack>
+              media ? (
+                <Menu position={"fixed"}>
+                  <MenuButton
+                    as={IconButton}
+                    aria-label="Options"
+                    icon={<HamburgerIcon />}
+                    variant="outline"
+                  />
+
+                  {/* Sidebar with user information */}
+                  <MenuList zIndex={99}>
+                  <Link href="/" style={{ textDecoration: "none" }}>
+                      <MenuItem>Home</MenuItem>
+                    </Link>{" "}
+                    <Link href="/about" style={{ textDecoration: "none" }}>
+                      <MenuItem>About</MenuItem>
+                    </Link>{" "}
+                    <Link href="/register" style={{ textDecoration: "none" }}>
+                      <MenuItem>Register</MenuItem>
+                    </Link>{" "}
+                    <Link href="/login" style={{ textDecoration: "none" }}>
+                      <MenuItem>Login</MenuItem>
+                    </Link>
+                  </MenuList>
+                </Menu>
+              ) : (
+                <HStack
+                  as={"nav"}
+                  spacing={10}
+                  display={{ base: "none", md: "flex" }}
+                >
+                  {navLinks.map((link) => (
+                    <NavLink key={link}>{link}</NavLink>
+                  ))}
+                </HStack>
+              )
             ) : (
               <Menu position={"fixed"}>
                 <MenuButton
@@ -93,8 +123,8 @@ export default function Navbar({ setAppState, appState }) {
                   <Avatar
                     size={"lg"}
                     src={
-                      appState.user.image_url !== ''
-                      ? appState.user.image_url
+                      appState.user.image_url !== ""
+                        ? appState.user.image_url
                         : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
                     }
                   />
@@ -107,8 +137,8 @@ export default function Navbar({ setAppState, appState }) {
                     <Avatar
                       size={"2xl"}
                       src={
-                        appState.user.image_url !== ''
-                        ? appState.user.image_url
+                        appState.user.image_url !== ""
+                          ? appState.user.image_url
                           : "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
                       }
                     />
@@ -125,26 +155,22 @@ export default function Navbar({ setAppState, appState }) {
                   </Center>
                   <br />
                   <MenuDivider />
-                  <MenuItem>
-                    <Link href="/profile" style={{textDecoration:"none"}} >
-                      Your Profile
-                    </Link>{" "}
-                  </MenuItem>
-                  <MenuItem>
-                    <Link href="/" style={{textDecoration:"none"}}>
-                      Learning Dashboard
-                    </Link>{" "}
-                  </MenuItem>
-                  <MenuItem>
-                    <Link href="/goals" style={{textDecoration:"none"}}>
-                      Goals
-                    </Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link href="/"style={{textDecoration:"none"}} onClick={handleLogout}>
-                      Logout
-                    </Link>
-                  </MenuItem>
+                  <Link href="/profile" style={{ textDecoration: "none" }}>
+                    <MenuItem>Your Profile</MenuItem>
+                  </Link>{" "}
+                  <Link href="/" style={{ textDecoration: "none" }}>
+                    <MenuItem>Learning Dashboard</MenuItem>
+                  </Link>{" "}
+                  <Link href="/goals" style={{ textDecoration: "none" }}>
+                    <MenuItem>Goals</MenuItem>
+                  </Link>
+                  <Link
+                    href="/"
+                    style={{ textDecoration: "none" }}
+                    onClick={handleLogout}
+                  >
+                    <MenuItem>Logout</MenuItem>
+                  </Link>
                 </MenuList>
               </Menu>
             )}

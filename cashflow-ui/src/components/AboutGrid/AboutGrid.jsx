@@ -1,8 +1,10 @@
 import AboutCard from "../AboutCard/AboutCard";
-import { Flex, Spacer, Center, Image, Heading } from "@chakra-ui/react";
+import { Flex, Spacer, Center, Image, Heading, useMediaQuery } from "@chakra-ui/react";
 import Footer from "../App/Footer";
 
 export default function AboutGrid() {
+  const [media] = useMediaQuery("(max-width: 768px)");
+
   const aboutInfo = [
     {
       name: "Marley Burrows",
@@ -12,6 +14,7 @@ export default function AboutGrid() {
       image: "/marley.png",
       animatedImage: "/marleyA.png",
       isUnlocked: false,
+      linkedIn: 'https://www.linkedin.com/in/marleyburrows/'
     },
     {
       name: "Oluwapelumi Tayo-Orisadare",
@@ -21,6 +24,7 @@ export default function AboutGrid() {
       image: "/pelumi.png",
       animatedImage: "/pelumiA.png",
       isUnlocked: false,
+      linkedIn: 'https://www.linkedin.com/in/oluwapelumi-tayo-orisadare/'
     },
     {
       name: "Iden Amoako",
@@ -30,6 +34,7 @@ export default function AboutGrid() {
       image: "/iden.jpg",
       animatedImage: "/idenA.png",
       isUnlocked: false,
+      linkedIn: 'https://www.linkedin.com/in/iden-amoako-37695724b/'
     },
   ];
 
@@ -38,7 +43,7 @@ export default function AboutGrid() {
       <Center h="25vh">
         <Image src="/meet.png" />
       </Center>
-      <Flex height={'80vh'} >
+      <Flex  flexDirection={`${media ? ("column") : ("row")}`} height={'auto'} >
         {aboutInfo.map((creator) => (
           <>
             <Spacer />
@@ -50,6 +55,7 @@ export default function AboutGrid() {
               image={creator.image}
               animatedImage={creator.animatedImage}
               isUnlocked={creator.isUnlocked}
+              linkedIn={creator.linkedIn}
             />
             <Spacer />
           </>
