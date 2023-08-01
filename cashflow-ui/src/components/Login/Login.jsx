@@ -13,6 +13,7 @@ import {
   Text,
   useColorModeValue,
   Link,
+  useMediaQuery,
 } from "@chakra-ui/react";
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
@@ -22,6 +23,10 @@ import apiClient from "../../services/apiClient";
 import "./Login.css";
 
 export default function Login({ setAppState }) {
+  const [media, registerMedia] = useMediaQuery([
+    "(max-width: 535px)", "(max-width: 371px)"
+  ]);
+
   const [userInfo, setUserInfo] = useState({ email: "", password: "" });
   const [isLoading, setIsLoading] = useState(false);
   const [loginError, setLoginError] = useState("");
@@ -75,11 +80,16 @@ export default function Login({ setAppState }) {
 
   return (
     <Fragment>
-      <Box marginTop={"5%"} height={"100vh"} color={"white"}>
+      <Box
+        marginBottom={ "5%"}
+        marginTop={"5%"}
+        height={"100vh"}
+        color={"white"}
+      >
         <Heading
           textAlign={"center"}
-          width={"40%"}
-          fontSize={"300%"}
+          width={"100vw"}
+          fontSize={media ? ("200%") : ("300%")}
           mx={"auto"}
           color={useColorModeValue("var(--midnight)", "var(--grey)")}
         >
@@ -92,6 +102,7 @@ export default function Login({ setAppState }) {
           width={"500px"}
           height={"500px"}
           src="/tiffany.png"
+          objectFit={"cover"}
         ></Image>
 
         <Flex
@@ -109,7 +120,7 @@ export default function Login({ setAppState }) {
             <Box
               max-height={"40vh"}
               borderRadius={"40px"}
-              width={"40vh"}
+              width={`${registerMedia ? ("35vh") : ("43vh")}`}
               bg={useColorModeValue("var(--midnight)", "var(--lightblue)")}
               boxShadow={"lg"}
               p={8}
@@ -121,6 +132,7 @@ export default function Login({ setAppState }) {
                   fontSize={"150%"}
                   marginTop={"10px"}
                   marginBottom={"20px"}
+                  textAlign={"center"}
                 >
                   Let’s Keep That Cash Flowin’
                 </Heading>
@@ -191,7 +203,7 @@ export default function Login({ setAppState }) {
                     <Text
                       as="span"
                       style={{
-                        color: "red"
+                        color: "red",
                       }}
                     >
                       Invalid email input.
@@ -227,11 +239,14 @@ export default function Login({ setAppState }) {
               <Text
                 marginTop={"5px"}
                 textAlign={"center"}
+                fontSize={`${registerMedia ? ("large") : ("x-large")}`}
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
-                fontSize={"x-large"}
               >
                 New to Us?
-                <Link href="/register" style={{ textDecoration:"none", color: "var(--blue)" }}>
+                <Link
+                  href="/register"
+                  style={{ textDecoration: "none", color: "var(--blue)" }}
+                >
                   <em> Register</em>
                 </Link>
               </Text>

@@ -18,6 +18,7 @@ import {
   Text,
   useColorModeValue,
   Link,
+  useMediaQuery
 } from "@chakra-ui/react";
 
 export default function Register({ appState, setAppState }) {
@@ -29,7 +30,8 @@ export default function Register({ appState, setAppState }) {
     password: "",
     confirmPassword: "",
   });
-  // const fakeQuizzes = [{topic: "back_account_basics", }]
+
+  const [media, registerMedia] = useMediaQuery(["(max-width: 535px)", "(max-width: 371px)"]);
   const [isLoading, setIsLoading] = useState(false);
   const [registerError, setRegisterError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -102,15 +104,15 @@ export default function Register({ appState, setAppState }) {
   return (
     <Fragment>
       <Box
-        marginBottom={"5%"}
+        marginBottom={"10%"}
         marginTop={"5%"}
         height={"100vh"}
         color={"white"}
       >
         <Heading
           textAlign={"center"}
-          width={"50%"}
-          fontSize={"300%"}
+          width={"100vw"}
+          fontSize={media ? ("200%") : ("300%")}
           mx={"auto"}
           color={useColorModeValue("var(--midnight)", "var(--grey)")}
         >
@@ -123,6 +125,7 @@ export default function Register({ appState, setAppState }) {
           width={"500px"}
           height={"500px"}
           src="/tiffany.png"
+          objectFit={"cover"}
         ></Image>
 
         <Flex
@@ -139,7 +142,7 @@ export default function Register({ appState, setAppState }) {
           >
             <Box
               borderRadius={"40px"}
-              width={"40vh"}
+              width={`${registerMedia ? ("35vh") : ("43vh")}`}
               bg={useColorModeValue("var(--midnight)", "var(--lightblue)")}
               boxShadow={"lg"}
               p={8}
@@ -386,7 +389,7 @@ export default function Register({ appState, setAppState }) {
                 marginTop={"5px"}
                 textAlign={"center"}
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
-                fontSize={"x-large"}
+                fontSize={`${registerMedia ? ("large") : ("x-large")}`}
               >
                 Have an account?
                 <Link

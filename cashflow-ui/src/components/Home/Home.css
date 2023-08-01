@@ -57,7 +57,7 @@
   color: #f0edee;
   text-align: center;
   font-size: 300%;
-  width:fit-content;
+  width: fit-content;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: 0.15em solid orange; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
@@ -66,7 +66,7 @@
   animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
   /* margin-left: 0 auto;
   margin-right: 0 auto; */
-  margin-top: 32%;
+  margin-top: 33%;
 }
 /* The typing effect */
 @keyframes typing {
@@ -100,12 +100,11 @@
 .homeContainers3,
 .homeContainers2,
 .homeContainers1,
-.homeContainers4
-{
+.homeContainers4 {
   background-size: cover;
   color: white;
   height: 90vh;
-  width: 100%;
+  width: 100vw;
   margin: 0 auto;
   padding-top: 0;
   overflow: hidden;
@@ -113,15 +112,15 @@
 }
 
 .logoCont {
-    background-size: cover;
-    color: white;
-    height: 100vh;
-    width: 100%;
-    margin: 0 auto;
-    padding-top: 0;
-    overflow: hidden;
-    position: relative;
-  }
+  background-size: cover;
+  color: white;
+  height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 0;
+  overflow: hidden;
+  position: relative;
+}
 
 .homeContainers3 {
   background-color: var(--lightblue);
@@ -149,7 +148,7 @@
 .homeContainers4 .bg {
   background: url("tiffany.png") 50% 65% no-repeat fixed;
 }
-.logoCont .bg{
+.logoCont .bg {
   background: url("homeChar1.png") 50% 46vh no-repeat fixed;
 }
 
@@ -157,13 +156,55 @@
 .homeContainers3 .bg,
 .homeContainers1 .bg,
 .homeContainers4 .bg,
-.logoCont .bg  {
+.logoCont .bg {
   margin-top: -40vh;
   background-size: 60vh 60vh;
-  height: 100vh;
+  height: 150vh;
   position: absolute;
   width: inherit;
   z-index: 10;
+}
+
+@media (max-width: 500px) {
+  .homeContainers2 .bg,
+  .homeContainers3 .bg,
+  .homeContainers1 .bg,
+  .homeContainers4 .bg,
+  .logoCont .bg {
+    background-size: 45vh 45vh;
+  }
+  .homeText {
+    font-size: 230%;
+    margin-top: 60px;
+    padding: 5px;
+  }
+  #homeText-animate {
+    margin-top: 100%;
+    font-size: 200%;
+  }
+  #homeText {
+    margin-top: 100%;
+  }
+  .homeText{
+    font-size: 200%;
+  }
+}
+@media (max-width: 768px) {
+  #slogan {
+    display: none;
+  }
+}
+@media (min-width: 500px) and (max-width: 1027px) {
+  #homeText-animate {
+    margin-top: 50%;
+    font-size: 230%;
+  }
+  #homeText {
+    margin-top: 50%;
+  }
+  .homeText{
+    font-size: 250%;
+  }
 }
 
 /* css for logo glitch animation */

@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from "react";
-import { Flex, Box, HStack, Text, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Box, HStack, Text, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
 
-export default function ProfileModule({ userQuiz }) {
+export default function ProfileModule({ media, userQuiz }) {
+
   let wordImage = userQuiz.topic.charAt(0).toUpperCase();
   return (
     <Fragment>
@@ -14,7 +15,7 @@ export default function ProfileModule({ userQuiz }) {
         overflowX={"hidden"}
         border={"solid 5px white"}
         borderRadius={"30px"}
-        width={"30%"}
+        width={`${media ? ("80%") : ("30%")}`}
         padding={"15px"}
       >
         <Box
@@ -36,13 +37,14 @@ export default function ProfileModule({ userQuiz }) {
         >
           {wordImage}
         </Box>
-        <Flex>
+        <Flex >
           <Text
             color={useColorModeValue("var(--grey)", "var(--midnight)")}
             fontWeight={"bold"}
             margin={"0 auto"}
             padding={"5px"}
             fontSize={"x-large"}
+            textAlign={"center"}
           >
             {userQuiz.topic}
           </Text>
