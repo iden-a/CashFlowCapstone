@@ -71,6 +71,13 @@ class ApiClient {
     });
   }
 
+  async total_points(creds) {
+    return await this.request({
+      endpoint: `auth/totalpoints`,
+      method: `PATCH`,
+      data: creds,
+    });
+  }
   async imageStats(creds) {
     return await this.request({
       endpoint: `auth/imageStatus`,

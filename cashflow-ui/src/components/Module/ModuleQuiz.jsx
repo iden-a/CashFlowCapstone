@@ -15,12 +15,12 @@ import {
 } from "@chakra-ui/react";
 import Slider from "react-slick";
 import moduleQuiz from "../../../../cashflow-api/modules/modulequiz.json";
-import apiClient from "../../services/apiClient";
 import NotQuite from "../Fail/NotQuite";
 import Failure from "../Fail/Failure";
 import GoodJob from "../Success/GoodJob";
 import Complete from "../Success/Complete";
 import ModuleAssist from "./ModuleAssist";
+import { Navigate } from "react-router";
 
 // Settings for the slider
 const settings = {
@@ -38,50 +38,55 @@ function Quiz({
   module_name,
   setSlider,
   slider,
-  setAppState,
-  isFinished,
-  setIsFinished,
   score,
   setScore,
+  setQuizInfo,
+  setAppState,
+  appState,
+  quizInfo
 }) {
   const quiz_data = moduleQuiz[module_name] || {};
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showGoodJob, setShowGoodJob] = useState(false);
   const [showNotQuite, setShowNotQuite] = useState(false);
-
+  const [showQuizResult, setShowQuizResult] = useState(false);
   console.log("score", score);
 
   const handleNext = (isAnswerCorrect) => {
     if (isAnswerCorrect) {
-      setScore((prevScore) => prevScore + 1);
+      setScore((prevScore) => prevScore + 100);
       setShowGoodJob(true); // Show the GoodJob component\
-      console.log("Good Job!");
       setCurrentIndex((prevIndex) => prevIndex + 1); // Move to the next question
-      // console.log(showGoodJob, showNotQuite)
     } else {
       setShowNotQuite(true); // Show the NotQuite component
-      console.log("Not Quite!");
       setCurrentIndex((prevIndex) => prevIndex + 1); // Move to the next question
-      // console.log(showGoodJob, showNotQuite)
+    }
+    
+  };
+
+
+  const handleNextClick = () => {
+    if (currentIndex === quiz_data.questions.length) {
+      // If it's the last question, show the quiz result after clicking "Next"
+      setShowGoodJob(false)
+      setShowNotQuite(false)
+      setShowQuizResult(true);
+    } else {
+      if (showGoodJob && !showNotQuite) {
+        // If the GoodJob component is shown, proceed to the next question
+        setShowGoodJob(false); // Hide the GoodJob component
+      } else if (showNotQuite) {
+        // If the NotQuite component is shown, proceed to the next question
+        setShowNotQuite(false); // Hide the NotQuite component
+      }
+      console.log("Show results? ", showQuizResult )
+      slider?.slickNext();
     }
   };
 
-  const handleNextClick = () => {
-    if (showGoodJob && !showNotQuite) {
-      // If the GoodJob component is shown, proceed to the next question
-      setShowGoodJob(false); // Hide the GoodJob component
-      // setCurrentIndex((prevIndex) => prevIndex + 1); // Move to the next question
-      console.log("Next question");
-    } else if (showNotQuite) {
-      // If the NotQuite component is shown, proceed to the next question
-      setShowNotQuite(false); // Hide the NotQuite component
-      // setCurrentIndex((prevIndex) => prevIndex + 1); // Move to the next question
-      console.log("Next question");
-    }
-    slider?.slickNext();
-  };
-  console.log(showGoodJob && !showNotQuite);
+  
   return (
+    <>
     <Slider {...settings} ref={(slider) => setSlider(slider)}>
       {quiz_data.questions?.map((question, index) => (
         <ModuleAssist
@@ -97,11 +102,22 @@ function Quiz({
           handleNextClick={handleNextClick}
         />
       ))}
-    </Slider>
+    {showQuizResult && (
+        // Displays the appropriate component based on the user's score
+        score >= (quiz_data.questions?.length / 2) ? (
+          <Complete setQuizInfo={setQuizInfo} setAppState={setAppState} appState={appState} score={score} />
+        ) : (
+          <Failure module_name={module_name}  />
+        )
+      )} 
+      </Slider>
+      <Complete setQuizInfo={setQuizInfo} setAppState={setAppState} module_name={module_name} appState={appState} score={score} quizInfo={quizInfo} />
+      </>
   );
+
 }
 
-function Question({ question, onNext, index, currentIndex }) {
+function Question({ question, onNext }) {
   const { scenario, options, answer } = question;
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -118,8 +134,6 @@ function Question({ question, onNext, index, currentIndex }) {
       alert("Please select an answer before continuing.");
     }
   };
-  console.log("QUESTION #", index, currentIndex);
-  console.log(question);
   return (
     <Box bg={"red"}>
       <Box
@@ -157,49 +171,14 @@ function Question({ question, onNext, index, currentIndex }) {
 
 export default function ModuleQuiz({ appState, setAppState, module_name }) {
   const [quizInfo, setQuizInfo] = useState({
-    topic: "",
+    topic: module_name,
     points: 0,
   });
   const [isLoading, setIsLoading] = useState(false);
   const [score, setScore] = useState(0);
-  const [isFinished, setIsFinished] = useState(false);
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setIsLoading(true);
-    if (quizInfo.topic && quizInfo.points) {
-      try {
-        const token = localStorage.getItem("CashFlow_Token");
-        apiClient.setToken(token);
-        const { data, error, message } = await apiClient.quiz({
-          id: appState.user.id,
-          topic: quizInfo.topic,
-          points: quizInfo.points,
-        });
-        console.log(data);
-        onQuizFinish(score);
-        setIsFinished(true);
-
-        setAppState((prevState) => ({
-          ...prevState,
-          quiz: [...prevState.quiz, { topic: module_name, points: score }],
-        }));
-      } catch (err) {
-        console.log(err);
-      }
-      setquizInfo((prevState) => ({
-        ...prevState,
-        topic: "",
-        points: 0,
-      }));
-    }
-    setIsLoading(false);
-  }
 
   const [slider, setSlider] = useState(null);
-  const top = useBreakpointValue({ base: "90%", md: "50%" });
-  const side = useBreakpointValue({ base: "30%", md: "40px" });
-
+  
   return (
     <>
       <Box
@@ -210,7 +189,6 @@ export default function ModuleQuiz({ appState, setAppState, module_name }) {
         position={"relative"}
         overflow="scroll" // Add this line to enable scrolling when slides exceed container's visible area
       >
-        {/* <Image src='/marcus.png' position={'absolute'} top={'25px'} ml={'200px'} zIndex={'1'} /> */}
 
         <Box
           position={"relative"}
@@ -219,17 +197,22 @@ export default function ModuleQuiz({ appState, setAppState, module_name }) {
           borderRadius={"3xl"}
           backgroundColor={"var(--lightblue)"}
         >
+          
           <Quiz
             module_name={module_name}
             slider={slider}
             setAppState={setAppState}
             setSlider={setSlider}
-            isFinished={isFinished}
-            setIsFinished={setIsFinished}
             score={score}
             setScore={setScore}
+            setQuizInfo={setQuizInfo}
+            appState={appState}
+            quizInfo={quizInfo}
           />
         </Box>
+
+
+        
       </Box>
     </>
   );

@@ -35,7 +35,7 @@ export default function ModuleAssist({
       bg={"blue"}
       left={`${index * 100}%`}
     >
-      {console.log(index, "index")}
+      {}
       {currentIndex === index ? (
         <>
           <Question

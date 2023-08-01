@@ -5,15 +5,14 @@ import {
   Heading,
   Image,
 } from '@chakra-ui/react';
-import { useNavigate } from 'react-router';
+import { Navigate } from 'react-router';
 
-export default function Failure({module_name}) {
+export default function Failure({ handleFinish}) {
     // TODO: Take in module, question #, correct explanation, point value
-    const navigate = useNavigate()
-    const handleReturn = () => {
-        navigate('/')
-      }
-    
+    console.log("fail")
+    function handleRestart() {
+      Navigate('/')
+    }
     return (
         
     <>
@@ -36,7 +35,7 @@ export default function Failure({module_name}) {
           zIndex={2}
           mt={700}
           icon={<Image src="/menu.png" maxH={'300px'} />}
-          onClick={handleReturn}
+          onClick={handleFinish}
         />
         {/* Start Icon */}
         <IconButton
@@ -48,7 +47,7 @@ export default function Failure({module_name}) {
           mt={700}
           ml={1200}
           icon={<Image src="/start.png" maxH={'330px'} />}
-          // onClick={handleRestart}
+          onClick={handleRestart}
         />
 
         <Box pt={300}>

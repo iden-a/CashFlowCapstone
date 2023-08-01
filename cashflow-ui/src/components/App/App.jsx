@@ -93,6 +93,7 @@ function App() {
     });
   }, [appState.isAuthenticated]);
 
+
   console.log(appState);
 
   return (
@@ -118,6 +119,22 @@ function App() {
                 <ErrorPage errorLink={errorLink} />
               ) : (
                 <Register setAppState={setAppState} />
+              )
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              !appState.isAuthenticated ? <ErrorPage errorLink={errorLink}/> : (
+                <ProfileView setAppState={setAppState} appState={appState}/>
+              )
+            }
+          />
+          <Route
+            path="/goals"
+            element={
+              !appState.isAuthenticated ? <ErrorPage errorLink={errorLink}/> : (
+                <GoalsTracker setAppState={setAppState} appState={appState} cashBotLink={cashBotLink}/>
               )
             }
           />
@@ -211,6 +228,8 @@ function App() {
                     setInfoPage={setInfoPage}
                     infoPage={infoPage}
                     module_name={module_name}
+                    appState={appState}
+                    setAppState={setAppState}
                   />
                 ) : (
                   <ErrorPage errorLink={errorLink} />
