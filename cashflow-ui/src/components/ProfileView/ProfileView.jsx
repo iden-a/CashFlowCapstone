@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment } from "react";
 import {
   Flex,
   Box,
@@ -7,6 +7,7 @@ import {
   Text,
   useColorModeValue,
   Center,
+  Link,
 } from "@chakra-ui/react";
 import ProfileModule from "./ProfileModule";
 import GoalTile from "../GoalTile/GoalTile";
@@ -125,16 +126,20 @@ export default function ProfileView({ appState, setAppState }) {
             Completed Goals
           </Heading>
           <Flex
-              flexWrap={"wrap"}
-              justifyContent={"space-evenly"}
-              marginTop={"20px"}
-              direction={"row"}
-              spacing={"2%"}
-            >
-              {appState.goals.map((userGoal, ind) => {
+            flexWrap={"wrap"}
+            justifyContent={"space-evenly"}
+            marginTop={"20px"}
+            direction={"row"}
+            spacing={"2%"}
+          >
+            {appState.goals.some(
+              (userGoal) => userGoal.status === "Accomplished"
+            ) ? (
+              appState.goals.map((userGoal, ind) => {
                 return (
                   userGoal.status === "Accomplished" && (
                     <GoalTile
+                      key={ind}
                       ind={ind}
                       setAppState={setAppState}
                       appState={appState}
@@ -142,8 +147,18 @@ export default function ProfileView({ appState, setAppState }) {
                     />
                   )
                 );
-              })}
-            </Flex>
+              })
+            ) : (
+              <Link href="/goals" style={{ textDecoration: "none" }}>
+                <Text
+                  textAlign={"center"}
+                  color={useColorModeValue("var(--grey)", "var(--midnight)")}
+                >
+                  Start setting your CashFlow goals today!
+                </Text>
+              </Link>
+            )}
+          </Flex>
         </Box>
       </Box>
     </Fragment>
