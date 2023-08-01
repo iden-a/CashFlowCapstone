@@ -14,15 +14,7 @@ import ProfileModule from "./ProfileModule";
 import ProfileGoals from "./ProfileGoals";
 
 export default function ProfileView({ appState, setAppState }) {
-  const fakeQuizzes = [
-    {
-      topic: "Bank Account Basics",
-      points: "100",
-      created_at: "07/30/2023",
-    },
-    { topic: "Credit Cards", points: "200", created_at: "07/31/2023" },
-    { topic: "Debt Management", points: "500", created_at: "08/01/2023" },
-  ];
+
   const [media, moreMedia] = useMediaQuery([
     "(max-width: 1000px)",
     "(max-width: 330px)",
@@ -133,8 +125,8 @@ export default function ProfileView({ appState, setAppState }) {
             direction={"row"}
             spacing={"2%"}
           >
-            {fakeQuizzes.map((userQuiz) => {
-              return <ProfileModule media={media} userQuiz={userQuiz} />;
+            {appState.quizzes?.map((userQuiz) => {
+              return <ProfileModule userQuiz={userQuiz} />;
             })}
           </Flex>
           <Heading

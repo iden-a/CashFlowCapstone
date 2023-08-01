@@ -13,6 +13,7 @@ export default function Complete({ setQuizInfo, setAppState, appState, score, qu
   const navigate = useNavigate(); // Hook to get the navigation function
   const [isLoading, setIsLoading] = useState(false);
 
+  
   async function updateUserTotalPoints(userId, total_points) {
     try {
       const token = localStorage.getItem("CashFlow_Token");
@@ -36,10 +37,11 @@ export default function Complete({ setQuizInfo, setAppState, appState, score, qu
     try {
       const token = localStorage.getItem("CashFlow_Token");
       apiClient.setToken(token);
+      
       const { data, error, message } = await apiClient.quiz({
         id: appState.user.id,
-        topic: quizInfo.topic,
-        points: quizInfo.points,
+        topic: module_name,
+        points: score,
       });
 
       const pointdata = await updateUserTotalPoints(appState.user.id, score);
@@ -49,7 +51,7 @@ export default function Complete({ setQuizInfo, setAppState, appState, score, qu
 
       setAppState((prevState) => ({
         ...prevState,
-        quizzes: [...prevState.quizzes, { topic: module_name, points: score }],
+        quizzes: [...prevState.quizzes, { topic: data.topic, points: data.points }],
         user: updatedUser
       }));
 
@@ -58,11 +60,7 @@ export default function Complete({ setQuizInfo, setAppState, appState, score, qu
       console.log(err);
     }
     
-    setQuizInfo((prevState) => ({
-      ...prevState,
-      topic: "",
-      points: 0,
-    }));
+    
 
     setIsLoading(false);
   };
@@ -77,6 +75,7 @@ export default function Complete({ setQuizInfo, setAppState, appState, score, qu
       justifyContent="center"
       alignItems="center"
       height="800px"
+      zIndex="10"
     >
       <Box mt={20}>
       <Image src='/tiffany.png' position={'absolute'} top={'-100px'} ml={'450px'} h={600} zIndex={'1'}/>

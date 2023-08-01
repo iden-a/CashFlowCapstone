@@ -84,7 +84,8 @@ function Quiz({
     }
   };
 
-  
+  const quizLength = quiz_data.questions.length
+
   return (
     <>
     <Slider {...settings} ref={(slider) => setSlider(slider)}>
@@ -100,18 +101,18 @@ function Quiz({
           currentIndex={currentIndex}
           handleNext={handleNext}
           handleNextClick={handleNextClick}
+          Complete={Complete}
+          Failure={Failure}
+          setQuizInfo={setQuizInfo} 
+          setAppState={setAppState} 
+          module_name={module_name} 
+          appState={appState} 
+          score={score} 
+          quizInfo={quizInfo}
+          quizLength={quizLength}
         />
       ))}
-    {showQuizResult && (
-        // Displays the appropriate component based on the user's score
-        score >= (quiz_data.questions?.length / 2) ? (
-          <Complete setQuizInfo={setQuizInfo} setAppState={setAppState} appState={appState} score={score} />
-        ) : (
-          <Failure module_name={module_name}  />
-        )
-      )} 
       </Slider>
-      <Complete setQuizInfo={setQuizInfo} setAppState={setAppState} module_name={module_name} appState={appState} score={score} quizInfo={quizInfo} />
       </>
   );
 
@@ -135,7 +136,6 @@ function Question({ question, onNext }) {
     }
   };
   return (
-    <Box bg={"red"}>
       <Box
         display={"flex"}
         justifyContent={"center"}
@@ -165,7 +165,6 @@ function Question({ question, onNext }) {
           onClick={handleSubmit}
         />
       </Box>
-    </Box>
   );
 }
 

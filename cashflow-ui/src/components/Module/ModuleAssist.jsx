@@ -24,19 +24,27 @@ export default function ModuleAssist({
   currentIndex,
   handleNext,
   handleNextClick,
+  setQuizInfo, 
+  setAppState, 
+  appState, 
+  score, 
+  quizInfo, 
+  module_name,
+  Complete,
+  Failure,
+  quizLength
 }) {
   return (
     <Box
       key={index}
       height={"auto"}
+      pt={'20px'}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       position={"relative"}
-      bg={"blue"}
       left={`${index * 100}%`}
     >
-      {}
-      {currentIndex === index ? (
+      {currentIndex === index && currentIndex < quizLength ? (
         <>
           <Question
             question={question}
@@ -52,14 +60,20 @@ export default function ModuleAssist({
       ) : (
         <>
           {showGoodJob && !showNotQuite ? (
-            <>
-              <GoodJob onNextClick={handleNextClick} />
-            </>
+            <GoodJob onNextClick={handleNextClick} />
           ) : (
             showNotQuite && <NotQuite onNextClick={handleNextClick} />
           )}
         </>
       )}
+      {currentIndex === quizLength && (
+        score >= ((quizLength / 2) * 100) ? (
+          <Complete setQuizInfo={setQuizInfo} setAppState={setAppState} module_name={module_name} appState={appState} score={score} quizInfo={quizInfo} />
+          ) : (
+          <Failure module_name={module_name} />
+        )
+      )}
     </Box>
   );
 }
+

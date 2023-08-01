@@ -93,9 +93,6 @@ function App() {
     });
   }, [appState.isAuthenticated]);
 
-
-  console.log(appState);
-
   return (
     <div className="app" style={{ backgroundColor: bgColor }}>
       <BrowserRouter>
