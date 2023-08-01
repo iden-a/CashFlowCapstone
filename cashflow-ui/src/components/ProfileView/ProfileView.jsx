@@ -52,10 +52,7 @@ export default function ProfileView({ appState, setAppState }) {
               }
             />
           </Center>
-          <Flex
-            flexDirection={`${media ? "column" : "row"}`}
-            marginTop={"3%"}
-          >
+          <Flex flexDirection={`${media ? "column" : "row"}`} marginTop={"3%"}>
             <Flex
               margin={"0 auto"}
               flex={"wrap"}
@@ -63,7 +60,7 @@ export default function ProfileView({ appState, setAppState }) {
               textAlign={"center"}
             >
               <Heading
-                fontSize={`${moreMedia ? "140%" : "100%" }`}
+                fontSize={`${moreMedia ? "140%" : "100%"}`}
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
               >
                 {appState.user.username}
@@ -113,7 +110,6 @@ export default function ProfileView({ appState, setAppState }) {
             textAlign={"center"}
             marginTop={"5%"}
             fontSize={`${moreMedia ? "140%" : "100%"}`}
-
           >
             Completed Modules
           </Heading>
@@ -147,20 +143,33 @@ export default function ProfileView({ appState, setAppState }) {
             direction={"row"}
             spacing={"2%"}
           >
-            {appState.goals.map((userGoal, ind) => {
-              return (
-                userGoal.status === "Accomplished" && (
-                  <ProfileGoals
-                    moreMedia={moreMedia}
-                    media={media}
-                    ind={ind}
-                    setAppState={setAppState}
-                    appState={appState}
-                    userGoal={userGoal}
-                  />
-                )
-              );
-            })}
+            {appState.goals.some(
+              (userGoal) => userGoal.status === "Accomplished"
+            ) ? (
+              appState.goals.map((userGoal, ind) => {
+                return (
+                  userGoal.status === "Accomplished" && (
+                    <ProfileGoals
+                      moreMedia={moreMedia}
+                      media={media}
+                      ind={ind}
+                      setAppState={setAppState}
+                      appState={appState}
+                      userGoal={userGoal}
+                    />
+                  )
+                );
+              })
+            ) : (
+              <Link href="/goals" style={{ textDecoration: "none" }}>
+                <Text
+                  textAlign={"center"}
+                  color={useColorModeValue("var(--grey)", "var(--midnight)")}
+                >
+                  Start setting your CashFlow goals today!
+                </Text>
+              </Link>
+            )}
           </Flex>
         </Box>
       </Box>
