@@ -14,6 +14,7 @@ import ProfileModule from "./ProfileModule";
 import ProfileGoals from "./ProfileGoals";
 
 export default function ProfileView({ appState, setAppState }) {
+  
 
   const [media, moreMedia] = useMediaQuery([
     "(max-width: 1000px)",

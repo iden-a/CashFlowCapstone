@@ -2,6 +2,45 @@ import React, { Fragment, useState } from "react";
 import { Flex, Box, HStack, Text, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
 
 export default function ProfileModule({ media, userQuiz }) {
+  const createdAt = new Date(userQuiz.created_at);
+  const formattedDate = createdAt.toLocaleDateString("en-US", {
+    month: "2-digit",
+    day: "2-digit",
+    year: "2-digit",
+  });
+  function getFormalModuleName(module_name) {
+    let formalName;
+  
+    switch (module_name) {
+      case "bank-acct":
+        formalName = "Bank Account Basics";
+        break;
+      case "credit-cards":
+        formalName = "Credit Cards";
+        break;
+      case "debt":
+        formalName = "Debt Management";
+        break;
+      case "hysavings":
+        formalName = "High-Yield Savings";
+        break;
+      case "cdsavings":
+        formalName = "CD Savings";
+        break;
+      case "roth":
+        formalName = "Roth IRA's";
+        break;
+      case "401k":
+        formalName = "401(k)'s";
+        break;
+      default:
+        formalName = "Unknown";
+    }
+  
+    return formalName;
+  }
+  
+
 
   let wordImage = userQuiz.topic.charAt(0).toUpperCase();
   return (
@@ -46,7 +85,7 @@ export default function ProfileModule({ media, userQuiz }) {
             fontSize={"x-large"}
             textAlign={"center"}
           >
-            {userQuiz.topic}
+            {getFormalModuleName(userQuiz.topic)}
           </Text>
         </Flex>
         <HStack
@@ -97,7 +136,8 @@ export default function ProfileModule({ media, userQuiz }) {
               padding={"3px"}
               fontSize={"large"}
             >
-              {userQuiz.created_at}
+              {formattedDate}
+
             </Text>
           </Flex>
         </HStack>
@@ -108,7 +148,7 @@ export default function ProfileModule({ media, userQuiz }) {
           padding={"3px"}
           fontSize={"large"}
         >
-          Congratulations 🎉 You've completed {userQuiz.topic}!
+          Congratulations 🎉 You've completed {getFormalModuleName(userQuiz.topic)}!
         </Text>
       </Box>
     </Fragment>
