@@ -1,12 +1,12 @@
 "use client";
 
-import { Image, Box, useMediaQuery } from '@chakra-ui/react'
+import { Image, Box,Center, useMediaQuery } from '@chakra-ui/react'
 import { Link } from "react-router-dom";
 import ModuleInfo from '../Module/ModuleInfo';
 import { useState } from 'react';
 import CashBot from "../Cashbot/Cashbot";
 
-export default function Dashboard({appState}) {
+export default function Dashboard({appState, cashBotLink}) {
   // TODO: Separate beginner & intermediate dashboard 
   const [media, heightMedia] = useMediaQuery(["(max-width: 694px)", "(max-height: 840px)"])
   let dashboard = []
@@ -20,7 +20,7 @@ export default function Dashboard({appState}) {
     <>
 
 <Box height={"100vh"}>
-    <Box marginTop={`${heightMedia ? ("30%") : (null)}`} display={'flex'} alignItems={`${media ? ("center"): (null)}`} flexDir={`${media ? ("column") : ("row")}`} justifyContent={'center'} height={'100vh'}>
+    <Box marginTop={`${heightMedia ? ("30%") : (null)}`} display={'flex'} alignItems={`${media ? ("center"): (null)}`} flexDir={`${media ? ("column") : ("row")}`} justifyContent={'center'} height={'50vh'}>
     {dashboard.map((img) =>(
       <Box>
         <Link to={`/${img}`} >
@@ -33,7 +33,9 @@ export default function Dashboard({appState}) {
           <Center>
             <Image src="cashflowcloud.png" marginTop={"-10%"} />
           </Center>
+
         </Box>
+        <CashBot cashBotLink={cashBotLink}/>
     </Box>
     </>
   );

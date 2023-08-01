@@ -97,7 +97,8 @@ class DbQuery {
         VALUES ($1, $2, $3)
         RETURNING             
             topic,
-            points
+            points,
+            created_at
 
     `,
       [id, topic, points]
