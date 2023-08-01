@@ -104,7 +104,7 @@ function App() {
             path="/"
             element={
               appState.isAuthenticated ? (
-                <Dashboard appState={appState} />
+                <Dashboard appState={appState} cashBotLink={cashBotLink}/>
               ) : (
                 <Home />
               )
@@ -137,6 +137,26 @@ function App() {
             element={
               appState.isAuthenticated ? (
                 <RegisterQuiz setAppState={setAppState} appState={appState} />
+              ) : (
+                <ErrorPage errorLink={errorLink}/>
+              )
+            }
+          />
+              <Route
+            path="/profile"
+            element={
+              appState.isAuthenticated ? (
+                <ProfileView setAppState={setAppState} appState={appState} />
+              ) : (
+                <ErrorPage errorLink={errorLink}/>
+              )
+            }
+          />
+              <Route
+            path="/goals"
+            element={
+              appState.isAuthenticated ? (
+                <GoalsTracker setAppState={setAppState} appState={appState} cashBotLink={cashBotLink}/>
               ) : (
                 <ErrorPage errorLink={errorLink}/>
               )
