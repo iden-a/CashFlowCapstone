@@ -51,10 +51,10 @@ function App() {
     console.log(bgColor);
     if (bgColor === "var(--midnight)") {
       setCashBotLink("cashbot.png");
-      setErrorLink("404light.png")
+      setErrorLink("404light.png");
     } else {
       setCashBotLink("cashbotDark.png");
-      setErrorLink("404dark.png")
+      setErrorLink("404dark.png");
     }
   }, [bgColor]);
   console.log(appState);
@@ -93,7 +93,7 @@ function App() {
     });
   }, [appState.isAuthenticated]);
 
-  console.log(appState)
+  console.log(appState);
 
   return (
     <div className="app" style={{ backgroundColor: bgColor }}>
@@ -104,22 +104,19 @@ function App() {
             path="/"
             element={
               appState.isAuthenticated ? (
-                <Dashboard appState={appState} />
+                <Dashboard appState={appState} cashBotLink={cashBotLink} />
               ) : (
                 <Home />
               )
             }
           />
-          <Route
-            path="/about"
-
-            element={ <AboutGrid />}
-
-          />
+          <Route path="/about" element={<AboutGrid />} />
           <Route
             path="/register"
             element={
-              appState.isAuthenticated ? <ErrorPage errorLink={errorLink}/> : (
+              appState.isAuthenticated ? (
+                <ErrorPage errorLink={errorLink} />
+              ) : (
                 <Register setAppState={setAppState} />
               )
             }
@@ -127,7 +124,9 @@ function App() {
           <Route
             path="/login"
             element={
-              appState.isAuthenticated ? <ErrorPage errorLink={errorLink}/> : (
+              appState.isAuthenticated ? (
+                <ErrorPage errorLink={errorLink} />
+              ) : (
                 <Login setAppState={setAppState} />
               )
             }
@@ -138,7 +137,31 @@ function App() {
               appState.isAuthenticated ? (
                 <RegisterQuiz setAppState={setAppState} appState={appState} />
               ) : (
-                <ErrorPage errorLink={errorLink}/>
+                <ErrorPage errorLink={errorLink} />
+              )
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              appState.isAuthenticated ? (
+                <ProfileView setAppState={setAppState} appState={appState} />
+              ) : (
+                <ErrorPage errorLink={errorLink} />
+              )
+            }
+          />
+          <Route
+            path="/goals"
+            element={
+              appState.isAuthenticated ? (
+                <GoalsTracker
+                  setAppState={setAppState}
+                  appState={appState}
+                  cashBotLink={cashBotLink}
+                />
+              ) : (
+                <ErrorPage errorLink={errorLink} />
               )
             }
           />
@@ -173,7 +196,9 @@ function App() {
                     infoPage={infoPage}
                     module_name={module_name}
                   />
-                ) : <ErrorPage errorLink={errorLink}/>
+                ) : (
+                  <ErrorPage errorLink={errorLink} />
+                )
               }
             />
           ))}
@@ -187,14 +212,13 @@ function App() {
                     infoPage={infoPage}
                     module_name={module_name}
                   />
-                ) : <ErrorPage errorLink={errorLink}/>
+                ) : (
+                  <ErrorPage errorLink={errorLink} />
+                )
               }
             />
           ))}
-          <Route
-          path="*" 
-          element={<ErrorPage errorLink={errorLink}/>}
-          />
+          <Route path="*" element={<ErrorPage errorLink={errorLink} />} />
         </Routes>
       </BrowserRouter>
     </div>
