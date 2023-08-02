@@ -12,6 +12,8 @@ import {
 } from "@chakra-ui/react";
 import ProfileModule from "./ProfileModule";
 import ProfileGoals from "./ProfileGoals";
+import Badges from "./Badges";
+
 
 export default function ProfileView({ appState, setAppState }) {
   const [media, moreMedia] = useMediaQuery([
@@ -85,7 +87,7 @@ export default function ProfileView({ appState, setAppState }) {
                 Points
               </Text>
             </Flex>
-
+             
             <Flex
               margin={"0 auto"}
               flex={"wrap"}
@@ -103,6 +105,7 @@ export default function ProfileView({ appState, setAppState }) {
               </Text>
             </Flex>
           </Flex>
+          <Badges appState={appState}/>
           <Heading
             color={useColorModeValue("var(--grey)", "var(--midnight)")}
             textAlign={"center"}
