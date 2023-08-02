@@ -1,7 +1,42 @@
-.cashbot2:hover{
-    cursor: pointer;
+.cashbot2:hover {
+  cursor: pointer;
 }
 
-.chatbox{
-    cursor: pointer;
+.chatbox {
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  left: 73vw;
+  height: 500px;
+  width: 500px;
+  display: flex;
+  cursor: pointer;
+}
+
+.cashbot2 {
+  z-index: 10;
+  position: fixed;
+  bottom: 0;
+  left: 85vw;
+  height: 200px;
+  width: 200px;
+}
+@media (max-width: 1100px) {
+  .cashbot2 {
+    left: 75vw;
+  }
+}
+
+@media (max-width: 1750px) {
+    .chatbox {
+      background-color: "red";
+      left: 68vw;
+    }
+  }
+
+@media (max-width: 660px) {
+  .cashbot2 {
+    position: unset;
+    float: right;
+  }
 }

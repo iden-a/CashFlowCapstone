@@ -8,9 +8,10 @@ import CashBot from "../Cashbot/Cashbot";
 
 export default function Dashboard({appState, cashBotLink}) {
   // TODO: Separate beginner & intermediate dashboard 
-  const [media, heightMedia] = useMediaQuery(["(max-width: 694px)", "(max-height: 840px)"])
+  const [media, heightMedia] = useMediaQuery(["(max-width: 694px)", "(max-height: 915px)"])
   let dashboard = []
-
+ console.log("height", heightMedia)
+ console.log("media", media)
   if (appState.user.status === "Beginner")
     dashboard = ["bank-acct", "credit-cards", "debt"];
   else if (appState.user.status === "Intermediate")
@@ -19,8 +20,8 @@ export default function Dashboard({appState, cashBotLink}) {
   return (
     <>
 
-<Box height={"100vh"}>
-    <Box marginTop={`${heightMedia ? ("30%") : (null)}`} display={'flex'} alignItems={`${media ? ("center"): (null)}`} flexDir={`${media ? ("column") : ("row")}`} justifyContent={'center'} height={'50vh'}>
+<Box height={"80vh"}>
+    <Box marginTop={`${heightMedia && media ? ("60%") : (null)}`} display={'flex'} alignItems={`${media ? ("center"): (null)}`} flexDir={`${media ? ("column") : ("row")}`} justifyContent={'center'} height={'50vh'}>
     {dashboard.map((img) =>(
       <Box>
         <Link to={`/${img}`} >
@@ -29,14 +30,14 @@ export default function Dashboard({appState, cashBotLink}) {
         </Box>
     ))}
     </Box>
-     <Box height={"50vh"}>
+     <Box display={(media) && ("none") } height={"50vh"}>
           <Center>
             <Image src="cashflowcloud.png" marginTop={"-10%"} />
           </Center>
 
         </Box>
-        <CashBot cashBotLink={cashBotLink}/>
     </Box>
+        <CashBot cashBotLink={cashBotLink}/>
     </>
   );
 }

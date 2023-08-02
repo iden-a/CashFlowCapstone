@@ -8,6 +8,7 @@ import {
   MessageInput,
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
+
 import "./Cashbot.css";
 
 //API key is hidden
@@ -127,7 +128,7 @@ export default function CashBot({ cashBotLink }) {
                 float: "right",
                 bottom: "0",
                 height: "500px",
-                width: "400px",
+                width: "500px",
               }}
             >
               <MessageList
@@ -163,17 +164,9 @@ export default function CashBot({ cashBotLink }) {
         </div>
       ) : (
         // users only see the cashbot when the isCashbotOpen is false.
-        <div className="cashbot2">
+        <div >
           <img
-            style={{
-              zIndex: "10",
-              position: "fixed",
-              bottom: "0",
-              left: "90vw",
-              height: "200px",
-              width: "200px",
-            }}
-            className="cashbot"
+            className="cashbot2"
             src={cashBotLink}
             alt="Cashbot for CashFlow Academy"
             onClick={handleOpenCashbot}
