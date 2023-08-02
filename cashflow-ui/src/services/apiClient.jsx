@@ -1,12 +1,15 @@
 import axios from "axios";
 
+
 class ApiClient {
   constructor(remoteHostUrl) {
     this.token = null;
-    this.remoteHostUrl = "http://localhost:3001";
-    // this.remoteHostUrl = "https://cashflow-api-gb95.onrender.com"
+    if (import.meta.env.NODE_ENV === "production") {
+      this.remoteHostUrl = "https://cashflow-api-gb95.onrender.com";
+    } else {
+      this.remoteHostUrl = "http://localhost:3001";
+    }
 
-  }
 
   setToken(token) {
     this.token = token;
@@ -97,5 +100,5 @@ class ApiClient {
   }
 }
 
-export default new ApiClient("http://localhost:3001");
-// export default new ApiClient("https://cashflow-api-gb95.onrender.com");
+export default new ApiClient(import.meta.env.VITE_REMOTE_URL || "http://localhost:3001");
+

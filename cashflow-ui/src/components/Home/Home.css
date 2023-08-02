@@ -165,6 +165,17 @@
   z-index: 10;
 }
 
+.logoCont .bg {
+  height: 90vh;
+
+}
+.homeContainers2 .bg,
+.homeContainers3 .bg,
+.homeContainers1 .bg,
+.homeContainers4 .bg{
+  height: 150vh;
+}
+
 @media (max-width: 500px) {
   .homeContainers2 .bg,
   .homeContainers3 .bg,
