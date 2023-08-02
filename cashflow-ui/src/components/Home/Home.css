@@ -136,35 +136,6 @@
   background-color: var(--grey);
 }
 
-.homeContainers3 .bg {
-  background: url("homeChar4.png") 50% 84.5% no-repeat fixed;
-}
-.homeContainers2 .bg {
-  background: url("homeChar3.png") 50% 84.5% no-repeat fixed;
-}
-.homeContainers1 .bg {
-  background: url("homeChar2.png") 50% 84.5% no-repeat fixed;
-}
-.homeContainers4 .bg {
-  background: url("tiffany.png") 50% 65% no-repeat fixed;
-}
-.logoCont .bg {
-  background: url("homeChar1.png") 50% 46vh no-repeat fixed;
-}
-
-.homeContainers2 .bg,
-.homeContainers3 .bg,
-.homeContainers1 .bg,
-.homeContainers4 .bg,
-.logoCont .bg {
-  margin-top: -40vh;
-  background-size: 60vh 60vh;
-  height: 150vh;
-  position: absolute;
-  width: inherit;
-  z-index: 10;
-}
-
 @media (max-width: 500px) {
   .homeContainers2 .bg,
   .homeContainers3 .bg,
