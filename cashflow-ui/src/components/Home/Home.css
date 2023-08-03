@@ -46,11 +46,14 @@
   color: #f0edee;
   text-align: center;
   font-size: 300%;
-  width: 23%;
+  width: fit-content;
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   /* margin-left: 0 auto;
   margin-right: 0 auto; */
   margin-top: 33%;
+  position: relative;
+  z-index: 100;
+  
 }
 
 #homeText-animate {
@@ -58,6 +61,8 @@
   text-align: center;
   font-size: 300%;
   width: fit-content;
+  position: relative;
+  z-index: 100;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: 0.15em solid orange; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
@@ -66,6 +71,7 @@
   animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
   /* margin-left: 0 auto;
   margin-right: 0 auto; */
+  background-color: var(--grey);
   margin-top: 33%;
 }
 /* The typing effect */
@@ -74,7 +80,7 @@
     width: 0;
   }
   to {
-    width: 23%;
+    width: 50%;
   }
 }
 
@@ -159,22 +165,13 @@
 .logoCont .bg {
   margin-top: -40vh;
   background-size: 60vh 60vh;
-  height: 150vh;
   position: absolute;
   width: inherit;
+  height: 150vh;
   z-index: 10;
 }
 
-.logoCont .bg {
-  height: 90vh;
 
-}
-.homeContainers2 .bg,
-.homeContainers3 .bg,
-.homeContainers1 .bg,
-.homeContainers4 .bg{
-  height: 150vh;
-}
 
 @media (max-width: 500px) {
   .homeContainers2 .bg,
@@ -190,13 +187,11 @@
     margin-top: 60px;
     padding: 5px;
   }
-  #homeText-animate {
+  #homeText-animate,  #homeText {
     margin-top: 100%;
     font-size: 200%;
   }
-  #homeText {
-    margin-top: 100%;
-  }
+
   .homeText {
     font-size: 200%;
   }
@@ -207,12 +202,9 @@
   }
 }
 @media (min-width: 500px) and (max-width: 1027px) {
-  #homeText-animate {
+  #homeText-animate, #homeText {
     margin-top: 50%;
     font-size: 230%;
-  }
-  #homeText {
-    margin-top: 50%;
   }
   .homeText {
     font-size: 250%;

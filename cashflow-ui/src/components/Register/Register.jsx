@@ -18,7 +18,8 @@ import {
   Text,
   useColorModeValue,
   Link,
-  useMediaQuery
+  useMediaQuery,
+  Center
 } from "@chakra-ui/react";
 
 export default function Register({ appState, setAppState }) {
@@ -364,12 +365,13 @@ export default function Register({ appState, setAppState }) {
                       {registerError}
                     </span>
                   )}
+                  <Center>
                   <Button
                     onClick={handleSubmit}
                     width={"fit-content"}
                     borderRadius={"20px"}
                     height={"45px"}
-                    fontSize={"x-large"}
+                    fontSize={media ? "large" : "x-large"}
                     margin={"0 auto"}
                     bg={"var(--midnight)"}
                     color={"var(--lightblue)"}
@@ -383,6 +385,7 @@ export default function Register({ appState, setAppState }) {
                       <span>Create Account</span>
                     )}
                   </Button>
+                  </Center>
                 </Stack>
               </Stack>
               <Text

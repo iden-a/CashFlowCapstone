@@ -20,7 +20,6 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Puff } from "react-loading-icons";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../../services/apiClient";
-import Loading from "../Loading/Loading"
 import "./Login.css";
 
 export default function Login({ setAppState }) {
@@ -220,7 +219,7 @@ export default function Login({ setAppState }) {
                     width={"40%"}
                     borderRadius={"20px"}
                     height={"45px"}
-                    fontSize={"x-large"}
+                    fontSize={registerMedia? "large" : "x-large"}
                     margin={"0 auto"}
                     bg={"var(--midnight)"}
                     color={"var(--lightblue)"}
