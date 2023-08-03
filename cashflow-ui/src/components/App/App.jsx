@@ -124,7 +124,7 @@ function App() {
                 isLoading ? (
                   <Loading />
                 ) : (
-                  <Dashboard appState={appState} cashBotLink={cashBotLink} />
+                  <Dashboard dashboard={dashboard} appState={appState} cashBotLink={cashBotLink} />
                 )
               ) : isLoading ? (
                 <Loading />
