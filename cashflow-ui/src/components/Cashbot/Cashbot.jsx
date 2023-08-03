@@ -110,25 +110,15 @@ export default function CashBot({ cashBotLink }) {
         //terenary operator for cashbot, the chatbox shows when isCashbotOpen is true
         <div
           className="chatbox"
-          style={{
-            position: "fixed",
-            zIndex: "10",
-            bottom: "0",
-            left: "73vw",
-            height: "500px",
-            width: "500px",
-            display: "flex",
-          }}
+    
         >
-          <MainContainer style={{ position: "static" }}>
+          <MainContainer id="mainCont" >
             <ChatContainer
               style={{
                 zIndex: "10",
                 position: "static",
                 float: "right",
                 bottom: "0",
-                height: "500px",
-                width: "500px",
               }}
             >
               <MessageList
@@ -156,6 +146,7 @@ export default function CashBot({ cashBotLink }) {
               height: "150px",
               width: "150px",
             }}
+            // backgroundColor="red"
             className="cashbot"
             src={cashBotLink}
             alt="Cashbot for CashFlow Academy"

@@ -28,15 +28,64 @@
 }
 
 @media (max-width: 1750px) {
-    .chatbox {
-      background-color: "red";
-      left: 68vw;
-    }
+  .chatbox {
+    background-color: "red";
+    left: 68vw;
   }
+}
 
-@media (max-width: 660px) {
-  .cashbot2 {
+@media (max-width: 1480px) {
+  .chatbox {
+    background-color: "red";
+    left: 60vw;
+  }
+}
+@media (max-width: 1180px) {
+  .chatbox {
+    background-color: "red";
+    left: 55vw;
+    height: 400px;
+  }
+}
+@media (max-width: 1047px) {
+  .chatbox {
+    background-color: "red";
+    left: 55vw;
+    width: 420px;
+  }
+}
+@media (max-width: 1047px) {
+  .chatbox {
+    flex-direction: column;
+    width: 320px;
+    float: right;
+    height: 500px;
+    left: 68vw;
+  }
+  .cashbot {
+    margin-left: 60%;
+    float: right;
+  }
+}
+@media (max-width: 998px) {
+  .chatbox {
+    left: 55vw;
+  }
+}
+@media (max-width: 694px) {
+  .cashbot2,
+  .chatbox {
     position: unset;
     float: right;
   }
+}
+@media (max-width: 348px) {
+  .chatbox {
+    width: 280px;
+  }
+}
+
+#mainCont {
+  position: static;
+  border-radius: 30px;
 }
