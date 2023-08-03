@@ -37,7 +37,7 @@ export default function ProfileView({ appState, setAppState }) {
           borderRadius={"40px"}
           fontSize={`${moreMedia ? "140%" : "220%"}`}
           width={`${moreMedia ? "95vw" : "70vw"}`}
-          bg={useColorModeValue("var(--midnight)", "var(--lightblue)")}
+          bg={useColorModeValue("var(--darkblue)", "var(--lightblue)")}
           boxShadow={"dark-lg"}
           p={8}
         >

@@ -19,10 +19,10 @@ export default function NotQuite({ onNextClick }) {
             src="/gary.png"
             position="absolute"
             top="-50%"
-            ml="30%"
+            ml="25%"
             display={'flex'}
             alignContent={'center'}
-            width={`${media ? ("0%") : ("40%")}`}
+            width={`${media ? ("0%") : ("50%")}`}
             zIndex="1"
           />
           <Flex
@@ -32,7 +32,8 @@ export default function NotQuite({ onNextClick }) {
             position={'absolute'}
           >
             <Box
-            ml={'7%'}
+            margin={'15%'}
+            mt={'10%'}
             >
               <Text 
               display={"flex"} 

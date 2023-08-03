@@ -29,10 +29,7 @@ export default function Badges({ appState }) {
   }
 
   const earnedBadges = determineBadges(userPoints);
-  const [media, moreMedia] = useMediaQuery([
-    "(max-width: 1000px)",
-    "(max-width: 330px)",
-  ]);
+  const [media] = useMediaQuery("(max-width: 1900px)");
 
   return (
     <>
@@ -45,13 +42,14 @@ export default function Badges({ appState }) {
       >
         Badges Earned
       </Heading>
-      <Flex justifyContent={'center'} >
+
+      <Flex justifyContent={'center'} flexWrap={`${media ? ('wrap') : ('nowrap')}`}>
       {earnedBadges.map((badge) => {
         return (
-            <Flex className="flip"
+            <Flex className="flip"  
             css={{
-                width: '25vh',
-                height: '25vh',
+                width:'30vh',
+                height: '30vh',
 
                 '&:hover': {
                   '.flip-inner': {
@@ -86,10 +84,10 @@ export default function Badges({ appState }) {
               }}>
             <Flex className="flip-inner">
                 <Flex className="front">
-                <Image objectFit={'cover'} width={"25vh"} height={"25vh"} key={badge} src={`${badge}.png`} alt={badge} />
+                <Image width='30vh' objectFit={'cover'} height='30vh' key={badge} src={`${badge}.png`} alt={badge} />
                 </Flex>
                 <Flex className="back">
-                <Image objectFit={'cover'} width={"25vh"} height={"25vh"} key={badge} src={`${badge}2.png`} alt={badge} />
+                <Image width='30vh' objectFit={'cover'} height='30vh' key={badge} src={`${badge}2.png`} alt={badge} />
                 </Flex>
             </Flex>
         </Flex>

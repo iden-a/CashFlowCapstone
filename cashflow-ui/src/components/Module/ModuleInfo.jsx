@@ -7,7 +7,11 @@ import {
   Heading,
   Container,
   Image,
+  useColorModeValue,
   Text,
+  Flex,
+  Center,
+  useMediaQuery
 } from "@chakra-ui/react";
 import Slider from "react-slick";
 import Cashbot from "../Cashbot/Cashbot";
@@ -32,9 +36,11 @@ export default function ModuleInfo({
   setInfoPage,
   cashBotLink,
 }) {
+  const [imgMedia] = useMediaQuery("(max-width: 1000px)");  
+  const [imgMedia2] = useMediaQuery("(max-width: 1400px)");  
   const [slider, setSlider] = useState(null);
-  const top = useBreakpointValue({ base: "90%", md: "50%" });
-  const side = useBreakpointValue({ base: "30%", md: "40px" });
+  const top = useBreakpointValue({ base: "70%", md: "70%" });
+  const side = useBreakpointValue({ base: "0%", md: "20%" });
   // Loads info from specified module
 
   const handleNext = () => {
@@ -54,29 +60,86 @@ export default function ModuleInfo({
       <Heading display={"flex"} justifyContent={"center"}>
         {module_data.title}
       </Heading>
-      <Box
-        display="flex"
+      <Flex
         justifyContent="center"
         alignItems="center"
         height="100vh"
       >
-        <Box>
+        <Box
+        width="100%"
+        height={'100vh'}
+        >
+          <Center>
           <Image
             src="/marcus.png"
             position={"absolute"}
-            top={"1vh"}
-            ml={"14%"}
+            bottom={`${imgMedia2 ? ("56%") : ("48%")}`}
             zIndex={"1"}
+            width={`${imgMedia ? ("0%") : ("30%")}`}
           />
+          </Center>
+          <Center>
           <Box
-            // position={"relative"}
-            height={"600px"}
-            width={"100vh"}
+            width={'60%'}
+            height={'80vh'}
             overflowX={"hidden"}
             overflowY={"scroll"}
             borderRadius={"3xl"}
-            bg={"var(--lightblue)"}
+            mt={'10%'}
+            bg={useColorModeValue("var(--darkblue)", "var(--lightblue)")}
           >
+            
+            {/* Slider */}
+            <Slider {...settings} ref={(slider) => setSlider(slider)}>
+              {module_data.sections.map((moduleData, index) => (
+                <Box
+                  key={index}
+                  height={"auto"}
+                  position="absolute"
+                  left={`${index * 100}%`}
+                >
+                  <Container
+                    marginTop={"-6vh"}
+                    width={"100%"}
+                    marginBottom={"10%"}
+                    size="container.lg"
+                    height="auto"
+                  >
+                    <Heading
+                      textAlign={"center"}
+                      mt={"180px"}
+                      fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
+                      color={useColorModeValue("var(--grey)", "var(--midnight)")}
+                    >
+                      {moduleData.title}
+                    </Heading>
+                    <Stack
+                      height={"auto"}
+                      spacing={6}
+                      w={"full"}
+                      maxW={"lg"}
+                      top="50%"
+                      
+                    >
+                      <Box height={"auto"} display={"contents"}  >
+                        {/* Displays information stored in json file  */}
+                        {moduleData.content.map((line, idx) => (
+                          <Text
+                            key={idx}
+                            fontSize={{ base: "l", md: "xl", lg: "2xl" }}
+                            fontWeight={"bold"}
+                            color={useColorModeValue("var(--grey)", "var(--midnight)")}
+                          >
+                            {line}
+                          </Text>
+                        ))}
+                      </Box>
+                    </Stack>
+                  </Container>
+                </Box>
+              ))}
+            </Slider>
+            <Flex zIndex={100} bg='yellow'>
             {/* Left Icon */}
             <IconButton
               aria-label="left-arrow"
@@ -101,59 +164,12 @@ export default function ModuleInfo({
               icon={<Image src="/next.png" maxH={"120px"} />}
               onClick={handleNext}
             />
-            {/* Slider */}
-            <Slider {...settings} ref={(slider) => setSlider(slider)}>
-              {module_data.sections.map((moduleData, index) => (
-                <Box
-                  key={index}
-                  height={"auto"}
-                  position="absolute"
-                  left={`${index * 100}%`}
-                >
-                  <Container
-                    marginTop={"-6vh"}
-                    width={"100%"}
-                    marginBottom={"10%"}
-                    size="container.lg"
-                    height="auto"
-                  >
-                    <Heading
-                      textAlign={"center"}
-                      mt={"180px"}
-                      fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
-                      color="var(--midnight)"
-                    >
-                      {moduleData.title}
-                    </Heading>
-                    <Stack
-                      height={"auto"}
-                      spacing={6}
-                      w={"full"}
-                      maxW={"lg"}
-                      top="50%"
-                    >
-                      <Box height={"auto"} display={"contents"}>
-                        {/* Displays information stored in json file  */}
-                        {moduleData.content.map((line, idx) => (
-                          <Text
-                            key={idx}
-                            fontSize={"120%"}
-                            fontWeight={"bold"}
-                            color={"var(--midnight)"}
-                          >
-                            {line}
-                          </Text>
-                        ))}
-                      </Box>
-                    </Stack>
-                  </Container>
-                </Box>
-              ))}
-            </Slider>
+            </Flex>
           </Box>
+          </Center>
         </Box>
-        <Cashbot cashBotLink={cashBotLink} />
-      </Box>
+      </Flex>
+      <Cashbot cashBotLink={cashBotLink} />
     </>
   );
 }

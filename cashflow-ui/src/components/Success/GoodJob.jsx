@@ -31,7 +31,8 @@ export default function GoodJob({ onNextClick }) {
             position={'absolute'} 
             >
               <Box
-            margin={'10%'}
+            margin={'15%'}
+            mt={'5%'}
             >
               <Text 
               display={"flex"} 

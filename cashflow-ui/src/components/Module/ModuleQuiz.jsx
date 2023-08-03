@@ -7,7 +7,8 @@ import {
   RadioGroup,
   Radio,
   Flex,
-  useMediaQuery
+  useMediaQuery,
+  useColorModeValue
 } from "@chakra-ui/react";
 import Slider from "react-slick";
 import moduleQuiz from "../../../../cashflow-api/modules/modulequiz.json";
@@ -130,19 +131,30 @@ function Question({ question, onNext }) {
     }
   };
   return (
-      <Box
-        display={"flex"}
+      <Flex
         justifyContent={"center"}
         flexDirection={"column"}
         alignItems={"center"}
+        position={'absolute'}
+        pt={'10%'}
       >
-        <Box fontWeight="bold" color={"var(--midnight)"} mb={4} fontSize={"xl"}>
+        <Box 
+        fontWeight="bold" 
+        color={useColorModeValue("var(--grey)", "var(--midnight)")}
+        textAlign={'center'}
+        margin={'10%'} 
+        mt={'-10%'}
+        // position={'absolute'}
+        fontSize={{ base: "15px", md: "35px", lg: "45px", xl: "45px" }}>
           {scenario}
         </Box>
         <RadioGroup onChange={handleAnswerSelect} value={selectedOption}>
-          <Stack spacing={4} color={"var(--midnight)"}>
+          <Stack spacing={4} color={useColorModeValue("var(--grey)", "var(--midnight)")}>
             {options.map((option, index) => (
-              <Radio key={index} value={option}>
+              <Radio 
+              textAlign={'center'}
+              fontSize={{ base: "20px", md: "35px", lg: "45px", xl: "60px" }}      
+              key={index} value={option}>
                 {option}
               </Radio>
             ))}
@@ -158,7 +170,7 @@ function Question({ question, onNext }) {
           icon={<Image src="/next.png" maxH={"120px"} />}
           onClick={handleSubmit}
         />
-      </Box>
+      </Flex>
   );
 }
 
@@ -186,10 +198,10 @@ export default function ModuleQuiz({ appState, setAppState, module_name }) {
         <Box
           position={"relative"}
           flexDirection={`${media ? ("column") : ("row")}`} 
-          height={'80vh'}
+          height={'100vh'}
           borderRadius={"3xl"}
           margin={`${media ? ('10%') : ("10%")}`}
-          backgroundColor={"var(--lightblue)"}
+          bg={useColorModeValue("var(--darkblue)", "var(--lightblue)")}
         >
           
           <Quiz
