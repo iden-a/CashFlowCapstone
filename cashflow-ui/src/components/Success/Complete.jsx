@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
-import {
-  Box,
-  IconButton,
-  Heading,
-  Image,
-} from '@chakra-ui/react';
-import { useNavigate } from 'react-router';
+import React, { useState } from "react";
+import { Flex, Box, IconButton, Text, Image, useMediaQuery } from "@chakra-ui/react";
+import { useNavigate } from "react-router";
 import apiClient from "../../services/apiClient";
 
-
-export default function Complete({ setQuizInfo, setAppState, appState, score, quizInfo, module_name }) {
+export default function Complete({
+  setQuizInfo,
+  setAppState,
+  appState,
+  score,
+  quizInfo,
+  module_name,
+}) {
   const navigate = useNavigate(); // Hook to get the navigation function
   const [isLoading, setIsLoading] = useState(false);
+  const [media] = useMediaQuery("(max-width: 1000px)");  
 
-  
+  // updates total points of user in appState
   async function updateUserTotalPoints(userId, total_points) {
     try {
       const token = localStorage.getItem("CashFlow_Token");
@@ -22,7 +24,6 @@ export default function Complete({ setQuizInfo, setAppState, appState, score, qu
         id: userId,
         updateValue: total_points,
       });
-      console.log("Data:", data)
       return data;
     } catch (error) {
       console.log(error);
@@ -30,14 +31,14 @@ export default function Complete({ setQuizInfo, setAppState, appState, score, qu
     }
   }
 
+  // when quiz is complete, quizzes are added to appState
   const handleFinish = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    //console.log("current:" , currentTotalPoints, score)
     try {
       const token = localStorage.getItem("CashFlow_Token");
       apiClient.setToken(token);
-      
+
       const { data, error, message } = await apiClient.quiz({
         id: appState.user.id,
         topic: module_name,
@@ -45,70 +46,84 @@ export default function Complete({ setQuizInfo, setAppState, appState, score, qu
       });
 
       const pointdata = await updateUserTotalPoints(appState.user.id, score);
-      console.log("point data," , pointdata)
       const updatedUser = { ...appState.user };
       updatedUser.total_points = pointdata.total_points;
 
       setAppState((prevState) => ({
         ...prevState,
-        quizzes: [...prevState.quizzes, { topic: data.topic, points: data.points }],
-        user: updatedUser
+        quizzes: [
+          ...prevState.quizzes,
+          { topic: data.topic, points: data.points },
+        ],
+        user: updatedUser,
       }));
 
-      navigate('/'); // After successful submission, navigate to "/"
+      navigate("/"); // After successful submission, navigate back to dashboard
     } catch (err) {
       console.log(err);
     }
-    
-    
-
     setIsLoading(false);
   };
 
-  //console.log("complete", score);
-
-    return (
-    <Box
-      left={"12%"}
-      position={"absolute"}
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      height="800px"
-      zIndex="10"
+  return (
+    <Flex
+    position="absolute"
+    width={'100%'}
+    flexDirection={`${media ? ("column") : ("row")}`} 
+    height={'70vh'}
+    top={'25%'}
+    zIndex={'10'}
     >
-      <Box mt={20}>
-      <Image src='/tiffany.png' position={'absolute'} top={'-100px'} ml={'450px'} h={600} zIndex={'1'}/>
-      <Box position={'relative'} height={'800px'} width={'100vh'} overflow={'inherit'} borderRadius={'3xl'} color={'var(--midnight)'} backgroundColor={'var(--lightblue)'}>
-
-        {/* Menu Icon */}
-        <IconButton
-          aria-label="start"
-          variant="ghost"
+        <Image
+          src="/tiffany.png"
           position="absolute"
-          transform={'translate(0%, -50%)'}
-          zIndex={10}
-          mt={700}
-          ml={600}
-          icon={<Image src="/menu.png" maxH={'300px'} />}
-          onClick={handleFinish}
+          top="-50%"
+          ml="30%"
+          display={'flex'}
+          alignContent={'center'}
+          width={`${media ? ("0%") : ("40%")}`}
+          zIndex="1"
         />
-        <Box 
-        position="relative"
-        height="800px"
-        width="800px"
-        overflow="inherit"
-        borderRadius="3xl"
-        color="var(--midnight)"
-        backgroundColor="var(--lightblue)">
-        <Heading display={'flex'} size={'4xl'} justifyContent={'center'} >CONGRATS!</Heading>
-        <Heading pt={100} display={'flex'} justifyContent={'center'} >YOU HAVE COMPLETED THIS LEARNING MODULE, EARNING {score} POINTS.</Heading>
-        <Heading pt={100} display={'flex'} justifyContent={'center'} >YOU ARE ONE STEP CLOSER TO REACHING FINANCIAL FREEDOM!</Heading>
-        </Box>
-   
-      </Box>
-      </Box>
-    </Box>
+        <Flex
+          borderRadius={"3xl"}
+          width={'100%'} 
+          color={"var(--midnight)"}
+          position={'absolute'}
+          backgroundColor={'var(--lightblue)'}
+        >
+          <Box margin={'10%'}>
+          <Text 
+              display={"flex"} 
+              justifyContent={"center"}
+              textAlign={'center'} 
+              fontWeight={'bold'}
+              pt={'10%'}
+              fontSize={{ base: "20px", md: "40px", lg: "60px", xl: "80px" }}
+              >
+                CONGRATS!
+            </Text>
+            <Text 
+               display={"flex"} 
+               fontWeight={'bold'}
+               justifyContent={"center"} 
+               textAlign={'center'}
+               fontSize={{ base: "15px", md: "20px", lg: "30px", xl: "40px" }}
+               >
+             YOU HAVE COMPLETED THIS LEARNING MODULE, EARNING {score} POINTS. YOU ARE ONE STEP CLOSER TO REACHING FINANCIAL FREEDOM!
+            </Text>
+            {/* Menu Icon */}
+          <IconButton
+            aria-label="menu"
+            variant="ghost"
+            transform="translate(0%, -50%)"
+            mt={'20%'}
+            left={`${media ? ("0%") : ("22%")}`}
+            icon={<Image src="/menu.png" 
+            width={'70%'} />}
+            onClick={handleFinish}
+          />
+          </Box>
+          </Flex>
+    </Flex>
   );
-
 }

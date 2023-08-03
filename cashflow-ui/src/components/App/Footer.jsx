@@ -54,6 +54,7 @@ const SocialButton = ({ children, label, href }) => {
     </chakra.button>
   );
 };
+
 export default function Footer() {
   const [media] = useMediaQuery("(max-width: 371px)");
   return (

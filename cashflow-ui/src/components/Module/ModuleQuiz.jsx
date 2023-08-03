@@ -2,16 +2,12 @@ import React, { useState, useRef } from "react";
 import {
   Box,
   IconButton,
-  useBreakpointValue,
   Stack,
-  Heading,
-  Container,
   Image,
-  FormControl,
-  FormLabel,
   RadioGroup,
   Radio,
-  Button,
+  Flex,
+  useMediaQuery
 } from "@chakra-ui/react";
 import Slider from "react-slick";
 import moduleQuiz from "../../../../cashflow-api/modules/modulequiz.json";
@@ -20,7 +16,6 @@ import Failure from "../Fail/Failure";
 import GoodJob from "../Success/GoodJob";
 import Complete from "../Success/Complete";
 import ModuleAssist from "./ModuleAssist";
-import { Navigate } from "react-router";
 
 // Settings for the slider
 const settings = {
@@ -50,7 +45,6 @@ function Quiz({
   const [showGoodJob, setShowGoodJob] = useState(false);
   const [showNotQuite, setShowNotQuite] = useState(false);
   const [showQuizResult, setShowQuizResult] = useState(false);
-  console.log("score", score);
 
   const handleNext = (isAnswerCorrect) => {
     if (isAnswerCorrect) {
@@ -160,7 +154,7 @@ function Question({ question, onNext }) {
           position="relative"
           transform={"translate(0%, -50%)"}
           zIndex={2}
-          mt={8}
+          mt={20}
           icon={<Image src="/next.png" maxH={"120px"} />}
           onClick={handleSubmit}
         />
@@ -175,25 +169,26 @@ export default function ModuleQuiz({ appState, setAppState, module_name }) {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [score, setScore] = useState(0);
-
+  const [media] = useMediaQuery("(max-width: 768px)");
   const [slider, setSlider] = useState(null);
   
   return (
     <>
-      <Box
-        display="flex"
+      <Flex
+        width={`${media ? ("50%") : ("50%")}`}
         justifyContent="center"
+        display="contents"
         alignItems="center"
-        height="100vh"
-        position={"relative"}
-        overflow="scroll" // Add this line to enable scrolling when slides exceed container's visible area
+        position="relative"
+        overflow="scroll" 
       >
 
         <Box
           position={"relative"}
-          height={"900px"}
-          width={"100vh"}
+          flexDirection={`${media ? ("column") : ("row")}`} 
+          height={'80vh'}
           borderRadius={"3xl"}
+          margin={`${media ? ('10%') : ("10%")}`}
           backgroundColor={"var(--lightblue)"}
         >
           
@@ -212,7 +207,7 @@ export default function ModuleQuiz({ appState, setAppState, module_name }) {
 
 
         
-      </Box>
+      </Flex>
     </>
   );
 }

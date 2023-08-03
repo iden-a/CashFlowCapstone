@@ -1,4 +1,5 @@
-import { Heading, Image, useColorModeValue, Flex, Box } from "@chakra-ui/react";
+import { Heading, Image, useColorModeValue, useMediaQuery, Flex } from "@chakra-ui/react";
+
 import { useState } from "react";
 
 export default function Badges({ appState }) {
@@ -28,6 +29,10 @@ export default function Badges({ appState }) {
   }
 
   const earnedBadges = determineBadges(userPoints);
+  const [media, moreMedia] = useMediaQuery([
+    "(max-width: 1000px)",
+    "(max-width: 330px)",
+  ]);
 
   return (
     <>
@@ -43,11 +48,11 @@ export default function Badges({ appState }) {
       <Flex justifyContent={'center'} >
       {earnedBadges.map((badge) => {
         return (
-            <Box className="flip"
+            <Flex className="flip"
             css={{
-                //transform: 'translateX(-50%)',
-                width: '300px',
-                height: '300px',
+                width: '25vh',
+                height: '25vh',
+
                 '&:hover': {
                   '.flip-inner': {
                     transform: 'rotateY(180deg)',
@@ -79,15 +84,15 @@ export default function Badges({ appState }) {
                   },
                 },
               }}>
-            <Box className="flip-inner">
-                <Box className="front">
-                <Image maxW={'300px'} key={badge} src={`${badge}.png`} alt={badge} />
-                </Box>
-                <Box className="back">
-                <Image maxW={'300px'} key={badge} src={`${badge}2.png`} alt={badge} />
-                </Box>
-            </Box>
-        </Box>
+            <Flex className="flip-inner">
+                <Flex className="front">
+                <Image objectFit={'cover'} width={"25vh"} height={"25vh"} key={badge} src={`${badge}.png`} alt={badge} />
+                </Flex>
+                <Flex className="back">
+                <Image objectFit={'cover'} width={"25vh"} height={"25vh"} key={badge} src={`${badge}2.png`} alt={badge} />
+                </Flex>
+            </Flex>
+        </Flex>
         );
       })}
       </Flex>

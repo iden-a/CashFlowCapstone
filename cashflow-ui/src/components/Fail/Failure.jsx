@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import {
   Box,
   IconButton,
-  Heading,
+  Text,
   Image,
+  Flex,
+  useMediaQuery
 } from '@chakra-ui/react';
-import { Navigate } from 'react-router';
+import { useNavigate } from 'react-router';
 
 export default function Failure(module_name) {
+  const [media] = useMediaQuery("(max-width: 1000px)");  
     const navigate = useNavigate();
     console.log(module_name.module_name)
     function handleRestart() {
@@ -17,57 +20,77 @@ export default function Failure(module_name) {
       navigate('/')
     }
     return (
-    <>
-    <Box
-      left={"12%"}
-      position={"absolute"}
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      height="800px"
-      zIndex="10"
+    <Flex
+      position="absolute"
+      width={'100%'}
+      flexDirection={`${media ? ("column") : ("row")}`} 
+      height={'70vh'}
+      top={'25%'}
+      zIndex={'10'}
     >
-      <Box mt={20}>
-      <Image src='/gary.png' position={'absolute'} top={'-50px'} ml={'500px'} h={500} zIndex={'1'}/>
-      <Box position={'relative'} height={'800px'} width={'1500px'} overflow={'inherit'} borderRadius={'3xl'} color={'var(--midnight)'} backgroundColor={'var(--lightblue)'}>
-
+      <Image 
+      src='/gary.png' 
+      position="absolute"
+      top="-50%"
+      ml="30%"
+      display={'flex'}
+      alignContent={'center'}
+      width={`${media ? ("0%") : ("40%")}`}
+      zIndex="1"
+      />
+      <Flex
+            borderRadius={"3xl"}
+            width={'100%'} 
+            color={"var(--midnight)"}
+            position={'absolute'}
+            backgroundColor={'var(--lightblue)'}
+          >
+        <Box margin={'10%'}> 
+        <Text 
+              display={"flex"} 
+              justifyContent={"center"}
+              textAlign={'center'} 
+              fontWeight={'bold'}
+              pt={'10%'}
+              fontSize={{ base: "20px", md: "40px", lg: "60px", xl: "80px" }}
+              >
+                YOU GOT THIS, TRY AGAIN!
+                </Text>
+                <Text 
+               display={"flex"} 
+               fontWeight={'bold'}
+               justifyContent={"center"} 
+               textAlign={'center'}
+               fontSize={{ base: "15px", md: "20px", lg: "30px", xl: "40px" }}
+               >
+                YOU HAVE NOT EARNED ENOUGH POINTS TO COMPLETE THIS MODULE. TRY ASKING CASHBOT FOR MORE HELP!
+                </Text>
         {/* Menu Icon */}
+        <Flex>
         <IconButton
-          aria-label="start"
+          aria-label="menu"
           variant="ghost"
-          position="absolute"
-          transform={'translate(0%, -50%)'}
-          zIndex={2}
-          mt={700}
-          icon={<Image src="/menu.png" maxH={'300px'} />}
+          transform="translate(0%, -50%)"
+          mt={'20%'}
+          icon={<Image src="/menu.png" 
+          width={'70%'} />}
          onClick={handleExit}
-
         />
         {/* Start Icon */}
         <IconButton
           aria-label="start"
           variant="ghost"
-          position="absolute"
-          transform={'translate(0%, -50%)'}
-          zIndex={2}
-          mt={700}
-          ml={1200}
-          icon={<Image src="/start.png" maxH={'330px'} />}
+          mt={'19%'}
+          left={`${media ? ("0%") : ("20%")}`}
+          transform="translate(0%, -50%)"
+          icon={<Image src="/start.png" 
+          width={'75%'} />}
           onClick={handleRestart}
         />
-
-        <Box pt={300}>
-        <Heading display={'flex'} size={'4xl'} justifyContent={'center'} >YOU GOT THIS, TRY AGAIN!</Heading>
-        {/* TODO: Insert explanation  */}
-        <Heading pt={100} display={'flex'} justifyContent={'center'} >YOU HAVE NOT EARNED ENOUGH POINTS TO COMPLETE</Heading>
-        {/* TODO: Insert points  */}
-        <Heading display={'flex'} justifyContent={'center'} >THIS MODULE. TRY ASKING CASHBOT FOR MORE HELP!</Heading>
+        </Flex>
         </Box>
-      </Box>
-      </Box>
-    </Box>
-
-    </>
+        </Flex>
+    </Flex>
   );
 
 }

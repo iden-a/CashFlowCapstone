@@ -65,7 +65,7 @@ export default function ModuleInfo({
             src="/marcus.png"
             position={"absolute"}
             top={"1vh"}
-            ml={"15%"}
+            ml={"14%"}
             zIndex={"1"}
           />
           <Box

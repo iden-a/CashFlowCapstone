@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
 import {
-  Box,
+  Flex,
   IconButton,
-  useBreakpointValue,
-  Stack,
-  Heading,
-  Container,
+  Text,
   Image,
-  Text
+  Box,
+  useMediaQuery
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
 export default function QuizPreview({module_name}) {
-    // TODO: counter for module info pages 
-    console.log(module_name)
-    const page_count = 0
+  const [media] = useMediaQuery("(max-width: 1000px)");  
     const navigate = useNavigate()
     const handleBegin= () => {
         navigate(`/${module_name}/quiz`)
@@ -25,53 +21,79 @@ export default function QuizPreview({module_name}) {
       }
 
     return (
-        // TODO: Ternary operator for if the module info is complete
-    <>
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      height="100vh" 
+    <Flex
+      position="absolute"
+      width={'100%'}
+      flexDirection={`${media ? ("column") : ("row")}`} 
+      height={'70vh'}
+      zIndex={'10'}
+      marginTop={'10%'}
     >
-      <Box>
-      <Image src='/tiffany.png' position={'absolute'} top={'-50px'} ml={'500px'} h={500} zIndex={'1'}/>
-      <Box position={'relative'} height={'800px'} width={'1500px'} overflow={'inherit'} borderRadius={'3xl'} color={'var(--midnight)'} backgroundColor={'var(--lightblue)'}>
-
-        
+      <Image 
+      src='/tiffany.png' 
+      position="absolute"
+      top="-50%"
+      ml="30%"
+      display={'flex'}
+      alignContent={'center'}
+      width={`${media ? ("0%") : ("40%")}`}
+      zIndex="1"
+      />
+      <Flex 
+      borderRadius={"3xl"}
+      width={'100%'} 
+      color={"var(--midnight)"}
+      position={'absolute'}
+      backgroundColor={'var(--lightblue)'}
+      justifyContent={'center'}
+      >
+    <Box margin={'10%'}> 
+    <Text 
+        display={"flex"} 
+        justifyContent={"center"}
+        textAlign={'center'} 
+        fontWeight={'bold'}
+        pt={'10%'}
+        fontSize={{ base: "20px", md: "40px", lg: "60px", xl: "80px" }}
+        >
+          READY TO TEST YOUR KNOWLEDGE?
+          </Text>
+          <Text 
+               display={"flex"} 
+               fontWeight={'bold'}
+               justifyContent={"center"} 
+               textAlign={'center'}
+               fontSize={{ base: "15px", md: "20px", lg: "30px", xl: "40px" }}
+               >          
+          PRESS START TO BEGIN YOUR CASHFLOW QUIZ!</Text>
 
         {/* Left Icon */}
+        <Flex marginTop={'10%'} justifyContent={'center'}>
         <IconButton
           aria-label="left-arrow"
           variant="ghost"
-          position="absolute"
-          transform={'translate(0%, -50%)'}
-          zIndex={2}
-          mt={700}
-          icon={<Image src="/back.png" maxH={'200px'} />}
+          display={'flex'}
+          transform="translate(0%, -50%)"
+          marginTop={'10%'}
+          icon={<Image src="/back.png" marginLeft={`${media ? ("0%") : ("-120%")}`} width="40%"  />}
           onClick={handleBack}
         />
         {/* Start Icon */}
         <IconButton
           aria-label="start"
           variant="ghost"
-          position="absolute"
-          transform={'translate(0%, -50%)'}
-          zIndex={2}
-          mt={700}
-          ml={1200}
-          icon={<Image src="/start.png" maxH={'300px'} />}
+          left={`${media ? ("0%") : ("20%")}`}
+          marginTop={'9%'}
+          transform="translate(0%, -50%)"
+          icon={<Image src="/start.png" 
+          width={'75%'} />}
           onClick={handleBegin}
         />
-        <Box pt={300}>
-        <Heading display={'flex'} size={'4xl'} justifyContent={'center'} >READY TO TEST YOUR KNOWLEDGE?</Heading>
-        <Heading pt={100} display={'flex'} justifyContent={'center'} >PRESS START TO BEGIN YOUR CASHFLOW QUIZ!</Heading>
-        </Box>
-   
-      </Box>
-      </Box>
-    </Box>
+       </Flex>
+   </Box>
+      </Flex>
+      </Flex>
 
-    </>
   );
 
 }

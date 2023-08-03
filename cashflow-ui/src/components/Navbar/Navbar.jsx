@@ -86,7 +86,7 @@ export default function Navbar({ setAppState, appState }) {
 
                   {/* Sidebar with user information */}
                   <MenuList zIndex={99}>
-                  <Link href="/" style={{ textDecoration: "none" }}>
+                    <Link href="/" style={{ textDecoration: "none" }}>
                       <MenuItem>Home</MenuItem>
                     </Link>{" "}
                     <Link href="/about" style={{ textDecoration: "none" }}>
