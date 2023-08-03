@@ -4,11 +4,12 @@ import axios from "axios";
 class ApiClient {
   constructor(remoteHostUrl) {
     this.token = null;
-    if (import.meta.env.NODE_ENV === "production") {
+    if (import.meta.env.VITE_NODE_ENV === "production") {
       this.remoteHostUrl = "https://cashflow-api-gb95.onrender.com";
     } else {
       this.remoteHostUrl = "http://localhost:3001";
     }
+  }
 
 
   setToken(token) {
