@@ -6,6 +6,7 @@ import {
   Input,
   InputGroup,
   Image,
+  Center,
   HStack,
   Wrap,
   WrapItem,
@@ -19,6 +20,7 @@ import {
   Text,
   Textarea,
   useColorModeValue,
+  useMediaQuery,
   Link,
 } from "@chakra-ui/react";
 import apiClient from "../../services/apiClient";
@@ -35,6 +37,11 @@ export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [goalForm, setGoalForm] = useState(false);
+  const [media, moreMedia] = useMediaQuery([
+    "(max-width: 746px)",
+    "(max-width: 416px)",
+  ]);
+  
 
   function handleRecord(e) {
     e.preventDefault();
@@ -92,41 +99,42 @@ export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
         <Box
           zIndex={"-1"}
           mx={"auto"}
-          marginTop={"20vh"}
+          marginTop={moreMedia ? "20vh" : "30vh"}
           rounded={"lg"}
           minHeight={"70vh"}
           maxHeight={"auto"}
           borderRadius={"40px"}
-          width={"auto"}
+          width={media ? "80vw" : "90vw"}
           maxWidth={"120vh"}
           bg={useColorModeValue("var(--midnight)", "var(--lightblue)")}
           boxShadow={"dark-lg"}
           p={8}
         >
           <Image
-            marginTop={"-300px"}
+            marginTop={media ? "-200px" : "-300px"}
             mx={"auto"}
-            width={"500px"}
-            height={"500px"}
+            width={media ? "300px" : "500px"}
+            height={media ? "300px" : "500px"}
+            objectFit={"cover"}
             src="goalGuy.png"
           />
           <Heading
             color={useColorModeValue("var(--grey)", "var(--midnight)")}
-            fontSize={"300%"}
+            fontSize={media ? "170%" : "300%"}
             textAlign={"center"}
-            marginTop={"-100px"}
+            marginTop={media ? "-60px" : "-100px"}
             marginBottom={"10px"}
           >
             CashFlow Goals
           </Heading>
+          <Center>
           <Button
             onClick={handleRecord}
             width={"fit-content"}
             borderRadius={"20px"}
             height={"45px"}
-            fontSize={"130%"}
+            fontSize={media ? "90%" : "130%"}
             display={"inline-block"}
-            marginLeft={"43%"}
             bg={"var(--midnight)"}
             color={"var(--lightblue)"}
             _hover={{
@@ -137,10 +145,12 @@ export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
             {isLoading ? (
               <Puff stroke="var(--grey)" speed={1.25} />
             ) : (
-              <span>Add New Goal</span>
+              <span >Add New Goal</span>
             )}
           </Button>
+          </Center>
           {goalForm ? (
+            <Center>
             <Box
               margin={"0 auto"}
               border={`1px solid ${useColorModeValue(
@@ -151,15 +161,16 @@ export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
               marginTop={"10px"}
               max-height={"40vh"}
               borderRadius={"40px"}
-              width={"40vh"}
+              width={media ? "27vh" : "40vh"}
               bg={useColorModeValue("var(--midnight)", "var(--lightblue)")}
               boxShadow={"dark-lg"}
               p={8}
+              backgroundColor={"red"}
             >
               <Stack align={"center"}>
                 <Heading
                   color={useColorModeValue("var(--grey)", "var(--midnight)")}
-                  fontSize={"150%"}
+                  fontSize={media ? "100%" : "150%"}
                   marginTop={"10px"}
                   marginBottom={"20px"}
                 >
@@ -292,13 +303,13 @@ export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
                 />
               </FormControl>
               <Stack spacing={10}>
-                <Flex margin={"0 auto"} width={"90%"}>
+                <Flex display={"row"} margin={"0 auto"} width={"90%"} textAlign={"center"} backgroundColor={"green"}>
                   <Button
                     onClick={handleRecord}
                     width={"fit-content"}
                     borderRadius={"20px"}
                     height={"45px"}
-                    fontSize={"130%"}
+                    fontSize={moreMedia ? "90%" :"130%"}
                     margin={"0 auto"}
                     bg={"var(--midnight)"}
                     color={"var(--lightblue)"}
@@ -318,7 +329,7 @@ export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
                     width={"fit-content"}
                     borderRadius={"20px"}
                     height={"45px"}
-                    fontSize={"130%"}
+                    fontSize={moreMedia ? "90%" :"130%"}
                     margin={"0 auto"}
                     bg={"var(--midnight)"}
                     color={"var(--lightblue)"}
@@ -326,6 +337,8 @@ export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
                       borderColor: "var(--grey)",
                       border: "1px solid",
                     }}
+                    marginLeft={"10px"}
+
                   >
                     {isLoading ? (
                       <Puff stroke="var(--grey)" speed={1.25} />
@@ -336,12 +349,13 @@ export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
                 </Flex>
               </Stack>
             </Box>
+            </Center>
           ) : (
             <Flex
               flexWrap={"wrap"}
-              justifyContent={"space-evenly"}
+              justifyContent={media ? "space-between" : "space-evenly"}
               marginTop={"20px"}
-              direction={"row"}
+              direction={media ? "column" : "row"}
               spacing={"2%"}
             >
               {appState.goals.map((userGoal, ind) => {

@@ -3,9 +3,9 @@ import {
   Flex,
   Box,
   HStack,
-  Checkbox,
   Image,
   Text,
+  useMediaQuery,
   useColorModeValue,
 } from "@chakra-ui/react";
 import apiClient from "../../services/apiClient";
@@ -13,10 +13,14 @@ import apiClient from "../../services/apiClient";
 export default function GoalTile({ setAppState, appState, userGoal, ind }) {
   const [isChecked, setIsChecked] = useState(false);
   const [showGif, setShowGif] = useState(false);
+  const [media, moreMedia] = useMediaQuery([
+    "(max-width: 746px)",
+    "(max-width: 372px)",
+  ]);
 
   const handleCheckboxChange = () => {
-    console.log(isChecked)
-    console.log("kjshdkfjhskldhblfaihbfliuahbfluahbrf")
+    console.log(isChecked);
+    console.log("kjshdkfjhskldhblfaihbfliuahbfluahbrf");
     setIsChecked(!isChecked);
   };
   useEffect(() => {
@@ -103,8 +107,9 @@ export default function GoalTile({ setAppState, appState, userGoal, ind }) {
         overflowX={"hidden"}
         border={"solid 5px white"}
         borderRadius={"30px"}
-        width={"30%"}
+        width={media ? "86%" : "30%"}
         padding={"15px"}
+        mx={"auto"}
       >
         {showGif && (
           <Image
@@ -139,9 +144,10 @@ export default function GoalTile({ setAppState, appState, userGoal, ind }) {
           {wordImage}
         </Box>
         <Text
-          display={"inline-block"}
+          display={moreMedia ? "table" : "inline-block"}
+          marginTop={media ? "10px" : null}
           color={"white"}
-          width={"130px"}
+          width={moreMedia ? "100px" : "130px"}
           textAlign={"center"}
           padding={"3px"}
           backgroundColor={"var(--darkblue)"}
@@ -157,23 +163,19 @@ export default function GoalTile({ setAppState, appState, userGoal, ind }) {
           onChange={handleCheckboxChange}
           style={{
             width: "15px",
-            height:"15px",
+            height: "15px",
             border: `${useColorModeValue("var(--grey)", "var(--midnight)")}`,
             color: `${useColorModeValue("var(--grey)", "var(--midnight)")}`,
             marginTop: "10px",
           }}
         />
-        <span style={{color: "var(--midnight)"}}>&nbsp; Goal Accomplished?</span>
-        {/* <Checkbox
-          color={useColorModeValue("var(--grey)", "var(--midnight)")}
-          marginTop={"10px"}
-          checked={isChecked}
-          onChange={handleCheckboxChange}
-          colorScheme="var(--darkblue)"
-          border={useColorModeValue("var(--grey)", "var(--midnight)")}
+        <span
+          style={{
+            color: `${useColorModeValue("var(--grey)", "var(--midnight)")}`,
+          }}
         >
-          Goal Accomplished?
-        </Checkbox> */}
+          &nbsp; Goal Accomplished?
+        </span>
         <Text
           color={useColorModeValue("var(--grey)", "var(--midnight)")}
           fontWeight={"bold"}
