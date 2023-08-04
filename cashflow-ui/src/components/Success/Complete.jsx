@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Flex, Box, IconButton, Text, Image, useMediaQuery } from "@chakra-ui/react";
+import { Flex, Box, IconButton, Text, Image, useMediaQuery, useColorModeValue } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import apiClient from "../../services/apiClient";
 
@@ -87,9 +87,9 @@ export default function Complete({
         <Flex
           borderRadius={"3xl"}
           width={'100%'} 
-          color={"var(--midnight)"}
+          color={useColorModeValue("var(--grey)", "var(--midnight)")}
           position={'absolute'}
-          backgroundColor={'var(--lightblue)'}
+          backgroundColor={useColorModeValue("var(--darkblue)", "var(--lightblue)")}
         >
           <Box margin={'10%'}>
           <Text 

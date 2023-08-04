@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, IconButton, Text, Image, useMediaQuery, extendTheme, Flex } from "@chakra-ui/react";
+import { Box, IconButton, Text, Image, useMediaQuery, extendTheme, Flex, useColorModeValue } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/provider";
 
 export default function NotQuite({ onNextClick }) {
@@ -28,7 +28,7 @@ export default function NotQuite({ onNextClick }) {
           <Flex
             borderRadius={"3xl"}
             width={'100%'} 
-            color={"var(--midnight)"}
+            color={useColorModeValue("var(--grey)", "var(--midnight)")}
             position={'absolute'}
           >
             <Box

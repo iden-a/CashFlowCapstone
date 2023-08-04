@@ -5,7 +5,8 @@ import {
   Text,
   Image,
   Flex,
-  useMediaQuery
+  useMediaQuery,
+  useColorModeValue
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
 
@@ -41,9 +42,9 @@ export default function Failure(module_name) {
       <Flex
             borderRadius={"3xl"}
             width={'100%'} 
-            color={"var(--midnight)"}
+            color={useColorModeValue("var(--grey)", "var(--midnight)")}
             position={'absolute'}
-            backgroundColor={'var(--lightblue)'}
+            backgroundColor={useColorModeValue("var(--darkblue)", "var(--lightblue)")}
           >
         <Box margin={'10%'}> 
         <Text 

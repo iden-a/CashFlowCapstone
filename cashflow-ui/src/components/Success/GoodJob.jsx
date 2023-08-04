@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, IconButton, Box, Text, Image, useMediaQuery } from "@chakra-ui/react";
+import { Flex, IconButton, Box, Text, Image, useMediaQuery, useColorModeValue } from "@chakra-ui/react";
 
 export default function GoodJob({ onNextClick }) {
   const [media] = useMediaQuery("(max-width: 1000px)");  
@@ -27,8 +27,8 @@ export default function GoodJob({ onNextClick }) {
             <Flex
             borderRadius={"3xl"}
             width={`${media ? ("130%") : ("100%")}`} 
-            color={"var(--midnight)"}
             position={'absolute'} 
+            color={useColorModeValue("var(--grey)", "var(--midnight)")}
             >
               <Box
             margin={'15%'}
