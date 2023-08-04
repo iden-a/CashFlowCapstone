@@ -8,8 +8,6 @@ export default function Loading() {
       <div className="loadingCont">
         <div className="loader1">
           <img className="dot" src="cashflowcloud.png" />
-          <img className="dot" src="cashflowcloud.png" />
-          <img className="dot" src="cashflowcloud.png" />
         </div>
 
         <div classNameName="loadingBody">

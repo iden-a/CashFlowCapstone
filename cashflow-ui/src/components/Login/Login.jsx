@@ -20,6 +20,7 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Puff } from "react-loading-icons";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../../services/apiClient";
+import Loading from "../Loading/Loading"
 import "./Login.css";
 
 export default function Login({ setAppState }) {
@@ -254,6 +255,7 @@ export default function Login({ setAppState }) {
           </Stack>
         </Flex>
       </Box>
+      <Loading/>
     </Fragment>
   );
 }
