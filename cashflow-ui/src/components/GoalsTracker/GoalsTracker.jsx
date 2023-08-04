@@ -165,7 +165,6 @@ export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
               bg={useColorModeValue("var(--midnight)", "var(--lightblue)")}
               boxShadow={"dark-lg"}
               p={8}
-              backgroundColor={"red"}
             >
               <Stack align={"center"}>
                 <Heading
@@ -303,7 +302,7 @@ export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
                 />
               </FormControl>
               <Stack spacing={10}>
-                <Flex display={"row"} margin={"0 auto"} width={"90%"} textAlign={"center"} backgroundColor={"green"}>
+                <Flex display={"row"} margin={"0 auto"} width={"90%"} textAlign={"center"}>
                   <Button
                     onClick={handleRecord}
                     width={"fit-content"}
