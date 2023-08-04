@@ -24,6 +24,7 @@ export default function ModuleAssist({
     <Box
       key={index}
       height={"auto"}
+       
       pt={'20px'}
       backgroundPosition="center"
       backgroundRepeat="no-repeat"

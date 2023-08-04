@@ -180,7 +180,7 @@ export default function RegisterQuiz({ setAppState, appState }) {
           maxHeight={"auto"}
           color={"white"}
           margin={"0 auto"}
-          bg={useColorModeValue("var(--midnight)", "var(--lightblue)")}
+          bg={useColorModeValue("var(--darkblue)", "var(--lightblue)")}
           borderRadius={"40px"}
         >
           <Image

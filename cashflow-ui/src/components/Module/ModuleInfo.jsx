@@ -73,7 +73,7 @@ export default function ModuleInfo({
           <Image
             src="/marcus.png"
             position={"absolute"}
-            bottom={`${imgMedia2 ? ("56%") : ("48%")}`}
+            bottom={`${imgMedia2 ? ("56%") : ("53%")}`}
             zIndex={"1"}
             width={`${imgMedia ? ("0%") : ("30%")}`}
           />

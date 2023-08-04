@@ -39,6 +39,7 @@ export default function GoodJob({ onNextClick }) {
               justifyContent={"center"} 
               fontWeight={'bold'}
               pt={'15%'}
+              color={useColorModeValue("var(--grey)", "var(--midnight)")}
               fontSize={{ base: "20px", md: "40px", lg: "60px", xl: "80px" }}              
               >
                 GOOD JOB!
@@ -47,6 +48,7 @@ export default function GoodJob({ onNextClick }) {
               display={"flex"} 
               fontWeight={'bold'}
               justifyContent={"center"} 
+              color={useColorModeValue("var(--grey)", "var(--midnight)")}
               textAlign={'center'}
               fontSize={{ base: "15px", md: "20px", lg: "30px", xl: "40px" }}
               >

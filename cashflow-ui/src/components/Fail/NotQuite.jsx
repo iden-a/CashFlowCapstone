@@ -40,6 +40,7 @@ export default function NotQuite({ onNextClick }) {
               justifyContent={"center"} 
               fontWeight={'bold'}
               pt={'15%'}
+              color={useColorModeValue("var(--grey)", "var(--midnight)")}
               fontSize={{ base: "20px", md: "40px", lg: "60px", xl: "80px" }}
               >
                 NOT QUITE!
@@ -50,6 +51,7 @@ export default function NotQuite({ onNextClick }) {
               fontWeight={'bold'}
               justifyContent={"center"} 
               textAlign={'center'}
+              color={useColorModeValue("var(--grey)", "var(--midnight)")}
               fontSize={{ base: "15px", md: "20px", lg: "30px", xl: "40px" }}
               >
                 DON'T WORRY, MISTAKES ARE A PART OF LEARNING! KEEP GOING!

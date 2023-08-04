@@ -106,7 +106,7 @@ export default function GoalsTracker({ setAppState, appState, cashBotLink }) {
           borderRadius={"40px"}
           width={media ? "80vw" : "90vw"}
           maxWidth={"120vh"}
-          bg={useColorModeValue("var(--midnight)", "var(--lightblue)")}
+          bg={useColorModeValue("var(--darkblue)", "var(--lightblue)")}
           boxShadow={"dark-lg"}
           p={8}
         >

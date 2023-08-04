@@ -5,7 +5,9 @@ import {
   Text,
   Image,
   Box,
-  useMediaQuery
+  useMediaQuery,
+  useColorModeValue
+  
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
 export default function QuizPreview({module_name}) {
@@ -27,6 +29,7 @@ export default function QuizPreview({module_name}) {
       flexDirection={`${media ? ("column") : ("row")}`} 
       height={'70vh'}
       zIndex={'10'}
+
       marginTop={'10%'}
     >
       <Image 
@@ -42,12 +45,13 @@ export default function QuizPreview({module_name}) {
       <Flex 
       borderRadius={"3xl"}
       width={'100%'} 
-      color={"var(--midnight)"}
+      color={useColorModeValue("var(--grey)", "var(--midnight)")}
       position={'absolute'}
-      backgroundColor={'var(--lightblue)'}
+      bg={useColorModeValue("var(--darkblue)", "var(--lightblue)")}
       justifyContent={'center'}
       >
-    <Box margin={'10%'}> 
+    <Box 
+    margin={'10%'}> 
     <Text 
         display={"flex"} 
         justifyContent={"center"}
