@@ -21,8 +21,6 @@ export default function ProfileView({ appState, setAppState }) {
     "(max-width: 330px)",
   ]);
 
-  console.log(moreMedia);
-
   return (
     <Fragment>
       <Box marginTop={"5%"} height={"100vh"} color={"white"}>

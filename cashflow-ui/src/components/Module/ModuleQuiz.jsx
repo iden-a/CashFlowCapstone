@@ -74,7 +74,6 @@ function Quiz({
         // If the NotQuite component is shown, proceed to the next question
         setShowNotQuite(false); // Hide the NotQuite component
       }
-      console.log("Show results? ", showQuizResult )
       slider?.slickNext();
     }
   };

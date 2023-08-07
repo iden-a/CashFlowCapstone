@@ -36,8 +36,11 @@
   color: #f0edee;
   text-align: center;
   font-size: 300%;
-  padding-top: 5%;
+  padding-top: 2%;
   margin-bottom: 10%;
+  height: fit-content;
+  position: relative;
+  z-index: 11;
 }
 
 /* Typing effect for sign up at bottom of home page*/

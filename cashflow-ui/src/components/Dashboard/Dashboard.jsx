@@ -15,8 +15,6 @@ export default function Dashboard({ appState, cashBotLink }) {
     "(max-width: 1185px)"
   ]);
   let dashboard = [];
-  console.log("height", heightMedia);
-  console.log("media", media);
   if (appState.user.status === "Beginner")
     dashboard = ["bank-acct", "credit-cards", "debt"];
   else if (appState.user.status === "Intermediate")

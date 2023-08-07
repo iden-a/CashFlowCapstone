@@ -2,7 +2,6 @@ import React from "react";
 import "./Loading.css";
 
 export default function Loading() {
-  console.log("is loading");
   return (
     <>
       <div className="loadingCont">

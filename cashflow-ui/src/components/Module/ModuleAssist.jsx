@@ -39,10 +39,6 @@ export default function ModuleAssist({
             index={index}
             currentIndex={currentIndex}
           />
-          {console.log(
-            "This message will be logged when currentIndex === index",
-            currentIndex
-          )}
         </>
       ) : (
         <>

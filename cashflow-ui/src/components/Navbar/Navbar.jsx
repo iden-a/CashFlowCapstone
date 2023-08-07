@@ -24,7 +24,6 @@ export default function Navbar({ setAppState, appState }) {
   const { colorMode, toggleColorMode } = useColorMode();
   const navLinks = ["About", "Register", "Login"];
   const [media] = useMediaQuery("(max-width: 768px)");
-  console.log(media);
   const handleLogout = () => {
     localStorage.setItem("CashFlow_Token", null);
     setAppState((appState) => ({ ...appState, isAuthenticated: false }));

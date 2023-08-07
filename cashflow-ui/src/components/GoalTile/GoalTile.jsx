@@ -19,8 +19,6 @@ export default function GoalTile({ setAppState, appState, userGoal, ind }) {
   ]);
 
   const handleCheckboxChange = () => {
-    console.log(isChecked);
-    console.log("kjshdkfjhskldhblfaihbfliuahbfluahbrf");
     setIsChecked(!isChecked);
   };
   useEffect(() => {

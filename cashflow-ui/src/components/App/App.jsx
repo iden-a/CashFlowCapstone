@@ -16,7 +16,6 @@ import ProfileView from "../ProfileView/ProfileView";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Loading from "../Loading/Loading";
 
-
 function App() {
   const [appState, setAppState] = useState({
     user: {},
@@ -42,27 +41,52 @@ function App() {
   ];
   const [infoPage, setInfoPage] = useState(0);
 
-  const [dashboard, setDashboard] = useState([])
+  const [dashboard, setDashboard] = useState([]);
 
   useEffect(() => {
-    if ((appState.user.status === "Beginner") && (appState.user.total_points < 1200)){
+    async function imageStat() {
+      try {
+        const { data, error, message } = await apiClient.imageStats({
+          id: appState.user.id,
+          image_url: appState.user.image_url,
+          status: "Intermediate",
+        });
+        if (error) {
+          return;
+        }
+        if (data) {
+          const updatedUser = { ...appState.user };
+
+          updatedUser.image_url = data.image_url;
+          updatedUser.status = data.status;
+
+          setAppState({ ...appState, user: updatedUser });
+          return data;
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    if (
+      appState.user.status === "Beginner" &&
+      appState.user.total_points < 1200
+    ) {
       setDashboard(["bank-acct", "credit-cards", "debt"]);
-      console.log("beg")
-    }
-    else if (appState.user.status === "Intermediate" || (appState.user.total_points >= 1200)){
+    } else if (
+      appState.user.status === "Intermediate" ||
+      (appState.user.total_points >= 1200 && appState.user.status === "Beginner")
+    ) {
+      const data = imageStat();
       const updatedUser = { ...appState.user };
-      updatedUser.status = "Intermediate";
-      setAppState({ ...appState, user: updatedUser })
+      updatedUser.status = data.status;
+      setAppState({ ...appState, user: updatedUser });
       setDashboard(["hysavings", "cdsavings", "roth", "401k"]);
-      console.log("int")
     }
-    
-    }, [appState.user.total_points]);
+  }, [appState.user.total_points]);
 
   document.documentElement.style.backgroundColor = bgColor;
 
   useEffect(() => {
-    console.log(bgColor);
     if (bgColor === "var(--midnight)") {
       setCashBotLink("cashbot.png");
       setErrorLink("404light.png");
@@ -71,7 +95,6 @@ function App() {
       setErrorLink("404dark.png");
     }
   }, [bgColor]);
-  console.log(appState);
   useEffect(() => {
     setIsLoading(true);
     const token = localStorage.getItem("CashFlow_Token");
@@ -119,7 +142,11 @@ function App() {
                 isLoading ? (
                   <Loading />
                 ) : (
-                  <Dashboard dashboard={dashboard} appState={appState} cashBotLink={cashBotLink} />
+                  <Dashboard
+                    dashboard={dashboard}
+                    appState={appState}
+                    cashBotLink={cashBotLink}
+                  />
                 )
               ) : isLoading ? (
                 <Loading />
@@ -188,7 +215,7 @@ function App() {
                 isLoading ? (
                   <Loading />
                 ) : (
-                  <RegisterQuiz setAppState={setAppState} appState={appState} />
+                  <RegisterQuiz setAppState={setAppState} appState={appState} errorLink={errorLink} />
                 )
               ) : (
                 <ErrorPage errorLink={errorLink} />

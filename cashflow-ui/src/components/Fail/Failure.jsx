@@ -13,7 +13,6 @@ import { useNavigate } from 'react-router';
 export default function Failure(module_name) {
   const [media] = useMediaQuery("(max-width: 1000px)");  
     const navigate = useNavigate();
-    console.log(module_name.module_name)
     function handleRestart() {
       location.reload()
     }

@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Flex, Box, IconButton, Text, Image, useMediaQuery, useColorModeValue } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  IconButton,
+  Text,
+  Image,
+  useMediaQuery,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 import apiClient from "../../services/apiClient";
 
@@ -13,7 +21,7 @@ export default function Complete({
 }) {
   const navigate = useNavigate(); // Hook to get the navigation function
   const [isLoading, setIsLoading] = useState(false);
-  const [media] = useMediaQuery("(max-width: 1000px)");  
+  const [media] = useMediaQuery("(max-width: 1000px)");
 
   // updates total points of user in appState
   async function updateUserTotalPoints(userId, total_points) {
@@ -67,63 +75,66 @@ export default function Complete({
 
   return (
     <Flex
-    position="absolute"
-    width={'100%'}
-    flexDirection={`${media ? ("column") : ("row")}`} 
-    height={'70vh'}
-    top={'25%'}
-    zIndex={'10'}
+      position="absolute"
+      width={"100%"}
+      flexDirection={`${media ? "column" : "row"}`}
+      height={"70vh"}
+      top={"25%"}
+      zIndex={"10"}
     >
-        <Image
-          src="/tiffany.png"
-          position="absolute"
-          top="-50%"
-          ml="30%"
-          display={'flex'}
-          alignContent={'center'}
-          width={`${media ? ("0%") : ("40%")}`}
-          zIndex="1"
-        />
-        <Flex
-          borderRadius={"3xl"}
-          width={'100%'} 
-          color={useColorModeValue("var(--grey)", "var(--midnight)")}
-          position={'absolute'}
-          backgroundColor={useColorModeValue("var(--darkblue)", "var(--lightblue)")}
-        >
-          <Box margin={'10%'}>
-          <Text 
-              display={"flex"} 
-              justifyContent={"center"}
-              textAlign={'center'} 
-              fontWeight={'bold'}
-              pt={'10%'}
-              fontSize={{ base: "20px", md: "40px", lg: "60px", xl: "80px" }}
-              >
-                CONGRATS!
-            </Text>
-            <Text 
-               display={"flex"} 
-               fontWeight={'bold'}
-               justifyContent={"center"} 
-               textAlign={'center'}
-               fontSize={{ base: "15px", md: "20px", lg: "30px", xl: "40px" }}
-               >
-             YOU HAVE COMPLETED THIS LEARNING MODULE, EARNING {score} POINTS. YOU ARE ONE STEP CLOSER TO REACHING FINANCIAL FREEDOM!
-            </Text>
-            {/* Menu Icon */}
+      <Image
+        src="/tiffany.png"
+        position="absolute"
+        top="-50%"
+        ml="30%"
+        display={"flex"}
+        alignContent={"center"}
+        width={`${media ? "0%" : "40%"}`}
+        zIndex="1"
+      />
+      <Flex
+        borderRadius={"3xl"}
+        width={"100%"}
+        color={useColorModeValue("var(--grey)", "var(--midnight)")}
+        position={"absolute"}
+        backgroundColor={useColorModeValue(
+          "var(--darkblue)",
+          "var(--lightblue)"
+        )}
+      >
+        <Box margin={"10%"}>
+          <Text
+            display={"flex"}
+            justifyContent={"center"}
+            textAlign={"center"}
+            fontWeight={"bold"}
+            pt={"10%"}
+            fontSize={{ base: "20px", md: "40px", lg: "60px", xl: "80px" }}
+          >
+            CONGRATS!
+          </Text>
+          <Text
+            display={"flex"}
+            fontWeight={"bold"}
+            justifyContent={"center"}
+            textAlign={"center"}
+            fontSize={{ base: "15px", md: "20px", lg: "30px", xl: "40px" }}
+          >
+            YOU HAVE COMPLETED THIS LEARNING MODULE, EARNING {score} POINTS. YOU
+            ARE ONE STEP CLOSER TO REACHING FINANCIAL FREEDOM!
+          </Text>
+          {/* Menu Icon */}
           <IconButton
             aria-label="menu"
             variant="ghost"
             transform="translate(0%, -50%)"
-            mt={'20%'}
-            left={`${media ? ("0%") : ("22%")}`}
-            icon={<Image src="/menu.png" 
-            width={'70%'} />}
+            mt={"20%"}
+            left={`${media ? "0%" : "22%"}`}
+            icon={<Image src="/menu.png" width={"70%"} />}
             onClick={handleFinish}
           />
-          </Box>
-          </Flex>
+        </Box>
+      </Flex>
     </Flex>
   );
 }

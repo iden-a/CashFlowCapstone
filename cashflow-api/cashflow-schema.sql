@@ -8,6 +8,7 @@ CREATE TABLE users (
   image_url     VARCHAR(255) CHECK (image_url IS NULL OR TRIM(image_url) = '' OR image_url LIKE 'https://%'),
   created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   status        VARCHAR(20) CHECK (status IN (NULL, 'Beginner', 'Intermediate')),
+  quizTaken     VARCHAR(20) CHECK (status IN (NULL, 'Y', 'N')),
   total_points  INTEGER NOT NULL
 );
 

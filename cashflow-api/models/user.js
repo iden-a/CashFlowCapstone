@@ -8,7 +8,6 @@ class User {
   static async _createPublicUser(user) {
     const goals = await DbQuery.goals(user.id);
     const quizzes = await DbQuery.quizzes(user.id);
-
     const userInfo = {
       id: user.id,
       first_name: user.first_name,
@@ -18,6 +17,7 @@ class User {
       image_url: user.image_url,
       total_points: user.total_points,
       status: user.status,
+      quiztaken: user.quiztaken
     };
 
     return {

@@ -22,9 +22,10 @@ import {
   Button,
   Center,
 } from "@chakra-ui/react";
+import ErrorPage from "../ErrorPage/ErrorPage";
 import apiClient from "../../services/apiClient";
 
-export default function RegisterQuiz({ setAppState, appState }) {
+export default function RegisterQuiz({ setAppState, appState, errorLink}) {
   const [quizInfo, setQuizInfo] = useState({
     imageUrl: "",
     scale: 1,
@@ -147,8 +148,9 @@ export default function RegisterQuiz({ setAppState, appState }) {
 
           updatedUser.image_url = data.image_url;
           updatedUser.status = data.status;
+          updatedUser.quiztaken = data.quiztaken;
 
-          setAppState({ ...appState, user: updatedUser })
+          setAppState({ ...appState, user: updatedUser });
         }
       } catch (err) {
         console.log(err);
@@ -159,335 +161,343 @@ export default function RegisterQuiz({ setAppState, appState }) {
 
   return (
     <Fragment>
-      <Box marginBottom={"5%"}>
-        <Stack bg={useColorModeValue("var(--grey)", "var(--midnight)")}>
-          <Heading
-            as="h3"
-            size="lg"
-            marginLeft={"44vw"}
-            // marginTop={""}
-            // mx={"auto"}
-            position={"relative"}
-            top={"70px"}
-            color={useColorModeValue("var(--midnight)", "var(--grey)")}
+      {appState.user.quiztaken === "N" ? (
+        <Box marginBottom={"5%"}>
+          <Stack bg={useColorModeValue("var(--grey)", "var(--midnight)")}>
+            <Heading
+              as="h3"
+              size="lg"
+              marginLeft={"44vw"}
+              // marginTop={""}
+              // mx={"auto"}
+              position={"relative"}
+              top={"70px"}
+              color={useColorModeValue("var(--midnight)", "var(--grey)")}
+            >
+              Let’s Start With Examining <br /> Your Financial Goals...{" "}
+            </Heading>
+          </Stack>
+          <Box
+            maxWidth={"720px"}
+            minHeight={"80vh"}
+            maxHeight={"auto"}
+            color={"white"}
+            margin={"0 auto"}
+            bg={useColorModeValue("var(--darkblue)", "var(--lightblue)")}
+            borderRadius={"40px"}
           >
-            Let’s Start With Examining <br /> Your Financial Goals...{" "}
-          </Heading>
-        </Stack>
-        <Box
-          maxWidth={"720px"}
-          minHeight={"80vh"}
-          maxHeight={"auto"}
-          color={"white"}
-          margin={"0 auto"}
-          bg={useColorModeValue("var(--darkblue)", "var(--lightblue)")}
-          borderRadius={"40px"}
-        >
-          <Image
-            textAlign={"center"}
-            width={"400px"}
-            height={"400px"}
-            position={"absolute"}
-            top={"60px"}
-            marginLeft={"-70px"}
-            src="/registerguy.png"
-          ></Image>
-          <FormControl position={"relative"} top={"70px"}>
-            <FormLabel
-              fontWeight={"bold"}
+            <Image
+              textAlign={"center"}
+              width={"400px"}
+              height={"400px"}
+              position={"absolute"}
+              top={"60px"}
+              marginLeft={"-70px"}
+              src="/registerguy.png"
+            ></Image>
+            <FormControl position={"relative"} top={"70px"}>
+              <FormLabel
+                fontWeight={"bold"}
+                marginTop={"10%"}
+                position={"relative"}
+                top={"90px"}
+                marginLeft={"50px"}
+                color={useColorModeValue("var(--grey)", "var(--midnight)")}
+              >
+                {" "}
+                1. On a scale of 1-10, how would you rate your current financial
+                stability? <span style={{ color: "red" }}>*</span>
+              </FormLabel>
+              <NumberInput
+                color={"black"}
+                position={"relative"}
+                defaultValue={0}
+                min={1}
+                max={10}
+                value={quizInfo.scale}
+                onChange={(value) => formChange({ target: { value } })}
+                top={"90px"}
+                width={"50%"}
+                marginLeft={"50px"}
+                borderRadius={"20px"}
+                bg={"var(--grey)"}
+              >
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+            </FormControl>
+            <FormControl
+              as="fieldset"
               marginTop={"10%"}
               position={"relative"}
-              top={"90px"}
-              marginLeft={"50px"}
-              color={useColorModeValue("var(--grey)", "var(--midnight)")}
+              top={"70px"}
             >
-              {" "}
-              1. On a scale of 1-10, how would you rate your current financial
-              stability? <span style={{ color: "red" }}>*</span>
-            </FormLabel>
-            <NumberInput
-              color={"black"}
-              position={"relative"}
-              defaultValue={0}
-              min={1}
-              max={10}
-              value={quizInfo.scale}
-              onChange={(value) => formChange({ target: { value } })}
-              top={"90px"}
-              width={"50%"}
-              marginLeft={"50px"}
-              borderRadius={"20px"}
-              bg={"var(--grey)"}
-            >
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
-          </FormControl>
-          <FormControl
-            as="fieldset"
-            marginTop={"10%"}
-            position={"relative"}
-            top={"70px"}
-          >
-            <FormLabel
-              as="legend"
-              fontWeight={"bold"}
-              marginLeft={"50px"}
-              position={"relative"}
-              top={"50px"}
-              color={useColorModeValue("var(--grey)", "var(--midnight)")}
-            >
-              {" "}
-              2. How would you rate your current level of debt?{" "}
-              <span style={{ color: "red" }}>*</span>
-            </FormLabel>
-            <RadioGroup defaultValue="Question2">
-              <Stack
-                spacing="24px"
-                direction={"column"}
+              <FormLabel
+                as="legend"
+                fontWeight={"bold"}
                 marginLeft={"50px"}
                 position={"relative"}
                 top={"50px"}
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
               >
-                <Radio
-                  border={"1px solid white"}
-                  value={"No debt"}
-                  onChange={(e) =>
-                    setQuizInfo((prevState) => ({
-                      ...prevState,
-                      levelOfDebt: e.target.value,
-                    }))
-                  }
+                {" "}
+                2. How would you rate your current level of debt?{" "}
+                <span style={{ color: "red" }}>*</span>
+              </FormLabel>
+              <RadioGroup defaultValue="Question2">
+                <Stack
+                  spacing="24px"
+                  direction={"column"}
+                  marginLeft={"50px"}
+                  position={"relative"}
+                  top={"50px"}
+                  color={useColorModeValue("var(--grey)", "var(--midnight)")}
                 >
-                  {" "}
-                  No debt{" "}
-                </Radio>
-                <Radio
-                  border={"1px solid white"}
-                  value={"Minimal debt"}
-                  onChange={(e) =>
-                    setQuizInfo((prevState) => ({
-                      ...prevState,
-                      levelOfDebt: e.target.value,
-                    }))
-                  }
-                >
-                  {" "}
-                  Minimal debt (e.g., student loans, small credit card balance){" "}
-                </Radio>
-                <Radio
-                  border={"1px solid white"}
-                  value={"Moderate debt"}
-                  onChange={(e) =>
-                    setQuizInfo((prevState) => ({
-                      ...prevState,
-                      levelOfDebt: e.target.value,
-                    }))
-                  }
-                >
-                  {" "}
-                  Moderate debt (e.g., mortgage, car loan, significant credit
-                  card balance){" "}
-                </Radio>
-                <Radio
-                  border={"1px solid white"}
-                  value={"High debt"}
-                  onChange={(e) =>
-                    setQuizInfo((prevState) => ({
-                      ...prevState,
-                      levelOfDebt: e.target.value,
-                    }))
-                  }
-                >
-                  {" "}
-                  High debt (e.g., multiple loans, large credit card balances){" "}
-                </Radio>
-              </Stack>
-            </RadioGroup>
-          </FormControl>
-          <FormControl
-            as="fieldset"
-            marginTop={"10%"}
-            position={"relative"}
-            top={"50px"}
-          >
-            <FormLabel
-              as="legend"
-              fontWeight={"bold"}
-              marginLeft={"50px"}
-              position={"relative"}
-              top={"50px"}
-              color={useColorModeValue("var(--grey)", "var(--midnight)")}
-            >
-              {" "}
-              3. What is your primary financial goal/objective?{" "}
-              <span style={{ color: "red" }}>*</span>
-            </FormLabel>
-            <RadioGroup
-              defaultValue="Question3"
-              color={useColorModeValue("var(--grey)", "var(--midnight)")}
-            >
-              <Stack
-                spacing="24px"
-                direction={"column"}
-                marginLeft={"50px"}
-                position={"relative"}
-                top={"50px"}
-                color={useColorModeValue("var(--grey)", "var(--midnight)")}
-              >
-                <Radio
-                  border={"1px solid white"}
-                  value={"Saving for a specific purchase or expense"}
-                  onChange={(e) =>
-                    setQuizInfo((prevState) => ({
-                      ...prevState,
-                      finanGoal: e.target.value,
-                    }))
-                  }
-                >
-                  {" "}
-                  Saving for a specific purchase or expense{" "}
-                </Radio>
-                <Radio
-                  border={"1px solid white"}
-                  value={"Building an emergency fund"}
-                  onChange={(e) =>
-                    setQuizInfo((prevState) => ({
-                      ...prevState,
-                      finanGoal: e.target.value,
-                    }))
-                  }
-                >
-                  {" "}
-                  Building an emergency fund{" "}
-                </Radio>
-                <Radio
-                  border={"1px solid white"}
-                  value={"Paying off debt"}
-                  onChange={(e) =>
-                    setQuizInfo((prevState) => ({
-                      ...prevState,
-                      finanGoal: e.target.value,
-                    }))
-                  }
-                >
-                  {" "}
-                  Paying off debt (e.g., credit cards, loans){" "}
-                </Radio>
-                <Radio
-                  border={"1px solid white"}
-                  value={"Investing for retirement"}
-                  onChange={(e) =>
-                    setQuizInfo((prevState) => ({
-                      ...prevState,
-                      finanGoal: e.target.value,
-                    }))
-                  }
-                >
-                  {" "}
-                  Investing for retirement{" "}
-                </Radio>
-                <Radio
-                  border={"1px solid white"}
-                  value={"Saving for education"}
-                  onChange={(e) =>
-                    setQuizInfo((prevState) => ({
-                      ...prevState,
-                      finanGoal: e.target.value,
-                    }))
-                  }
-                >
-                  {" "}
-                  Saving for education (e.g., college fund){" "}
-                </Radio>
-              </Stack>
-            </RadioGroup>
-          </FormControl>
-          <Box margin={"0 auto"}>
+                  <Radio
+                    border={"1px solid white"}
+                    value={"No debt"}
+                    onChange={(e) =>
+                      setQuizInfo((prevState) => ({
+                        ...prevState,
+                        levelOfDebt: e.target.value,
+                      }))
+                    }
+                  >
+                    {" "}
+                    No debt{" "}
+                  </Radio>
+                  <Radio
+                    border={"1px solid white"}
+                    value={"Minimal debt"}
+                    onChange={(e) =>
+                      setQuizInfo((prevState) => ({
+                        ...prevState,
+                        levelOfDebt: e.target.value,
+                      }))
+                    }
+                  >
+                    {" "}
+                    Minimal debt (e.g., student loans, small credit card
+                    balance){" "}
+                  </Radio>
+                  <Radio
+                    border={"1px solid white"}
+                    value={"Moderate debt"}
+                    onChange={(e) =>
+                      setQuizInfo((prevState) => ({
+                        ...prevState,
+                        levelOfDebt: e.target.value,
+                      }))
+                    }
+                  >
+                    {" "}
+                    Moderate debt (e.g., mortgage, car loan, significant credit
+                    card balance){" "}
+                  </Radio>
+                  <Radio
+                    border={"1px solid white"}
+                    value={"High debt"}
+                    onChange={(e) =>
+                      setQuizInfo((prevState) => ({
+                        ...prevState,
+                        levelOfDebt: e.target.value,
+                      }))
+                    }
+                  >
+                    {" "}
+                    High debt (e.g., multiple loans, large credit card balances){" "}
+                  </Radio>
+                </Stack>
+              </RadioGroup>
+            </FormControl>
             <FormControl
-              encType="multipart/form-data"
+              as="fieldset"
               marginTop={"10%"}
               position={"relative"}
               top={"50px"}
             >
               <FormLabel
-                htmlFor="image"
+                as="legend"
                 fontWeight={"bold"}
                 marginLeft={"50px"}
                 position={"relative"}
-                top={"20px"}
+                top={"50px"}
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
               >
                 {" "}
-                Lastly, would you like to add a profile photo?
+                3. What is your primary financial goal/objective?{" "}
+                <span style={{ color: "red" }}>*</span>
               </FormLabel>
-              <InputGroup
-                position={"relative"}
-                top={"20px"}
-                width={"450px"}
-                marginLeft={"50px"}
+              <RadioGroup
+                defaultValue="Question3"
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
-                size="sm"
-                border={"solid 2px white"}
               >
-                <InputLeftAddon color={"var(--midnight)"} children="https://" />
-                <Input
-                  _placeholder={{ opacity: 1, color: "grey" }}
-                  placeholder="My profile picture"
-                  value={quizInfo.imageUrl}
-                  onChange={(e) =>
-                    setQuizInfo((prevState) => ({
-                      ...prevState,
-                      imageUrl: e.target.value,
-                    }))
-                  }
-                />
-              </InputGroup>
+                <Stack
+                  spacing="24px"
+                  direction={"column"}
+                  marginLeft={"50px"}
+                  position={"relative"}
+                  top={"50px"}
+                  color={useColorModeValue("var(--grey)", "var(--midnight)")}
+                >
+                  <Radio
+                    border={"1px solid white"}
+                    value={"Saving for a specific purchase or expense"}
+                    onChange={(e) =>
+                      setQuizInfo((prevState) => ({
+                        ...prevState,
+                        finanGoal: e.target.value,
+                      }))
+                    }
+                  >
+                    {" "}
+                    Saving for a specific purchase or expense{" "}
+                  </Radio>
+                  <Radio
+                    border={"1px solid white"}
+                    value={"Building an emergency fund"}
+                    onChange={(e) =>
+                      setQuizInfo((prevState) => ({
+                        ...prevState,
+                        finanGoal: e.target.value,
+                      }))
+                    }
+                  >
+                    {" "}
+                    Building an emergency fund{" "}
+                  </Radio>
+                  <Radio
+                    border={"1px solid white"}
+                    value={"Paying off debt"}
+                    onChange={(e) =>
+                      setQuizInfo((prevState) => ({
+                        ...prevState,
+                        finanGoal: e.target.value,
+                      }))
+                    }
+                  >
+                    {" "}
+                    Paying off debt (e.g., credit cards, loans){" "}
+                  </Radio>
+                  <Radio
+                    border={"1px solid white"}
+                    value={"Investing for retirement"}
+                    onChange={(e) =>
+                      setQuizInfo((prevState) => ({
+                        ...prevState,
+                        finanGoal: e.target.value,
+                      }))
+                    }
+                  >
+                    {" "}
+                    Investing for retirement{" "}
+                  </Radio>
+                  <Radio
+                    border={"1px solid white"}
+                    value={"Saving for education"}
+                    onChange={(e) =>
+                      setQuizInfo((prevState) => ({
+                        ...prevState,
+                        finanGoal: e.target.value,
+                      }))
+                    }
+                  >
+                    {" "}
+                    Saving for education (e.g., college fund){" "}
+                  </Radio>
+                </Stack>
+              </RadioGroup>
             </FormControl>
-            {quizInfo.imageUrl && (
-              <Image
-                src={quizInfo.imageUrl}
-                alt="Uploaded preview"
-                mt={4}
-                filter={"drop-shadow(8px 5px 4px var(--blue))"}
-                borderRadius={"50%"}
-                backgroundColor={"white"}
-                mx={"auto"}
-                width={"100px"}
-                height={"100px"}
-                objectFit={"cover"}
+            <Box margin={"0 auto"}>
+              <FormControl
+                encType="multipart/form-data"
+                marginTop={"10%"}
                 position={"relative"}
-                top={"60px"}
-              />
-            )}
-          </Box>
-
-          <Flex alignItems="center" justifyContent="center">
-            <Center>
-              <Button
-                onClick={handleStartLearning}
-                width={"100%"}
-                borderRadius={"20px"}
-                height={"45px"}
-                fontSize={"x-large"}
-                marginTop={"110px"}
-                marginBottom={"20px"}
-                bg={"var(--midnight)"}
-                color={"var(--lightblue)"}
-                _hover={{
-                  bg: "var(--darkblue)",
-                }}
+                top={"50px"}
               >
-                <span>Start Learning Now!</span>
-              </Button>
-            </Center>
-          </Flex>
+                <FormLabel
+                  htmlFor="image"
+                  fontWeight={"bold"}
+                  marginLeft={"50px"}
+                  position={"relative"}
+                  top={"20px"}
+                  color={useColorModeValue("var(--grey)", "var(--midnight)")}
+                >
+                  {" "}
+                  Lastly, would you like to add a profile photo?
+                </FormLabel>
+                <InputGroup
+                  position={"relative"}
+                  top={"20px"}
+                  width={"450px"}
+                  marginLeft={"50px"}
+                  color={useColorModeValue("var(--grey)", "var(--midnight)")}
+                  size="sm"
+                  border={"solid 2px white"}
+                >
+                  <InputLeftAddon
+                    color={"var(--midnight)"}
+                    children="https://"
+                  />
+                  <Input
+                    _placeholder={{ opacity: 1, color: "grey" }}
+                    placeholder="My profile picture"
+                    value={quizInfo.imageUrl}
+                    onChange={(e) =>
+                      setQuizInfo((prevState) => ({
+                        ...prevState,
+                        imageUrl: e.target.value,
+                      }))
+                    }
+                  />
+                </InputGroup>
+              </FormControl>
+              {quizInfo.imageUrl && (
+                <Image
+                  src={quizInfo.imageUrl}
+                  alt="Uploaded preview"
+                  mt={4}
+                  filter={"drop-shadow(8px 5px 4px var(--blue))"}
+                  borderRadius={"50%"}
+                  backgroundColor={"white"}
+                  mx={"auto"}
+                  width={"100px"}
+                  height={"100px"}
+                  objectFit={"cover"}
+                  position={"relative"}
+                  top={"60px"}
+                />
+              )}
+            </Box>
+
+            <Flex alignItems="center" justifyContent="center">
+              <Center>
+                <Button
+                  onClick={handleStartLearning}
+                  width={"100%"}
+                  borderRadius={"20px"}
+                  height={"45px"}
+                  fontSize={"x-large"}
+                  marginTop={"110px"}
+                  marginBottom={"20px"}
+                  bg={"var(--midnight)"}
+                  color={"var(--lightblue)"}
+                  _hover={{
+                    bg: "var(--darkblue)",
+                  }}
+                >
+                  <span>Start Learning Now!</span>
+                </Button>
+              </Center>
+            </Flex>
+          </Box>
         </Box>
-      </Box>
+      ) : (
+        <ErrorPage errorLink={errorLink} />
+      )}
     </Fragment>
   );
 }

@@ -16,9 +16,10 @@ class DbQuery {
           username, 
           first_name, 
           last_name,
-          total_points
+          total_points,
+          quiztaken
           )
-          VALUES ($1, $2, $3, $4, $5, $6)
+          VALUES ($1, $2, $3, $4, $5, $6, $7)
           RETURNING 
                 id,            
                 first_name, 
@@ -27,6 +28,7 @@ class DbQuery {
                 email,
                 total_points,
                 status, 
+                quiztaken,
                 image_url
       `,
       [
@@ -36,6 +38,7 @@ class DbQuery {
         first_name,
         last_name,
         total_points,
+        'N'
       ]
     );
     return result.rows[0];
@@ -52,6 +55,7 @@ class DbQuery {
             username,
             total_points,
             image_url,
+            quizTaken,
             status
                FROM users
                WHERE email = $1
@@ -152,19 +156,20 @@ class DbQuery {
   static async updateImageAndStatus(id, image_url, status) {
     const imageStats = await db.query(
       `UPDATE users
-      SET image_url = $1, status = $2
-      WHERE id = $3
+      SET image_url = $1, status = $2, quiztaken = $3
+      WHERE id = $4
       RETURNING 
       image_url,
-      status
+      status,
+      quiztaken
       `,
-      [image_url, status, id]
+      [image_url, status, 'Y', id]
     );
+
     return imageStats.rows[0];
   }
 
   static async updateGoalStatus(id) {
-    console.log(id)
     const imageStats = await db.query(
       `UPDATE goals
       SET status = $1
@@ -174,8 +179,6 @@ class DbQuery {
       `,
        ['Accomplished',id]
     );
-    console.log(imageStats)
-    console.log(imageStats.rows[0])
     return imageStats.rows[0];
   }
 }

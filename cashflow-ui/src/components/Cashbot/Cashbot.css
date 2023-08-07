@@ -15,41 +15,30 @@
 
 .cashbot2 {
   z-index: 10;
-  position: fixed;
-  bottom: 0;
-  left: 85vw;
   height: 200px;
   width: 200px;
-}
-@media (max-width: 1100px) {
-  .cashbot2 {
-    left: 75vw;
-  }
+  object-fit: cover;
 }
 
 @media (max-width: 1750px) {
   .chatbox {
-    background-color: "red";
     left: 68vw;
   }
 }
 
 @media (max-width: 1480px) {
   .chatbox {
-    background-color: "red";
     left: 60vw;
   }
 }
 @media (max-width: 1180px) {
   .chatbox {
-    background-color: "red";
     left: 55vw;
     height: 400px;
   }
 }
 @media (max-width: 1047px) {
   .chatbox {
-    background-color: "red";
     left: 55vw;
     width: 420px;
   }
@@ -72,13 +61,6 @@
     left: 55vw;
   }
 }
-@media (max-width: 694px) {
-  .cashbot2,
-  .chatbox {
-    position: unset;
-    float: right;
-  }
-}
 @media (max-width: 348px) {
   .chatbox {
     width: 280px;
@@ -86,6 +68,101 @@
 }
 
 #mainCont {
-  position: static;
   border-radius: 30px;
+}
+
+@keyframes bounce {
+  0%,
+  100%,
+  20%,
+  50%,
+  80% {
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+    -ms-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -webkit-transform: translateY(-15px);
+    -ms-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+.cashbot2 {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}
+.cashbot2:hover {
+  animation-name: bounce;
+  -moz-animation-name: bounce;
+}
+.cashbot2Cont {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  left: 85vw;
+  align-items: center;
+  /* background-color: red; */
+}
+@media (max-width: 694px) {
+  .cashbot2Cont{
+    position: unset;
+    float: right;
+  }
+  .chatbox {
+    position: unset;
+    float: right;
+  }
+}
+
+.cashbot2Cont .waviy {
+  display: none;
+  border-radius: 30px;
+  width: 90%;
+  padding: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.cashbot2Cont:hover .waviy {
+  display: initial;
+}
+
+.waviy {
+  -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
+  text-align: center;
+  border-radius: 30px;
+  width: 90%;
+  padding: 5px;
+  width: 100%;
+  background-color: var(--darkblue);
+}
+.waviy span {
+  display: inline-block;
+  font-weight: bolder;
+  font-size: 150%;
+  color: #fff;
+  animation: waviy 5s infinite;
+  animation-delay: calc(0.1s * var(--i));
+}
+@keyframes waviy {
+  0%,
+  40%,
+  100% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-20px);
+  }
 }

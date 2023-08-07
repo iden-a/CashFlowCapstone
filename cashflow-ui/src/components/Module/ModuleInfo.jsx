@@ -45,13 +45,11 @@ export default function ModuleInfo({
 
   const handleNext = () => {
     if (infoPage < num_pages) setInfoPage(infoPage + 1);
-    console.log(infoPage);
     slider?.slickNext();
   };
 
   const handleBack = () => {
     if (infoPage > 0) setInfoPage(infoPage - 1);
-    console.log(infoPage);
     slider?.slickPrev();
   };
 

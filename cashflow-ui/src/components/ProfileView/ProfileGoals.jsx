@@ -27,8 +27,6 @@ export default function ProfileGoal({
   //     "(max-width: 330px)",
   //   ]);
   const handleCheckboxChange = () => {
-    console.log(isChecked);
-    console.log("kjshdkfjhskldhblfaihbfliuahbfluahbrf");
     setIsChecked(!isChecked);
   };
   useEffect(() => {

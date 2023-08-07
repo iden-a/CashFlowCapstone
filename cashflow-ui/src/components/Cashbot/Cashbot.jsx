@@ -27,7 +27,7 @@ export default function CashBot({ cashBotLink }) {
 
   //function for when cashbot is open
   const handleOpenCashbot = () => {
-    setIsCashbotOpen(!isCashbotOpen); //logical operator that toggles between true/false 
+    setIsCashbotOpen(!isCashbotOpen); //logical operator that toggles between true/false
   };
 
   // this function is for when the user is sending a message.
@@ -91,8 +91,8 @@ export default function CashBot({ cashBotLink }) {
         return data.json();
       })
       .then((data) => {
-        console.log(data); // when we first make the request to chatGPT, get it in data form
-        console.log(data.choices[0].message.content); // data.choices[0].message.content is how we are getting the actual message.
+        // console.log(data); // when we first make the request to chatGPT, get it in data form
+        // console.log(data.choices[0].message.content); // data.choices[0].message.content is how we are getting the actual message.
         setMessages([
           ...chatMessages,
           {
@@ -108,11 +108,8 @@ export default function CashBot({ cashBotLink }) {
     <>
       {isCashbotOpen ? (
         //terenary operator for cashbot, the chatbox shows when isCashbotOpen is true
-        <div
-          className="chatbox"
-    
-        >
-          <MainContainer id="mainCont" >
+        <div className="chatbox">
+          <MainContainer id="mainCont">
             <ChatContainer
               style={{
                 zIndex: "10",
@@ -155,7 +152,29 @@ export default function CashBot({ cashBotLink }) {
         </div>
       ) : (
         // users only see the cashbot when the isCashbotOpen is false.
-        <div >
+        <div className="cashbot2Cont">
+          <div class="waviy">
+            <span style={{ "--i": "1" }}>H</span>
+            <span style={{ "--i": "2" }}>i</span>
+            <span style={{ "--i": "3" }}>!</span>
+            <span style={{ "--i": "4" }}>&nbsp;</span>
+            <span style={{ "--i": "5" }}>I</span>
+            <span style={{ "--i": "6" }}>'</span>
+            <span style={{ "--i": "7" }}>m</span>
+            <span style={{ "--i": "8" }}>&nbsp;</span>
+            <span style={{ "--i": "9" }}>C</span>
+            <span style={{ "--i": "10" }}>a</span>
+            <span style={{ "--i": "11" }}>s</span>
+            <span style={{ "--i": "12" }}>h</span>
+            <span style={{ "--i": "13" }}>b</span>
+            <span style={{ "--i": "14" }}>o</span>
+            <span style={{ "--i": "15" }}>t</span>
+            <br />
+
+            <p style={{ color: "white" }}>
+              Click me for more financial literacy help!
+            </p>
+          </div>
           <img
             className="cashbot2"
             src={cashBotLink}
