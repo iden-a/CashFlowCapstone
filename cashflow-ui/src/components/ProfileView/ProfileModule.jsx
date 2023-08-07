@@ -1,13 +1,18 @@
 import React, { Fragment, useState } from "react";
 import { Flex, Box, HStack, Text, useColorModeValue, useMediaQuery } from "@chakra-ui/react";
 
-export default function ProfileModule({ media, userQuiz }) {
+export default function ProfileModule({userQuiz }) {
   const createdAt = new Date(userQuiz.created_at);
   const formattedDate = createdAt.toLocaleDateString("en-US", {
     month: "2-digit",
     day: "2-digit",
     year: "2-digit",
   });
+  const [media, moreMedia] = useMediaQuery([
+    "(max-width: 912px)",
+    "(max-width: 372px)",
+  ]);
+
   function getFormalModuleName(module_name) {
     let formalName;
   
@@ -146,7 +151,7 @@ export default function ProfileModule({ media, userQuiz }) {
           textAlign={"center"}
           marginTop={"5px"}
           padding={"3px"}
-          fontSize={"large"}
+          fontSize={media ? "medium" : "large"}
         >
           Congratulations 🎉 You've completed {getFormalModuleName(userQuiz.topic)}!
         </Text>
