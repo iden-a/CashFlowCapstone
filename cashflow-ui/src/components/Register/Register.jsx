@@ -4,6 +4,7 @@ import apiClient from "../../services/apiClient";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { Puff } from "react-loading-icons";
 import { useNavigate } from "react-router-dom";
+import GoogleOAuthReg from "../GoogleOAuth/GoogleOAuthReg";
 import {
   Flex,
   Box,
@@ -160,7 +161,8 @@ export default function Register({ appState, setAppState }) {
                   Become a CashFlow Academic!
                 </Heading>
               </Stack>
-              <Stack spacing={4}>
+              <GoogleOAuthReg setAppState={setAppState}/>
+              <Stack marginTop={"3%"} spacing={4}>
                 <Flex>
                   <FormControl id="first_name" isRequired>
                     <Input

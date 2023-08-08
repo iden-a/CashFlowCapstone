@@ -7,7 +7,7 @@ import App from "./components/App/App";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider>
-      <App />
+        <App />
     </ChakraProvider>
   </React.StrictMode>
 );

@@ -153,7 +153,7 @@ export default function CashBot({ cashBotLink }) {
       ) : (
         // users only see the cashbot when the isCashbotOpen is false.
         <div className="cashbot2Cont">
-          <div class="waviy">
+          <div className="waviy">
             <span style={{ "--i": "1" }}>H</span>
             <span style={{ "--i": "2" }}>i</span>
             <span style={{ "--i": "3" }}>!</span>

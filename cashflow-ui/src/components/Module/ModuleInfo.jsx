@@ -36,13 +36,15 @@ export default function ModuleInfo({
   setInfoPage,
   cashBotLink,
 }) {
-  const [imgMedia] = useMediaQuery("(max-width: 1000px)");  
-  const [imgMedia2] = useMediaQuery("(max-width: 1400px)");  
+  const [imgMedia] = useMediaQuery("(max-height: 800px)");  
+  const [imgMedia2] = useMediaQuery("(min-height: 1250px)");  
   const [slider, setSlider] = useState(null);
   const top = useBreakpointValue({ base: "70%", md: "70%" });
   const side = useBreakpointValue({ base: "0%", md: "20%" });
   // Loads info from specified module
 
+  console.log(imgMedia)
+  console.log(imgMedia2)
   const handleNext = () => {
     if (infoPage < num_pages) setInfoPage(infoPage + 1);
     slider?.slickNext();
@@ -55,7 +57,7 @@ export default function ModuleInfo({
 
   return (
     <>
-      <Heading display={"flex"} justifyContent={"center"}>
+      <Heading textAlign={"center"} display={"flex"} justifyContent={"center"}>
         {module_data.title}
       </Heading>
       <Flex
@@ -71,13 +73,18 @@ export default function ModuleInfo({
           <Image
             src="/marcus.png"
             position={"absolute"}
-            bottom={`${imgMedia2 ? ("56%") : ("53%")}`}
+            top={imgMedia2 ? "0vh" : (imgMedia ? "15vh" : "5vh")}
+            width={"50%"}
+            height={"32%"}
+            objectFit={"contain"}
+            // bottom={`${imgMedia2 ? ("56%") : ("53%")}`}
             zIndex={"1"}
-            width={`${imgMedia ? ("0%") : ("30%")}`}
+            // width={`${imgMedia ? ("0%") : ("30%")}`}
           />
           </Center>
           <Center>
           <Box
+          paddingTop={"3%"}
             width={'60%'}
             height={'80vh'}
             overflowX={"hidden"}

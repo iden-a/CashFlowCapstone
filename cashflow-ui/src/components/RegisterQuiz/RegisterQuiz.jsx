@@ -20,6 +20,7 @@ import {
   Image,
   Input,
   Button,
+  useMediaQuery,
   Center,
 } from "@chakra-ui/react";
 import ErrorPage from "../ErrorPage/ErrorPage";
@@ -32,7 +33,12 @@ export default function RegisterQuiz({ setAppState, appState, errorLink}) {
     levelOfDebt: "",
     finanGoal: "",
   });
-
+  const [media, inputMedia, headingMedia, heading2Media] = useMediaQuery([
+    "(max-width: 500px)",
+    "(max-width: 388px)",
+    "(max-width: 450px)",
+    "(max-width: 1351px)",
+  ]);
   const navigateTo = useNavigate();
 
   const formChange = (event) => {
@@ -166,15 +172,13 @@ export default function RegisterQuiz({ setAppState, appState, errorLink}) {
           <Stack bg={useColorModeValue("var(--grey)", "var(--midnight)")}>
             <Heading
               as="h3"
-              size="lg"
-              marginLeft={"44vw"}
-              // marginTop={""}
-              // mx={"auto"}
+              size={media ? "md" : "lg"}
+              marginLeft={heading2Media ? "35vw" : "39vw"}
               position={"relative"}
-              top={"70px"}
+              top={headingMedia ? "1.5rem" : "3rem"}
               color={useColorModeValue("var(--midnight)", "var(--grey)")}
             >
-              Let’s Start With Examining <br /> Your Financial Goals...{" "}
+              Let’s Examine Your Financial Goals...
             </Heading>
           </Stack>
           <Box
@@ -188,10 +192,11 @@ export default function RegisterQuiz({ setAppState, appState, errorLink}) {
           >
             <Image
               textAlign={"center"}
-              width={"400px"}
-              height={"400px"}
+              width={"22rem"}
+              height={"22rem"}
+              objectFit={"cover"}
               position={"absolute"}
-              top={"60px"}
+              top={"52px"}
               marginLeft={"-70px"}
               src="/registerguy.png"
             ></Image>
@@ -201,7 +206,7 @@ export default function RegisterQuiz({ setAppState, appState, errorLink}) {
                 marginTop={"10%"}
                 position={"relative"}
                 top={"90px"}
-                marginLeft={"50px"}
+                marginLeft={media ? "25px" : "50px"}
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
               >
                 {" "}
@@ -218,8 +223,9 @@ export default function RegisterQuiz({ setAppState, appState, errorLink}) {
                 onChange={(value) => formChange({ target: { value } })}
                 top={"90px"}
                 width={"50%"}
-                marginLeft={"50px"}
+                marginLeft={media ? "25px" : "50px"}
                 borderRadius={"20px"}
+                marginBottom={inputMedia ? "40px" : null}
                 bg={"var(--grey)"}
               >
                 <NumberInputField />
@@ -238,7 +244,7 @@ export default function RegisterQuiz({ setAppState, appState, errorLink}) {
               <FormLabel
                 as="legend"
                 fontWeight={"bold"}
-                marginLeft={"50px"}
+                marginLeft={media ? "25px" : "50px"}
                 position={"relative"}
                 top={"50px"}
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
@@ -251,7 +257,7 @@ export default function RegisterQuiz({ setAppState, appState, errorLink}) {
                 <Stack
                   spacing="24px"
                   direction={"column"}
-                  marginLeft={"50px"}
+                  marginLeft={media ? "25px" : "50px"}
                   position={"relative"}
                   top={"50px"}
                   color={useColorModeValue("var(--grey)", "var(--midnight)")}
@@ -322,7 +328,7 @@ export default function RegisterQuiz({ setAppState, appState, errorLink}) {
               <FormLabel
                 as="legend"
                 fontWeight={"bold"}
-                marginLeft={"50px"}
+                marginLeft={media ? "25px" : "50px"}
                 position={"relative"}
                 top={"50px"}
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
@@ -338,7 +344,7 @@ export default function RegisterQuiz({ setAppState, appState, errorLink}) {
                 <Stack
                   spacing="24px"
                   direction={"column"}
-                  marginLeft={"50px"}
+                  marginLeft={media ? "25px" : "50px"}
                   position={"relative"}
                   top={"50px"}
                   color={useColorModeValue("var(--grey)", "var(--midnight)")}
@@ -421,7 +427,7 @@ export default function RegisterQuiz({ setAppState, appState, errorLink}) {
                 <FormLabel
                   htmlFor="image"
                   fontWeight={"bold"}
-                  marginLeft={"50px"}
+                  marginLeft={media ? "25px" : "50px"}
                   position={"relative"}
                   top={"20px"}
                   color={useColorModeValue("var(--grey)", "var(--midnight)")}
@@ -432,8 +438,8 @@ export default function RegisterQuiz({ setAppState, appState, errorLink}) {
                 <InputGroup
                   position={"relative"}
                   top={"20px"}
-                  width={"450px"}
-                  marginLeft={"50px"}
+                  width={"80%"}
+                  marginLeft={media ? "25px" : "50px"}
                   color={useColorModeValue("var(--grey)", "var(--midnight)")}
                   size="sm"
                   border={"solid 2px white"}

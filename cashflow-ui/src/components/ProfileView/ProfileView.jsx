@@ -14,7 +14,6 @@ import ProfileModule from "./ProfileModule";
 import ProfileGoals from "./ProfileGoals";
 import Badges from "./Badges";
 
-
 export default function ProfileView({ appState, setAppState }) {
   const [media, moreMedia] = useMediaQuery([
     "(max-width: 1000px)",
@@ -52,13 +51,14 @@ export default function ProfileView({ appState, setAppState }) {
           </Center>
           <Flex flexDirection={`${media ? "column" : "row"}`} marginTop={"3%"}>
             <Flex
+              width={media ? "100%" : "33%"}
               margin={"0 auto"}
               flex={"wrap"}
               display={"column"}
               textAlign={"center"}
             >
               <Heading
-                fontSize={`${moreMedia ? "140%" : "100%"}`}
+                fontSize={`${moreMedia ? "140%" : "2rem"}`}
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
               >
                 {appState.user.username}
@@ -68,13 +68,14 @@ export default function ProfileView({ appState, setAppState }) {
               </Text>
             </Flex>
             <Flex
+              width={media ? "100%" : "33%"}
               margin={"0 auto"}
               flex={"wrap"}
               display={"column"}
               textAlign={"center"}
             >
               <Heading
-                fontSize={`${moreMedia ? "140%" : "100%"}`}
+                fontSize={`${moreMedia ? "140%" : "2rem"}`}
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
                 marginLeft={"auto"}
                 marginRight={"auto"}
@@ -85,15 +86,16 @@ export default function ProfileView({ appState, setAppState }) {
                 Points
               </Text>
             </Flex>
-             
+
             <Flex
+              width={media ? "100%" : "33%"}
               margin={"0 auto"}
               flex={"wrap"}
               display={"column"}
               textAlign={"center"}
             >
               <Heading
-                fontSize={`${moreMedia ? "140%" : "100%"}`}
+                fontSize={`${moreMedia ? "140%" : "2rem"}`}
                 color={useColorModeValue("var(--grey)", "var(--midnight)")}
               >
                 {appState.user.status}
@@ -103,7 +105,7 @@ export default function ProfileView({ appState, setAppState }) {
               </Text>
             </Flex>
           </Flex>
-          <Badges appState={appState}/>
+          <Badges appState={appState} />
           <Heading
             color={useColorModeValue("var(--grey)", "var(--midnight)")}
             textAlign={"center"}
@@ -126,13 +128,13 @@ export default function ProfileView({ appState, setAppState }) {
                 <ProfileModule key={userQuiz.id} userQuiz={userQuiz} />
               ))
             ) : (
-              <Link href="/" style={{ textDecoration: "none" }} >
-              <Text 
-              textAlign={"center"} 
-              color={useColorModeValue("var(--grey)", "var(--midnight)")}
-              >
-                Start learning today!
-              </Text>
+              <Link href="/" style={{ textDecoration: "none" }}>
+                <Text
+                  textAlign={"center"}
+                  color={useColorModeValue("var(--grey)", "var(--midnight)")}
+                >
+                  Start learning today!
+                </Text>
               </Link>
             )}
           </Flex>

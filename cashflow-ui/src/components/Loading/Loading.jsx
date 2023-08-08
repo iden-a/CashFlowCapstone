@@ -9,7 +9,7 @@ export default function Loading() {
           <img className="dot" src="cashflowcloud.png" />
         </div>
 
-        <div classNameName="loadingBody">
+        <div className="loadingBody">
           <div className="loader">
             <div className="loader__image">
               <div className="loader__coin">

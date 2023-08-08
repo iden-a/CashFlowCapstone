@@ -5,13 +5,14 @@ import {
   Heading,
   Text,
   Stack,
+  Flex,
   IconButton,
   useDisclosure,
 } from "@chakra-ui/react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FaInstagram, FaTwitter, FaYoutube, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaTwitter, FaYoutube, FaLinkedin } from "react-icons/fa";
 
 export default function AboutCard({
   name,
@@ -22,6 +23,7 @@ export default function AboutCard({
   animatedImage,
   isUnlocked,
   linkedIn,
+  github
 }) {
   const [isExpanded, setIsExpanded] = useState(isUnlocked);
   const { isOpen, onToggle } = useDisclosure();
@@ -37,7 +39,7 @@ export default function AboutCard({
         p={6}
         maxW={"330px"}
         w={"full"}
-        h={"550px"}
+        h={"fit-content"}
         boxShadow={"2xl"}
         rounded={"lg"}
         pos={"relative"}
@@ -147,9 +149,15 @@ export default function AboutCard({
             onClick={handleExpand}
             icon={isExpanded ? <MinusIcon /> : <AddIcon />}
           />
+          <Flex marginTop={"2%"} width={"50%"} justifyContent={"space-around"}>
           <a href={linkedIn}>
             <FaLinkedin fontSize={"180%"} />
           </a>
+          <a href={github}>
+          <FaGithub fontSize={"180%"} />
+          </a>
+          </Flex>
+
 
           {/* Conditionally displays bio or school */}
           {isExpanded ? (
