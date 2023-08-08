@@ -147,12 +147,12 @@ function Question({ question, onNext }) {
         fontSize={{ base: "15px", md: "35px", lg: "45px", xl: "45px" }}>
           {scenario}
         </Box>
-        <RadioGroup onChange={handleAnswerSelect} value={selectedOption}>
-          <Stack spacing={4} color={useColorModeValue("var(--grey)", "var(--midnight)")}>
+        <RadioGroup onChange={handleAnswerSelect} value={selectedOption} >
+          <Stack spacing={4} color={useColorModeValue("var(--grey)", "var(--midnight)")} >
             {options.map((option, index) => (
-              <Radio 
+              <Radio borderColor={useColorModeValue("white", "black")}
               textAlign={'center'}
-              fontSize={{ base: "20px", md: "35px", lg: "45px", xl: "60px" }}      
+              fontSize={{ base: "25px", md: "35px", lg: "45px", xl: "60px" }}      
               key={index} value={option}>
                 {option}
               </Radio>
