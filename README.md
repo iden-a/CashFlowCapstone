@@ -15,10 +15,10 @@ Project Code Repository Links
 
 ## Project Overview
 
-Add a quick summary of what your project theme and objectives are. 
+CashFlow Academy is a comprehensive financial literacy application designed to empower individuals of all levels of expertise to master and increase their cash flow management skills. With personalized learning paths, interactive quizzes, and our AI Cashbot, the app educates users on bank account basics, savings, credit usage, debt management, and more!
 
-Deployment Website: **Add Link to Deployed Project**
+Deployment Website: https://cashflow-ui-pfwm.onrender.com/ 
 
 ### Open-source libraries used
 
-- Add any links to open-source libraries used in your project.
+- https://chakra-ui.com/ 
